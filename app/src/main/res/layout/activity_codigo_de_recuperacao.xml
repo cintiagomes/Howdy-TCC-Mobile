@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.RecuperarSenha">
+    tools:context=".view.CodigoDeRecuperacao">
 
     <ImageView
         android:id="@+id/imageView"
@@ -34,7 +34,7 @@
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="25dp"
         android:fontFamily="@font/roboto_medium"
         android:text="Insira seu e-mail"
         android:textColor="#6A7DFF"
@@ -47,10 +47,11 @@
     <TextView
         android:id="@+id/textView7"
         android:layout_width="281dp"
-        android:layout_height="92dp"
+        android:layout_height="69dp"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/roboto"
-        android:text="Se uma conta com este e-mail realmente existir, mandaremos um código para resetar a senha."
+        android:text="Insira o código que enviamos para o seu e-mail
+(ele irá expirar em 1 hora)."
         android:textColor="#303135"
         android:textSize="17sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -58,30 +59,58 @@
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/text_codigo"
         android:layout_width="308dp"
         android:layout_height="48dp"
-        android:layout_marginTop="4dp"
         android:background="@drawable/buttom_borda"
-        android:drawableStart="@drawable/ic_email_24"
+        android:drawableStart="@drawable/ic_key_24"
         android:drawablePadding="10dp"
-        android:hint="E-mail"
+        android:hint="Código"
+        android:paddingStart="5sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+    <EditText
+        android:id="@+id/text_senha_nova"
+        android:layout_width="308dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="26dp"
+        android:background="@drawable/buttom_borda"
+        android:drawableStart="@drawable/ic_lock_24"
+        android:drawablePadding="10dp"
+        android:hint="Sua nova senha"
+        android:paddingStart="5sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_codigo" />
+
+    <EditText
+        android:id="@+id/text_confirmacao_senha"
+        android:layout_width="308dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="26dp"
+        android:background="@drawable/buttom_borda"
+        android:drawableStart="@drawable/ic_lock_24"
+        android:drawablePadding="10dp"
+        android:hint="Confirme sua nova senha"
         android:paddingStart="5sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7"
+        app:layout_constraintTop_toBottomOf="@+id/text_senha_nova"
         tools:ignore="TouchTargetSizeCheck" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="130dp"
+        android:layout_marginTop="45dp"
+        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText"
-        android:gravity="center">
+        app:layout_constraintTop_toBottomOf="@+id/text_confirmacao_senha">
 
         <Button
             android:id="@+id/button_cancelar"
@@ -96,10 +125,10 @@
             android:id="@+id/button_proximo"
             android:layout_width="137dp"
             android:layout_height="48dp"
+            android:layout_marginStart="35dp"
             android:backgroundTint="#6A7DFF"
             android:fontFamily="@font/roboto"
-            android:text="Próximo"
-            android:layout_marginStart="35dp"/>
+            android:text="Próximo" />
 
     </LinearLayout>
 
