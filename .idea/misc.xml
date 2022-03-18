@@ -35,12 +35,17 @@
         <entry key="app/src/main/res/drawable/bordinha.xml" value="0.2375" />
         <entry key="app/src/main/res/drawable/buttom_borda.xml" value="0.29444444444444445" />
         <entry key="app/src/main/res/drawable/ic_add_24.xml" value="0.30925925925925923" />
+        <entry key="app/src/main/res/drawable/ic_book_24.xml" value="0.3614583333333333" />
+        <entry key="app/src/main/res/drawable/ic_chat_24.xml" value="0.3614583333333333" />
         <entry key="app/src/main/res/drawable/ic_check_24.xml" value="0.4015384615384615" />
         <entry key="app/src/main/res/drawable/ic_close_24.xml" value="0.4015384615384615" />
         <entry key="app/src/main/res/drawable/ic_heart_24.xml" value="0.3509259259259259" />
+        <entry key="app/src/main/res/drawable/ic_home_24.xml" value="0.3614583333333333" />
         <entry key="app/src/main/res/drawable/ic_library_24.xml" value="0.3509259259259259" />
         <entry key="app/src/main/res/drawable/ic_new_24.xml" value="0.221875" />
+        <entry key="app/src/main/res/drawable/ic_notifications_24.xml" value="0.3614583333333333" />
         <entry key="app/src/main/res/drawable/ic_outline_loyalty_24.xml" value="0.15885416666666666" />
+        <entry key="app/src/main/res/drawable/ic_people_24.xml" value="0.3614583333333333" />
         <entry key="app/src/main/res/drawable/ic_person_.xml" value="0.2375" />
         <entry key="app/src/main/res/drawable/ic_person_24.xml" value="0.2375" />
         <entry key="app/src/main/res/drawable/ic_sport_24.xml" value="0.3509259259259259" />
@@ -54,7 +59,7 @@
         <entry key="app/src/main/res/layout/activity_pagina_de_postagem.xml" value="0.3109375" />
         <entry key="app/src/main/res/layout/activity_recuperar_senha.xml" value="0.3515625" />
         <entry key="app/src/main/res/layout/fragment_amigos.xml" value="0.375" />
-        <entry key="app/src/main/res/layout/fragment_atividades.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/fragment_atividades.xml" value="0.45" />
         <entry key="app/src/main/res/layout/fragment_chat.xml" value="0.39114583333333336" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.34932221063607927" />
         <entry key="app/src/main/res/layout/fragment_notificacao.xml" value="0.40520833333333334" />
