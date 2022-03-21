@@ -58,53 +58,85 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
-    <EditText
-        android:id="@+id/text_codigo"
-        android:layout_width="308dp"
-        android:layout_height="48dp"
-        android:background="@drawable/buttom_borda"
-        android:drawableStart="@drawable/ic_key_24"
-        android:drawablePadding="10dp"
-        android:hint="Código"
-        android:paddingStart="5sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+    <com.google.android.material.textfield.TextInputLayout
+    android:id="@+id/text_codigo"
+    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+    android:layout_width="308dp"
+    android:layout_height="wrap_content"
+    android:hint="Código"
+    app:endIconMode="clear_text"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.495"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/textView7"
+    app:startIconDrawable="@drawable/ic_key_24">
 
-    <EditText
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/textNome"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/roboto"
+            android:padding="2dp"
+            android:textSize="15dp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/text_senha_nova"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="308dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="26dp"
-        android:background="@drawable/buttom_borda"
-        android:drawableStart="@drawable/ic_lock_24"
-        android:drawablePadding="10dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
         android:hint="Sua nova senha"
-        android:paddingStart="5sp"
+        app:counterEnabled="true"
+        app:counterMaxLength="20"
+        app:endIconMode="password_toggle"
+        app:helperTextTextColor="#FF0000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_codigo" />
+        app:layout_constraintTop_toBottomOf="@+id/text_codigo"
+        app:startIconDrawable="@drawable/ic_lock_24">
 
-    <EditText
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/textSenhaNova"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/roboto"
+            android:padding="2dp"
+            android:textSize="15dp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/text_confirmacao_senha"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="308dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="26dp"
-        android:background="@drawable/buttom_borda"
-        android:drawableStart="@drawable/ic_lock_24"
-        android:drawablePadding="10dp"
-        android:hint="Confirme sua nova senha"
-        android:paddingStart="5sp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:hint="Sua nova senha"
+        app:counterEnabled="true"
+        app:counterMaxLength="20"
+        app:endIconMode="password_toggle"
+        app:helperTextTextColor="#FF0000"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_senha_nova"
-        tools:ignore="TouchTargetSizeCheck" />
+        app:startIconDrawable="@drawable/ic_lock_24">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/textSenhaConfirmacao"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/roboto"
+            android:padding="2dp"
+            android:textSize="15dp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="20dp"
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
