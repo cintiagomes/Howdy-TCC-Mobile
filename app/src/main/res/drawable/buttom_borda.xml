@@ -4,12 +4,13 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <gradient
-        android:angle="360"/>
+    android:angle="360"/>
 
     <solid
         android:color="#F2F2f2"
         android:width="2dp"/>
 
-    <corners android:radius="10dp"/>
+    <corners android:radius="20dp"/>
 
 </shape>
+

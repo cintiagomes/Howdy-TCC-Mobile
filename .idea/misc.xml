@@ -32,6 +32,7 @@
         <entry key="..\:/Users/cinia/Downloads/howdy/howdy/app/src/main/res/mipmap-anydpi-v26/ic_logo_app_round.xml" value="0.203" />
         <entry key="app/src/main/res/drawable/borda_avaliacoes.xml" value="0.3509259259259259" />
         <entry key="app/src/main/res/drawable/borda_buttom.xml" value="0.3614583333333333" />
+        <entry key="app/src/main/res/drawable/borda_coin_howdy.xml" value="0.2365" />
         <entry key="app/src/main/res/drawable/borda_favoritos.xml" value="0.34629629629629627" />
         <entry key="app/src/main/res/drawable/borda_mensalidade.xml" value="0.4015384615384615" />
         <entry key="app/src/main/res/drawable/borda_noticias.xml" value="0.3614583333333333" />
@@ -65,7 +66,7 @@
         <entry key="app/src/main/res/layout/activity_pagina_de_postagem.xml" value="0.3109375" />
         <entry key="app/src/main/res/layout/activity_recuperar_senha.xml" value="0.3515625" />
         <entry key="app/src/main/res/layout/fragment_amigos.xml" value="0.375" />
-        <entry key="app/src/main/res/layout/fragment_atividades.xml" value="0.45" />
+        <entry key="app/src/main/res/layout/fragment_atividades.xml" value="0.24501108647450112" />
         <entry key="app/src/main/res/layout/fragment_chat.xml" value="0.39114583333333336" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.34932221063607927" />
         <entry key="app/src/main/res/layout/fragment_notificacao.xml" value="0.40520833333333334" />
