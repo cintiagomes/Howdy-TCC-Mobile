@@ -203,7 +203,7 @@
             app:layout_constraintTop_toBottomOf="@+id/inputLayoutConfirmarSenha" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/buttonCadastrar"
             android:layout_width="221dp"
             android:layout_height="48dp"
             android:backgroundTint="#6A7DFF"

@@ -58,13 +58,14 @@
         <entry key="app/src/main/res/drawable/ic_sport_24.xml" value="0.3509259259259259" />
         <entry key="app/src/main/res/drawable/ic_star_24.xml" value="0.30925925925925923" />
         <entry key="app/src/main/res/drawable/ic_time_24.xml" value="0.3509259259259259" />
-        <entry key="app/src/main/res/layout/activity_cadastro.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/activity_cadastro.xml" value="0.3234567901234568" />
         <entry key="app/src/main/res/layout/activity_codigo_de_recuperacao.xml" value="0.3109375" />
         <entry key="app/src/main/res/layout/activity_inicio_assinatura.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.3515625" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3490740740740741" />
         <entry key="app/src/main/res/layout/activity_pagina_de_postagem.xml" value="0.3109375" />
         <entry key="app/src/main/res/layout/activity_recuperar_senha.xml" value="0.3515625" />
+        <entry key="app/src/main/res/layout/dropdown_item.xml" value="0.18840579710144928" />
         <entry key="app/src/main/res/layout/fragment_amigos.xml" value="0.375" />
         <entry key="app/src/main/res/layout/fragment_atividades.xml" value="0.24501108647450112" />
         <entry key="app/src/main/res/layout/fragment_chat.xml" value="0.39114583333333336" />
