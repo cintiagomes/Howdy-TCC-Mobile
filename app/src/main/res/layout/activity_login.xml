@@ -115,20 +115,22 @@
 
         <ImageButton
             android:id="@+id/button4"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:padding="20dp"
             android:layout_marginRight="50dp"
             android:layout_gravity="center"
+            android:background="@drawable/buttom_borda"
             android:backgroundTint="#E62312"
             android:src="@drawable/icon_google"
             android:text="GOOGLE"/>
 
         <ImageButton
             android:id="@+id/button5"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_gravity="center"
+            android:background="@drawable/buttom_borda"
             android:backgroundTint="#2E51CD"
             android:padding="20dp"
             android:text="FACEBOOK"

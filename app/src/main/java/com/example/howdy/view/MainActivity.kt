@@ -27,9 +27,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         registarConta.setOnClickListener {
-            val Cadastro =
-                Intent(this, Cadastro::class.java)
-            startActivity(Cadastro)
+            val TesteActivity =
+                Intent(this, TesteActivity::class.java)
+            startActivity(TesteActivity)
         }
 
     }

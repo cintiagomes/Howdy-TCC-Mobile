@@ -6,8 +6,8 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import com.example.howdy.R
-import com.example.howdy.databinding.ActivityCadastroBinding
 import com.example.howdy.databinding.ActivityLoginBinding
+import com.example.howdy.databinding.ActivityTesteBinding
 import com.google.firebase.auth.FirebaseAuth
 
 class login : AppCompatActivity() {
@@ -32,9 +32,9 @@ class login : AppCompatActivity() {
         }
 
         registarConta.setOnClickListener {
-            val Cadastro =
-                Intent(this, Cadastro::class.java)
-            startActivity(Cadastro)
+            val ActivityTesteBinding =
+                Intent(this, ActivityTesteBinding::class.java)
+            startActivity(ActivityTesteBinding)
         }
 
     }
