@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Howdy">
         <activity
+            android:name=".CadastroActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.TesteActivity"
             android:exported="false" />
         <activity

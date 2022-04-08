@@ -140,22 +140,25 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="2dp"
                         android:layout_marginStart="8dp"
+                        android:layout_gravity="center"
                         android:orientation="horizontal">
 
                         <Button
-                            android:layout_width="75dp"
+                            android:layout_width="95dp"
                             android:layout_height="39dp"
+                            android:layout_marginEnd="20dp"
                             android:text="aceitar"
-                            android:textSize="9.3dp"
+                            android:textSize="12dp"
                             android:fontFamily="@font/roboto"/>
 
                         <Button
-                            android:layout_width="75dp"
+                            android:layout_width="95dp"
                             android:layout_height="39dp"
+                            android:layout_marginEnd="20dp"
                             android:backgroundTint="#E5E5E5"
-                            android:textColor="@color/black"
                             android:text="Recusar"
-                            android:textSize="8.57dp"
+                            android:textSize="12dp"
+                            android:gravity="center"
                             android:fontFamily="@font/roboto"/>
 
                     </LinearLayout>
