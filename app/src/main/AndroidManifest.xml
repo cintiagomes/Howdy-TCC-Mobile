@@ -13,11 +13,10 @@
             android:name=".CadastroActivity"
             android:exported="false" />
         <activity
-            android:name=".view.TesteActivity"
-            android:exported="false" />
-        <activity
             android:name=".view.paginaDePostagem"
-            android:exported="false" />
+            android:exported="false">
+        </activity>
+
         <activity
             android:name=".view.CodigoDeRecuperacao"
             android:exported="false" />
@@ -26,9 +25,6 @@
             android:exported="false" />
         <activity
             android:name=".view.login"
-            android:exported="false" />
-        <activity
-            android:name=".view.Cadastro"
             android:exported="false" />
         <activity
             android:name=".view.InicioAssinatura"
@@ -41,6 +37,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
 
         <meta-data

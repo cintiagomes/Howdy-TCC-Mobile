@@ -8,6 +8,7 @@ import android.widget.Toast
 import com.example.howdy.CadastroActivity
 import com.example.howdy.R
 import com.example.howdy.databinding.ActivityLoginBinding
+import com.example.howdy.databinding.ActivityPaginaDePostagemBinding
 import com.example.howdy.databinding.FragmentHomeBinding
 import com.google.firebase.auth.FirebaseAuth
 
@@ -49,7 +50,8 @@ class login : AppCompatActivity() {
 
         auth.signInWithEmailAndPassword(email, senha).addOnCompleteListener {
             if (it.isSuccessful){
-                Toast.makeText(applicationContext,"Login executado com sucesso!",
+                val token = auth.currentUser?.uid
+                Toast.makeText(applicationContext,"Login executado com sucesso! e ${token}" ,
                 Toast.LENGTH_LONG).show()
                 postagem()
             }else{
@@ -59,7 +61,7 @@ class login : AppCompatActivity() {
     }
 
     private fun postagem() {
-        val postar = Intent(this, FragmentHomeBinding::class.java)
+        val postar = Intent(this, paginaDePostagem::class.java)
         startActivity(postar)
     }
 

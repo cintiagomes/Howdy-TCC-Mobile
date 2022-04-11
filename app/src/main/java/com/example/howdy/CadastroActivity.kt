@@ -32,21 +32,16 @@ class CadastroActivity : AppCompatActivity() {
 
         auth.createUserWithEmailAndPassword(email, senha).addOnCompleteListener{
             if (it.isSuccessful){
-                val usuario = auth.currentUser
-                usuario!!.sendEmailVerification().addOnCompleteListener{
-                    if (it.isSuccessful){
-                        Toast.makeText(applicationContext,"Foi enviado o email para verificação",
-                            Toast.LENGTH_LONG).show()
-                        login()
-                    }
-                }
+                Toast.makeText(applicationContext,"Foi enviado o email para verificação",
+                Toast.LENGTH_LONG).show()
+                login()
 
             }
         }
     }
 
     private fun login(){
-        val intent = Intent(this, ActivityLoginBinding::class.java)
+        val intent = Intent(this, com.example.howdy.view.login::class.java)
         startActivity(intent)
     }
 

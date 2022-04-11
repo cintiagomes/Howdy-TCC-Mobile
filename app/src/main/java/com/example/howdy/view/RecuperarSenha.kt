@@ -37,30 +37,18 @@ class RecuperarSenha : AppCompatActivity() {
             startActivity(login)
         }
 
-        buttonProximo.setOnClickListener {
-            val codigoDeRecuperacao =
-                Intent(this, CodigoDeRecuperacao::class.java)
-            startActivity(codigoDeRecuperacao)
-        }
-
     }
 
     private fun recuperacao() {
 
         val email = binding.textEmail.text.toString()
 
-        auth.sendPasswordResetEmail(email).continueWith{
-            if (it.isSuccessful) {
-                val usuario = auth.currentUser
-                usuario!!.sendEmailVerification().continueWith {
-                    if (it.isSuccessful) {
-                        recuperarsenha()
-                    }else{
-                        Toast.makeText(applicationContext,"Erro no email", Toast.LENGTH_LONG).show()
-                    }
+        auth.sendPasswordResetEmail(email)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    Toast.makeText(this,"Email enviado!", Toast.LENGTH_LONG).show()
                 }
             }
-        }
     }
 
     private fun recuperarsenha() {
