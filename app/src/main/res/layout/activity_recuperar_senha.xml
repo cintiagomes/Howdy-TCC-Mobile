@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="56dp"
         android:fontFamily="@font/roboto_medium"
-        android:text="Recupere sua conta"
+        android:text="Recupere sua senha"
         android:textColor="#303135"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"

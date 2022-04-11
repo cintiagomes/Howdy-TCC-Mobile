@@ -26,7 +26,6 @@ class RecuperarSenha : AppCompatActivity() {
         setContentView(binding.root)
 
         val buttonCancelar = findViewById<Button>(R.id.button_cancelar)
-        val buttonProximo = findViewById<Button>(R.id.button_proximo)
 
         auth = FirebaseAuth.getInstance()
         binding.buttonProximo.setOnClickListener { recuperacao() }
@@ -46,14 +45,20 @@ class RecuperarSenha : AppCompatActivity() {
         auth.sendPasswordResetEmail(email)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    Toast.makeText(this,"Email enviado!", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this,"Um email foi enviado!",
+                    Toast.LENGTH_LONG).show()
+                    recuperarsenha()
+
+                }else{
+                    Toast.makeText(this,"Ocorreu algum erro",
+                    Toast.LENGTH_LONG).show()
                 }
             }
     }
 
     private fun recuperarsenha() {
-        val intent = Intent(this, ActivityCodigoDeRecuperacaoBinding::class.java)
-        startActivity(intent)
+        val recuperarsenha = Intent(this, CodigoDeRecuperacao::class.java)
+        startActivity(recuperarsenha)
     }
 }
 

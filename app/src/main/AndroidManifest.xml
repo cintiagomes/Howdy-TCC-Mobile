@@ -16,7 +16,6 @@
             android:name=".view.paginaDePostagem"
             android:exported="false">
         </activity>
-
         <activity
             android:name=".view.CodigoDeRecuperacao"
             android:exported="false" />

@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="56dp"
         android:fontFamily="@font/roboto_medium"
-        android:text="Recupere sua conta"
+        android:text="Recupere sua senha"
         android:textColor="#303135"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -34,7 +34,7 @@
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="30dp"
         android:fontFamily="@font/roboto_medium"
         android:text="Insira seu e-mail"
         android:textColor="#6A7DFF"
@@ -48,120 +48,29 @@
         android:id="@+id/textView7"
         android:layout_width="281dp"
         android:layout_height="69dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="80dp"
         android:fontFamily="@font/roboto"
-        android:text="Insira o código que enviamos para o seu e-mail
-(ele irá expirar em 1 hora)."
+        android:text="Um email de verificação foi enviado para a recupeção de sua senha."
         android:textColor="#303135"
-        android:textSize="17sp"
+        android:gravity="center"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
-    <com.google.android.material.textfield.TextInputLayout
-    android:id="@+id/text_codigo"
-    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-    android:layout_width="308dp"
-    android:layout_height="wrap_content"
-    android:hint="Código"
-    app:endIconMode="clear_text"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.495"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/textView7"
-    app:startIconDrawable="@drawable/ic_key_24">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/textNome"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fontFamily="@font/roboto"
-            android:padding="2dp"
-            android:textSize="15dp" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/text_senha_nova"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="308dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="22dp"
-        android:hint="Sua nova senha"
-        app:counterEnabled="true"
-        app:counterMaxLength="20"
-        app:endIconMode="password_toggle"
-        app:helperTextTextColor="#FF0000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_codigo"
-        app:startIconDrawable="@drawable/ic_lock_24">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/textSenhaNova"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fontFamily="@font/roboto"
-            android:padding="2dp"
-            android:textSize="15dp" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/text_confirmacao_senha"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="308dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:hint="Sua nova senha"
-        app:counterEnabled="true"
-        app:counterMaxLength="20"
-        app:endIconMode="password_toggle"
-        app:helperTextTextColor="#FF0000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_senha_nova"
-        app:startIconDrawable="@drawable/ic_lock_24">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/textSenhaConfirmacao"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fontFamily="@font/roboto"
-            android:padding="2dp"
-            android:textSize="15dp" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:gravity="center"
+    <Button
+        android:id="@+id/button_proximo"
+        android:layout_width="137dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="183dp"
+        android:layout_marginBottom="160dp"
+        android:backgroundTint="#6A7DFF"
+        android:fontFamily="@font/roboto"
+        android:text="Voltar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_confirmacao_senha">
-
-        <Button
-            android:id="@+id/button_cancelar"
-            android:layout_width="137dp"
-            android:layout_height="48dp"
-            android:backgroundTint="#E5E5E5"
-            android:fontFamily="@font/roboto"
-            android:text="Cancelar"
-            android:textColor="#303135" />
-
-        <Button
-            android:id="@+id/button_proximo"
-            android:layout_width="137dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="35dp"
-            android:backgroundTint="#6A7DFF"
-            android:fontFamily="@font/roboto"
-            android:text="Próximo" />
-
-    </LinearLayout>
+        app:layout_constraintTop_toBottomOf="@+id/textView7"
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

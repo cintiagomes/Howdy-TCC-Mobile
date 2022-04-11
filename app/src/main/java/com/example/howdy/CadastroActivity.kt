@@ -32,10 +32,13 @@ class CadastroActivity : AppCompatActivity() {
 
         auth.createUserWithEmailAndPassword(email, senha).addOnCompleteListener{
             if (it.isSuccessful){
-                Toast.makeText(applicationContext,"Foi enviado o email para verificação",
+                Toast.makeText(applicationContext,"Cadastro realizado com sucesso!",
                 Toast.LENGTH_LONG).show()
                 login()
 
+            }else{
+                Toast.makeText(applicationContext,"Houve um erro no seu cadastro",
+                Toast.LENGTH_LONG).show()
             }
         }
     }

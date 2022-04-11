@@ -3,18 +3,58 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ChatFragment"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".view.ChatFragment"
     android:background="#F5F8FA">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment"
-        android:paddingTop="30sp"
-        android:paddingStart="30sp"
-        android:textSize="17dp"
-        android:fontFamily="@font/roboto_bold"
-        android:background="#F5F8FA"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_margin="30dp"
+        android:padding="5dp"
+        android:layout_marginTop="15dp"
+        android:orientation="vertical"
+        android:layout_marginBottom="50dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mensagens"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:fontFamily="@font/roboto_bold"
+            android:background="#F5F8FA"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="Sugestões"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:fontFamily="@font/roboto_bold"
+            android:background="#F5F8FA"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </LinearLayout>
 
 </FrameLayout>
