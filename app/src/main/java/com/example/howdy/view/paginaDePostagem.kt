@@ -5,9 +5,11 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
+import com.example.howdy.PerfilActivity
 import com.example.howdy.R
 import com.example.howdy.uteis.FragmentTypeAdapter
 import com.google.android.material.tabs.TabLayout
@@ -47,6 +49,7 @@ class paginaDePostagem : AppCompatActivity() {
         when (item.itemId){
             R.id.menu_perfil -> {
                 Toast.makeText(this, "Perfil", Toast.LENGTH_SHORT).show()
+                perfil()
             }
             R.id.menu_ajuda -> {
                 Toast.makeText(this, "Ajuda", Toast.LENGTH_SHORT).show()
@@ -65,6 +68,11 @@ class paginaDePostagem : AppCompatActivity() {
         }
 
         return true
+    }
+
+    private fun perfil() {
+        val postar = Intent(this, PerfilActivity::class.java)
+        startActivity(postar)
     }
 
     private fun paginaMain() {

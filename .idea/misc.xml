@@ -71,6 +71,7 @@
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.3515625" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3490740740740741" />
         <entry key="app/src/main/res/layout/activity_pagina_de_postagem.xml" value="0.3109375" />
+        <entry key="app/src/main/res/layout/activity_perfil.xml" value="0.365625" />
         <entry key="app/src/main/res/layout/activity_recuperar_senha.xml" value="0.3515625" />
         <entry key="app/src/main/res/layout/activity_teste.xml" value="0.23369565217391305" />
         <entry key="app/src/main/res/layout/cadastro.xml" value="1.5" />
@@ -96,7 +97,7 @@
   <component name="VisualizationToolProject">
     <option name="state">
       <ProjectState>
-        <option name="scale" value="0.3515625" />
+        <option name="scale" value="0.365625" />
       </ProjectState>
     </option>
   </component>

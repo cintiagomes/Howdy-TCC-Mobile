@@ -10,12 +10,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Howdy">
         <activity
-            android:name=".CadastroActivity"
+            android:name=".PerfilActivity"
             android:exported="false" />
         <activity
-            android:name=".view.paginaDePostagem"
-            android:exported="false">
-        </activity>
+            android:name=".CadastroActivity"
+            android:exported="false" />
+<!--        <activity-->
+<!--            android:name=".view.paginaDePostagem"-->
+<!--            android:exported="false"></activity>-->
         <activity
             android:name=".view.CodigoDeRecuperacao"
             android:exported="false" />
@@ -29,14 +31,13 @@
             android:name=".view.InicioAssinatura"
             android:exported="false" />
         <activity
-            android:name=".view.MainActivity"
+            android:name=".view.paginaDePostagem"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
 
         <meta-data
