@@ -11,7 +11,7 @@ import com.example.howdy.view.HomeFragment
 
 class FragmentTypeAdapter(fragmentActivity: FragmentActivity): FragmentStateAdapter(fragmentActivity){
     override fun getItemCount(): Int {
-        return 4
+        return 5
     }
 
     override fun createFragment(position: Int): Fragment {

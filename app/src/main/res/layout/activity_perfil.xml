@@ -205,9 +205,9 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tabs"
@@ -216,17 +216,13 @@
                 android:background="#006A7DFF">
 
                 <com.google.android.material.tabs.TabItem
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="@color/purple_200"
-                    android:text="Postagens" />
+                    android:text="Postagens"
+                    style="@style/tabs" />
 
 
                 <com.google.android.material.tabs.TabItem
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="@color/purple_200"
-                    android:text="Amigos" />
+                    android:text="Amigos"
+                    style="@style/tabs" />
 
                 <com.google.android.material.tabs.TabItem
                     android:layout_width="wrap_content"
@@ -241,7 +237,10 @@
                     android:text="Ensinamentos" />
 
             </com.google.android.material.tabs.TabLayout>
-
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/viewpager2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
 
         </LinearLayout>
 
