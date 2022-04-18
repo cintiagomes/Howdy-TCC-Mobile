@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Howdy">
         <activity
-            android:name=".PerfilActivity"
+            android:name=".view.PerfilActivity"
             android:exported="false" />
         <activity
             android:name=".CadastroActivity"

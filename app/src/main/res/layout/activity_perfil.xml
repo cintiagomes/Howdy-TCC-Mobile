@@ -5,12 +5,29 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
-    tools:context=".PerfilActivity"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintBottom_toBottomOf="parent"
+    tools:context=".view.PerfilActivity"
     android:background="#F5F8FA">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         android:background="#F5F8FA"
         android:paddingStart="25dp"
         android:paddingEnd="25dp"
@@ -18,7 +35,10 @@
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="177dp"
+            android:layout_height="176dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             android:src="@drawable/perfil_principal"
             tools:ignore="MissingConstraints" />
 
@@ -203,44 +223,46 @@
 
         </LinearLayout>
 
+    </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginTop="20dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="10dp">
 
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tabs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:tabSelectedTextColor="@color/purple_200"
+                app:tabIndicatorColor="@color/purple_200"
                 android:background="#006A7DFF">
 
                 <com.google.android.material.tabs.TabItem
-                    android:text="Postagens"
-                    style="@style/tabs" />
+                    style="@style/tabs"
+                    android:text="Postagens" />
 
 
                 <com.google.android.material.tabs.TabItem
-                    android:text="Amigos"
-                    style="@style/tabs" />
+                    style="@style/tabs"
+                    android:text="Amigos" />
 
                 <com.google.android.material.tabs.TabItem
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="@color/purple_200"
+                    style="@style/tabs"
                     android:text="Aprendizado" />
 
                 <com.google.android.material.tabs.TabItem
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="@color/purple_200"
+                    style="@style/tabs"
                     android:text="Ensinamentos" />
 
             </com.google.android.material.tabs.TabLayout>
+
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/viewpager2"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent" />
 
         </LinearLayout>
 

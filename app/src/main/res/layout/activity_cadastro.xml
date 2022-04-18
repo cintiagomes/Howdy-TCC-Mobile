@@ -59,6 +59,7 @@
                     android:id="@+id/textNome"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:backgroundTint="@color/purple_200"
                     android:fontFamily="@font/roboto"
                     android:padding="2dp"
                     android:textSize="15dp" />

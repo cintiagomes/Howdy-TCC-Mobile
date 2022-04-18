@@ -3,13 +3,10 @@ package com.example.howdy.view
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
-import android.view.MenuInflater
 import android.view.MenuItem
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
-import com.example.howdy.PerfilActivity
 import com.example.howdy.R
 import com.example.howdy.uteis.FragmentTypeAdapter
 import com.google.android.material.tabs.TabLayout

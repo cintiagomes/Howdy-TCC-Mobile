@@ -4,6 +4,8 @@ package com.example.howdy
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import com.example.howdy.databinding.ActivityCadastroBinding
 import com.example.howdy.databinding.ActivityLoginBinding
@@ -21,8 +23,16 @@ class CadastroActivity : AppCompatActivity() {
         actionBar!!.hide()
         setContentView(binding.root)
 
+        val textRegistar = findViewById<TextView>(R.id.text_registar)
+
         auth = FirebaseAuth.getInstance()
         binding.buttonCadastrar.setOnClickListener { cadastrar() }
+
+        textRegistar.setOnClickListener {
+            val login =
+                Intent(this, com.example.howdy.view.login::class.java)
+            startActivity(login)
+        }
 
     }
 
