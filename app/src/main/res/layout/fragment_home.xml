@@ -4,6 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintBottom_toBottomOf="parent"
     tools:context=".view.HomeFragment"
     android:background="#F5F8FA">
 
@@ -65,103 +69,70 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="10sp"
-                    android:layout_gravity="center"
-                    android:orientation="horizontal">
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:backgroundTint="#29B995"
+                    android:gravity="center"
+                    android:background="@drawable/buttom_borda">
 
-                    <LinearLayout
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:backgroundTint="#29B995"
-                        android:gravity="center"
-                        android:layout_marginEnd="5dp"
-                        android:background="@drawable/buttom_borda">
-
-                        <ImageView
-                            android:layout_width="16dp"
-                            android:layout_height="16dp"
-                            android:src="@drawable/ic_category_24"/>
-
-                    </LinearLayout>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
                         android:layout_gravity="center"
-                        android:text="Categorias"
-                        android:textSize="12dp"/>
+                        android:src="@drawable/ic_category_24"/>
 
                 </LinearLayout>
+
+                <Spinner
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginEnd="10sp">
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:backgroundTint="#2EC4F3"
+                    android:gravity="center"
+                    android:background="@drawable/buttom_borda">
 
-                    <LinearLayout
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:backgroundTint="#2EC4F3"
-                        android:gravity="center"
-                        android:layout_marginEnd="5dp"
-                        android:background="@drawable/buttom_borda">
-
-                        <ImageView
-                            android:layout_width="15dp"
-                            android:layout_height="15dp"
-                            android:src="@drawable/ic_camera_24"/>
-
-                    </LinearLayout>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Foto"
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
                         android:layout_gravity="center"
-                        android:textSize="12dp"/>
+                        android:src="@drawable/ic_camera_24"/>
 
                 </LinearLayout>
+
+                <Spinner
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginEnd="10sp">
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:backgroundTint="#A06BD4"
+                    android:gravity="center"
+                    android:background="@drawable/buttom_borda">
 
-                    <LinearLayout
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:backgroundTint="#A06BD4"
-                        android:gravity="center"
-                        android:layout_marginEnd="5dp"
-                        android:background="@drawable/buttom_borda">
-
-                        <ImageView
-                            android:layout_width="16dp"
-                            android:layout_height="16dp"
-                            android:src="@drawable/ic_visibility_24"/>
-
-                    </LinearLayout>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Visibilidade"
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
                         android:layout_gravity="center"
-                        android:textSize="12dp"/>
+                        android:src="@drawable/ic_visibility_24"/>
 
                 </LinearLayout>
+
+                <Spinner
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
 
                 <Button
-                    android:layout_width="60dp"
-                    android:layout_height="45dp"
+                    android:layout_width="90dp"
+                    android:layout_height="wrap_content"
                     android:backgroundTint="@color/purple_200"
                     android:fontFamily="@font/roboto"
                     android:text="Postar"
-                    android:textSize="10dp" />
+                    android:textSize="9dp"/>
+
 
             </LinearLayout>
 
