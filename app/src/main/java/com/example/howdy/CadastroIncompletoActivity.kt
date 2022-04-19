@@ -1,30 +1,26 @@
-
 package com.example.howdy
 
 import android.app.DatePickerDialog
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.AdapterView.OnItemClickListener
 import android.widget.ArrayAdapter
-import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
-import com.example.howdy.databinding.ActivityCadastroBinding
-import com.example.howdy.databinding.ActivityLoginBinding
+import androidx.appcompat.app.AppCompatActivity
+import com.example.howdy.databinding.ActivityCadastroIncompletoBinding
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 import java.util.*
 
-class CadastroActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityCadastroBinding
+class CadastroIncompletoActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityCadastroIncompletoBinding
     private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityCadastroBinding.inflate(layoutInflater)
-        val actionBar = supportActionBar
-        actionBar!!.hide()
+        binding = ActivityCadastroIncompletoBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         //Criação do calendario
@@ -46,11 +42,6 @@ class CadastroActivity : AppCompatActivity() {
             data.show()
         }
 
-        val textRegistar = findViewById<TextView>(R.id.text_registar)
-
-        auth = FirebaseAuth.getInstance()
-        binding.buttonCadastrar.setOnClickListener { cadastrar() }
-
         val countries = resources.getStringArray(R.array.linguagens)
         val adapter = ArrayAdapter(
             this,
@@ -66,34 +57,6 @@ class CadastroActivity : AppCompatActivity() {
             setAdapter(adapter)
         }
 
-        textRegistar.setOnClickListener {
-            val login =
-                Intent(this, com.example.howdy.view.login::class.java)
-            startActivity(login)
-        }
 
     }
-
-    private fun cadastrar() {
-        val email = binding.textEmail.text.toString()
-        val senha = binding.textSenha.text.toString()
-
-        auth.createUserWithEmailAndPassword(email, senha).addOnCompleteListener{
-            if (it.isSuccessful){
-                Toast.makeText(applicationContext,"Cadastro realizado com sucesso!",
-                Toast.LENGTH_LONG).show()
-                login()
-
-            }else{
-                Toast.makeText(applicationContext,"Houve um erro no seu cadastro",
-                Toast.LENGTH_LONG).show()
-            }
-        }
-    }
-
-    private fun login(){
-        val intent = Intent(this, com.example.howdy.view.login::class.java)
-        startActivity(intent)
-    }
-
 }
