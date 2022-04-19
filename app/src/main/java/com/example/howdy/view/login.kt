@@ -8,8 +8,6 @@ import android.widget.Toast
 import com.example.howdy.CadastroActivity
 import com.example.howdy.R
 import com.example.howdy.databinding.ActivityLoginBinding
-import com.example.howdy.databinding.ActivityPaginaDePostagemBinding
-import com.example.howdy.databinding.FragmentHomeBinding
 import com.google.firebase.auth.FirebaseAuth
 
 class login : AppCompatActivity() {
@@ -28,7 +26,7 @@ class login : AppCompatActivity() {
         val registarConta = findViewById<TextView>(R.id.text_registar)
 
         auth = FirebaseAuth.getInstance()
-        binding.buttonEntrar.setOnClickListener { cadastrar() }
+        binding.buttonEntrar.setOnClickListener { autenticate() }
 
         esqueciSenha.setOnClickListener {
             val RecuperarSenha =
@@ -44,23 +42,27 @@ class login : AppCompatActivity() {
 
     }
 
-    private fun cadastrar() {
+    private fun autenticate() {
         val email = binding.textEmail.text.toString()
-        val senha = binding.textSenha.text.toString()
+        val password = binding.textSenha.text.toString()
 
-        auth.signInWithEmailAndPassword(email, senha).addOnCompleteListener {
+        auth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
             if (it.isSuccessful){
                 val token = auth.currentUser?.uid
-                Toast.makeText(applicationContext,"Login executado com sucesso! e ${token}" ,
+
+                Toast.makeText(applicationContext,"Login executado com sucesso! e ${token}",
                 Toast.LENGTH_LONG).show()
-                postagem()
+
+                //RECUPERANDO DADOS DO USUÁRIO PRESENTES NO BANCO MYSQL
+
+                goToPostsActivity()
             }else{
                 Toast.makeText(applicationContext,"Houve um erro no login", Toast.LENGTH_LONG).show()
             }
         }
     }
 
-    private fun postagem() {
+    private fun goToPostsActivity() {
         val postar = Intent(this, paginaDePostagem::class.java)
         startActivity(postar)
     }

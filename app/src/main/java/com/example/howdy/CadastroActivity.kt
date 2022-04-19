@@ -4,11 +4,9 @@ package com.example.howdy
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import com.example.howdy.databinding.ActivityCadastroBinding
-import com.example.howdy.databinding.ActivityLoginBinding
 import com.google.firebase.auth.FirebaseAuth
 
 class CadastroActivity : AppCompatActivity() {
