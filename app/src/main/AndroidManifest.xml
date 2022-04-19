@@ -10,6 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Howdy">
         <activity
+            android:name=".CadastroIncompletoActivity"
+            android:exported="false"
+            android:label="@string/title_activity_cadastro_incompleto"
+            android:theme="@style/Theme.Howdy.NoActionBar" />
+        <activity
             android:name=".view.PerfilActivity"
             android:exported="false" />
         <activity
@@ -17,7 +22,11 @@
             android:exported="false" />
         <activity
             android:name=".view.paginaDePostagem"
+<<<<<<< HEAD
             android:exported="false"></activity>
+=======
+            android:exported="false" />
+>>>>>>> b528cdae738277d1fa01b8bd24b70fedb3d27d47
         <activity
             android:name=".view.CodigoDeRecuperacao"
             android:exported="false" />
