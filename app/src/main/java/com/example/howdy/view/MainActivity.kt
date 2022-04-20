@@ -7,29 +7,20 @@ import android.widget.Button
 import android.widget.TextView
 import com.example.howdy.CadastroActivity
 import com.example.howdy.R
-import com.google.firebase.auth.FirebaseAuth
+import com.example.howdy.databinding.ActivityCadastroBinding
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
-        //CHECANDO SE O USUÁRIO JÁ ESTÁ LOGADO NO FIREBASE, E FORNECENDO UM REDIRECIONAMENTO
-        val auth: FirebaseAuth = FirebaseAuth.getInstance()
-
-        val currentUser = auth.currentUser
-        if(currentUser != null){
-            val postar = Intent(this, paginaDePostagem::class.java)
-            startActivity(postar)
-        }
-
-
         super.onCreate(savedInstanceState)
         val actionBar = supportActionBar
         actionBar!!.hide()
         setContentView(R.layout.activity_main)
 
-        val registrarConta = findViewById<TextView>(R.id.text_registar)
+        val registarConta = findViewById<TextView>(R.id.text_registar)
         val buttonEntrar = findViewById<Button>(R.id.button_entrar)
 
         buttonEntrar. setOnClickListener {
+
             val intent = Intent(
                 this,
                 login::class.java)
@@ -37,7 +28,7 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-        registrarConta.setOnClickListener {
+        registarConta.setOnClickListener {
             val TesteActivity =
                 Intent(this, CadastroActivity::class.java)
             startActivity(TesteActivity)

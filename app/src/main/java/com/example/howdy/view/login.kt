@@ -6,9 +6,10 @@ import android.os.Bundle
 import android.widget.TextView
 import android.widget.Toast
 import com.example.howdy.CadastroActivity
-import com.example.howdy.CadastroIncompletoActivity
 import com.example.howdy.R
 import com.example.howdy.databinding.ActivityLoginBinding
+import com.example.howdy.databinding.ActivityPaginaDePostagemBinding
+import com.example.howdy.databinding.FragmentHomeBinding
 import com.google.firebase.auth.FirebaseAuth
 
 class login : AppCompatActivity() {
@@ -27,7 +28,7 @@ class login : AppCompatActivity() {
         val registarConta = findViewById<TextView>(R.id.text_registar)
 
         auth = FirebaseAuth.getInstance()
-        binding.buttonEntrar.setOnClickListener { autenticate() }
+        binding.buttonEntrar.setOnClickListener { cadastrar() }
 
         esqueciSenha.setOnClickListener {
             val RecuperarSenha =
@@ -37,33 +38,29 @@ class login : AppCompatActivity() {
 
         registarConta.setOnClickListener {
             val ActivityTesteBinding =
-                Intent(this, CadastroIncompletoActivity::class.java)
+                Intent(this, CadastroActivity::class.java)
             startActivity(ActivityTesteBinding)
         }
 
     }
 
-    private fun autenticate() {
+    private fun cadastrar() {
         val email = binding.textEmail.text.toString()
-        val password = binding.textSenha.text.toString()
+        val senha = binding.textSenha.text.toString()
 
-        auth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
+        auth.signInWithEmailAndPassword(email, senha).addOnCompleteListener {
             if (it.isSuccessful){
                 val token = auth.currentUser?.uid
-
-                Toast.makeText(applicationContext,"Login executado com sucesso! e ${token}",
+                Toast.makeText(applicationContext,"Login executado com sucesso! e ${token}" ,
                 Toast.LENGTH_LONG).show()
-
-                //RECUPERANDO DADOS DO USUÁRIO PRESENTES NO BANCO MYSQL
-
-                goToPostsActivity()
+                postagem()
             }else{
                 Toast.makeText(applicationContext,"Houve um erro no login", Toast.LENGTH_LONG).show()
             }
         }
     }
 
-    private fun goToPostsActivity() {
+    private fun postagem() {
         val postar = Intent(this, paginaDePostagem::class.java)
         startActivity(postar)
     }
