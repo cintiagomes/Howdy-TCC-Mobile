@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CadastroActivity">
+    tools:context=".CadastroIncompletoActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -34,7 +34,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
                 android:fontFamily="@font/roboto_bold"
-                android:text="Faça seu cadastro"
+                android:text="QUASE ACABANDO!"
                 android:textColor="#303135"
                 android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -46,7 +46,7 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="308dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="52dp"
                 android:hint="Nome"
                 app:endIconMode="clear_text"
                 app:layout_constraintTop_toBottomOf="@+id/textView2"
@@ -88,29 +88,6 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/inputLayoutEmail"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="308dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="22dp"
-                android:hint="Email"
-                app:endIconMode="clear_text"
-                app:layout_constraintTop_toBottomOf="@+id/inputLayoutNome"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.495"
-                app:layout_constraintStart_toStartOf="parent"
-                app:startIconDrawable="@drawable/ic_email_24">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/textEmail"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:fontFamily="@font/roboto"
-                    android:padding="2dp"
-                    android:textSize="15dp" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/inputLayoutIdiomaNativo"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 android:layout_width="308dp"
@@ -127,8 +104,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:hint="Idioma Nativo"
-                    android:inputType="none"
-                    android:text="English"/>
+                    android:inputType="none"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -149,35 +125,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:hint="Idioma Interrece"
-                    android:inputType="none"
-                    android:text="English" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/inputLayoutSenha"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="308dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="22dp"
-                android:hint="Senha"
-                app:counterEnabled="true"
-                app:counterMaxLength="20"
-                app:endIconMode="password_toggle"
-                app:helperTextTextColor="#FF0000"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/inputLayoutIdiomaInterrece"
-                app:startIconDrawable="@drawable/ic_lock_24">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/textSenha"
-                    android:inputType="textPassword"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:fontFamily="@font/roboto"
-                    android:padding="2dp"
-                    android:textSize="15dp" />
+                    android:inputType="none" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -190,11 +138,12 @@
                 android:text="Ao se cadastrar você concorda com as Políticas de privacidade, e Termos de serviço de Howdy. "
                 android:textColor="#5C5C5C"
                 android:textColorLink="#5C5C5C"
+                android:layout_marginTop="40dp"
                 android:textSize="13sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.495"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/inputLayoutConfirmarSenha" />
+                app:layout_constraintTop_toBottomOf="@+id/inputLayoutIdiomaInterrece" />
 
             <Button
                 android:id="@+id/buttonCadastrar"
@@ -202,45 +151,16 @@
                 android:layout_height="48dp"
                 android:backgroundTint="#6A7DFF"
                 android:fontFamily="@font/roboto"
-                android:text="Criar"
+                android:layout_marginTop="10dp"
+                android:text="Cadastrar"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView3"
                 tools:ignore="TouchTargetSizeCheck" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="30dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/button3"
-                app:layout_constraintVertical_bias="0.2">
-
-                <TextView
-                    android:id="@+id/text_conta"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/roboto"
-                    android:text="Já tem conta?"
-                    android:textColor="@color/black" />
-
-                <TextView
-                    android:id="@+id/text_registar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="2dp"
-                    android:fontFamily="@font/roboto_bold"
-                    android:text="Logar"
-                    android:textColor="#6A7DFF" />
-
-            </LinearLayout>
 
         </LinearLayout>
+
 
     </ScrollView>
 
