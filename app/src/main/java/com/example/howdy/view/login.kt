@@ -8,8 +8,6 @@ import android.widget.Toast
 import com.example.howdy.CadastroActivity
 import com.example.howdy.R
 import com.example.howdy.databinding.ActivityLoginBinding
-import com.example.howdy.databinding.ActivityPaginaDePostagemBinding
-import com.example.howdy.databinding.FragmentHomeBinding
 import com.google.firebase.auth.FirebaseAuth
 
 class login : AppCompatActivity() {
