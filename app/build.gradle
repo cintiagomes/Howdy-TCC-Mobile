@@ -68,4 +68,6 @@ dependencies {
     //JETBRAINS
     implementation 'org.jetbrains.anko:anko-sqlite:0.10.4'
 
+    //JSON PARSER
+    implementation 'com.beust:klaxon:5.5'
 }

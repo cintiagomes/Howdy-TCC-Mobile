@@ -5,9 +5,10 @@ import okhttp3.MediaType
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.RequestBody
+import java.io.IOException
 
 class HttpHelper {
-    private val serverDomain:String = "http://10.107.144.17:3333"
+    private val serverDomain:String = "http://192.168.10.249:3333"
 
     fun post(json: String, route:String ):String{
         //DEFINIR URL DO SERVIDOR
@@ -31,27 +32,25 @@ class HttpHelper {
         return response.body().toString()
     }
 
-    /*fun get(route:String, idToken: GetTokenResult ):String{
+    fun get(route:String, idToken: String ):String{
         //DEFINIR URL DO SERVIDOR
         val url = "$serverDomain$route"
-        println("DEBUGANDO1" + url)
 
         //CRIANDO UM CLIENTE QUE IRÁ DISPARAR A REQUISIÇÃO
         val client = OkHttpClient()
-        println("DEBUGANDO2" + client)
 
         //CONSTRUINDO REQUISIÇÃO HTTP DO TIPO POST AO SERVIDOR
-        //val request = Request.Builder().url(url)
-        //    .addHeader("Authorization", idToken)
-        //    get().build()
+        val request = Request.Builder().url(url)
+            .addHeader("Authorization", idToken)
+            .build()
 
         //println("DEBUGANDO3" + request)
 
         //UTILIZAR O CLIENT PARA FAZER A REQUISIÇÃO E RECEBER A RESPOSTA
-        //val response = client.newCall(request).execute()
+        client.newCall(request).execute().use { response ->
+            if (!response.isSuccessful) throw IOException("Unexpected code $response")
 
-        //println("DEBUGANDO4" + response)
-
-        //return response.body().toString()
-    }*/
+            return response.body()!!.string()
+        }
+    }
 }
