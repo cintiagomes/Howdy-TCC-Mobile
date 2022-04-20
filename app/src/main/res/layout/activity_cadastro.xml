@@ -122,7 +122,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/inputLayoutEmail">
 
                 <AutoCompleteTextView
-                    android:id="@+id/textIdiomaNativo"
+                    android:id="@+id/selectIdiomaNativo"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -144,11 +144,11 @@
                 app:layout_constraintTop_toBottomOf="@+id/inputLayoutIdiomaNativo">
 
                 <AutoCompleteTextView
-                    android:id="@+id/textIdiomaInterrece"
+                    android:id="@+id/selectIdiomaInteresse"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:hint="Idioma Interrece"
+                    android:hint="Idioma de interesse"
                     android:inputType="none"
                     android:text="English" />
 
@@ -230,7 +230,7 @@
                     android:textColor="@color/black" />
 
                 <TextView
-                    android:id="@+id/text_registar"
+                    android:id="@+id/link_registar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="2dp"

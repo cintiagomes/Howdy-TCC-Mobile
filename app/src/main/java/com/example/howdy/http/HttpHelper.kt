@@ -10,7 +10,7 @@ import java.io.IOException
 class HttpHelper {
     private val serverDomain:String = "http://192.168.10.249:3333"
 
-    fun post(json: String, route:String ):String{
+    fun post(route:String, idToken: String, json:String ):String{
         //DEFINIR URL DO SERVIDOR
         val url = "$serverDomain$route"
 
@@ -24,12 +24,16 @@ class HttpHelper {
         val body = RequestBody.create(headerHttp, json)
 
         //CONSTRUINDO REQUISIÇÃO HTTP DO TIPO POST AO SERVIDOR
-        val request = Request.Builder().url(url).post(body).build()
+        val request = Request.Builder().url(url)
+            .addHeader("Authorization", idToken)
+            .post(body).build()
 
         //UTILIZAR O CLIENT PARA FAZER A REQUISIÇÃO E RECEBER A RESPOSTA
-        val response = client.newCall(request).execute()
+        client.newCall(request).execute().use { response ->
+            if (!response.isSuccessful) throw IOException("Unexpected code $response")
 
-        return response.body().toString()
+            return response.body()!!.string()
+        }
     }
 
     fun get(route:String, idToken: String ):String{

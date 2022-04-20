@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         actionBar!!.hide()
         setContentView(R.layout.activity_main)
 
-        val registrarConta = findViewById<TextView>(R.id.text_registar)
+        val registrarConta = findViewById<TextView>(R.id.link_registar)
         val buttonEntrar = findViewById<Button>(R.id.button_entrar)
 
         buttonEntrar. setOnClickListener {

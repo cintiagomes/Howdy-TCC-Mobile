@@ -8,8 +8,12 @@ import android.os.Bundle
 import android.widget.TextView
 import android.widget.Toast
 import com.example.howdy.databinding.ActivityCadastroBinding
+import com.example.howdy.http.HttpHelper
+import com.example.howdy.view.paginaDePostagem
+import com.google.android.gms.tasks.OnSuccessListener
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.GetTokenResult
 import java.util.*
 
 class CadastroActivity : AppCompatActivity() {
@@ -43,12 +47,12 @@ class CadastroActivity : AppCompatActivity() {
             data.show()
         }
 
-        val textRegistar = findViewById<TextView>(R.id.text_registar)
+        val textRegistrar = findViewById<TextView>(R.id.link_registar)
 
         auth = FirebaseAuth.getInstance()
         binding.buttonCadastrar.setOnClickListener { cadastrar() }
 
-        textRegistar.setOnClickListener {
+        textRegistrar.setOnClickListener {
             val login =
                 Intent(this, com.example.howdy.view.login::class.java)
             startActivity(login)
@@ -57,15 +61,29 @@ class CadastroActivity : AppCompatActivity() {
     }
 
     private fun cadastrar() {
+        val userName = binding.textNome.text.toString()
+        val birthDate = binding.textData.text.toString()
         val email = binding.textEmail.text.toString()
+        val nativeLanguage = binding.selectIdiomaNativo.text.toString()
+        //val targetLanguage = binding.selectIdiomaInteresse.text.toString()
         val senha = binding.textSenha.text.toString()
 
         auth.createUserWithEmailAndPassword(email, senha).addOnCompleteListener{
             if (it.isSuccessful){
-                Toast.makeText(applicationContext,"Cadastro realizado com sucesso!",
-                Toast.LENGTH_LONG).show()
-                login()
+                //RESGATANDO IDTOKEN DO USUÁRIO LOGADO NO FIREBASE
+                auth.currentUser?.getIdToken(true)
+                    ?.addOnSuccessListener(OnSuccessListener<GetTokenResult> { result ->
+                        val idToken = result.token
+                        if (idToken != null){
+                        //CADASTRANDO O USUÁRIO NO BANCO SQL
+                            val http = HttpHelper()
+                            //val res = http.post("/users", idToken, json)
 
+                        Toast.makeText(applicationContext,"Cadastro realizado com sucesso!",
+                            Toast.LENGTH_LONG).show()
+                        navigateToPostPage()
+                        }
+                    })
             }else{
                 Toast.makeText(applicationContext,"Houve um erro no seu cadastro",
                 Toast.LENGTH_LONG).show()
@@ -73,9 +91,8 @@ class CadastroActivity : AppCompatActivity() {
         }
     }
 
-    private fun login(){
-        val intent = Intent(this, com.example.howdy.view.login::class.java)
-        startActivity(intent)
+    private fun navigateToPostPage() {
+        val targetPage = Intent(this, paginaDePostagem::class.java)
+        startActivity(targetPage)
     }
-
 }
