@@ -33,7 +33,7 @@
             android:name=".view.RecuperarSenha"
             android:exported="false" />
         <activity
-            android:name=".view.login"
+            android:name=".view.Login"
             android:exported="false" />
         <activity
             android:name=".view.InicioAssinatura"

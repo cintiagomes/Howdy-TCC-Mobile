@@ -17,7 +17,7 @@ class CodigoDeRecuperacao : AppCompatActivity() {
 
         buttonVoltar.setOnClickListener {
             val login =
-                Intent(this, login::class.java)
+                Intent(this, Login::class.java)
             startActivity(login)
         }
     }

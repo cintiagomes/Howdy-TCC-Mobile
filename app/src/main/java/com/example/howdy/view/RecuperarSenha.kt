@@ -6,11 +6,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
 import com.example.howdy.R
-import com.example.howdy.databinding.ActivityCodigoDeRecuperacaoBinding
-import com.example.howdy.databinding.ActivityLoginBinding
 import com.example.howdy.databinding.ActivityRecuperarSenhaBinding
-import com.example.howdy.databinding.FragmentHomeBinding
-import com.google.android.gms.tasks.Tasks
 import com.google.firebase.auth.FirebaseAuth
 
 class RecuperarSenha : AppCompatActivity() {
@@ -32,7 +28,7 @@ class RecuperarSenha : AppCompatActivity() {
 
         buttonCancelar.setOnClickListener {
             val login =
-                Intent(this, login::class.java)
+                Intent(this, Login::class.java)
             startActivity(login)
         }
 

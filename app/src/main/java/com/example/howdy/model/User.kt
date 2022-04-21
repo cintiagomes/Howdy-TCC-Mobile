@@ -1,6 +1,6 @@
 package com.example.howdy.model
 
-class User {
+class User() {
     var idUser:Int = 0
     var profilePhoto = ""
     var userName = ""
@@ -14,4 +14,11 @@ class User {
     var idNativeLanguage = 0
     var nativeLanguageName = ""
     var nativeLanguageTranslatorName = ""
+}
+
+class UserCreation(userName: String, birthDate: String, targetLanguage: TargetLanguage, nativeLanguage: NativeLanguage){
+    var userName = userName
+    var birthDate = birthDate
+    var targetLanguage = targetLanguage
+    var nativeLanguage = nativeLanguage
 }

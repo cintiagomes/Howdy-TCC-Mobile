@@ -1,13 +1,24 @@
 package com.example.howdy.view
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
+import com.beust.klaxon.Klaxon
 import com.example.howdy.CadastroActivity
+import com.example.howdy.CadastroIncompletoActivity
 import com.example.howdy.R
+import com.example.howdy.http.HttpHelper
+import com.example.howdy.model.User
+import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.GetTokenResult
+import com.google.gson.Gson
+import org.jetbrains.anko.doAsync
+import org.jetbrains.anko.uiThread
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,8 +27,34 @@ class MainActivity : AppCompatActivity() {
 
         val currentUser = auth.currentUser
         if(currentUser != null){
-            val postar = Intent(this, paginaDePostagem::class.java)
-            startActivity(postar)
+            val postPage = Intent(this, paginaDePostagem::class.java)
+            val incompleteRegisterPage = Intent(this, CadastroIncompletoActivity::class.java)
+
+            //RESGATANDO IDTOKEN DO USUÁRIO LOGADO NO FIREBASE
+            currentUser?.getIdToken(true)
+                ?.addOnSuccessListener(OnSuccessListener<GetTokenResult> { result ->
+                    val idToken = result.token
+
+                    if (idToken != null) {
+                        //O USUÁRIO SE LOGOU NO FIREBASE, E AGORA IRÁ VER SE REALMENTE ESTÁ CADASTRADO NO BANCO SQL
+                        doAsync {
+                            val http = HttpHelper()
+                            val res = http.get("/users/isMyUidExternalRegistered", idToken)
+
+                            uiThread {
+                                val gson = Gson()
+
+                                //CASO O USUÁRIO NÃO ESTEJA CADASTRADO, IRÁ FINALIZAR SEU CADASTRO
+                                if(res != "This user does not have an account in our system") {
+                                    //AGORA QUE SABEMOS QUE O USUÁRIO DE FATO ESTÁ LOGADO, O MANDAREMOS PARA A PRÓXIMA TELA
+
+                                    //REDIRECIONANDO O USUÁRIO PARA A PÁGINA DE POSTAGENS
+                                    startActivity(postPage)
+                                }
+                            }
+                        }
+                    }
+                })
         }
 
 
@@ -32,7 +69,7 @@ class MainActivity : AppCompatActivity() {
         buttonEntrar. setOnClickListener {
             val intent = Intent(
                 this,
-                login::class.java)
+                Login::class.java)
             startActivity(intent)
 
         }

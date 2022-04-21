@@ -9,11 +9,19 @@ import android.widget.TextView
 import android.widget.Toast
 import com.example.howdy.databinding.ActivityCadastroBinding
 import com.example.howdy.http.HttpHelper
+import com.example.howdy.model.NativeLanguage
+import com.example.howdy.model.TargetLanguage
+import com.example.howdy.model.UserCreation
 import com.example.howdy.view.paginaDePostagem
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GetTokenResult
+import com.google.gson.Gson
+import convertBrStringToDate
+import convertDateToBackendFormat
+import org.jetbrains.anko.doAsync
+import org.jetbrains.anko.uiThread
 import java.util.*
 
 class CadastroActivity : AppCompatActivity() {
@@ -54,7 +62,7 @@ class CadastroActivity : AppCompatActivity() {
 
         textRegistrar.setOnClickListener {
             val login =
-                Intent(this, com.example.howdy.view.login::class.java)
+                Intent(this, com.example.howdy.view.Login::class.java)
             startActivity(login)
         }
 
@@ -64,24 +72,61 @@ class CadastroActivity : AppCompatActivity() {
         val userName = binding.textNome.text.toString()
         val birthDate = binding.textData.text.toString()
         val email = binding.textEmail.text.toString()
-        val nativeLanguage = binding.selectIdiomaNativo.text.toString()
-        //val targetLanguage = binding.selectIdiomaInteresse.text.toString()
-        val senha = binding.textSenha.text.toString()
+        val nativeLanguageName = binding.selectedIdiomaNativo.text.toString()
+        val targetLanguageName = binding.selectedIdiomaInteresse.text.toString()
+        val password = binding.textSenha.text.toString()
 
-        auth.createUserWithEmailAndPassword(email, senha).addOnCompleteListener{
+        var targetLanguage: TargetLanguage = TargetLanguage(0, "")
+        var nativeLanguage: NativeLanguage = NativeLanguage(0, "")
+
+        //DEFININDO QUAIS SERÃO OS OBJETOS DE TARGET E NATIVE LANGUAGE
+        if (nativeLanguageName == "Português brasileiro"){
+            nativeLanguage.idNativeLanguage = 1
+            nativeLanguage.nativeLanguageName = "Português brasileiro"
+
+            targetLanguage.idTargetLanguage = 2
+            targetLanguage.targetLanguageName = "Inglês americano"
+        } else {
+            targetLanguage.idTargetLanguage = 1
+            targetLanguage.targetLanguageName = "Português brasileiro"
+
+            nativeLanguage.idNativeLanguage = 2
+            nativeLanguage.nativeLanguageName = "Inglês americano"
+        }
+
+        //CONVERTENDO DATA DE NASCIMENTO
+        val birthDateDate = convertBrStringToDate(birthDate)
+        val birthDateFormatted = convertDateToBackendFormat(birthDateDate)
+        println("DEBUNGAOD FORMTADA "+ birthDateFormatted)
+
+        auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener{
+            println("DEBUGANDO FIRE" + it.isSuccessful)
             if (it.isSuccessful){
                 //RESGATANDO IDTOKEN DO USUÁRIO LOGADO NO FIREBASE
                 auth.currentUser?.getIdToken(true)
                     ?.addOnSuccessListener(OnSuccessListener<GetTokenResult> { result ->
                         val idToken = result.token
                         if (idToken != null){
-                        //CADASTRANDO O USUÁRIO NO BANCO SQL
-                            val http = HttpHelper()
-                            //val res = http.post("/users", idToken, json)
+                            println("DEBUGANDO "+ idToken)
+                            //CADASTRANDO O USUÁRIO NO BANCO SQL
+                            val user:UserCreation = UserCreation(userName, birthDateFormatted, targetLanguage, nativeLanguage)
 
-                        Toast.makeText(applicationContext,"Cadastro realizado com sucesso!",
-                            Toast.LENGTH_LONG).show()
-                        navigateToPostPage()
+                            val gson = Gson()
+                            val userInJson = gson.toJson(user)
+                            println("DEBUGANDO ANTES $userInJson")
+
+                            doAsync {
+                                val http = HttpHelper()
+                                val res = http.post("/users", idToken, userInJson)
+
+                                uiThread {
+                                    println("DEBUGANDO $res")
+
+                                    Toast.makeText(applicationContext,"Cadastro realizado com sucesso!",
+                                        Toast.LENGTH_LONG).show()
+                                    navigateToPostPage()
+                                }
+                            }
                         }
                     })
             }else{

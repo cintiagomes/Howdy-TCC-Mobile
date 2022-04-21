@@ -13,7 +13,6 @@ import com.example.howdy.R
 import com.example.howdy.databinding.ActivityLoginBinding
 import com.example.howdy.http.HttpHelper
 import com.example.howdy.model.User
-import com.google.android.gms.auth.api.identity.BeginSignInRequest
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -28,17 +27,18 @@ import com.google.android.gms.tasks.Task
 import com.google.gson.Gson
 
 
-class login : AppCompatActivity() {
+class Login : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
     private lateinit var auth: FirebaseAuth
 
     lateinit var gso: GoogleSignInOptions
     lateinit var mGoogleSignInClient: GoogleSignInClient
-    val RC_SIGN_IN: Int = 1
+    val RC_SIGN_IN_GOOGLE: Int = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         binding = ActivityLoginBinding.inflate(layoutInflater)
         val actionBar = supportActionBar
         actionBar!!.hide()
@@ -47,15 +47,17 @@ class login : AppCompatActivity() {
         val esqueciSenha = findViewById<TextView>(R.id.esqueci_senha)
         val registrarConta = findViewById<TextView>(R.id.link_registar)
 
-        auth = FirebaseAuth.getInstance()
-        binding.buttonEntrar.setOnClickListener { login() }
-
-        binding.btnLoginWithGoogle.setOnClickListener { loginWithGoogle() }
         gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.firebasse_default_web_client_id))
             .requestEmail()
             .build()
+
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso)
+
+        auth = FirebaseAuth.getInstance()
+        binding.buttonEntrar.setOnClickListener { login() }
+
+        binding.btnLoginWithGoogle.setOnClickListener { loginWithGoogle() }
 
 
         esqueciSenha.setOnClickListener {
@@ -93,8 +95,6 @@ class login : AppCompatActivity() {
                                 val res = http.get("/users/isMyUidExternalRegistered", idToken)
 
                                 uiThread {
-                                    val gson = Gson()
-
                                     //CASO O USUÁRIO NÃO ESTEJA CADASTRADO, IRÁ FINALIZAR SEU CADASTRO
                                     if(res == "This user does not have an account in our system") {
                                         navigateToIncompleteRegisterPage()
@@ -137,14 +137,25 @@ class login : AppCompatActivity() {
 
     private fun loginWithGoogle(){
         val signInIntent: Intent = mGoogleSignInClient.signInIntent
-        startActivityForResult(signInIntent, RC_SIGN_IN)
+        startActivityForResult(signInIntent, RC_SIGN_IN_GOOGLE)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == RC_SIGN_IN) {
+        if (requestCode == RC_SIGN_IN_GOOGLE) {
             val task: Task<GoogleSignInAccount> = GoogleSignIn.getSignedInAccountFromIntent(data)
-            handleResult (task)
+            val exception = task.exception
+            if (task.isSuccessful){
+                try {
+                    val account: GoogleSignInAccount = task.getResult(ApiException::class.java)
+                    println("DEBUGANDO LOGOU COM O GOOGLE " + account.id)
+                } catch (e: ApiException) {
+                    println("DEBUGANDO "+ e.toString())
+                    Toast.makeText(this, e.toString(), Toast.LENGTH_LONG).show()
+                }
+            } else {
+                println("DEBUGANDO FERRROUUU "+ exception.toString())
+            }
         }else {
             Toast.makeText(this, "Problem in execution order :(", Toast.LENGTH_LONG).show()
         }
@@ -154,7 +165,7 @@ class login : AppCompatActivity() {
             val account: GoogleSignInAccount = completedTask.getResult(ApiException::class.java)
             println("DEBUGANDO LOGOU COM O GOOGLE")
         } catch (e: ApiException) {
-            println("DEBUGANDO $e")
+            println("DEBUGANDO "+ e.toString())
             Toast.makeText(this, e.toString(), Toast.LENGTH_LONG).show()
         }
     }
@@ -168,6 +179,4 @@ class login : AppCompatActivity() {
         val targetPage = Intent(this, CadastroIncompletoActivity::class.java)
         startActivity(targetPage)
     }
-
-
 }
