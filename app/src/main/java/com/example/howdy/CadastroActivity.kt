@@ -2,16 +2,17 @@
 package com.example.howdy
 
 import android.app.DatePickerDialog
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ArrayAdapter
 import android.widget.TextView
 import android.widget.Toast
+import com.beust.klaxon.Klaxon
 import com.example.howdy.databinding.ActivityCadastroBinding
 import com.example.howdy.http.HttpHelper
-import com.example.howdy.model.NativeLanguage
-import com.example.howdy.model.TargetLanguage
-import com.example.howdy.model.UserCreation
+import com.example.howdy.model.*
 import com.example.howdy.view.paginaDePostagem
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.android.material.textfield.TextInputEditText
@@ -20,6 +21,7 @@ import com.google.firebase.auth.GetTokenResult
 import com.google.gson.Gson
 import convertBrStringToDate
 import convertDateToBackendFormat
+import hadAnError
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 import java.util.*
@@ -55,17 +57,31 @@ class CadastroActivity : AppCompatActivity() {
             data.show()
         }
 
-        val textRegistrar = findViewById<TextView>(R.id.link_registar)
+        val countries = resources.getStringArray(R.array.linguagens)
+        val adapter = ArrayAdapter(
+            this,
+            R.layout.dropdown_item,
+            countries
+        )
+
+        with(binding.selectedIdiomaNativo){
+            setAdapter(adapter)
+        }
+
+        with(binding.selectedIdiomaInteresse){
+            setAdapter(adapter)
+        }
+
+        val btnRegistrar = findViewById<TextView>(R.id.link_registar)
 
         auth = FirebaseAuth.getInstance()
         binding.buttonCadastrar.setOnClickListener { cadastrar() }
 
-        textRegistrar.setOnClickListener {
+        btnRegistrar.setOnClickListener {
             val login =
                 Intent(this, com.example.howdy.view.Login::class.java)
             startActivity(login)
         }
-
     }
 
     private fun cadastrar() {
@@ -73,64 +89,110 @@ class CadastroActivity : AppCompatActivity() {
         val birthDate = binding.textData.text.toString()
         val email = binding.textEmail.text.toString()
         val nativeLanguageName = binding.selectedIdiomaNativo.text.toString()
-        val targetLanguageName = binding.selectedIdiomaInteresse.text.toString()
         val password = binding.textSenha.text.toString()
 
-        var targetLanguage: TargetLanguage = TargetLanguage(0, "")
-        var nativeLanguage: NativeLanguage = NativeLanguage(0, "")
+        var targetLanguage  = TargetLanguage(0, "", "")
+        var nativeLanguage = NativeLanguage(0, "", "")
 
         //DEFININDO QUAIS SERÃO OS OBJETOS DE TARGET E NATIVE LANGUAGE
         if (nativeLanguageName == "Português brasileiro"){
             nativeLanguage.idNativeLanguage = 1
             nativeLanguage.nativeLanguageName = "Português brasileiro"
+            nativeLanguage.nativeLanguageTranslatorName = "pt"
 
             targetLanguage.idTargetLanguage = 2
             targetLanguage.targetLanguageName = "Inglês americano"
+            targetLanguage.targetLanguageTranslatorName = "en"
         } else {
             targetLanguage.idTargetLanguage = 1
             targetLanguage.targetLanguageName = "Português brasileiro"
+            targetLanguage.targetLanguageTranslatorName = "pt"
 
             nativeLanguage.idNativeLanguage = 2
             nativeLanguage.nativeLanguageName = "Inglês americano"
+            nativeLanguage.nativeLanguageTranslatorName = "en"
         }
 
         //CONVERTENDO DATA DE NASCIMENTO
         val birthDateDate = convertBrStringToDate(birthDate)
         val birthDateFormatted = convertDateToBackendFormat(birthDateDate)
-        println("DEBUNGAOD FORMTADA "+ birthDateFormatted)
 
         auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener{
-            println("DEBUGANDO FIRE" + it.isSuccessful)
             if (it.isSuccessful){
                 //RESGATANDO IDTOKEN DO USUÁRIO LOGADO NO FIREBASE
                 auth.currentUser?.getIdToken(true)
                     ?.addOnSuccessListener(OnSuccessListener<GetTokenResult> { result ->
                         val idToken = result.token
                         if (idToken != null){
-                            println("DEBUGANDO "+ idToken)
                             //CADASTRANDO O USUÁRIO NO BANCO SQL
-                            val user:UserCreation = UserCreation(userName, birthDateFormatted, targetLanguage, nativeLanguage)
+                            val user = UserCreation(userName, birthDateFormatted, targetLanguage, nativeLanguage)
 
                             val gson = Gson()
                             val userInJson = gson.toJson(user)
-                            println("DEBUGANDO ANTES $userInJson")
 
                             doAsync {
                                 val http = HttpHelper()
-                                val res = http.post("/users", idToken, userInJson)
+                                val resJson = http.post("/users", idToken, userInJson)
 
                                 uiThread {
-                                    println("DEBUGANDO $res")
+                                    //CHECANDO SE NÃO HOUVE ERRO NA REQUISIÇÃO
+                                    val error = hadAnError(resJson)
+                                    if (error.status > 0){
+                                        println("DEBUGANDO: " + error.message)
 
-                                    Toast.makeText(applicationContext,"Cadastro realizado com sucesso!",
-                                        Toast.LENGTH_LONG).show()
-                                    navigateToPostPage()
+                                        Toast.makeText(applicationContext,"Ops... Houve um erro no cadastro",
+                                            Toast.LENGTH_LONG).show()
+
+                                        //DELETANDO USUÁRIO CRIADO, JÁ QUE ELE NÃO CONSEGUIU SER CADASTRADO NO BANCO
+                                        auth.currentUser?.delete()
+                                    } else {
+                                        val res = Klaxon().parse<MySqlInsert>(resJson)
+
+                                        val userLogged = User()
+                                        userLogged.idUser = res!!.insertId
+                                        userLogged.birthDate = birthDateFormatted
+                                        userLogged.backgroundImage = ""
+                                        userLogged.howdyCoin = 0
+                                        userLogged.idNativeLanguage = nativeLanguage.idNativeLanguage
+                                        userLogged.nativeLanguageName = nativeLanguage.nativeLanguageName
+                                        userLogged.nativeLanguageTranslatorName = nativeLanguage.nativeLanguageTranslatorName
+                                        userLogged.idTargetLanguage = targetLanguage.idTargetLanguage
+                                        userLogged.targetLanguageName = targetLanguage.targetLanguageName
+                                        userLogged.targetLanguageTranslatorName = targetLanguage.targetLanguageTranslatorName
+                                        userLogged.profilePhoto = ""
+                                        userLogged.subscriptionEndDate = ""
+
+                                        //SALVANDO ALGUNS DADOS DO USUÁRIO LOGADO NO SHARED PREFS
+                                        val userLoggedFile = getSharedPreferences(
+                                            "userLogged", Context.MODE_PRIVATE)
+
+                                        // EDIÇÃO DE DADOS DO ARQUIVO SHARED PREFERENCES
+                                        val editor = userLoggedFile.edit()
+                                        editor.putInt("idUser", userLogged.idUser)
+                                        editor.putString("birthDate", birthDateFormatted)
+                                        editor.putString("backgroundImage", userLogged.backgroundImage)
+                                        editor.putInt("howdyCoin", userLogged.howdyCoin)
+                                        editor.putInt("idNativeLanguage", userLogged.idNativeLanguage)
+                                        editor.putString("nativeLanguageName", userLogged.nativeLanguageName)
+                                        editor.putString("nativeLanguageTranslatorName", userLogged.nativeLanguageTranslatorName)
+                                        editor.putInt("idTargetLanguage", userLogged.idTargetLanguage)
+                                        editor.putString("targetLanguageName", userLogged.targetLanguageName)
+                                        editor.putString("targetLanguageTranslatorName", userLogged.targetLanguageTranslatorName)
+                                        editor.putString("profilePhoto", userLogged.profilePhoto)
+                                        editor.putString("subscriptionEndDate", userLogged.subscriptionEndDate)
+                                        editor.apply()
+
+                                        Toast.makeText(applicationContext,"Cadastro realizado com sucesso!",
+                                            Toast.LENGTH_LONG).show()
+
+                                        navigateToPostPage()
+                                    }
                                 }
                             }
                         }
                     })
             }else{
-                Toast.makeText(applicationContext,"Houve um erro no seu cadastro",
+                Toast.makeText(applicationContext,"Ops... Houve um erro no cadastro",
                 Toast.LENGTH_LONG).show()
             }
         }

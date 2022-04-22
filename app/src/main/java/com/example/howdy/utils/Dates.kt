@@ -6,7 +6,6 @@ import java.util.*
 fun convertBrStringToDate(brazilDate: String) : Date {
     val formato = SimpleDateFormat("dd/MM/yyyy")
 
-    println("DEBUGANDO " + formato.parse(brazilDate))
     return formato.parse(brazilDate)
 }
 

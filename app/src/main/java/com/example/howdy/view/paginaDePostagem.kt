@@ -8,11 +8,15 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
 import com.example.howdy.R
-import com.example.howdy.uteis.FragmentTypeAdapter
+import com.example.howdy.utils.FragmentTypeAdapter
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import android.content.SharedPreferences
+
+
+
 
 class paginaDePostagem : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -59,7 +63,13 @@ class paginaDePostagem : AppCompatActivity() {
             }
             R.id.menu_sair -> {
                 Toast.makeText(this, "Saindo da conta", Toast.LENGTH_SHORT).show()
+
+                val prefsEditor = getSharedPreferences("userLogged", 0).edit()
+                prefsEditor.clear()
+                prefsEditor.commit()
+
                 Firebase.auth.signOut()
+
                 paginaMain()
             }
         }

@@ -53,8 +53,9 @@ class RecuperarSenha : AppCompatActivity() {
     }
 
     private fun recuperarsenha() {
-        val recuperarsenha = Intent(this, CodigoDeRecuperacao::class.java)
-        startActivity(recuperarsenha)
+        //Comentado por estar com erro no momento
+        //val recuperarsenha = Intent(this, CodigoDeRecuperacao::class.java)
+        //startActivity(recuperarsenha)
     }
 }
 

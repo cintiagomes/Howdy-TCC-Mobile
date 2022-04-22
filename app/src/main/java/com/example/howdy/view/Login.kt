@@ -24,7 +24,6 @@ import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.android.gms.tasks.Task
-import com.google.gson.Gson
 
 
 class Login : AppCompatActivity() {
@@ -92,15 +91,15 @@ class Login : AppCompatActivity() {
 
                             doAsync {
                                 val http = HttpHelper()
-                                val res = http.get("/users/isMyUidExternalRegistered", idToken)
+                                val resJson = http.get("/users/isMyUidExternalRegistered", idToken)
 
                                 uiThread {
                                     //CASO O USUÁRIO NÃO ESTEJA CADASTRADO, IRÁ FINALIZAR SEU CADASTRO
-                                    if(res == "This user does not have an account in our system") {
+                                    if(resJson == "This user does not have an account in our system") {
                                         navigateToIncompleteRegisterPage()
                                     } else {
                                         //AGORA QUE SABEMOS QUE O USUÁRIO DE FATO ESTÁ LOGADO, SALVAREMOS SEUS DADOS
-                                        val userLogged = Klaxon().parseArray<User>(res)!![0]
+                                        val userLogged = Klaxon().parseArray<User>(resJson)!![0]
 
                                         val userLoggedFile = getSharedPreferences(
                                             "userLogged", Context.MODE_PRIVATE)
@@ -148,13 +147,11 @@ class Login : AppCompatActivity() {
             if (task.isSuccessful){
                 try {
                     val account: GoogleSignInAccount = task.getResult(ApiException::class.java)
-                    println("DEBUGANDO LOGOU COM O GOOGLE " + account.id)
                 } catch (e: ApiException) {
-                    println("DEBUGANDO "+ e.toString())
                     Toast.makeText(this, e.toString(), Toast.LENGTH_LONG).show()
                 }
             } else {
-                println("DEBUGANDO FERRROUUU "+ exception.toString())
+                throw Exception(exception)
             }
         }else {
             Toast.makeText(this, "Problem in execution order :(", Toast.LENGTH_LONG).show()

@@ -127,8 +127,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:hint="Idioma Nativo"
-                    android:inputType="none"
-                    android:text="English"/>
+                    android:inputType="none" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -149,8 +148,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:hint="Idioma de interesse"
-                    android:inputType="none"
-                    android:text="English" />
+                    android:inputType="none" />
 
             </com.google.android.material.textfield.TextInputLayout>
 

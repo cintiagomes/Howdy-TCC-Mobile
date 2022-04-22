@@ -1,4 +1,4 @@
-package com.example.howdy.uteis
+package com.example.howdy.utils
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity

@@ -99,11 +99,11 @@
                 app:layout_constraintTop_toBottomOf="@+id/inputLayoutEmail">
 
                 <AutoCompleteTextView
-                    android:id="@+id/textIdiomaNativo"
+                    android:id="@+id/selectedIdiomaNativo"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:hint="Idioma Nativo"
+                    android:hint="Idioma nativo"
                     android:inputType="none"/>
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -120,11 +120,11 @@
                 app:layout_constraintTop_toBottomOf="@+id/inputLayoutIdiomaNativo">
 
                 <AutoCompleteTextView
-                    android:id="@+id/textIdiomaInterrece"
+                    android:id="@+id/selectedIdiomaInteresse"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:hint="Idioma Interrece"
+                    android:hint="Idioma de interesse"
                     android:inputType="none" />
 
             </com.google.android.material.textfield.TextInputLayout>

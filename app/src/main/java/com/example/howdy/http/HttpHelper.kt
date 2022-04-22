@@ -30,7 +30,7 @@ class HttpHelper {
 
         //UTILIZAR O CLIENT PARA FAZER A REQUISIÇÃO E RECEBER A RESPOSTA
         client.newCall(request).execute().use { response ->
-            if (!response.isSuccessful) throw IOException("Unexpected code $response")
+            if (!response.isSuccessful) return "error " + response.code() + ": " + response.body()!!.string()
 
             return response.body()!!.string()
         }
@@ -48,12 +48,8 @@ class HttpHelper {
             .addHeader("Authorization", idToken)
             .build()
 
-        //println("DEBUGANDO3" + request)
-
         //UTILIZAR O CLIENT PARA FAZER A REQUISIÇÃO E RECEBER A RESPOSTA
         client.newCall(request).execute().use { response ->
-            if (!response.isSuccessful) throw IOException("Unexpected code $response")
-
             return response.body()!!.string()
         }
     }

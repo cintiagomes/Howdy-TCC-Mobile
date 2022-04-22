@@ -1,7 +1,8 @@
 package com.example.howdy.model
 
 class User() {
-    var idUser:Int = 0
+    var idUser = 0
+    var birthDate = ""
     var profilePhoto = ""
     var userName = ""
     var description = ""
