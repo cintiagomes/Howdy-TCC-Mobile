@@ -89,7 +89,12 @@ class CadastroActivity : AppCompatActivity() {
         val birthDate = binding.textData.text.toString()
         val email = binding.textEmail.text.toString()
         val nativeLanguageName = binding.selectedIdiomaNativo.text.toString()
+        val targetLanguageName = binding.selectedIdiomaInteresse.text.toString()
         val password = binding.textSenha.text.toString()
+        val passwordConfirmation = binding.textConfirmacaoDeSenha.text.toString()
+
+        val validationResult = isFormValid(userName, birthDate, email, nativeLanguageName, targetLanguageName, password, passwordConfirmation)
+        if(validationResult != "") return Toast.makeText(applicationContext,validationResult, Toast.LENGTH_LONG).show()
 
         var targetLanguage  = TargetLanguage(0, "", "")
         var nativeLanguage = NativeLanguage(0, "", "")
@@ -196,6 +201,14 @@ class CadastroActivity : AppCompatActivity() {
                 Toast.LENGTH_LONG).show()
             }
         }
+    }
+
+    private fun isFormValid(userName:String, birthDate:String, email:String, nativeLanguageName:String, targetLanguageName:String, password:String, passwordConfirmation:String):String{
+        println("DEBUGANDO $password $passwordConfirmation")
+        if (password != passwordConfirmation) return "As senhas precisam ser iguais"
+        if (nativeLanguageName == targetLanguageName) return "O idioma nativo, e de interesse devem ser diferentes"
+
+        return ""
     }
 
     private fun navigateToPostPage() {

@@ -78,6 +78,10 @@ class CadastroIncompletoActivity : AppCompatActivity() {
         val userName = binding.textNome.text.toString()
         val birthDate = binding.textData.text.toString()
         val nativeLanguageName = binding.selectedIdiomaNativo.text.toString()
+        val targetLanguageName = binding.selectedIdiomaInteresse.text.toString()
+
+        val validationResult = isFormValid(userName, birthDate, nativeLanguageName, targetLanguageName)
+        if(validationResult != "") return Toast.makeText(applicationContext,validationResult, Toast.LENGTH_LONG).show()
 
         var targetLanguage  = TargetLanguage(0, "", "")
         var nativeLanguage = NativeLanguage(0, "", "")
@@ -178,6 +182,11 @@ class CadastroIncompletoActivity : AppCompatActivity() {
                     }
                 }
             })
+    }
+
+    private fun isFormValid(userName:String, birthDate:String, nativeLanguageName:String, targetLanguageName:String):String{
+        if (nativeLanguageName == targetLanguageName) return "O idioma nativo, e de interesse devem ser diferentes"
+        return ""
     }
 
     private fun navigateToPostPage() {
