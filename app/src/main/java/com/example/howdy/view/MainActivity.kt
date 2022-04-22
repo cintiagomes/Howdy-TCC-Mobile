@@ -28,7 +28,6 @@ class MainActivity : AppCompatActivity() {
         val currentUser = auth.currentUser
         if(currentUser != null){
             val postPage = Intent(this, paginaDePostagem::class.java)
-            val incompleteRegisterPage = Intent(this, CadastroIncompletoActivity::class.java)
 
             //RESGATANDO IDTOKEN DO USUÁRIO LOGADO NO FIREBASE
             currentUser?.getIdToken(true)
@@ -44,7 +43,6 @@ class MainActivity : AppCompatActivity() {
                             uiThread {
                                 val gson = Gson()
 
-                                //CASO O USUÁRIO NÃO ESTEJA CADASTRADO, IRÁ FINALIZAR SEU CADASTRO
                                 if(res != "This user does not have an account in our system") {
                                     //AGORA QUE SABEMOS QUE O USUÁRIO DE FATO ESTÁ LOGADO, O MANDAREMOS PARA A PRÓXIMA TELA
 

@@ -78,13 +78,13 @@ class paginaDePostagem : AppCompatActivity() {
     }
 
     private fun perfil() {
-        val postar = Intent(this, PerfilActivity::class.java)
-        startActivity(postar)
+        val targetPage = Intent(this, PerfilActivity::class.java)
+        startActivity(targetPage)
     }
 
     private fun paginaMain() {
-        val postar = Intent(this, MainActivity::class.java)
-        startActivity(postar)
+        val targetPage = Intent(this, MainActivity::class.java)
+        startActivity(targetPage)
     }
 
 }
