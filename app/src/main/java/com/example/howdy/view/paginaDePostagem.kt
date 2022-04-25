@@ -58,6 +58,10 @@ class paginaDePostagem : AppCompatActivity() {
             R.id.menu_ranking -> {
                 Toast.makeText(this, "Ranking", Toast.LENGTH_SHORT).show()
             }
+            R.id.menu_assinatura -> {
+                Toast.makeText(this, "Assinaturas", Toast.LENGTH_SHORT).show()
+                assinatura()
+            }
             R.id.menu_configuracoes -> {
                 Toast.makeText(this, "Configurações", Toast.LENGTH_SHORT).show()
             }
@@ -75,6 +79,11 @@ class paginaDePostagem : AppCompatActivity() {
         }
 
         return true
+    }
+
+    private fun assinatura() {
+        val assinar = Intent(this, InicioAssinatura::class.java)
+        startActivity(assinar)
     }
 
     private fun perfil() {

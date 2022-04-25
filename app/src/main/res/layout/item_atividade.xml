@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/buttom_borda"
+        android:elevation="10dp"
+        android:layout_margin="20dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingStart="10dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="49dp"
+                android:layout_height="42.77dp"
+                android:src="@drawable/ic_logo_app"/>
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="bottom"
+                android:layout_marginStart="-20sp"
+                android:layout_marginTop="25dp"
+                android:src="@drawable/classe_noob" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/roboto_bold"
+                android:textColor="#303135"
+                android:textSize="19dp"
+                android:text="Roger Guedes"/>
+
+            <ImageView
+                android:layout_width="9dp"
+                android:layout_height="9dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="10dp"
+                android:src="@drawable/ic_score_24" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:text="26 Jan"
+                android:layout_gravity="center"
+                android:textColor="#99000000"
+                android:textSize="13sp" />
+
+            <ImageView
+                android:layout_marginStart="12dp"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginEnd="2dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_gps_24"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ingles"
+                android:fontFamily="@font/roboto"
+                android:textColor="#6A7DFF"
+                android:layout_gravity="center"
+                android:textSize="12dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#6A7DFF"
+            android:padding="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Present Simple"
+                android:textSize="19dp"
+                android:layout_marginBottom="9dp"
+                android:fontFamily="@font/roboto_medium"
+                android:textColor="#F2F2F2"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt"
+                android:textSize="14dp"
+                android:fontFamily="@font/roboto"
+                android:textAlignment="textStart"
+                android:layout_marginBottom="7dp"
+                android:textColor="#F2F2F2"/>
+
+            <LinearLayout
+                android:layout_width="65dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/borda_coin_howdy"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="23dp"
+                    android:layout_height="23.93dp"
+                    android:src="@drawable/howdy_coin"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="200"
+                    android:fontFamily="@font/roboto_medium"
+                    android:gravity="center_vertical"
+                    android:layout_marginStart="5dp"
+                    android:textColor="#CA7D33"/>
+
+            </LinearLayout>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Realizar"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/roboto"
+                android:textColor="@color/purple_200"
+                android:backgroundTint="@color/cinza"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

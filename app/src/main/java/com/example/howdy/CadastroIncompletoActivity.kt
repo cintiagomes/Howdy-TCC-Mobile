@@ -127,6 +127,7 @@ class CadastroIncompletoActivity : AppCompatActivity() {
                         uiThread {
                             //CHECANDO SE NÃO HOUVE ERRO NA REQUISIÇÃO
                             val error = hadAnError(resJson)
+
                             if (error.status > 0){
                                 println("DEBUGANDO: " + error.message)
 
