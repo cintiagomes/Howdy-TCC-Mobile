@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
 import com.beust.klaxon.Klaxon
@@ -77,13 +78,17 @@ class Login : AppCompatActivity() {
         val email = binding.textEmail.text.toString()
         val senha = binding.textSenha.text.toString()
 
+        println("DEBUGANDO "+ "ANTES DO LOGIN")
         auth.signInWithEmailAndPassword(email, senha).addOnCompleteListener {
+            println("DEBUGANDO "+ "RESULTADO FIREBASE")
             if (it.isSuccessful){
+                println("DEBUGANDO "+ "LOGOU FIREBASE")
 
                 //RESGATANDO IDTOKEN DO USUÁRIO LOGADO NO FIREBASE
                 auth.currentUser?.getIdToken(true)
                     ?.addOnSuccessListener(OnSuccessListener<GetTokenResult> { result ->
                         val idToken = result.token
+                        println("DEBUGANDO "+ "TOKEN CHEGOU")
 
                         if (idToken != null) {
                             //O USUÁRIO SE LOGOU NO FIREBASE, E AGORA IRÁ VER SE REALMENTE ESTÁ CADASTRADO NO BANCO SQL
@@ -95,6 +100,7 @@ class Login : AppCompatActivity() {
 
                                 uiThread {
                                     //CASO O USUÁRIO NÃO ESTEJA CADASTRADO, IRÁ FINALIZAR SEU CADASTRO
+                                    println("DEBUGANDO "+ "PERGUNTOU PRO BACK " + resJson)
                                     if(resJson == "This user does not have an account in our system") {
                                         navigateToIncompleteRegisterPage()
                                     } else {
@@ -143,6 +149,7 @@ class Login : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == RC_SIGN_IN_GOOGLE) {
             val task: Task<GoogleSignInAccount> = GoogleSignIn.getSignedInAccountFromIntent(data)
+            Log.d("ERRO", task.exception.toString())
             val exception = task.exception
             if (task.isSuccessful){
                 try {
