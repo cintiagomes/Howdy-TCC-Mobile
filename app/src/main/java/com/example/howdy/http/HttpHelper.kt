@@ -8,7 +8,7 @@ import okhttp3.RequestBody
 import java.io.IOException
 
 class HttpHelper {
-    private val serverDomain:String = "http://192.168.10.249:3333"
+    private val serverDomain:String = "http://10.107.144.22:3333"
 
     fun post(route:String, idToken: String, json:String ):String{
         //DEFINIR URL DO SERVIDOR
@@ -50,6 +50,8 @@ class HttpHelper {
 
         //UTILIZAR O CLIENT PARA FAZER A REQUISIÇÃO E RECEBER A RESPOSTA
         client.newCall(request).execute().use { response ->
+            if (!response.isSuccessful) return "error " + response.code() + ": " + response.body()!!.string()
+
             return response.body()!!.string()
         }
     }
