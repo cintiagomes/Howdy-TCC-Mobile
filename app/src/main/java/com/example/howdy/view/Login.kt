@@ -78,21 +78,16 @@ class Login : AppCompatActivity() {
         val email = binding.textEmail.text.toString()
         val senha = binding.textSenha.text.toString()
 
-        println("DEBUGANDO "+ "ANTES DO LOGIN")
         auth.signInWithEmailAndPassword(email, senha).addOnCompleteListener {
-            println("DEBUGANDO "+ "RESULTADO FIREBASE")
             if (it.isSuccessful){
-                println("DEBUGANDO "+ "LOGOU FIREBASE")
 
                 //RESGATANDO IDTOKEN DO USUÁRIO LOGADO NO FIREBASE
                 auth.currentUser?.getIdToken(true)
                     ?.addOnSuccessListener(OnSuccessListener<GetTokenResult> { result ->
                         val idToken = result.token
-                        println("DEBUGANDO "+ "TOKEN CHEGOU")
 
                         if (idToken != null) {
                             //O USUÁRIO SE LOGOU NO FIREBASE, E AGORA IRÁ VER SE REALMENTE ESTÁ CADASTRADO NO BANCO SQL
-                            println("GetTokenResult result = $idToken")
 
                             doAsync {
                                 val http = HttpHelper()
