@@ -14,8 +14,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import android.content.SharedPreferences
-
-
+import com.example.howdy.RankingActivity
 
 
 class paginaDePostagem : AppCompatActivity() {
@@ -57,6 +56,7 @@ class paginaDePostagem : AppCompatActivity() {
             }
             R.id.menu_ranking -> {
                 Toast.makeText(this, "Ranking", Toast.LENGTH_SHORT).show()
+                ranking()
             }
             R.id.menu_assinatura -> {
                 Toast.makeText(this, "Assinaturas", Toast.LENGTH_SHORT).show()
@@ -79,6 +79,11 @@ class paginaDePostagem : AppCompatActivity() {
         }
 
         return true
+    }
+
+    private fun ranking() {
+        val ranking = Intent(this, RankingActivity::class.java)
+        startActivity(ranking)
     }
 
     private fun assinatura() {
