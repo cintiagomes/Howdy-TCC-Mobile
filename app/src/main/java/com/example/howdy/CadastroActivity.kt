@@ -12,6 +12,10 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.howdy.databinding.ActivityCadastroBinding
 import com.example.howdy.model.*
+import com.example.howdy.model.UserTypes.NativeLanguage
+import com.example.howdy.model.UserTypes.TargetLanguage
+import com.example.howdy.model.UserTypes.User
+import com.example.howdy.model.UserTypes.UserRegister
 import com.example.howdy.remote.APIUtil
 import com.example.howdy.remote.RouterInterface
 import com.example.howdy.view.paginaDePostagem
@@ -132,7 +136,7 @@ class CadastroActivity : AppCompatActivity() {
                         val idToken = result.token
                         if (idToken != null) {
                             //CADASTRANDO O USUÁRIO NO BANCO SQL
-                            val user = UserCreation(
+                            val user = UserRegister(
                                 userName,
                                 birthDateFormatted,
                                 targetLanguage,
@@ -150,7 +154,7 @@ class CadastroActivity : AppCompatActivity() {
         }
     }
 
-    private fun createUser(usuario: UserCreation, idToken: String) {
+    private fun createUser(usuario: UserRegister, idToken: String) {
         val call: Call<MySqlResult> = routerInterface.createUser(usuario, idToken)
         /** EXECUÇÃO CHAMADA DA ROTA  */
         call.enqueue(object : Callback<MySqlResult> {

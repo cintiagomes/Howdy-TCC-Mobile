@@ -1,4 +1,4 @@
-package com.example.howdy.model
+package com.example.howdy.model.UserTypes
 
 class User() {
     var idUser = 0
@@ -17,9 +17,19 @@ class User() {
     var nativeLanguageTranslatorName = ""
 }
 
-class UserCreation(userName: String, birthDate: String, targetLanguage: TargetLanguage, nativeLanguage: NativeLanguage){
+class UserRegister(userName: String, birthDate: String, targetLanguage: TargetLanguage, nativeLanguage: NativeLanguage){
     var userName = userName
     var birthDate = birthDate
     var targetLanguage = targetLanguage
     var nativeLanguage = nativeLanguage
+}
+
+class UserCreator(){
+    var idUser = 0
+    var birthDate = ""
+    var profilePhoto = ""
+    var userName = ""
+    var isPro = true
+    var totalXp = 0
+    var patent = ""
 }

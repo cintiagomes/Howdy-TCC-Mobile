@@ -1,19 +1,16 @@
 package com.example.howdy.view
 
-import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import com.example.howdy.CadastroActivity
 import com.example.howdy.R
-import com.example.howdy.model.User
+import com.example.howdy.model.UserTypes.User
 import com.example.howdy.remote.APIUtil
 import com.example.howdy.remote.RouterInterface
-import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.GetTokenResult
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -31,15 +28,15 @@ class MainActivity : AppCompatActivity() {
         val currentUser = auth.currentUser
         if(currentUser != null){
             //RESGATANDO IDTOKEN DO USUÁRIO LOGADO NO FIREBASE
-            currentUser?.getIdToken(true)
-                ?.addOnSuccessListener(OnSuccessListener<GetTokenResult> { result ->
+            currentUser.getIdToken(true)
+                .addOnSuccessListener { result ->
                     val idToken = result.token
 
                     if (idToken != null) {
                         //O USUÁRIO SE LOGOU NO FIREBASE, E AGORA IRÁ VER SE REALMENTE ESTÁ CADASTRADO NO BANCO SQL
-                            isMyUidExternalRegistered(idToken);
+                        isMyUidExternalRegistered(idToken)
                     }
-                })
+                }
         }
 
 

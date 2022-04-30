@@ -2,16 +2,16 @@ package com.example.howdy.view
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.howdy.CadastroActivity
 import com.example.howdy.CadastroIncompletoActivity
 import com.example.howdy.R
 import com.example.howdy.databinding.ActivityLoginBinding
-import com.example.howdy.model.User
+import com.example.howdy.model.UserTypes.User
 import com.example.howdy.remote.APIUtil
 import com.example.howdy.remote.RouterInterface
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -19,16 +19,11 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.GetTokenResult
-import com.google.android.gms.tasks.OnSuccessListener
 import com.google.android.gms.tasks.Task
+import com.google.firebase.auth.FirebaseAuth
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-
-
-
 
 
 class Login : AppCompatActivity() {
@@ -92,7 +87,7 @@ class Login : AppCompatActivity() {
 
                 //RESGATANDO IDTOKEN DO USUÁRIO LOGADO NO FIREBASE
                 auth.currentUser?.getIdToken(true)
-                    ?.addOnSuccessListener(OnSuccessListener<GetTokenResult> { result ->
+                    ?.addOnSuccessListener({ result ->
                         val idToken = result.token
 
                         if (idToken != null) {

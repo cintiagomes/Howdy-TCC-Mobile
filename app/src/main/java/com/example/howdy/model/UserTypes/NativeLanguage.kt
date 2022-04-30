@@ -1,4 +1,4 @@
-package com.example.howdy.model
+package com.example.howdy.model.UserTypes
 
 class NativeLanguage(idNativeLanguage: Int, nativeLanguageName: String, nativeLanguageTranslatorName:String) {
     var idNativeLanguage = idNativeLanguage
