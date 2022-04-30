@@ -13,7 +13,7 @@ import com.example.howdy.model.*
 import com.example.howdy.model.UserTypes.NativeLanguage
 import com.example.howdy.model.UserTypes.TargetLanguage
 import com.example.howdy.model.UserTypes.User
-import com.example.howdy.model.UserTypes.UserRegister
+import com.example.howdy.model.UserTypes.DataToCreateUser
 import com.example.howdy.remote.APIUtil
 import com.example.howdy.remote.RouterInterface
 import com.example.howdy.view.paginaDePostagem
@@ -123,7 +123,7 @@ class CadastroIncompletoActivity : AppCompatActivity() {
                 if (idToken != null) {
                     //CADASTRANDO O USUÁRIO NO BANCO SQL
                     //CADASTRANDO O USUÁRIO NO BANCO SQL
-                    val user = UserRegister(
+                    val user = DataToCreateUser(
                         userName,
                         birthDateFormatted,
                         targetLanguage,
@@ -136,7 +136,7 @@ class CadastroIncompletoActivity : AppCompatActivity() {
             }
     }
 
-    private fun createUser(usuario: UserRegister, idToken: String) {
+    private fun createUser(usuario: DataToCreateUser, idToken: String) {
         val call: Call<MySqlResult> = routerInterface.createUser(usuario, idToken)
         /** EXECUÇÃO CHAMADA DA ROTA  */
         call.enqueue(object : Callback<MySqlResult> {
