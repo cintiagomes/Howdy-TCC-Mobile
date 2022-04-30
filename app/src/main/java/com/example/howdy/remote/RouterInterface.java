@@ -8,6 +8,7 @@ import com.example.howdy.model.UserTypes.UserRegister;
 
 import java.util.List;
 
+import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -39,10 +40,13 @@ public interface RouterInterface {
     Call<MySqlResult>createPostWithoutImage(@Header("Authorization") String idToken, @Body DataToCreatePostWithoutImage dataToCreatePost);
 
     //ROTA PARA CRIAR POSTAGENS NA PRESENÇA DE IMAGEM
-    /*@Multipart
+    @Multipart
     @POST("/posts")
     Call<MySqlResult>createPostWithImage(
-            @Header("Authorization") String idToken,
-            @Part("file\"; filename=\"filename.png\" ") RequestBody file
-            );*/
+            @Part MultipartBody.Part file,
+            @Part("textContent") RequestBody textContent,
+            @Part("isPublic") RequestBody isPublic,
+            @Part("idPostCategory") RequestBody idPostCategory,
+            @Header("Authorization") String idToken
+            );
 }
