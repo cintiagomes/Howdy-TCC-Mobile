@@ -4,16 +4,9 @@ import android.os.Bundle
 import android.view.*
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.howdy.R
 import de.hdodenhof.circleimageview.CircleImageView
-import kotlinx.android.synthetic.*
-import kotlinx.android.synthetic.main.activity_cadastro.view.*
-import kotlinx.android.synthetic.main.fragment_atividades.*
-import kotlinx.android.synthetic.main.fragment_home.*
-import kotlinx.android.synthetic.main.item_contact.view.*
-import kotlinx.android.synthetic.main.item_postagens.view.*
 
 class HomeFragment : Fragment() {
 

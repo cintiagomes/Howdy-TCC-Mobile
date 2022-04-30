@@ -6,29 +6,30 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
-import com.beust.klaxon.Klaxon
 import com.example.howdy.CadastroActivity
-import com.example.howdy.CadastroIncompletoActivity
 import com.example.howdy.R
-import com.example.howdy.http.HttpHelper
 import com.example.howdy.model.User
+import com.example.howdy.remote.APIUtil
+import com.example.howdy.remote.RouterInterface
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GetTokenResult
-import com.google.gson.Gson
-import org.jetbrains.anko.doAsync
-import org.jetbrains.anko.uiThread
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var routerInterface: RouterInterface
+
     override fun onCreate(savedInstanceState: Bundle?) {
         //CHECANDO SE O USUÁRIO JÁ ESTÁ LOGADO NO FIREBASE, E FORNECENDO UM REDIRECIONAMENTO
         val auth: FirebaseAuth = FirebaseAuth.getInstance()
 
+        /** CONFIGURAÇÃO DO routerInterface **/
+        routerInterface = APIUtil.getInterface()
+
         val currentUser = auth.currentUser
         if(currentUser != null){
-            val postPage = Intent(this, paginaDePostagem::class.java)
-
             //RESGATANDO IDTOKEN DO USUÁRIO LOGADO NO FIREBASE
             currentUser?.getIdToken(true)
                 ?.addOnSuccessListener(OnSuccessListener<GetTokenResult> { result ->
@@ -36,21 +37,7 @@ class MainActivity : AppCompatActivity() {
 
                     if (idToken != null) {
                         //O USUÁRIO SE LOGOU NO FIREBASE, E AGORA IRÁ VER SE REALMENTE ESTÁ CADASTRADO NO BANCO SQL
-                        doAsync {
-                            val http = HttpHelper()
-                            val res = http.get("/users/isMyUidExternalRegistered", idToken)
-
-                            uiThread {
-                                val gson = Gson()
-
-                                if(res != "This user does not have an account in our system") {
-                                    //AGORA QUE SABEMOS QUE O USUÁRIO DE FATO ESTÁ LOGADO, O MANDAREMOS PARA A PRÓXIMA TELA
-
-                                    //REDIRECIONANDO O USUÁRIO PARA A PÁGINA DE POSTAGENS
-                                    startActivity(postPage)
-                                }
-                            }
-                        }
+                            isMyUidExternalRegistered(idToken);
                     }
                 })
         }
@@ -78,5 +65,23 @@ class MainActivity : AppCompatActivity() {
             startActivity(TesteActivity)
         }
 
+    }
+
+    fun isMyUidExternalRegistered(idToken: String) {
+        val call: Call<List<User>> = routerInterface.isMyUidExternalRegistered(idToken)
+        /** EXECUÇÃO CHAMADA DA ROTA  */
+        call.enqueue(object : Callback<List<User>> {
+            override fun onResponse(call: Call<List<User>>, response: Response<List<User>>) {
+                if (response.isSuccessful) {
+                    //AGORA QUE SABEMOS QUE O USUÁRIO DE FATO ESTÁ LOGADO, O MANDAREMOS PARA A PRÓXIMA TELA
+                    val postPage = Intent(applicationContext, paginaDePostagem::class.java)
+                    startActivity(postPage)
+                }
+            }
+
+            override fun onFailure(call: Call<List<User>>, t: Throwable) {
+                println("ERRO-API: " + t.message)
+            }
+        })
     }
 }

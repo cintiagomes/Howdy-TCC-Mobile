@@ -1,6 +1,6 @@
 package com.example.howdy.model
 
-class MySqlInsert() {
+class MySqlResult() {
     var fieldCount = 0
     var affectedRows = 0
     var insertId = 0

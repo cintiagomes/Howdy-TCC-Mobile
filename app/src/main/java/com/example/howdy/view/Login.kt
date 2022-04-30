@@ -7,13 +7,13 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
-import com.beust.klaxon.Klaxon
 import com.example.howdy.CadastroActivity
 import com.example.howdy.CadastroIncompletoActivity
 import com.example.howdy.R
 import com.example.howdy.databinding.ActivityLoginBinding
-import com.example.howdy.http.HttpHelper
 import com.example.howdy.model.User
+import com.example.howdy.remote.APIUtil
+import com.example.howdy.remote.RouterInterface
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -21,13 +21,19 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GetTokenResult
-import org.jetbrains.anko.doAsync
-import org.jetbrains.anko.uiThread
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.android.gms.tasks.Task
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+
+
+
 
 
 class Login : AppCompatActivity() {
+
+    private lateinit var routerInterface: RouterInterface
 
     private lateinit var binding: ActivityLoginBinding
     private lateinit var auth: FirebaseAuth
@@ -38,6 +44,9 @@ class Login : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        /** CONFIGURAÇÃO DO routerInterface **/
+        routerInterface = APIUtil.getInterface()
 
         binding = ActivityLoginBinding.inflate(layoutInflater)
         val actionBar = supportActionBar
@@ -88,51 +97,56 @@ class Login : AppCompatActivity() {
 
                         if (idToken != null) {
                             //O USUÁRIO SE LOGOU NO FIREBASE, E AGORA IRÁ VER SE REALMENTE ESTÁ CADASTRADO NO BANCO SQL
-
-                            doAsync {
-                                val http = HttpHelper()
-                                val resJson = http.get("/users/isMyUidExternalRegistered", idToken)
-
-                                uiThread {
-                                    //CASO O USUÁRIO NÃO ESTEJA CADASTRADO, IRÁ FINALIZAR SEU CADASTRO
-                                    println("DEBUGANDO "+ "PERGUNTOU PRO BACK " + resJson)
-                                    if(resJson == "This user does not have an account in our system") {
-                                        navigateToIncompleteRegisterPage()
-                                    } else {
-                                        //AGORA QUE SABEMOS QUE O USUÁRIO DE FATO ESTÁ LOGADO, SALVAREMOS SEUS DADOS
-                                        val userLogged = Klaxon().parseArray<User>(resJson)!![0]
-
-                                        val userLoggedFile = getSharedPreferences(
-                                            "userLogged", Context.MODE_PRIVATE)
-
-                                        // EDIÇÃO DE DADOS DO ARQUIVO SHARED PREFERENCES
-                                        val editor = userLoggedFile.edit()
-                                        editor.putInt("idUser", userLogged.idUser)
-                                        editor.putString("profilePhoto", userLogged.profilePhoto)
-                                        editor.putString("userName", userLogged.userName)
-                                        editor.putString("description", userLogged.description)
-                                        editor.putString("backgroundImage", userLogged.backgroundImage)
-                                        editor.putString("subscriptionEndDate", userLogged.subscriptionEndDate)
-                                        editor.putInt("howdyCoin", userLogged.howdyCoin)
-                                        editor.putInt("idTargetLanguage", userLogged.idTargetLanguage)
-                                        editor.putString("targetLanguageName", userLogged.targetLanguageName)
-                                        editor.putString("targetLanguageTranslatorName", userLogged.targetLanguageTranslatorName)
-                                        editor.putInt("idNativeLanguage", userLogged.idNativeLanguage)
-                                        editor.putString("nativeLanguageName", userLogged.nativeLanguageName)
-                                        editor.putString("nativeLanguageTranslatorName", userLogged.nativeLanguageTranslatorName)
-                                        editor.apply()
-
-                                        //REDIRECIONANDO O USUÁRIO PARA A PÁGINA DE POSTAGENS
-                                        navigateToPostPage()
-                                    }
-                                }
-                            }
+                            isMyUidExternalRegistered(idToken)
                         }
                     })
             }else{
                 Toast.makeText(applicationContext,"Houve um erro no login", Toast.LENGTH_LONG).show()
             }
         }
+    }
+
+    fun isMyUidExternalRegistered(idToken: String) {
+        val call: Call<List<User>> = routerInterface.isMyUidExternalRegistered(idToken)
+        /** EXECUÇÃO CHAMADA DA ROTA  */
+        call.enqueue(object : Callback<List<User>> {
+            override fun onResponse(call: Call<List<User>>, response: Response<List<User>>) {
+                if (response.isSuccessful) {
+                    val userLogged = response.body()!![0]
+
+                    val userLoggedFile = getSharedPreferences(
+                        "userLogged", Context.MODE_PRIVATE)
+
+                    // EDIÇÃO DE DADOS DO ARQUIVO SHARED PREFERENCES
+                    val editor = userLoggedFile.edit()
+                    editor.putInt("idUser", userLogged.idUser)
+                    editor.putString("profilePhoto", userLogged.profilePhoto)
+                    editor.putString("userName", userLogged.userName)
+                    editor.putString("description", userLogged.description)
+                    editor.putString("backgroundImage", userLogged.backgroundImage)
+                    editor.putString("subscriptionEndDate", userLogged.subscriptionEndDate)
+                    editor.putInt("howdyCoin", userLogged.howdyCoin)
+                    editor.putInt("idTargetLanguage", userLogged.idTargetLanguage)
+                    editor.putString("targetLanguageName", userLogged.targetLanguageName)
+                    editor.putString("targetLanguageTranslatorName", userLogged.targetLanguageTranslatorName)
+                    editor.putInt("idNativeLanguage", userLogged.idNativeLanguage)
+                    editor.putString("nativeLanguageName", userLogged.nativeLanguageName)
+                    editor.putString("nativeLanguageTranslatorName", userLogged.nativeLanguageTranslatorName)
+                    editor.apply()
+
+                    //REDIRECIONANDO O USUÁRIO PARA A PÁGINA DE POSTAGENS
+                    navigateToPostPage()
+                } else {
+                    if (response.code() == 404){
+                        navigateToIncompleteRegisterPage()
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<List<User>>, t: Throwable) {
+                println("ERRO-API: " + t.message)
+            }
+        })
     }
 
     private fun loginWithGoogle(){
