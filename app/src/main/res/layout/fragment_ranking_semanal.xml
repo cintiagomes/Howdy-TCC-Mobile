@@ -3,13 +3,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".RankingSemanalFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:padding="10dp"
         android:orientation="vertical">
 
         <TextView
@@ -18,14 +23,22 @@
             android:text="Ranking de ganho de XP semanal."
             android:gravity="center"
             android:textSize="20dp"
+            android:layout_marginBottom="30dp"
             android:fontFamily="@font/roboto_bold"
             android:textColor="#303135"/>
 
-        <SearchView
+        <EditText
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:background="@drawable/buttom_borda"
-            android:layout_marginTop="30dp"/>
+            android:layout_margin="5dp"
+            android:padding="10dp"
+            android:imeOptions="actionSearch"
+            android:drawableLeft="@drawable/ic_search_24"
+            android:hint="Descubra onde você está"
+            android:textSize="14dp"
+            android:elevation="5dp"
+            android:backgroundTint="@color/white"
+            android:background="@drawable/buttom_borda"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -110,9 +123,9 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:layout_width="85dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="50dp"
+                        android:layout_width="80dp"
+                        android:layout_height="30dp"
+                        android:layout_marginBottom="40dp"
                         android:background="@drawable/buttom_borda"
                         android:backgroundTint="#336A7DFF"
                         android:gravity="center"
@@ -120,9 +133,9 @@
                         android:textColor="#6A7DFF" />
 
                     <TextView
-                        android:layout_width="85dp"
-                        android:layout_height="25dp"
-                        android:layout_marginBottom="50dp"
+                        android:layout_width="80dp"
+                        android:layout_height="30dp"
+                        android:layout_marginBottom="40dp"
                         android:background="@drawable/buttom_borda"
                         android:backgroundTint="#336A7DFF"
                         android:gravity="center"
@@ -130,8 +143,8 @@
                         android:textColor="#6A7DFF"/>
 
                     <TextView
-                        android:layout_width="85dp"
-                        android:layout_height="25dp"
+                        android:layout_width="80dp"
+                        android:layout_height="30dp"
                         android:layout_marginBottom="40dp"
                         android:background="@drawable/buttom_borda"
                         android:backgroundTint="#336A7DFF"
@@ -152,7 +165,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Posição"
+                    android:text="Usuário"
                     android:gravity="center"
                     android:fontFamily="@font/roboto_medium"
                     android:textSize="16sp"
@@ -161,14 +174,13 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginStart="15dp"
                     android:orientation="vertical">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="20dp"
-                        android:layout_marginTop="10dp">
+                        android:layout_marginTop="15dp">
 
                         <de.hdodenhof.circleimageview.CircleImageView
                             android:layout_gravity="center"

@@ -14,6 +14,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import android.content.SharedPreferences
+import com.example.howdy.ConfiguracoesActivity
 import com.example.howdy.RankingActivity
 
 
@@ -64,6 +65,7 @@ class paginaDePostagem : AppCompatActivity() {
             }
             R.id.menu_configuracoes -> {
                 Toast.makeText(this, "Configurações", Toast.LENGTH_SHORT).show()
+                configuracoes()
             }
             R.id.menu_sair -> {
                 Toast.makeText(this, "Saindo da conta", Toast.LENGTH_SHORT).show()
@@ -79,6 +81,11 @@ class paginaDePostagem : AppCompatActivity() {
         }
 
         return true
+    }
+
+    private fun configuracoes() {
+        val configuracoes = Intent(this, ConfiguracoesActivity::class.java)
+        startActivity(configuracoes)
     }
 
     private fun ranking() {

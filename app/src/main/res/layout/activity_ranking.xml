@@ -39,6 +39,7 @@
                 android:id="@+id/tabs_ranking"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="20dp"
                 app:tabSelectedTextColor="@color/purple_200"
                 app:tabIndicatorColor="@color/purple_200"
                 android:background="#006A7DFF">

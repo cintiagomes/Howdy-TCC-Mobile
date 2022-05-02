@@ -6,7 +6,13 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.example.howdy.R
+import com.example.howdy.model.MySqlResult
+import com.example.howdy.remote.APIUtil
+import com.example.howdy.remote.RetroFitClient
+import com.example.howdy.remote.RouterInterface
 import de.hdodenhof.circleimageview.CircleImageView
+import kotlinx.android.synthetic.main.fragment_home.*
+import retrofit2.Call
 
 class HomeFragment : Fragment() {
 
@@ -20,8 +26,9 @@ class HomeFragment : Fragment() {
         )
 
         val adapter = HomeAdapter(itens)
-        val recycler = view?.findViewById<RecyclerView>(R.id.recycler_postagens)
+        val recycler = recycler_postagens
         recycler?.adapter = adapter
+
 
     }
 

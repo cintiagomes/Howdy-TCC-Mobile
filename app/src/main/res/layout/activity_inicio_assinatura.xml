@@ -12,6 +12,27 @@
         android:gravity="center"
         android:orientation="vertical">
 
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="5dp"
+            android:background="#F2F2F2">
+
+            <ImageButton
+                android:id="@+id/arrow_button"
+                android:layout_width="35dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#f2f2f2"
+                android:src="@drawable/ic_arrow_24"
+                tools:ignore="TouchTargetSizeCheck" />
+
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_logo_deitado"/>
+
+        </androidx.appcompat.widget.Toolbar>
+
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="80dp"
