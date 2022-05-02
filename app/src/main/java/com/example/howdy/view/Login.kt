@@ -87,14 +87,14 @@ class Login : AppCompatActivity() {
 
                 //RESGATANDO IDTOKEN DO USUÁRIO LOGADO NO FIREBASE
                 auth.currentUser?.getIdToken(true)
-                    ?.addOnSuccessListener({ result ->
+                    ?.addOnSuccessListener { result ->
                         val idToken = result.token
 
                         if (idToken != null) {
                             //O USUÁRIO SE LOGOU NO FIREBASE, E AGORA IRÁ VER SE REALMENTE ESTÁ CADASTRADO NO BANCO SQL
                             isMyUidExternalRegistered(idToken)
                         }
-                    })
+                    }
             }else{
                 Toast.makeText(applicationContext,"Houve um erro no login", Toast.LENGTH_LONG).show()
             }
@@ -102,10 +102,12 @@ class Login : AppCompatActivity() {
     }
 
     fun isMyUidExternalRegistered(idToken: String) {
+        println("DEBUGANDO ANTES")
         val call: Call<List<User>> = routerInterface.isMyUidExternalRegistered(idToken)
         /** EXECUÇÃO CHAMADA DA ROTA  */
         call.enqueue(object : Callback<List<User>> {
             override fun onResponse(call: Call<List<User>>, response: Response<List<User>>) {
+                println("DEBUGANDO RESPOSTA" + response.body().toString())
                 if (response.isSuccessful) {
                     val userLogged = response.body()!![0]
 
