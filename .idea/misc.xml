@@ -81,12 +81,14 @@
         <entry key="app/src/main/res/drawable/ic_chat_24.xml" value="0.3614583333333333" />
         <entry key="app/src/main/res/drawable/ic_check_24.xml" value="0.4015384615384615" />
         <entry key="app/src/main/res/drawable/ic_close_24.xml" value="0.4015384615384615" />
+        <entry key="app/src/main/res/drawable/ic_edit_24.xml" value="0.1775" />
         <entry key="app/src/main/res/drawable/ic_heart_24.xml" value="0.3509259259259259" />
         <entry key="app/src/main/res/drawable/ic_home_24.xml" value="0.3614583333333333" />
         <entry key="app/src/main/res/drawable/ic_library_24.xml" value="0.3509259259259259" />
         <entry key="app/src/main/res/drawable/ic_new_24.xml" value="0.221875" />
         <entry key="app/src/main/res/drawable/ic_notifications_24.xml" value="0.3614583333333333" />
         <entry key="app/src/main/res/drawable/ic_outline_loyalty_24.xml" value="0.15885416666666666" />
+        <entry key="app/src/main/res/drawable/ic_outline_photo_camera_24.xml" value="0.1775" />
         <entry key="app/src/main/res/drawable/ic_people_24.xml" value="0.3614583333333333" />
         <entry key="app/src/main/res/drawable/ic_person_.xml" value="0.2375" />
         <entry key="app/src/main/res/drawable/ic_person_24.xml" value="0.2375" />
@@ -145,7 +147,7 @@
   <component name="VisualizationToolProject">
     <option name="state">
       <ProjectState>
-        <option name="scale" value="0.21" />
+        <option name="scale" value="0.33229166666666665" />
       </ProjectState>
     </option>
   </component>

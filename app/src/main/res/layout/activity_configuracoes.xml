@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="15dp"
+    android:background="@color/purple_200"
     tools:context=".ConfiguracoesActivity">
 
     <LinearLayout
@@ -12,20 +14,22 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:backgroundTint="@color/white"
+        android:background="@drawable/buttom_borda"
         app:layout_constraintBottom_toBottomOf="parent"
         android:orientation="vertical">
 
         <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:elevation="5dp"
-            android:background="#F2F2F2">
+            android:backgroundTint="@color/white"
+            android:background="@drawable/buttom_borda">
 
             <ImageButton
                 android:id="@+id/arrow_button"
                 android:layout_width="30dp"
                 android:layout_height="wrap_content"
-                android:backgroundTint="#f2f2f2"
+                android:backgroundTint="@color/white"
                 android:src="@drawable/ic_arrow_24"
                 tools:ignore="TouchTargetSizeCheck" />
 
@@ -33,11 +37,6 @@
                 android:layout_width="150dp"
                 android:layout_height="30dp"
                 android:src="@drawable/ic_logo_deitado"/>
-
-            <SearchView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end" />
 
         </androidx.appcompat.widget.Toolbar>
 
@@ -48,25 +47,51 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_gravity="center"
             android:orientation="vertical">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="160dp"
+            android:layout_gravity="center"
+            android:paddingEnd="15dp"
+            android:paddingStart="15dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:src="@drawable/perfil_principal" />
 
+            <ImageButton
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_outline_photo_camera_24"
+                android:background="@drawable/buttom_borda"
+                android:backgroundTint="@color/white"
+                android:textColor="#6A7DFF"
+                android:layout_marginStart="125dp"
+                android:layout_marginTop="-55dp"/>
+
+
         <de.hdodenhof.circleimageview.CircleImageView
             xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:layout_width="99dp"
+            android:layout_width="92dp"
             android:layout_height="92dp"
             android:id="@+id/userImage"
             android:layout_gravity="center"
-            android:layout_marginTop="-40dp"
+            android:layout_marginTop="-20dp"
             android:elevation="5dp"
             android:src="@drawable/perfil"/>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_outline_photo_camera_24"
+                android:backgroundTint="@color/white"
+                android:layout_gravity="center"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="-25dp"/>
+
 
         </LinearLayout>
 
@@ -74,15 +99,16 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:layout_marginBottom="40dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp"
             android:gravity="center">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/inputLayoutNome"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="308dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
                 android:hint="Nome"
                 app:endIconMode="clear_text"
                 app:layout_constraintTop_toBottomOf="@+id/textView2"
@@ -104,7 +130,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/inputLayoutData"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="308dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:hint="Data Nascimento"
@@ -126,7 +152,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/inputLayoutEmail"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="308dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="22dp"
                 android:hint="Email"
@@ -149,7 +175,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/inputLayoutIdiomaNativo"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                android:layout_width="308dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="22dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -170,7 +196,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/inputLayoutIdiomaInterrece"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                android:layout_width="308dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="22dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -191,12 +217,10 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/inputLayoutSenha"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="308dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="22dp"
                 android:hint="Alterar senha"
-                app:counterEnabled="true"
-                app:counterMaxLength="20"
                 app:endIconMode="password_toggle"
                 app:helperTextTextColor="#FF0000"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -216,14 +240,12 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/inputLayoutConfirmacaoDeSenha"
+                android:id="@+id/inputLayoutSenhaConfirmar"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="308dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:hint="Confirme a senha"
-                app:counterEnabled="true"
-                app:counterMaxLength="20"
+                android:layout_marginTop="22dp"
+                android:hint="Confirmar senha"
                 app:endIconMode="password_toggle"
                 app:helperTextTextColor="#FF0000"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -232,7 +254,7 @@
                 app:startIconDrawable="@drawable/ic_lock_24">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/textConfirmacaoDeSenha"
+                    android:id="@+id/textSenhaConfirmar"
                     android:inputType="textPassword"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -242,33 +264,25 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/buttonCadastrar"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:backgroundTint="#f2f2f2"
-                    android:textColor="#919191"
-                    android:fontFamily="@font/roboto"
-                    android:text="Cancelar"/>
 
                 <Button
                     android:id="@+id/buttonCadastrar2"
-                    android:layout_width="150dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
+                    android:layout_marginTop="30dp"
                     android:backgroundTint="#6A7DFF"
                     android:fontFamily="@font/roboto"
                     android:text="Salvar" />
 
-            </LinearLayout>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:backgroundTint="@color/white"
+                android:textColor="#6A7DFF"
+                android:fontFamily="@font/roboto"
+                android:text="Excluir conta" />
 
         </LinearLayout>
 
