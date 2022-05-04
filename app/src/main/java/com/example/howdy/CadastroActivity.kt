@@ -214,7 +214,6 @@ class CadastroActivity : AppCompatActivity() {
     }
 
     private fun isFormValid(userName:String, birthDate:String, email:String, nativeLanguageName:String, targetLanguageName:String, password:String, passwordConfirmation:String):String{
-        println("DEBUGANDO $password $passwordConfirmation")
         if (password != passwordConfirmation) return "As senhas precisam ser iguais"
         if (nativeLanguageName == targetLanguageName) return "O idioma nativo, e de interesse devem ser diferentes"
 

@@ -15,8 +15,7 @@ import kotlinx.android.synthetic.main.fragment_home.*
 import retrofit2.Call
 
 class HomeFragment : Fragment() {
-
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         val itens = arrayListOf(
@@ -26,10 +25,9 @@ class HomeFragment : Fragment() {
         )
 
         val adapter = HomeAdapter(itens)
+        println("DEBUGANDO: $view")
         val recycler = recycler_postagens
         recycler?.adapter = adapter
-
-
     }
 
     class HomeAdapter(private val itens: ArrayList<Pair<Int, String>>) : RecyclerView.Adapter<HomeAdapter.Holder>() {

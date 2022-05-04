@@ -102,12 +102,10 @@ class Login : AppCompatActivity() {
     }
 
     fun isMyUidExternalRegistered(idToken: String) {
-        println("DEBUGANDO ANTES")
         val call: Call<List<User>> = routerInterface.isMyUidExternalRegistered(idToken)
         /** EXECUÇÃO CHAMADA DA ROTA  */
         call.enqueue(object : Callback<List<User>> {
             override fun onResponse(call: Call<List<User>>, response: Response<List<User>>) {
-                println("DEBUGANDO RESPOSTA" + response.body().toString())
                 if (response.isSuccessful) {
                     val userLogged = response.body()!![0]
 
