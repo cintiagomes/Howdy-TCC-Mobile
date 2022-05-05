@@ -36,13 +36,3 @@ class Post(
     var liked = liked
     var totalComments = totalComments
 }
-
-class DataToCreatePostWithoutImage(
-    textContent: String,
-    isPublic: Boolean,
-    idPostCategory: Int
-) {
-    var textContent = textContent
-    var isPublic = isPublic
-    var idPostCategory = idPostCategory
-}

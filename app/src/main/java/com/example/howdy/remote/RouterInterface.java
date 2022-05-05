@@ -3,7 +3,9 @@ package com.example.howdy.remote;
 import com.example.howdy.model.MySqlResult;
 import com.example.howdy.model.PostTypes.DataToCreatePostWithoutImage;
 import com.example.howdy.model.PostTypes.Post;
-import com.example.howdy.model.PostTypes.PostCommentTypes.Commentary;
+import com.example.howdy.model.PostTypes.PostCategory;
+import com.example.howdy.model.PostTypes.PostCommentaryTypes.Commentary;
+import com.example.howdy.model.PostTypes.PostCommentaryTypes.DataToCreateCommentary;
 import com.example.howdy.model.UserTypes.User;
 import com.example.howdy.model.UserTypes.DataToCreateUser;
 
@@ -18,6 +20,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Part;
 import retrofit2.http.Path;
 
@@ -56,8 +59,8 @@ public interface RouterInterface {
 
     //ROTA PARA EDITAR UMA POSTAGEM
     @Multipart
-    @POST("/posts/{idPost}")
-    Call<MySqlResult>createPostWithImage(
+    @PUT("/posts/{idPost}")
+    Call<MySqlResult>editPostWithImage(
             @Path("idPost") int idPost,
             @Part MultipartBody.Part file,
             @Part("textContent") RequestBody textContent,
@@ -70,15 +73,58 @@ public interface RouterInterface {
     @DELETE("/posts/{idPost}")
     Call<MySqlResult>createPostWithImage(
             @Path("idPost") int idPost, @Header("Authorization") String idToken
-            );
+    );
 
-    /** ROTAS DE COMENTÁRIOS DE ATIVIDADES **/
+    /** ROTAS DE CURTIDAS DE POSTAGENS **/
+    //ROTA PARA CURTIR UMA POSTAGEM
+    @POST("/posts/like/{idPost}")
+    Call<MySqlResult>likePost(
+            @Header("Authorization") String idToken,
+            @Path("idPost") int idPost
+    );
+
+    //ROTA PARA DESCURTIR UMA POSTAGEM
+    @DELETE("/posts/like/{idPost}")
+    Call<MySqlResult>unlikePost(
+            @Header("Authorization") String idToken,
+            @Path("idPost") int idPost
+    );
+
+    /** ROTAS DE CATEGORIAS DE POSTAGENS **/
+    @GET("/postCategories")
+    Call<List<PostCategory>>getPostCategories(
+            @Header("Authorization") String idToken
+    );
+
+    /** ROTAS DE COMENTÁRIOS DE POSTAGENS **/
+    //ROTA PARA OBTER OS COMENTÁRIOS DE UMA POSTAGEM
+    @GET("/posts/commentary/{idPost}")
+    Call<List<Commentary>>getPostComments(
+            @Header("Authorization") String idToken,
+            @Path("idPost") int idPost
+    );
+
+    //ROTA PARA EDITAR UM COMENTÁRIO
+    @PUT("/posts/commentary/{idPostCommentary}")
+    Call<MySqlResult>editPostCommentary(
+            @Header("Authorization") String idToken,
+            @Path("idPostCommentary") int idPostCommentary,
+            @Body DataToCreateCommentary commentary
+    );
+
     //ROTA PARA CRIAR UM COMENTÁRIO
     @POST("/posts/commentary/{idPost}")
     Call<MySqlResult>commentPost(
             @Header("Authorization") String idToken,
             @Path("idPost") int idPost,
-            @Body Commentary commentary
+            @Body DataToCreateCommentary commentary
+    );
+
+    //ROTA DE DELETAR UM COMENTÁRIO
+    @DELETE("/posts/commentary/{idPostCommentary}")
+    Call<MySqlResult>deletePostCommentary(
+            @Header("Authorization") String idToken,
+            @Path("idPostCommentary") int idPostCommentary
     );
 
     /** ROTAS DE ATIVIDADES **/
