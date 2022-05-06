@@ -3,10 +3,10 @@ package com.example.howdy.model.UserTypes
 class Commenter(
     idUser: Int,
     userName: String,
-    profilePhoto: String,
+    profilePhoto: String?,
     isPro: Boolean,
     totalXp: Int,
-    patent: String
+    patent: String?
 ) {
     val idUser = idUser
     val userName = userName

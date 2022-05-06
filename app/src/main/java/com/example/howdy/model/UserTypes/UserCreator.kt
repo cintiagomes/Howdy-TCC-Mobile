@@ -1,11 +1,19 @@
 package com.example.howdy.model.UserTypes
 
-class UserCreator(){
-    var idUser = 0
-    var birthDate = ""
-    var profilePhoto = ""
-    var userName = ""
-    var isPro = true
-    var totalXp = 0
-    var patent = ""
+class UserCreator(
+    idUser: Int,
+    birthDate: String,
+    profilePhoto: String?,
+    userName: String,
+    isPro: Boolean,
+    totalXp: Int,
+    patent: String?
+){
+    var idUser = idUser
+    var birthDate = birthDate
+    var profilePhoto = profilePhoto
+    var userName = userName
+    var isPro = isPro
+    var totalXp = totalXp
+    var patent = patent
 }

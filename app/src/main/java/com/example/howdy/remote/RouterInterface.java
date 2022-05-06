@@ -55,7 +55,7 @@ public interface RouterInterface {
 
     /** ROTAS DE POSTAGENS **/
     //ROTA PARA COLETAR POSTAGENS PÚBLICAS, "categoryFilter" pode ser o id de cada categoria, "popular", ou "myFriends"
-    @GET("/posts/categoryyyy/{categoryFilter}")
+    @GET("/posts/category/{categoryFilter}")
     Call<List<Post>>getPublicPosts(
             @Path("categoryFilter") String categoryFilter, @Header("Authorization") String idToken
     );

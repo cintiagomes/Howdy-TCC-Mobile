@@ -1,4 +1,3 @@
-
 package com.example.howdy
 
 import android.annotation.SuppressLint
@@ -149,30 +148,33 @@ class CadastroActivity : AppCompatActivity() {
                     }
             }else{
                 Toast.makeText(applicationContext,"Ops... Houve um erro no cadastro",
-                Toast.LENGTH_LONG).show()
+                    Toast.LENGTH_LONG).show()
             }
         }
     }
 
-    private fun createUser(usuario: DataToCreateUser, idToken: String) {
-        val call: Call<MySqlResult> = routerInterface.createUser(usuario, idToken)
+    private fun createUser(user: DataToCreateUser, idToken: String) {
+        val call: Call<MySqlResult> = routerInterface.createUser(user, idToken)
         /** EXECUÇÃO CHAMADA DA ROTA  */
         call.enqueue(object : Callback<MySqlResult> {
             override fun onResponse(call: Call<MySqlResult>, response: Response<MySqlResult>) {
                 if(response.isSuccessful) {
-                    val userLogged = User()
-                    userLogged.idUser = response.body()!!.insertId
-                    userLogged.birthDate = birthDateFormatted
-                    userLogged.backgroundImage = ""
-                    userLogged.howdyCoin = 0
-                    userLogged.idNativeLanguage = nativeLanguage.idNativeLanguage
-                    userLogged.nativeLanguageName = nativeLanguage.nativeLanguageName
-                    userLogged.nativeLanguageTranslatorName = nativeLanguage.nativeLanguageTranslatorName
-                    userLogged.idTargetLanguage = targetLanguage.idTargetLanguage
-                    userLogged.targetLanguageName = targetLanguage.targetLanguageName
-                    userLogged.targetLanguageTranslatorName = targetLanguage.targetLanguageTranslatorName
-                    userLogged.profilePhoto = ""
-                    userLogged.subscriptionEndDate = ""
+                    val userLogged = User(
+                        response.body()!!.insertId,
+                        birthDateFormatted,
+                        null,
+                        user.userName,
+                        null,
+                        null,
+                        null,
+                        0,
+                        targetLanguage.idTargetLanguage,
+                        targetLanguage.targetLanguageName,
+                        targetLanguage.targetLanguageTranslatorName,
+                        nativeLanguage.idNativeLanguage,
+                        nativeLanguage.nativeLanguageName,
+                        nativeLanguage.nativeLanguageTranslatorName,
+                    )
 
                     //SALVANDO ALGUNS DADOS DO USUÁRIO LOGADO NO SHARED PREFS
                     val userLoggedFile = getSharedPreferences(
@@ -181,7 +183,8 @@ class CadastroActivity : AppCompatActivity() {
                     // EDIÇÃO DE DADOS DO ARQUIVO SHARED PREFERENCES
                     val editor = userLoggedFile.edit()
                     editor.putInt("idUser", userLogged.idUser)
-                    editor.putString("birthDate", birthDateFormatted)
+                    editor.putString("userName", userLogged.userName)
+                    editor.putString("birthDate", userLogged.birthDate)
                     editor.putString("backgroundImage", userLogged.backgroundImage)
                     editor.putInt("howdyCoin", userLogged.howdyCoin)
                     editor.putInt("idNativeLanguage", userLogged.idNativeLanguage)
@@ -192,6 +195,7 @@ class CadastroActivity : AppCompatActivity() {
                     editor.putString("targetLanguageTranslatorName", userLogged.targetLanguageTranslatorName)
                     editor.putString("profilePhoto", userLogged.profilePhoto)
                     editor.putString("subscriptionEndDate", userLogged.subscriptionEndDate)
+                    editor.putString("subscriptionEndDate", userLogged.description)
                     editor.apply()
 
                     Toast.makeText(applicationContext,"Cadastro realizado com sucesso!",

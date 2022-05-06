@@ -7,7 +7,7 @@ class Commentary(
     idPostCommentary: Int,
     textCommentary: String,
     postCommentaryCreatedAt: String,
-    postCommentaryEditedAt: String
+    postCommentaryEditedAt: String?
 ){
     var commenter = commenter
     var idPostCommentary = idPostCommentary

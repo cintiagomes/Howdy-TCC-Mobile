@@ -1,18 +1,33 @@
 package com.example.howdy.model.UserTypes
 
-class User() {
-    var idUser = 0
-    var birthDate = ""
-    var profilePhoto = ""
-    var userName = ""
-    var description = ""
-    var backgroundImage = ""
-    var subscriptionEndDate = ""
-    var howdyCoin = 0
-    var idTargetLanguage = 0
-    var targetLanguageName = ""
-    var targetLanguageTranslatorName = ""
-    var idNativeLanguage = 0
-    var nativeLanguageName = ""
-    var nativeLanguageTranslatorName = ""
+class User(
+    idUser: Int,
+    birthDate: String,
+    profilePhoto: String?,
+    userName: String,
+    description: String?,
+    backgroundImage: String?,
+    subscriptionEndDate: String?,
+    howdyCoin: Int,
+    idTargetLanguage: Int,
+    targetLanguageName: String,
+    targetLanguageTranslatorName: String,
+    idNativeLanguage : Int,
+    nativeLanguageName: String,
+    nativeLanguageTranslatorName: String
+) {
+    var idUser = idUser
+    var birthDate = birthDate
+    var profilePhoto = profilePhoto
+    var userName = userName
+    var description = description
+    var backgroundImage = backgroundImage
+    var subscriptionEndDate = subscriptionEndDate
+    var howdyCoin = howdyCoin
+    var idTargetLanguage = idTargetLanguage
+    var targetLanguageName = targetLanguageName
+    var targetLanguageTranslatorName = targetLanguageTranslatorName
+    var idNativeLanguage = idNativeLanguage
+    var nativeLanguageName = nativeLanguageName
+    var nativeLanguageTranslatorName = nativeLanguageTranslatorName
 }

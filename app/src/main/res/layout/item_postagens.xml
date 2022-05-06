@@ -79,7 +79,8 @@
             android:layout_width="match_parent"
             android:layout_height="189dp"
             android:layout_marginTop="10dp"
-            android:src="@drawable/postagem_img" />
+            android:src="@drawable/postagem_img"
+            android:id="@+id/iv_image_content"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
