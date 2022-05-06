@@ -35,9 +35,23 @@ public interface RouterInterface {
     @GET("/users/isMyUidExternalRegistered")
     Call<List<User>>isMyUidExternalRegistered(@Header("Authorization") String idToken);
 
-    //ROTA PARA DELETAR CONTA DE USUÁRIO
+    //ROTA PARA DELETAR CONTA DO USUÁRIO LOGADO
     @DELETE("/users")
     Call<MySqlResult>deleteMyAccountOnBackend(@Header("Authorization") String idToken);
+
+    //ROTA PARA EDITAR CONTA DO USUÁRIO LOGADO
+    @Multipart
+    @PUT("/users")
+    Call<MySqlResult>editMyAccount(
+            @Header("Authorization") String idToken,
+            @Part MultipartBody.Part profilePhotoFile,
+            @Part MultipartBody.Part backgroundImageFile,
+            @Path("idTargetLanguage") int idTargetLanguage,
+            @Path("idNativeLanguage") int idNativeLanguage,
+            @Part("userName") String userName,
+            @Part("birthDate") String birthDate,
+            @Part("description") String description
+            );
 
     /** ROTAS DE POSTAGENS **/
     //ROTA PARA COLETAR POSTAGENS PÚBLICAS, "categoryFilter" pode ser o id de cada categoria, "popular", ou "myFriends"
@@ -46,19 +60,15 @@ public interface RouterInterface {
             @Path("categoryFilter") String categoryFilter, @Header("Authorization") String idToken
     );
 
-    //ROTA PARA CRIAR POSTAGENS NA AUSÊNCIA DE IMAGEM
-    @POST("/posts")
-    Call<MySqlResult>createPostWithoutImage(@Header("Authorization") String idToken, @Body DataToCreatePostWithoutImage dataToCreatePost);
-
-    //ROTA PARA CRIAR POSTAGENS NA PRESENÇA DE IMAGEM
+    //ROTA PARA CRIAR POSTAGENS
     @Multipart
     @POST("/posts")
-    Call<MySqlResult>createPostWithImage(
-            @Part MultipartBody.Part file,
+    Call<MySqlResult>createPost(
             @Part("textContent") RequestBody textContent,
             @Part("isPublic") RequestBody isPublic,
             @Part("idPostCategory") RequestBody idPostCategory,
-            @Header("Authorization") String idToken
+            @Header("Authorization") String idToken,
+            @Part MultipartBody.Part file
             );
 
     //ROTA PARA EDITAR UMA POSTAGEM
