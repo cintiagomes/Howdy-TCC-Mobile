@@ -266,7 +266,7 @@
 
 
                 <Button
-                    android:id="@+id/buttonCadastrar2"
+                    android:id="@+id/buttonAlterar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
@@ -275,6 +275,7 @@
                     android:text="Salvar" />
 
             <Button
+                android:id="@+id/buttonExcluir"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
