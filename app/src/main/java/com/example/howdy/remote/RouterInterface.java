@@ -35,6 +35,10 @@ public interface RouterInterface {
     @GET("/users/isMyUidExternalRegistered")
     Call<List<User>>isMyUidExternalRegistered(@Header("Authorization") String idToken);
 
+    //ROTA PARA DELETAR CONTA DE USUÁRIO
+    @DELETE("/users")
+    Call<MySqlResult>deleteMyAccountOnBackend(@Header("Authorization") String idToken);
+
     /** ROTAS DE POSTAGENS **/
     //ROTA PARA COLETAR POSTAGENS PÚBLICAS, "categoryFilter" pode ser o id de cada categoria, "popular", ou "myFriends"
     @GET("/posts/category/{categoryFilter}")
