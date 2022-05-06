@@ -4,10 +4,10 @@ import com.example.howdy.model.UserTypes.UserCreator
 class Post(
     userCreator: UserCreator,
     idPost: Int,
-    imageContent: String,
+    imageContent: String?,
     createdAt: String,
     textContent: String,
-    isPublic: Boolean,
+    isPublic: Int,
     idTargetLanguage: Int,
     idPostCategory: Int,
     targetLanguageName: String,
