@@ -6,7 +6,7 @@
             android:angle="360"/>
 
         <solid
-            android:color="#4DF2D63F"
+            android:color="#2FF2D63F"
             android:width="2dp"/>
 
         <corners android:radius="20dp"/>

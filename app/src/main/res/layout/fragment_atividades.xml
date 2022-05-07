@@ -136,7 +136,7 @@
                         android:layout_width="42dp"
                         android:layout_height="42dp"
                         android:src="@drawable/ic_star_24"
-                        android:background="@drawable/borda_avaliacoes"/>
+                        android:background="@drawable/unselected_popular_background"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -159,7 +159,7 @@
                         android:layout_width="42dp"
                         android:layout_height="42dp"
                         android:src="@drawable/ic_time_24"
-                        android:background="@drawable/borda_novas"/>
+                        android:background="@drawable/unselected_sports_background"/>
 
                     <TextView
                         android:layout_width="match_parent"
@@ -183,7 +183,7 @@
                         android:layout_width="42dp"
                         android:layout_height="42dp"
                         android:src="@drawable/ic_filled_heart_24"
-                        android:background="@drawable/borda_seguindo"/>
+                        android:background="@drawable/unselected_friends_background"/>
 
                     <TextView
                         android:layout_width="wrap_content"

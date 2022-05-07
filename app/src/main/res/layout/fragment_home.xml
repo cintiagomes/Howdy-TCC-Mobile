@@ -150,8 +150,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginEnd="10dp"
                 android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
                 tools:ignore="SpeakableTextPresentCheck">
 
                 <LinearLayout
@@ -161,70 +161,74 @@
                     android:scrollbars="horizontal">
 
                     <TextView
+                        android:id="@+id/tv_popular_button"
                         android:layout_width="95dp"
                         android:layout_height="70dp"
                         android:layout_gravity="center"
-                        android:gravity="center"
-                        android:background="@drawable/borda_avaliacoes"
+                        android:background="@drawable/selected_popular_background"
                         android:drawableTop="@drawable/ic_star_24"
                         android:fontFamily="@font/roboto"
-                        android:paddingTop="10dp"
-                        android:text="Seguindo"
-                        android:textColor="#303135"
-                        android:textSize="14sp" />
-
-                    <TextView
-                        android:layout_width="95dp"
-                        android:layout_height="70dp"
-                        android:layout_gravity="center"
                         android:gravity="center"
-                        android:layout_marginStart="15dp"
-                        android:background="@drawable/borda_popular"
-                        android:drawableTop="@drawable/ic_library_24"
-                        android:fontFamily="@font/roboto"
                         android:paddingTop="10dp"
                         android:text="Popular"
                         android:textColor="#303135"
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/tv_friends_button"
                         android:layout_width="95dp"
                         android:layout_height="70dp"
                         android:layout_gravity="center"
-                        android:gravity="center"
                         android:layout_marginStart="15dp"
-                        android:background="@drawable/borda_seguindo"
+                        android:background="@drawable/unselected_friends_background"
                         android:drawableTop="@drawable/ic_filled_heart_24"
                         android:fontFamily="@font/roboto"
+                        android:gravity="center"
                         android:paddingTop="12dp"
-                        android:text="Seguindo"
+                        android:text="Amigos"
                         android:textColor="#303135"
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/tv_doubts_button"
+                        android:layout_width="95dp"
+                        android:layout_height="70dp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="15dp"
+                        android:background="@drawable/unselected_doubts_background"
+                        android:drawableTop="@drawable/ic_library_24"
+                        android:fontFamily="@font/roboto"
+                        android:gravity="center"
+                        android:paddingTop="10dp"
+                        android:text="Dúvidas"
+                        android:textColor="#303135"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tv_sports_button"
                         android:layout_width="95dp"
                         android:layout_height="71dp"
                         android:layout_gravity="center"
-                        android:gravity="center"
                         android:layout_marginStart="15dp"
-                        android:background="@drawable/borda_novas"
+                        android:background="@drawable/unselected_sports_background"
                         android:drawableTop="@drawable/ic_sport_24"
                         android:fontFamily="@font/roboto"
+                        android:gravity="center"
                         android:paddingTop="10dp"
                         android:text="Esportes"
                         android:textColor="#303135"
                         android:textSize="14sp" />
 
                     <TextView
-                        android:id="@+id/teste"
+                        android:id="@+id/tv_news_button"
                         android:layout_width="95dp"
                         android:layout_height="71dp"
                         android:layout_gravity="center"
-                        android:gravity="center"
                         android:layout_marginStart="15dp"
-                        android:background="@drawable/borda_noticias"
+                        android:background="@drawable/unselected_news_background"
                         android:drawableTop="@drawable/ic_new_24"
                         android:fontFamily="@font/roboto"
+                        android:gravity="center"
                         android:paddingTop="10dp"
                         android:text="Notícias"
                         android:textColor="#303135"

@@ -67,7 +67,7 @@ class PostsAdapter(private val posts: List<Post>, activity: FragmentActivity) : 
         private val totalLikesView: TextView = itemView.findViewById(R.id.total_likes_view)
         private val imageContentView: ImageView? = itemView.findViewById(R.id.iv_image_content)
         private val likeButtonView: ImageView = itemView.findViewById(R.id.iv_like_button)
-        private val traductionButtonView: ImageButton = itemView.findViewById(R.id.btn_traduct)
+        private val traductionButtonView: ImageView = itemView.findViewById(R.id.btn_traduct)
 
         override fun bind(post: Post) {
             userCreatorNameView.text = post.userCreator.userName
@@ -170,8 +170,8 @@ class PostsAdapter(private val posts: List<Post>, activity: FragmentActivity) : 
 
                     if (idToken != null) {
                         //VERIFICANDO SE O USUÁRIO IRÁ CURTIR, OU DESCURTIR A POSTAGEM
-                            var call:Call<MySqlResult>? = null
-                            var wasLiked:Boolean = false
+                        var call: Call<MySqlResult>?
+                        var wasLiked = false
                             if (post.liked){
                                 call = routerInterface.unlikePost(idToken, post.idPost)
                             } else {
