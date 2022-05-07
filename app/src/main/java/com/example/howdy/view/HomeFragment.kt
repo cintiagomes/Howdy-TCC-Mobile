@@ -68,7 +68,6 @@ class HomeFragment : Fragment() {
             "userLogged", Context.MODE_PRIVATE)
 
         val profilePhoto = userLoggedFile.getString("profilePhoto", "")
-        println("DEBUGANDO PROFILE PHOTO" + profilePhoto)
 
         if (profilePhoto != null) {
             Glide
@@ -212,6 +211,7 @@ class HomeFragment : Fragment() {
         auth.currentUser?.getIdToken(true)
             ?.addOnSuccessListener { result ->
                 val idToken = result.token
+                println("DEBUGANDO IDTOKEN: $idToken")
 
                 if (idToken != null) {
                     //O USUÁRIO ESTÁ LOGADO, E FARÁ A LISTAGEM DE POSTAGENS
@@ -224,19 +224,19 @@ class HomeFragment : Fragment() {
                                 /** RECEBER OS DADOS DA API  */
                                 var postList: List<Post> = response.body()!!
                                 val adapter = PostsAdapter(postList, activity!!)
-                                val recycler = recycler_postagens
+                                val recycler = recycler_user_posts
                                 recycler?.adapter = adapter
                             } else {
                                 val jObjError = JSONObject(response.errorBody()!!.string())
                                 val errorMessage = jObjError.get("error").toString()
                                 if (errorMessage == "No posts found") {
                                     Toast.makeText(
-                                        activity, "Nenhuma atividade foi encontrada",
+                                        activity, "Nenhuma postagem foi encontrada",
                                         Toast.LENGTH_LONG
                                     ).show()
 
                                     val adapter = PostsAdapter(emptyList(), activity!!)
-                                    val recycler = recycler_postagens
+                                    val recycler = recycler_user_posts
                                     recycler?.adapter = adapter
                                 }
                             }

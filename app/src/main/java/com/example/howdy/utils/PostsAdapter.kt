@@ -1,10 +1,11 @@
 package com.example.howdy.utils
 
+import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -18,13 +19,13 @@ import com.example.howdy.model.PostTypes.Post
 import com.example.howdy.model.TraductionTypes.DataToTranslate
 import com.example.howdy.remote.APIUtil
 import com.example.howdy.remote.RouterInterface
+import com.example.howdy.view.PerfilActivity
 import com.google.firebase.auth.FirebaseAuth
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class PostsAdapter(private val posts: List<Post>, activity: FragmentActivity) : RecyclerView.Adapter<PostsAdapter.Holder>() {
-    private val activity = activity
+class PostsAdapter(private val posts: List<Post>, private val activity: FragmentActivity) : RecyclerView.Adapter<PostsAdapter.Holder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val itemView = if (viewType == 0){
             LayoutInflater.from(parent.context).inflate(R.layout.item_post_with_image, parent, false)
@@ -35,7 +36,7 @@ class PostsAdapter(private val posts: List<Post>, activity: FragmentActivity) : 
     }
 
     override fun getItemViewType(position: Int): Int {
-        if (posts[position]?.imageContent != null){
+        if (posts[position].imageContent != null){
             return 0
         }
         return 1
@@ -53,8 +54,7 @@ class PostsAdapter(private val posts: List<Post>, activity: FragmentActivity) : 
         abstract fun bind(obj: Post)
     }
 
-    class HomeViewHolder(itemView: View, activity: FragmentActivity) : Holder(itemView) {
-        private val activity = activity
+    class HomeViewHolder(itemView: View, private val activity: FragmentActivity) : Holder(itemView) {
 
         private val auth = FirebaseAuth.getInstance()
         private val routerInterface: RouterInterface = APIUtil.getInterface()
@@ -70,60 +70,23 @@ class PostsAdapter(private val posts: List<Post>, activity: FragmentActivity) : 
         private val likeButtonView: ImageView = itemView.findViewById(R.id.iv_like_button)
         private val traductionButtonView: ImageView = itemView.findViewById(R.id.btn_traduct)
 
-        override fun bind(post: Post) {
-            userCreatorNameView.text = post.userCreator.userName
+        override fun bind(obj: Post) {
+            userCreatorNameView.text = obj.userCreator.userName
             //BUSCANDO A IMAGEM DO USUÁRIO ATRAVÉS DA URL, E INSERINDO NA RESPECTIVA IMAGE VIEW
-            if(post.userCreator?.profilePhoto != null) {
+            if(obj.userCreator.profilePhoto != null) {
                 Glide
                     .with(userCreatorProfilePhotoView)
-                    .load(post.userCreator.profilePhoto)
-                    .into(userCreatorProfilePhotoView);
+                    .load(obj.userCreator.profilePhoto)
+                    .into(userCreatorProfilePhotoView)
             }
-            textContentView.text = post.textContent
-            createdAtView.text = post.createdAt
-            totalCommentsView.text = post.totalComments.toString()
-            totalLikesView.text = post.totalLikes.toString()
+            textContentView.text = obj.textContent
+            createdAtView.text = obj.createdAt
+            totalCommentsView.text = obj.totalComments.toString()
+            totalLikesView.text = obj.totalLikes.toString()
 
             //EXIBINDO PATENTE DO CRIADOR DA POSTAGEM, SE ELE FOR PRO
-            when {
-                post.userCreator.patent != null -> when (post.userCreator.patent) {
-                    "noob" -> {
-                        userCreatorPatentView.setImageDrawable(
-                            ContextCompat.getDrawable(
-                                activity,
-                                R.drawable.classe_noob))
-                    }
-                    "beginner" -> {
-                        userCreatorPatentView.setImageDrawable(
-                            ContextCompat.getDrawable(
-                                activity,
-                                R.drawable.classe_beginner))
-                    }
-                    "amateur" -> {
-                        userCreatorPatentView.setImageDrawable(
-                            ContextCompat.getDrawable(
-                                activity,
-                                R.drawable.classe_amateur))
-                    }
-                    "experient" -> {
-                        userCreatorPatentView.setImageDrawable(
-                            ContextCompat.getDrawable(
-                                activity,
-                                R.drawable.classe_experient))
-                    }
-                    "veteran" -> {
-                        userCreatorPatentView.setImageDrawable(
-                            ContextCompat.getDrawable(
-                                activity,
-                                R.drawable.classe_veteran))
-                    }
-                    else -> {
-                        userCreatorPatentView.setImageDrawable(
-                            ContextCompat.getDrawable(
-                                activity,
-                                R.drawable.classe_master))
-                    }
-                }
+            if(obj.userCreator.patent != null){
+                putPatentImage(obj.userCreator.patent!!)
             }
 
             //BUSCANDO A IMAGEM DA POSTAGEM ATRAVÉS DA URL, E INSERINDO NA RESPECTIVA IMAGE VIEW
@@ -131,25 +94,83 @@ class PostsAdapter(private val posts: List<Post>, activity: FragmentActivity) : 
             if(imageContentView != null) {
                 Glide
                     .with(imageContentView)
-                    .load(post.imageContent)
-                    .into(imageContentView);
+                    .load(obj.imageContent)
+                    .into(imageContentView)
             }
 
             //MARCANDO CURTIDA, CASO O USUÁRIO JÁ TENHA COMENTADO NESSA POSTAGEM
-            if(post.liked){
+            if(obj.liked){
                 likeButtonView.setImageDrawable(
                     ContextCompat.getDrawable(
                     activity,
                     R.drawable.ic_filled_heart_24))
             }
 
+            //IR PARA A PÁGINA DO CRIADOR DA POSTAGEM, QUANDO CLICAMOS EM SUA IMAGEM, OU NOME
+            userCreatorProfilePhotoView.setOnClickListener { goToUserCreatorActivity(obj.userCreator.idUser) }
+            userCreatorNameView.setOnClickListener { goToUserCreatorActivity(obj.userCreator.idUser) }
+
             //QUANDO O USUÁRIO CLICAR NO BOTÃO DE TRADUÇÃO, A POSTAGEM SERÁ TRADUZIDA PARA SEU IDIOMA NATIVO
-            traductionButtonView.setOnClickListener { handleTraduct(post) }
+            traductionButtonView.setOnClickListener { handleTraduct(obj) }
 
             //QUANDO O USUÁRIO CLICAR NO BOTÃO DE LIKE, PODERÁ CURTIR, OU DESCUTIR UMA POSTAGEM
-            likeButtonView.setOnClickListener { handleLikeOrUnlike(post) }
+            likeButtonView.setOnClickListener { handleLikeOrUnlike(obj) }
         }
-        fun handleTraduct(post: Post){
+
+        private fun putPatentImage(patent: String){
+            when (patent) {
+                "noob" -> {
+                    userCreatorPatentView.setImageDrawable(
+                        ContextCompat.getDrawable(
+                            activity,
+                            R.drawable.classe_noob
+                        )
+                    )
+                }
+                "beginner" -> {
+                    userCreatorPatentView.setImageDrawable(
+                        ContextCompat.getDrawable(
+                            activity,
+                            R.drawable.classe_beginner
+                        )
+                    )
+                }
+                "amateur" -> {
+                    userCreatorPatentView.setImageDrawable(
+                        ContextCompat.getDrawable(
+                            activity,
+                            R.drawable.classe_amateur
+                        )
+                    )
+                }
+                "experient" -> {
+                    userCreatorPatentView.setImageDrawable(
+                        ContextCompat.getDrawable(
+                            activity,
+                            R.drawable.classe_experient
+                        )
+                    )
+                }
+                "veteran" -> {
+                    userCreatorPatentView.setImageDrawable(
+                        ContextCompat.getDrawable(
+                            activity,
+                            R.drawable.classe_veteran
+                        )
+                    )
+                }
+                else -> {
+                    userCreatorPatentView.setImageDrawable(
+                        ContextCompat.getDrawable(
+                            activity,
+                            R.drawable.classe_master
+                        )
+                    )
+                }
+            }
+        }
+
+        private fun handleTraduct(post: Post){
             //VERIFICANDO SE O TEXTO QUE ESTÁ ESCRITO JÁ É UMA TRADUÇÃO
             if (textContentView.text == post.textContent){
                 //VERIFICANDO SE ESTE POST JÁ POSSUI UMA TRADUÇÃO
@@ -163,7 +184,7 @@ class PostsAdapter(private val posts: List<Post>, activity: FragmentActivity) : 
             }
         }
 
-        fun translateText(post: Post){
+        private fun translateText(post: Post){
             //RESGATANDO IDIOMA NATIVO DO USUÁRIO LOGADO
             val userLoggedFile = activity.getSharedPreferences(
                 "userLogged", Context.MODE_PRIVATE)
@@ -179,7 +200,7 @@ class PostsAdapter(private val posts: List<Post>, activity: FragmentActivity) : 
                         //EFETIVAR REQUISIÇÃO DE TRADUÇÃO
                         val dataToTranslate = DataToTranslate(
                             nativeLanguageTranslatorName,
-                            arrayListOf<String>(post.textContent)
+                            arrayListOf(post.textContent)
                         )
 
                         val call: Call<List<String>> = routerInterface.traductText(idToken, dataToTranslate)
@@ -206,7 +227,7 @@ class PostsAdapter(private val posts: List<Post>, activity: FragmentActivity) : 
                 }
         }
 
-        fun handleLikeOrUnlike(post: Post){
+        private fun handleLikeOrUnlike(post: Post){
 //            RESGATANDO IDTOKEN DO USUÁRIO LOGADO
             auth.currentUser?.getIdToken(true)
                 ?.addOnSuccessListener { result ->
@@ -214,7 +235,7 @@ class PostsAdapter(private val posts: List<Post>, activity: FragmentActivity) : 
 
                     if (idToken != null) {
                         //VERIFICANDO SE O USUÁRIO IRÁ CURTIR, OU DESCURTIR A POSTAGEM
-                        var call: Call<MySqlResult>?
+                        val call: Call<MySqlResult>?
                         var wasLiked = false
                             if (post.liked){
                                 call = routerInterface.unlikePost(idToken, post.idPost)
@@ -225,6 +246,7 @@ class PostsAdapter(private val posts: List<Post>, activity: FragmentActivity) : 
 
                         //INTERCEPTANDO RESPOSTA DA CURTIDA
                         call.enqueue(object : Callback<MySqlResult> {
+                            @SuppressLint("SetTextI18n")
                             override fun onResponse(call: Call<MySqlResult>, response: Response<MySqlResult>) {
                                 if (response.isSuccessful) {
                                     if (wasLiked){
@@ -260,6 +282,13 @@ class PostsAdapter(private val posts: List<Post>, activity: FragmentActivity) : 
                         })
                     }
                 }
+        }
+
+        private fun goToUserCreatorActivity(idUser:Int) {
+            val targetPage = Intent(activity, PerfilActivity::class.java)
+
+            targetPage.putExtra("idUser", idUser);
+            activity.startActivity(targetPage)
         }
     }
 }

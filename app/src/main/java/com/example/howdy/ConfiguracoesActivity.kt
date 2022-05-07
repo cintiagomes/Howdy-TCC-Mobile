@@ -22,11 +22,7 @@ class ConfiguracoesActivity : AppCompatActivity() {
         val arrowButton = findViewById<ImageButton>(R.id.arrow_button)
         val buttonExcluir = findViewById<Button>(R.id.buttonExcluir)
 
-        arrowButton.setOnClickListener{
-            val arrowButton =
-                Intent(this, paginaDePostagem::class.java)
-            startActivity(arrowButton)
-        }
+        arrowButton.setOnClickListener{ finish() }
 
         buttonExcluir.setOnClickListener{
 

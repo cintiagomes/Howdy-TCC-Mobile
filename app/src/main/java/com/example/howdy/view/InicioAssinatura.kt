@@ -16,11 +16,7 @@ class InicioAssinatura : AppCompatActivity() {
 
         val arrowButton = findViewById<ImageButton>(R.id.arrow_button)
 
-        arrowButton.setOnClickListener{
-            val arrowButton =
-                Intent(this, paginaDePostagem::class.java)
-            startActivity(arrowButton)
-        }
+        arrowButton.setOnClickListener{ finish() }
 
     }
 

@@ -58,22 +58,23 @@
         android:orientation="vertical">
 
         <ImageView
-            android:layout_width="wrap_content"
+            android:id="@+id/iv_background_image"
+            android:layout_width="match_parent"
             android:layout_height="160dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:src="@drawable/perfil_principal" />
+            android:src="@drawable/background" />
 
         <de.hdodenhof.circleimageview.CircleImageView
             xmlns:app="http://schemas.android.com/apk/res-auto"
             android:layout_width="89dp"
             android:layout_height="82dp"
-            android:id="@+id/userImage"
+            android:id="@+id/civ_profile_photo"
             android:layout_gravity="center"
             android:layout_marginTop="-40dp"
             android:elevation="5dp"
-            android:src="@drawable/perfil"/>
+            android:src="@drawable/ic_logo_app"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -86,12 +87,12 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Helena Pena"
             android:fontFamily="@font/roboto_bold"
             android:gravity="center"
             android:textSize="18dp"
             android:layout_marginTop="10dp"
-            android:textColor="#303135"/>
+            android:textColor="#303135"
+            android:id="@+id/tv_user_name"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -114,10 +115,10 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Inglês"
                     android:fontFamily="@font/roboto"
                     android:textColor="#6A7DFF"
-                    android:textSize="14dp"/>
+                    android:textSize="14dp"
+                    android:id="@+id/tv_target_language_name"/>
 
             </LinearLayout>
 
@@ -135,10 +136,10 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Português"
                     android:fontFamily="@font/roboto"
                     android:textColor="#6A7DFF"
-                    android:textSize="14dp"/>
+                    android:textSize="14dp"
+                    android:id="@+id/tv_native_language_name"/>
 
             </LinearLayout>
 
@@ -150,9 +151,9 @@
             android:layout_marginTop="10dp"
             android:fontFamily="@font/roboto_light"
             android:gravity="center"
-            android:text="Olá! Me chamo Helena, XXXXX é meu idioma nativo, e desejo aprender a me comunicar em XXXX."
             android:textColor="#303135"
-            android:textSize="14dp" />
+            android:textSize="14dp"
+            android:id="@+id/tv_description"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -183,8 +184,8 @@
                     android:background="@drawable/buttom_borda"
                     android:backgroundTint="#336A7DFF"
                     android:gravity="center"
-                    android:text="2000 XP"
-                    android:textColor="#6A7DFF"/>
+                    android:textColor="#6A7DFF"
+                    android:id="@+id/tv_total_xp"/>
 
             </LinearLayout>
 

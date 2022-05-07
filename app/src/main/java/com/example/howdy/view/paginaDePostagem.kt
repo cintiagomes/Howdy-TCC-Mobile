@@ -1,5 +1,6 @@
 package com.example.howdy.view
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
@@ -50,7 +51,14 @@ class paginaDePostagem : AppCompatActivity() {
         when (item.itemId){
             R.id.menu_perfil -> {
                 Toast.makeText(this, "Perfil", Toast.LENGTH_SHORT).show()
-                perfil()
+
+                //RESGATANDO ID DO USUÁRIO LOGADO
+                val userLoggedFile = this.getSharedPreferences(
+                    "userLogged", Context.MODE_PRIVATE)
+
+                val idUser = userLoggedFile.getInt("idUser", 0)
+
+                perfil(idUser)
             }
             R.id.menu_ajuda -> {
                 Toast.makeText(this, "Ajuda", Toast.LENGTH_SHORT).show()
@@ -98,8 +106,10 @@ class paginaDePostagem : AppCompatActivity() {
         startActivity(assinar)
     }
 
-    private fun perfil() {
+    private fun perfil(idUser:Int) {
         val targetPage = Intent(this, PerfilActivity::class.java)
+
+        targetPage.putExtra("idUser", idUser)
         startActivity(targetPage)
     }
 

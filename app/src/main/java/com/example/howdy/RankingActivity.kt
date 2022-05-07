@@ -20,11 +20,7 @@ class RankingActivity : AppCompatActivity() {
 
         val arrowButton = findViewById<ImageButton>(R.id.arrow_button_voltar)
 
-        arrowButton.setOnClickListener{
-            val arrowButton =
-                Intent(this, paginaDePostagem::class.java)
-            startActivity(arrowButton)
-        }
+        arrowButton.setOnClickListener{ finish() }
 
         val tabLayout = findViewById<TabLayout>(R.id.tabs_ranking)
         val viewpager2 = findViewById<ViewPager2>(R.id.viewpager3)

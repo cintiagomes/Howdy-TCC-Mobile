@@ -1,13 +1,13 @@
 package com.example.howdy.model.PostTypes
 import com.example.howdy.model.UserTypes.UserCreator
 
-class Post(
-    userCreator: UserCreator,
+class PostWithoutCreator(
+    userCreator: UserCreator?,
     idPost: Int,
     imageContent: String?,
     createdAt: String,
     textContent: String,
-    translatedTextContent: String?,
+    translatedTextContent: String,
     isPublic: Int,
     idTargetLanguage: Int,
     idPostCategory: Int,

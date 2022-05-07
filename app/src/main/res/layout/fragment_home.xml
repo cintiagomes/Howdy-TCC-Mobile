@@ -284,7 +284,7 @@
             </HorizontalScrollView>
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler_postagens"
+                android:id="@+id/recycler_user_posts"
                 android:layout_marginTop="20dp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:listitem="@layout/item_post_with_image"
