@@ -7,6 +7,7 @@ class Post(
     imageContent: String?,
     createdAt: String,
     textContent: String,
+    translatedTextContent: String,
     isPublic: Int,
     idTargetLanguage: Int,
     idPostCategory: Int,
@@ -24,6 +25,7 @@ class Post(
     var imageContent = imageContent
     var createdAt = createdAt
     var textContent = textContent
+    var translatedTextContent = translatedTextContent
     var isPublic = isPublic
     var idTargetLanguage = idTargetLanguage
     var idPostCategory = idPostCategory

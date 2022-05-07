@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#F5F8FA">
+
+    <LinearLayout
+        android:id="@+id/postagens_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:orientation="vertical"
+        android:background="#F5F8FA">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/user_creator_profile_photo_view"
+                android:layout_width="49dp"
+                android:layout_height="42.77dp"
+                android:layout_gravity="top"
+                android:layout_marginEnd="5dp"
+                android:src="@drawable/ic_logo_app" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/user_creator_name_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_medium"
+                        android:text="Jenny Wilson"
+                        android:textColor="#303135"
+                        android:textSize="16sp" />
+
+                    <ImageView
+                        android:layout_width="9dp"
+                        android:layout_height="9dp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="10dp"
+                        android:src="@drawable/ic_score_24" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="2dp"
+                        android:text="26 Jan"
+                        android:textColor="#99000000"
+                        android:textSize="13sp"
+                        android:id="@+id/created_at_view"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/text_content_view"
+                    android:layout_width="293dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="25dp"
+                    android:text="Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. "
+                    android:textColor="#303135"
+                    android:textSize="14sp" />
+
+                <ImageButton
+                    android:id="@+id/btn_traduct"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_width="49dp"
+                    android:layout_height="42.77dp"
+                    android:layout_gravity="top"
+                    android:layout_marginEnd="5dp"
+                    android:backgroundTint="@color/purple_200"
+                    android:drawableBottom="@drawable/traduction"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="#F5F8FA"
+                android:src="@drawable/ic_comentario_24" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="10sp"
+                android:fontFamily="@font/roboto"
+                android:text="22 mil"
+                android:textColor="#303135"
+                android:textSize="12sp"
+                android:id="@+id/total_comments_view"/>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="80dp"
+                android:background="#F5F8FA"
+                android:src="@drawable/ic_unfilled_heart_24"
+                android:id="@+id/iv_like_button"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="10sp"
+                android:fontFamily="@font/roboto"
+                android:text="1,5 mil"
+                android:textColor="#303135"
+                android:textSize="12sp"
+                android:id="@+id/total_likes_view"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

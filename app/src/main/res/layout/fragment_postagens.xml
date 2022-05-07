@@ -78,6 +78,7 @@
                         android:textColor="#303135"
                         android:textSize="14sp" />
 
+
                 </LinearLayout>
 
             </LinearLayout>
@@ -115,7 +116,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="80dp"
                     android:background="#F5F8FA"
-                    android:src="@drawable/ic_heart_24" />
+                    android:src="@drawable/ic_filled_heart_24" />
 
                 <TextView
                     android:layout_width="wrap_content"

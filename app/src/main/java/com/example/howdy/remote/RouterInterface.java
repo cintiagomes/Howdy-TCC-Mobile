@@ -1,11 +1,11 @@
 package com.example.howdy.remote;
 
 import com.example.howdy.model.MySqlResult;
-import com.example.howdy.model.PostTypes.DataToCreatePostWithoutImage;
 import com.example.howdy.model.PostTypes.Post;
 import com.example.howdy.model.PostTypes.PostCategory;
 import com.example.howdy.model.PostTypes.PostCommentaryTypes.Commentary;
 import com.example.howdy.model.PostTypes.PostCommentaryTypes.DataToCreateCommentary;
+import com.example.howdy.model.TraductionTypes.DataToTranslate;
 import com.example.howdy.model.UserTypes.User;
 import com.example.howdy.model.UserTypes.DataToCreateUser;
 
@@ -108,6 +108,13 @@ public interface RouterInterface {
     @GET("/postCategories")
     Call<List<PostCategory>>getPostCategories(
             @Header("Authorization") String idToken
+    );
+
+    /** ROTA DE TRADUÇÃO **/
+    @POST("/traductions")
+    Call<List<String>>traductText(
+            @Header("Authorization") String idToken,
+            @Body DataToTranslate dataToTranslate
     );
 
     /** ROTAS DE COMENTÁRIOS DE POSTAGENS **/

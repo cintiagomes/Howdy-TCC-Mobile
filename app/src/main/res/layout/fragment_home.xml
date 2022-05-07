@@ -194,7 +194,7 @@
                         android:gravity="center"
                         android:layout_marginStart="15dp"
                         android:background="@drawable/borda_seguindo"
-                        android:drawableTop="@drawable/ic_heart_24"
+                        android:drawableTop="@drawable/ic_filled_heart_24"
                         android:fontFamily="@font/roboto"
                         android:paddingTop="12dp"
                         android:text="Seguindo"
@@ -238,7 +238,7 @@
                 android:id="@+id/recycler_postagens"
                 android:layout_marginTop="20dp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/item_postagens"
+                tools:listitem="@layout/item_post_with_image"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
