@@ -1,14 +1,16 @@
 package com.example.howdy.view
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
+import com.bumptech.glide.Glide
 import com.example.howdy.R
 import com.example.howdy.model.PostTypes.Post
 import com.example.howdy.remote.APIUtil
@@ -25,6 +27,8 @@ import retrofit2.Response
 class HomeFragment : Fragment() {
     private lateinit var routerInterface: RouterInterface
     private lateinit var auth: FirebaseAuth
+
+    private lateinit var userLoggedProfilePhotoView: ImageView
     private lateinit var popularButton: TextView
     private lateinit var friendsButton: TextView
     private lateinit var doubtsButton: TextView
@@ -33,7 +37,8 @@ class HomeFragment : Fragment() {
     private lateinit var gamesButton: TextView
     private lateinit var moviesButton: TextView
     private lateinit var modaButton: TextView
-    private var currentlyCategory: String = ""
+
+    private var currentCategory: String = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -47,6 +52,7 @@ class HomeFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        userLoggedProfilePhotoView = iv_user_logged_profile_photo
         popularButton = tv_popular_button
         friendsButton = tv_friends_button
         doubtsButton = tv_doubts_button
@@ -55,6 +61,21 @@ class HomeFragment : Fragment() {
         gamesButton = tv_games_button
         moviesButton = tv_movies_button
         modaButton = tv_moda_button
+
+        /** SUBSTITUINDO IMAGEM PADRÃO PELA FOTO DE PERFIL DO USUÁRIO **/
+        //RESGATANDO FOTO DE PERFIL DO USUÁRIO LOGADO
+        val userLoggedFile = requireActivity().getSharedPreferences(
+            "userLogged", Context.MODE_PRIVATE)
+
+        val profilePhoto = userLoggedFile.getString("profilePhoto", "")
+        println("DEBUGANDO PROFILE PHOTO" + profilePhoto)
+
+        if (profilePhoto != null) {
+            Glide
+                .with(userLoggedProfilePhotoView)
+                .load(profilePhoto)
+                .into(userLoggedProfilePhotoView);
+        }
 
         //COLOCANDO UM OUVINTE EM CADA BOTÃO, PARA QUE A CATEGORIA DAS POSTAGENS SEJA ALTERADA
         putEventListenerInCategoryButtons()
@@ -178,13 +199,13 @@ class HomeFragment : Fragment() {
 
 
     private fun findAndListPosts(categorySelected: String) {
-        if (categorySelected == currentlyCategory)
+        if (categorySelected == currentCategory)
             return Toast.makeText(
                         activity,"Você já está nessa categoria.",
                         Toast.LENGTH_LONG
                     ).show()
 
-        currentlyCategory = categorySelected
+        currentCategory = categorySelected
 
         //RESGATANDO IDTOKEN ATUAL DO USUÁRIO
         auth = FirebaseAuth.getInstance()

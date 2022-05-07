@@ -60,6 +60,7 @@ class PostsAdapter(private val posts: List<Post>, activity: FragmentActivity) : 
         private val routerInterface: RouterInterface = APIUtil.getInterface()
 
         private val userCreatorNameView: TextView = itemView.findViewById(R.id.user_creator_name_view)
+        private val userCreatorPatentView: ImageView = itemView.findViewById(R.id.iv_user_creator_patent)
         private val userCreatorProfilePhotoView: ImageView = itemView.findViewById(R.id.user_creator_profile_photo_view)
         private val textContentView: TextView = itemView.findViewById(R.id.text_content_view)
         private val createdAtView: TextView = itemView.findViewById(R.id.created_at_view)
@@ -82,6 +83,49 @@ class PostsAdapter(private val posts: List<Post>, activity: FragmentActivity) : 
             createdAtView.text = post.createdAt
             totalCommentsView.text = post.totalComments.toString()
             totalLikesView.text = post.totalLikes.toString()
+
+            //EXIBINDO PATENTE DO CRIADOR DA POSTAGEM, SE ELE FOR PRO
+            when {
+                post.userCreator.patent != null -> when (post.userCreator.patent) {
+                    "noob" -> {
+                        userCreatorPatentView.setImageDrawable(
+                            ContextCompat.getDrawable(
+                                activity,
+                                R.drawable.classe_noob))
+                    }
+                    "beginner" -> {
+                        userCreatorPatentView.setImageDrawable(
+                            ContextCompat.getDrawable(
+                                activity,
+                                R.drawable.classe_beginner))
+                    }
+                    "amateur" -> {
+                        userCreatorPatentView.setImageDrawable(
+                            ContextCompat.getDrawable(
+                                activity,
+                                R.drawable.classe_amateur))
+                    }
+                    "experient" -> {
+                        userCreatorPatentView.setImageDrawable(
+                            ContextCompat.getDrawable(
+                                activity,
+                                R.drawable.classe_experient))
+                    }
+                    "veteran" -> {
+                        userCreatorPatentView.setImageDrawable(
+                            ContextCompat.getDrawable(
+                                activity,
+                                R.drawable.classe_veteran))
+                    }
+                    else -> {
+                        userCreatorPatentView.setImageDrawable(
+                            ContextCompat.getDrawable(
+                                activity,
+                                R.drawable.classe_master))
+                    }
+                }
+            }
+
             //BUSCANDO A IMAGEM DA POSTAGEM ATRAVÉS DA URL, E INSERINDO NA RESPECTIVA IMAGE VIEW
             println(imageContentView)
             if(imageContentView != null) {
