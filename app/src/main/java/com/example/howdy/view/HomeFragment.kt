@@ -30,6 +30,9 @@ class HomeFragment : Fragment() {
     private lateinit var doubtsButton: TextView
     private lateinit var sportsButton: TextView
     private lateinit var newsButton: TextView
+    private lateinit var gamesButton: TextView
+    private lateinit var moviesButton: TextView
+    private lateinit var modaButton: TextView
     private var currentlyCategory: String = ""
 
     override fun onCreateView(
@@ -49,6 +52,9 @@ class HomeFragment : Fragment() {
         doubtsButton = tv_doubts_button
         sportsButton = tv_sports_button
         newsButton = tv_news_button
+        gamesButton = tv_games_button
+        moviesButton = tv_movies_button
+        modaButton = tv_moda_button
 
         //COLOCANDO UM OUVINTE EM CADA BOTÃO, PARA QUE A CATEGORIA DAS POSTAGENS SEJA ALTERADA
         putEventListenerInCategoryButtons()
@@ -109,6 +115,39 @@ class HomeFragment : Fragment() {
                 findAndListPosts("2")
             }
         }
+
+        gamesButton.setOnClickListener { view ->
+            run {
+                unselectAllButtonsCategory()
+
+                gamesButton.background =
+                    ContextCompat.getDrawable(requireActivity(), R.drawable.selected_games_background)
+
+                findAndListPosts("3")
+            }
+        }
+
+        moviesButton.setOnClickListener { view ->
+            run {
+                unselectAllButtonsCategory()
+
+                moviesButton.background =
+                    ContextCompat.getDrawable(requireActivity(), R.drawable.selected_movies_background)
+
+                findAndListPosts("4")
+            }
+        }
+
+        modaButton.setOnClickListener { view ->
+            run {
+                unselectAllButtonsCategory()
+
+                modaButton.background =
+                    ContextCompat.getDrawable(requireActivity(), R.drawable.selected_moda_background)
+
+                findAndListPosts("5")
+            }
+        }
     }
 
     private fun unselectAllButtonsCategory(){
@@ -126,6 +165,15 @@ class HomeFragment : Fragment() {
 
         newsButton.background =
             ContextCompat.getDrawable(requireActivity(), R.drawable.unselected_news_background)
+
+        gamesButton.background =
+            ContextCompat.getDrawable(requireActivity(), R.drawable.unselected_games_background)
+
+        moviesButton.background =
+            ContextCompat.getDrawable(requireActivity(), R.drawable.unselected_movies_background)
+
+        modaButton.background =
+            ContextCompat.getDrawable(requireActivity(), R.drawable.unselected_moda_background)
     }
 
 

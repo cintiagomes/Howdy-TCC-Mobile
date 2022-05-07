@@ -65,18 +65,27 @@
         <entry key="..\:/Users/gabri/HOWDY-TCC-MOBILE/app/src/main/res/layout/fragment_second.xml" value="0.17083333333333334" />
         <entry key="..\:/Users/gabri/HOWDY-TCC-MOBILE/app/src/main/res/layout/item_contact.xml" value="0.19114583333333332" />
         <entry key="..\:/Users/gabri/HOWDY-TCC-MOBILE/app/src/main/res/menu/menu.xml" value="0.10989583333333333" />
+        <entry key="..\:/Users/gabri/Howdy-TCC-MOBILE/app/src/main/res/drawable/ic_games_24.xml" value="0.152" />
         <entry key="..\:/Users/gabri/Howdy-TCC-MOBILE/app/src/main/res/drawable/ic_heart_24.xml" value="0.1275" />
         <entry key="..\:/Users/gabri/Howdy-TCC-MOBILE/app/src/main/res/drawable/ic_key_24.xml" value="0.17" />
         <entry key="..\:/Users/gabri/Howdy-TCC-MOBILE/app/src/main/res/drawable/ic_library_24.xml" value="0.17" />
+        <entry key="..\:/Users/gabri/Howdy-TCC-MOBILE/app/src/main/res/drawable/ic_moda_24.xml" value="0.152" />
+        <entry key="..\:/Users/gabri/Howdy-TCC-MOBILE/app/src/main/res/drawable/ic_movies_24.xml" value="0.152" />
         <entry key="..\:/Users/gabri/Howdy-TCC-MOBILE/app/src/main/res/drawable/ic_people_24.xml" value="0.17" />
         <entry key="..\:/Users/gabri/Howdy-TCC-MOBILE/app/src/main/res/drawable/selected_doubts_background.xml" value="0.155" />
         <entry key="..\:/Users/gabri/Howdy-TCC-MOBILE/app/src/main/res/drawable/selected_friends_background.xml" value="0.155" />
+        <entry key="..\:/Users/gabri/Howdy-TCC-MOBILE/app/src/main/res/drawable/selected_games_background.xml" value="0.152" />
+        <entry key="..\:/Users/gabri/Howdy-TCC-MOBILE/app/src/main/res/drawable/selected_moda_background.xml" value="0.152" />
+        <entry key="..\:/Users/gabri/Howdy-TCC-MOBILE/app/src/main/res/drawable/selected_movies_background.xml" value="0.152" />
         <entry key="..\:/Users/gabri/Howdy-TCC-MOBILE/app/src/main/res/drawable/selected_news_background.xml" value="0.155" />
         <entry key="..\:/Users/gabri/Howdy-TCC-MOBILE/app/src/main/res/drawable/selected_popular_background.xml" value="0.155" />
         <entry key="..\:/Users/gabri/Howdy-TCC-MOBILE/app/src/main/res/drawable/selected_sports_background.xml" value="0.155" />
         <entry key="..\:/Users/gabri/Howdy-TCC-MOBILE/app/src/main/res/drawable/translate_button_background.xml" value="0.155" />
         <entry key="..\:/Users/gabri/Howdy-TCC-MOBILE/app/src/main/res/drawable/unselected_doubts_background.xml" value="0.155" />
         <entry key="..\:/Users/gabri/Howdy-TCC-MOBILE/app/src/main/res/drawable/unselected_friends_background.xml" value="0.1245" />
+        <entry key="..\:/Users/gabri/Howdy-TCC-MOBILE/app/src/main/res/drawable/unselected_games_background.xml" value="0.152" />
+        <entry key="..\:/Users/gabri/Howdy-TCC-MOBILE/app/src/main/res/drawable/unselected_moda_background.xml" value="0.152" />
+        <entry key="..\:/Users/gabri/Howdy-TCC-MOBILE/app/src/main/res/drawable/unselected_movies_background.xml" value="0.152" />
         <entry key="..\:/Users/gabri/Howdy-TCC-MOBILE/app/src/main/res/drawable/unselected_news_background.xml" value="0.17" />
         <entry key="..\:/Users/gabri/Howdy-TCC-MOBILE/app/src/main/res/drawable/unselected_popular_background.xml" value="0.155" />
         <entry key="..\:/Users/gabri/Howdy-TCC-MOBILE/app/src/main/res/drawable/unselected_sports_background.xml" value="0.155" />
