@@ -71,7 +71,6 @@ class PostagensFragment(user: UserCollectedWithId) : Fragment() {
 
 
                                 for (i in postListWithoutCreatorList.indices) {
-                                    println("DEBUGANDO LIKED" + postListWithoutCreatorList[i].liked)
                                     val postFormatted = Post(
                                         userCreator,
                                         postListWithoutCreatorList[i].idPost,
@@ -88,7 +87,7 @@ class PostagensFragment(user: UserCollectedWithId) : Fragment() {
                                         postListWithoutCreatorList[i].postCategoryIconImage,
                                         postListWithoutCreatorList[i].hexadecimalColor,
                                         postListWithoutCreatorList[i].totalLikes,
-                                        postListWithoutCreatorList[i].liked == true,
+                                        postListWithoutCreatorList[i].liked,
                                         postListWithoutCreatorList[i].totalComments
                                     )
 
