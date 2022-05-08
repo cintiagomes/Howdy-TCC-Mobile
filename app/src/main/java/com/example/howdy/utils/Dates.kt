@@ -21,7 +21,7 @@ fun convertBackEndDateTimeFormatToSocialMediaFormat(backendDateTime: Date) : Str
     val oneHour = 3600000
     val oneDay = 86400000
     val oneWeek = 604800016.56
-    val oneMonth = 1702967296
+    val oneMonth = 2629743833.3
     val oneYear = 31557600000
 
     if (distanceTimeInMilliseconds < oneMinute) {
