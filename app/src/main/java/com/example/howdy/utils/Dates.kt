@@ -45,13 +45,11 @@ fun convertBackEndDateTimeFormatToSocialMediaFormat(backendDateTime: Date) : Str
 
     if (distanceTimeInMilliseconds < oneMonth){
         val distanceInWeeks = (distanceTimeInMilliseconds / oneWeek).toInt()
-        println("DEBUGANDO DEU SEMANAL" + distanceTimeInMilliseconds)
         return "Há $distanceInWeeks semana" + if(distanceInWeeks > 1) "s." else "."
     }
 
     if (distanceTimeInMilliseconds < oneYear){
         val distanceInMonths = (distanceTimeInMilliseconds / oneMonth).toInt()
-        println("DEBUGANDO $distanceInMonths $distanceTimeInMilliseconds $oneMonth")
         return "Há $distanceInMonths " + if(distanceInMonths > 1) "meses." else "mês."
     }
 
