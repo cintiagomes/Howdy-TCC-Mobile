@@ -13,14 +13,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Howdy"
-        android:name="androidx.multidex.MultiDexApplication"
         android:usesCleartextTraffic="true"
         tools:targetApi="n">
         <activity
             android:name=".ChartTestsActivity"
             android:exported="false" />
         <activity
-            android:name=".ConfiguracoesActivity"
+            android:name=".ConfiguracaoActivity"
             android:exported="false" />
         <activity
             android:name=".RankingActivity"
@@ -36,9 +35,9 @@
         <activity
             android:name=".CadastroActivity"
             android:exported="false" />
-        <activity
-            android:name=".view.paginaDePostagem"
-            android:exported="false" />
+         <activity
+         android:name=".view.paginaDePostagem"
+         android:exported="false" />
         <activity
             android:name=".view.CodigoDeRecuperacao"
             android:exported="false" />

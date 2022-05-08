@@ -8,14 +8,13 @@ import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
+import com.example.howdy.ConfiguracaoActivity
 import com.example.howdy.R
 import com.example.howdy.utils.FragmentTypeAdapter
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import android.content.SharedPreferences
-import com.example.howdy.ConfiguracoesActivity
 import com.example.howdy.RankingActivity
 
 
@@ -92,7 +91,7 @@ class paginaDePostagem : AppCompatActivity() {
     }
 
     private fun configuracoes() {
-        val configuracoes = Intent(this, ConfiguracoesActivity::class.java)
+        val configuracoes = Intent(this, ConfiguracaoActivity::class.java)
         startActivity(configuracoes)
     }
 
