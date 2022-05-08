@@ -1,11 +1,12 @@
 package com.example.howdy.model.PostTypes
 import com.example.howdy.model.UserTypes.UserCreator
+import java.util.*
 
 class PostWithoutCreator(
     userCreator: UserCreator?,
     idPost: Int,
     imageContent: String?,
-    createdAt: String,
+    createdAt: Date,
     textContent: String,
     translatedTextContent: String,
     isPublic: Int,

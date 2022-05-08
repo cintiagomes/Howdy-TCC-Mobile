@@ -21,6 +21,7 @@ import com.example.howdy.remote.APIUtil
 import com.example.howdy.remote.RouterInterface
 import com.example.howdy.view.PerfilActivity
 import com.google.firebase.auth.FirebaseAuth
+import convertBackEndDateTimeFormatToSocialMediaFormat
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -80,7 +81,11 @@ class PostsAdapter(private val posts: List<Post>, private val activity: Fragment
                     .into(userCreatorProfilePhotoView)
             }
             textContentView.text = obj.textContent
-            createdAtView.text = obj.createdAt
+
+            //FORMATANDO DATA PARA INSERIR NA TELA
+            val formattedCreatedAt = convertBackEndDateTimeFormatToSocialMediaFormat(obj.createdAt)
+            createdAtView.text = formattedCreatedAt
+
             totalCommentsView.text = obj.totalComments.toString()
             totalLikesView.text = obj.totalLikes.toString()
 
