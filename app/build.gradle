@@ -5,7 +5,6 @@ apply plugin: 'kotlin-android-extensions'
 android {
     compileSdk 32
 
-    buildFeatures{viewBinding true}
     buildFeatures {
         viewBinding = true
     }
@@ -70,6 +69,9 @@ dependencies {
     //BIBLIOTECA PARA OBTER IMAGEM A PARTIR DE SUA URL
     implementation 'com.github.bumptech.glide:glide:4.13.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.13.0'
+
+    //BIBLIOTECA PARA A CRIAÇÃO DE GRÁFICOS
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 }
 
 apply plugin: 'com.google.gms.google-services'
