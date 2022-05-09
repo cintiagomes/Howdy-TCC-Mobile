@@ -106,8 +106,9 @@
             android:orientation="horizontal">
 
             <ImageButton
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="23dp"
+                android:layout_height="23dp"
+                android:scaleType="fitCenter"
                 android:background="#F5F8FA"
                 android:src="@drawable/ic_comentario_24" />
 
