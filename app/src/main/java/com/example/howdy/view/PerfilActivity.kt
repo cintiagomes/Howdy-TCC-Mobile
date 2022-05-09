@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
 import com.example.howdy.R
@@ -22,7 +23,6 @@ import com.jjoe64.graphview.series.DataPoint
 import com.jjoe64.graphview.series.LineGraphSeries
 import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.activity_perfil.*
-import kotlinx.android.synthetic.main.item_ranking.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -43,6 +43,7 @@ class PerfilActivity : AppCompatActivity() {
     private lateinit var descriptionView: TextView
     private lateinit var totalXpView: TextView
     private lateinit var graphView: GraphView
+    private lateinit var userPatentView: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,6 +68,7 @@ class PerfilActivity : AppCompatActivity() {
         nativeLanguageNameView = tv_native_language_name
         descriptionView = tv_description
         totalXpView = tv_total_xp
+        userPatentView = civ_user_patent
 
         graphView = graph
 
@@ -132,6 +134,59 @@ class PerfilActivity : AppCompatActivity() {
             }
     }
 
+    private fun putPatentImage(patent: String){
+        when (patent) {
+            "noob" -> {
+                userPatentView.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        this,
+                        R.drawable.classe_noob
+                    )
+                )
+            }
+            "beginner" -> {
+                userPatentView.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        this,
+                        R.drawable.classe_beginner
+                    )
+                )
+            }
+            "amateur" -> {
+                userPatentView.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        this,
+                        R.drawable.classe_amateur
+                    )
+                )
+            }
+            "experient" -> {
+                userPatentView.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        this,
+                        R.drawable.classe_experient
+                    )
+                )
+            }
+            "veteran" -> {
+                userPatentView.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        this,
+                        R.drawable.classe_veteran
+                    )
+                )
+            }
+            else -> {
+                userPatentView.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        this,
+                        R.drawable.classe_master
+                    )
+                )
+            }
+        }
+    }
+
     fun renderUserData(){
         userNameView.text = user.userName
         targetLanguageNameView.text = user.targetLanguageName
@@ -151,6 +206,11 @@ class PerfilActivity : AppCompatActivity() {
                 .with(backgroundImageView)
                 .load(user.backgroundImage)
                 .into(backgroundImageView)
+        }
+
+        //EXIBINDO PATENTE DO CRIADOR DA POSTAGEM, SE ELE FOR PRO
+        if(user.patent != null){
+            putPatentImage(user.patent!!)
         }
     }
 }

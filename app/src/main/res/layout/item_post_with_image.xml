@@ -103,7 +103,7 @@
             app:cardCornerRadius="20dp">
 
             <ImageView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="200dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/anime_dorohedoro"
@@ -121,8 +121,9 @@
             android:orientation="horizontal">
 
             <ImageButton
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="23dp"
+                android:layout_height="23dp"
+                android:scaleType="fitCenter"
                 android:background="#F5F8FA"
                 android:src="@drawable/ic_comentario_24" />
 
@@ -138,11 +139,12 @@
                 android:id="@+id/total_comments_view"/>
 
             <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="23dp"
+                android:layout_height="23dp"
+                android:scaleType="fitCenter"
                 android:layout_marginStart="80dp"
                 android:background="#F5F8FA"
-                android:src="@drawable/ic_unfilled_heart_24"
+                android:src="@drawable/icons_gostar"
                 android:id="@+id/iv_like_button"/>
 
             <TextView

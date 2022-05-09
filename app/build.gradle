@@ -53,7 +53,6 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
 
     //material design library
-    implementation 'com.google.android.material:material:1.5.0'
     //circle image view library
     implementation 'de.hdodenhof:circleimageview:3.1.0'
 
