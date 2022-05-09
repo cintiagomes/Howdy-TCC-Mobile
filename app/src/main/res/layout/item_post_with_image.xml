@@ -98,9 +98,8 @@
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="189dp"
+            android:layout_height="200dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/buttom_borda"
             android:src="@drawable/postagem_img"
             android:id="@+id/iv_image_content"/>
 

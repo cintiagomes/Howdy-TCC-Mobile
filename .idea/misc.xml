@@ -168,6 +168,7 @@
         <entry key="app/src/main/res/layout/activity_cadastro.xml" value="0.3234567901234568" />
         <entry key="app/src/main/res/layout/activity_cadastro_incompleto.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/layout/activity_codigo_de_recuperacao.xml" value="0.3109375" />
+        <entry key="app/src/main/res/layout/activity_configuracao.xml" value="0.4" />
         <entry key="app/src/main/res/layout/activity_configuracoes.xml" value="0.33229166666666665" />
         <entry key="app/src/main/res/layout/activity_inicio_assinatura.xml" value="0.2087463556851312" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.3515625" />
@@ -200,7 +201,7 @@
         <entry key="app/src/main/res/layout/item_atividade.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/layout/item_contact.xml" value="0.3234375" />
         <entry key="app/src/main/res/layout/item_notificacao.xml" value="0.3092485549132948" />
-        <entry key="app/src/main/res/layout/item_post_with_image.xml" value="0.17864583333333334" />
+        <entry key="app/src/main/res/layout/item_post_with_image.xml" value="0.335" />
         <entry key="app/src/main/res/layout/item_post_without_image.xml" value="0.335" />
         <entry key="app/src/main/res/layout/item_postagens.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/layout/item_ranking.xml" value="0.2578125" />
