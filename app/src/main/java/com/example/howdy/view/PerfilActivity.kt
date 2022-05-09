@@ -120,7 +120,7 @@ class PerfilActivity : AppCompatActivity() {
         targetLanguageNameView.text = user.targetLanguageName
         nativeLanguageNameView.text = user.nativeLanguageName
         descriptionView.text = user.description
-        totalXpView.text = user.totalXp.toString()
+        totalXpView.text = user.totalXp.toString() + " XP"
 
         if(user.profilePhoto != null) {
             Glide
