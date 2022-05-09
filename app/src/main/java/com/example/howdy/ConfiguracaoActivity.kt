@@ -13,6 +13,8 @@ import kotlinx.android.synthetic.main.dialog_view.view.*
 class ConfiguracaoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val actionBar = supportActionBar
+        actionBar!!.hide()
         setContentView(R.layout.activity_configuracao)
 
         val arrowButton = findViewById<ImageButton>(R.id.arrow_button)
