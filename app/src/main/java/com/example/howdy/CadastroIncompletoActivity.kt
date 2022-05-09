@@ -130,7 +130,7 @@ class CadastroIncompletoActivity : AppCompatActivity() {
                         nativeLanguage
                     )
 
-                    routerInterface = APIUtil.getInterface()
+                    routerInterface = APIUtil.`interface`
                     createUser(user, idToken)
                 }
             }

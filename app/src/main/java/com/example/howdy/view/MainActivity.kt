@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         val auth: FirebaseAuth = FirebaseAuth.getInstance()
 
         /** CONFIGURAÇÃO DO routerInterface **/
-        routerInterface = APIUtil.getInterface()
+        routerInterface = APIUtil.`interface`
 
         val currentUser = auth.currentUser
         if(currentUser != null){

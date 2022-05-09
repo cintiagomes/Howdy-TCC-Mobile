@@ -213,6 +213,11 @@
                         android:text="Desempenho semanal"
                         android:textColor="@color/purple_200"/>
 
+                    <com.jjoe64.graphview.GraphView
+                        android:layout_width="match_parent"
+                        android:layout_height="200dip"
+                        android:id="@+id/graph" />
+
                     <com.google.android.material.progressindicator.CircularProgressIndicator
                         android:progress="25"
                         app:trackColor="@color/white"

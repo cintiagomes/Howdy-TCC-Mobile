@@ -142,7 +142,7 @@ class CadastroActivity : AppCompatActivity() {
                                 nativeLanguage
                             )
 
-                            routerInterface = APIUtil.getInterface()
+                            routerInterface = APIUtil.`interface`
                             createUser(user, idToken)
                         }
                     }

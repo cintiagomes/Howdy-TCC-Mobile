@@ -17,16 +17,19 @@ import com.example.howdy.utils.PerfilFragmentTypeAdapter
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.google.firebase.auth.FirebaseAuth
+import com.jjoe64.graphview.GraphView
+import com.jjoe64.graphview.series.DataPoint
+import com.jjoe64.graphview.series.LineGraphSeries
 import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.activity_perfil.*
 import kotlinx.android.synthetic.main.item_ranking.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import kotlin.properties.Delegates
+
 
 class PerfilActivity : AppCompatActivity() {
-    private val routerInterface: RouterInterface = APIUtil.getInterface()
+    private val routerInterface: RouterInterface = APIUtil.`interface`
     private val auth = FirebaseAuth.getInstance()
     private val context = this
 
@@ -39,6 +42,7 @@ class PerfilActivity : AppCompatActivity() {
     private lateinit var nativeLanguageNameView: TextView
     private lateinit var descriptionView: TextView
     private lateinit var totalXpView: TextView
+    private lateinit var graphView: GraphView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,6 +67,19 @@ class PerfilActivity : AppCompatActivity() {
         nativeLanguageNameView = tv_native_language_name
         descriptionView = tv_description
         totalXpView = tv_total_xp
+
+        graphView = graph
+
+        val series: LineGraphSeries<DataPoint> = LineGraphSeries(
+            arrayOf(
+                DataPoint(0.0, 1.0),
+                DataPoint(1.0, 5.0),
+                DataPoint(2.0, 3.0),
+                DataPoint(3.0, 2.0),
+                DataPoint(4.0, 6.0)
+            )
+        )
+        graph.addSeries(series)
 
         getAndRenderUserData(idUser, tabLayout)
     }

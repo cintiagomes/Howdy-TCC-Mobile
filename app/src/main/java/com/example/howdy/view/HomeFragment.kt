@@ -216,7 +216,7 @@ class HomeFragment : Fragment() {
 
                 if (idToken != null) {
                     //O USUÁRIO ESTÁ LOGADO, E FARÁ A LISTAGEM DE POSTAGENS
-                    routerInterface = APIUtil.getInterface()
+                    routerInterface = APIUtil.`interface`
 
                     val call: Call<List<Post>> = routerInterface.getPublicPosts(categorySelected, idToken)
                     call.enqueue(object : Callback<List<Post>> {

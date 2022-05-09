@@ -41,7 +41,7 @@ class Login : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         /** CONFIGURAÇÃO DO routerInterface **/
-        routerInterface = APIUtil.getInterface()
+        routerInterface = APIUtil.`interface`
 
         binding = ActivityLoginBinding.inflate(layoutInflater)
         val actionBar = supportActionBar

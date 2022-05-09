@@ -50,7 +50,7 @@ class PostagensFragment(user: UserCollectedWithId) : Fragment() {
 
                 if (idToken != null) {
                     //O USUÁRIO ESTÁ LOGADO, E FARÁ A LISTAGEM DE POSTAGENS
-                    routerInterface = APIUtil.getInterface()
+                    routerInterface = APIUtil.`interface`
 
                     val call: Call<List<PostWithoutCreator>> = routerInterface.getUserPosts(user.idUser, idToken)
                     call.enqueue(object : Callback<List<PostWithoutCreator>> {

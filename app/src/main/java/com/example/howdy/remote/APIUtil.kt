@@ -1,11 +1,8 @@
-package com.example.howdy.remote;
+package com.example.howdy.remote
 
-public class APIUtil {
-
-    private static final String API_URL = "http://10.107.144.17:3333";
-
-    public static com.example.howdy.remote.RouterInterface getInterface(){
-        return com.example.howdy.remote.RetroFitClient.getClient(API_URL)
-                .create(com.example.howdy.remote.RouterInterface.class);
-    }
+object APIUtil {
+    private const val API_URL = "http://10.107.144.2:3333"
+    val `interface`: RouterInterface
+        get() = RetroFitClient.getClient(API_URL)
+            ?.create(RouterInterface::class.java)!!
 }

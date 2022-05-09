@@ -58,7 +58,7 @@ class PostsAdapter(private val posts: List<Post>, private val activity: Fragment
     class HomeViewHolder(itemView: View, private val activity: FragmentActivity) : Holder(itemView) {
 
         private val auth = FirebaseAuth.getInstance()
-        private val routerInterface: RouterInterface = APIUtil.getInterface()
+        private val routerInterface: RouterInterface = APIUtil.`interface`
 
         private val userCreatorNameView: TextView = itemView.findViewById(R.id.user_creator_name_view)
         private val userCreatorPatentView: ImageView = itemView.findViewById(R.id.iv_user_creator_patent)

@@ -1,32 +1,25 @@
-package com.example.howdy.remote;
+package com.example.howdy.remote
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import retrofit2.Retrofit
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
+import com.example.howdy.remote.RetroFitClient
+import retrofit2.converter.gson.GsonConverterFactory
 
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
+object RetroFitClient {
+    private var retrofit: Retrofit? = null
 
-public class RetroFitClient {
-
-    private static Retrofit retrofit = null;
-
-    /** MÉTODO DE ACESSO AO CLIENT **/
-    public static Retrofit getClient(String url) {
-        Gson gson = new GsonBuilder()
-                .setLenient()
-                .create();
-
+    /** MÉTODO DE ACESSO AO CLIENT  */
+    fun getClient(url: String?): Retrofit? {
+        val gson = GsonBuilder()
+            .setLenient()
+            .create()
         if (retrofit == null) {
-
-            retrofit = new Retrofit.Builder()
-                    .baseUrl(url)
-                    .addConverterFactory(GsonConverterFactory.create(gson))
-                    .build();
-
+            retrofit = Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .build()
         }
-
-        return retrofit;
-
+        return retrofit
     }
-
 }
