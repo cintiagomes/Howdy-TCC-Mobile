@@ -9,29 +9,29 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:padding="10dp"
-        android:orientation="vertical">
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/tv_ranking_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Ranking de ganho de XP mensal."
-            android:gravity="center"
-            android:textSize="20dp"
             android:layout_marginBottom="30dp"
             android:fontFamily="@font/roboto_bold"
-            android:textColor="#303135"/>
+            android:gravity="center"
+            android:text="Ranking de ganho de XP xxxxx."
+            android:textColor="#303135"
+            android:textSize="20dp" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_marginTop="5dp"
             android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
             android:layout_marginEnd="5dp"
             android:layout_marginBottom="25dp"
             android:background="@drawable/buttom_borda"
@@ -47,8 +47,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="fill_horizontal"
             android:foregroundGravity="fill_horizontal"
+            android:gravity="fill_horizontal"
             android:orientation="horizontal">
 
             <Space
@@ -59,10 +59,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_medium"
                 android:text="Posição"
-                android:fontFamily="@font/roboto_medium"
-                android:textSize="16sp"
-                android:textColor="#303135" />
+                android:textColor="#303135"
+                android:textSize="16sp" />
 
             <Space
                 android:layout_width="0dp"
@@ -72,11 +72,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_medium"
+                android:gravity="center"
                 android:text="XP"
-                android:gravity="center"
-                android:fontFamily="@font/roboto_medium"
-                android:textSize="16sp"
-                android:textColor="#303135" />
+                android:textColor="#303135"
+                android:textSize="16sp" />
 
             <Space
                 android:layout_width="0dp"
@@ -91,11 +91,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Usuário"
-                android:gravity="center"
                 android:fontFamily="@font/roboto_medium"
-                android:textSize="16sp"
-                android:textColor="#303135" />
+                android:gravity="center"
+                android:text="Usuário"
+                android:textColor="#303135"
+                android:textSize="16sp" />
 
             <Space
                 android:layout_width="0dp"
@@ -110,12 +110,12 @@
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_ranking"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/recycler_ranking"
             android:layout_marginTop="20dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/item_ranking"/>
+            tools:listitem="@layout/item_ranking" />
 
     </LinearLayout>
 

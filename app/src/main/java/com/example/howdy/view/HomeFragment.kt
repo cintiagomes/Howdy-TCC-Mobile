@@ -69,7 +69,6 @@ class HomeFragment : Fragment() {
 
         val profilePhoto = userLoggedFile.getString("profilePhoto", "")
 
-        println("DEBUGANDO PROFILE PHOTO" + profilePhoto)
         if (profilePhoto?.length!! > 0) {
             Glide
                 .with(userLoggedProfilePhotoView)
