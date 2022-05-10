@@ -204,12 +204,6 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_gravity="center">
-
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -219,27 +213,40 @@
                     >
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Desempenho semanal"
-                        android:textColor="@color/purple_200"/>
+                        android:textColor="@color/purple_200"
+                        android:padding="26dp"
+                        android:textSize="16sp"/>
 
                     <com.jjoe64.graphview.GraphView
                         android:layout_width="match_parent"
                         android:layout_height="200dip"
-                        android:id="@+id/graph" />
+                        android:textColor="@color/purple_200"
+                        android:outlineAmbientShadowColor="@color/purple_200"
+                        android:outlineSpotShadowColor="@color/purple_200"
+                        android:id="@+id/weekly_xp_chart"
+                        app:seriesColor="@color/purple_200"
+                        app:seriesTitle="Foobar"
+                        android:title="Graph Title"
+                        />
 
-                    <com.google.android.material.progressindicator.CircularProgressIndicator
-                        android:progress="25"
-                        app:trackColor="@color/white"
-                        app:indicatorColor="@color/purple_200"
-                        app:trackCornerRadius="10dp"
-                        app:indicatorSize="100dp"
-                        app:trackThickness="9dp"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="15dp"
+                    <TextView
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_width="wrap_content"/>
+                        android:padding="26dp"
+                        android:text="Desempenho mensal"
+                        android:textColor="@color/purple_200"
+                        android:textSize="16sp"/>
+
+                    <com.jjoe64.graphview.GraphView
+                        android:layout_width="match_parent"
+                        android:layout_height="200dip"
+                        android:id="@+id/monthly_xp_chart"
+                        app:seriesColor="#6A7DFF"
+                        app:seriesTitle="Foobar"
+                        android:title="Graph Title" />
 
                 </LinearLayout>
 
@@ -250,26 +257,6 @@
                     android:layout_marginTop="20dp"
                     android:gravity="center"
                     android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Desempenho de atividades"
-                        android:textColor="@color/purple_200"/>
-
-                    <com.google.android.material.progressindicator.CircularProgressIndicator
-                        android:progress="25"
-                        app:trackColor="@color/white"
-                        app:indicatorColor="@color/purple_200"
-                        app:trackCornerRadius="10dp"
-                        app:indicatorSize="100dp"
-                        app:trackThickness="9dp"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="15dp"
-                        android:layout_height="wrap_content"
-                        android:layout_width="wrap_content"/>
-
-                </LinearLayout>
 
             </LinearLayout>
 

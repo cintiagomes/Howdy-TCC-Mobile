@@ -42,8 +42,9 @@ class PerfilActivity : AppCompatActivity() {
     private lateinit var nativeLanguageNameView: TextView
     private lateinit var descriptionView: TextView
     private lateinit var totalXpView: TextView
-    private lateinit var graphView: GraphView
     private lateinit var userPatentView: ImageView
+    private lateinit var weeklyGraphView: GraphView
+    private lateinit var monthlyGraphView: GraphView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -70,18 +71,8 @@ class PerfilActivity : AppCompatActivity() {
         totalXpView = tv_total_xp
         userPatentView = civ_user_patent
 
-        graphView = graph
-
-        val series: LineGraphSeries<DataPoint> = LineGraphSeries(
-            arrayOf(
-                DataPoint(0.0, 1.0),
-                DataPoint(1.0, 5.0),
-                DataPoint(2.0, 3.0),
-                DataPoint(3.0, 2.0),
-                DataPoint(4.0, 6.0)
-            )
-        )
-        graph.addSeries(series)
+        weeklyGraphView = weekly_xp_chart
+        monthlyGraphView = monthly_xp_chart
 
         getAndRenderUserData(idUser, tabLayout)
     }
@@ -212,5 +203,68 @@ class PerfilActivity : AppCompatActivity() {
         if(user.patent != null){
             putPatentImage(user.patent!!)
         }
+
+        //ACRESCENTANDO HISTÓRICOS DE XP NOS GRÁFICOS
+
+        val weeklyChartColumnSpacing = 8.0 / 7
+        val weeklySeries: LineGraphSeries<DataPoint> = LineGraphSeries(
+            arrayOf(
+                DataPoint(weeklyChartColumnSpacing * 0, user.xpCharts.weekly[0]),
+                DataPoint(weeklyChartColumnSpacing * 1.0, user.xpCharts.weekly[1]),
+                DataPoint(weeklyChartColumnSpacing * 2.0, user.xpCharts.weekly[2]),
+                DataPoint(weeklyChartColumnSpacing * 3.0, user.xpCharts.weekly[3]),
+                DataPoint(weeklyChartColumnSpacing * 4.0, user.xpCharts.weekly[4]),
+                DataPoint(weeklyChartColumnSpacing * 5.0, user.xpCharts.weekly[5]),
+                DataPoint(weeklyChartColumnSpacing * 6.0, user.xpCharts.weekly[6])
+            )
+        )
+
+        val monthlySeriesChartColumnSpacing = 8.0 / 30
+        val monthlySeries: LineGraphSeries<DataPoint> = LineGraphSeries(
+                arrayOf(
+                    DataPoint(monthlySeriesChartColumnSpacing * 0.0, user.xpCharts.monthly[0]),
+                    DataPoint(monthlySeriesChartColumnSpacing * 1.0, user.xpCharts.monthly[1]),
+                    DataPoint(monthlySeriesChartColumnSpacing * 2.0, user.xpCharts.monthly[2]),
+                    DataPoint(monthlySeriesChartColumnSpacing * 3.0, user.xpCharts.monthly[3]),
+                    DataPoint(monthlySeriesChartColumnSpacing * 4.0, user.xpCharts.monthly[4]),
+                    DataPoint(monthlySeriesChartColumnSpacing * 5.0, user.xpCharts.monthly[5]),
+                    DataPoint(monthlySeriesChartColumnSpacing * 6.0, user.xpCharts.monthly[6]),
+                    DataPoint(monthlySeriesChartColumnSpacing * 7.0, user.xpCharts.monthly[7]),
+                    DataPoint(monthlySeriesChartColumnSpacing * 8.0, user.xpCharts.monthly[8]),
+                    DataPoint(monthlySeriesChartColumnSpacing * 9.0, user.xpCharts.monthly[9]),
+                    DataPoint(monthlySeriesChartColumnSpacing * 10.0, user.xpCharts.monthly[10]),
+                    DataPoint(monthlySeriesChartColumnSpacing * 11.0, user.xpCharts.monthly[11]),
+                    DataPoint(monthlySeriesChartColumnSpacing * 12.0, user.xpCharts.monthly[12]),
+                    DataPoint(monthlySeriesChartColumnSpacing * 13.0, user.xpCharts.monthly[13]),
+                    DataPoint(monthlySeriesChartColumnSpacing * 14.0, user.xpCharts.monthly[14]),
+                    DataPoint(monthlySeriesChartColumnSpacing * 15.0, user.xpCharts.monthly[15]),
+                    DataPoint(monthlySeriesChartColumnSpacing * 16.0, user.xpCharts.monthly[16]),
+                    DataPoint(monthlySeriesChartColumnSpacing * 17.0, user.xpCharts.monthly[17]),
+                    DataPoint(monthlySeriesChartColumnSpacing * 18.0, user.xpCharts.monthly[18]),
+                    DataPoint(monthlySeriesChartColumnSpacing * 19.0, user.xpCharts.monthly[19]),
+                    DataPoint(monthlySeriesChartColumnSpacing * 20.0, user.xpCharts.monthly[20]),
+                    DataPoint(monthlySeriesChartColumnSpacing * 21.0, user.xpCharts.monthly[21]),
+                    DataPoint(monthlySeriesChartColumnSpacing * 22.0, user.xpCharts.monthly[22]),
+                    DataPoint(monthlySeriesChartColumnSpacing * 23.0, user.xpCharts.monthly[23]),
+                    DataPoint(monthlySeriesChartColumnSpacing * 24.0, user.xpCharts.monthly[24]),
+                    DataPoint(monthlySeriesChartColumnSpacing * 25.0, user.xpCharts.monthly[25]),
+                    DataPoint(monthlySeriesChartColumnSpacing * 26.0, user.xpCharts.monthly[26]),
+                    DataPoint(monthlySeriesChartColumnSpacing * 27.0, user.xpCharts.monthly[27]),
+                    DataPoint(monthlySeriesChartColumnSpacing * 28.0, user.xpCharts.monthly[28]),
+                    DataPoint(monthlySeriesChartColumnSpacing * 29.0, user.xpCharts.monthly[29]),
+            )
+        )
+
+        println("DEBUGANDO")
+        println("DEBUGANDO " + user.xpCharts.weekly.toString())
+        println("DEBUGANDO 0" + user.xpCharts.weekly[0])
+        println("DEBUGANDO 1" + user.xpCharts.weekly[1])
+        println("DEBUGANDO 2" + user.xpCharts.weekly[2])
+        println("DEBUGANDO 3" + user.xpCharts.weekly[3])
+        println("DEBUGANDO 4" + user.xpCharts.weekly[4])
+        println("DEBUGANDO 5" + user.xpCharts.weekly[5])
+        println("DEBUGANDO 6" + user.xpCharts.weekly[6])
+        weeklyGraphView.addSeries(weeklySeries)
+        monthlyGraphView.addSeries(monthlySeries)
     }
 }

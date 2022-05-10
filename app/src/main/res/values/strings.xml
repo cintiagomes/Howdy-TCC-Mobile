@@ -16,5 +16,10 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="userCreatorName">User creator name</string>
+    <string name="createdAtPost">Há alguns segundos</string>
+    <string name="textContentPost">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.</string>
+    <string name="commentsQuantity">23</string>
+    <string name="postLikeQuantity">89</string>
 
 </resources>

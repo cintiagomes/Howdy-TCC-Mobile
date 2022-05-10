@@ -133,9 +133,19 @@
         <entry key="..\:/Users/gabri/Howdy-TCC-MOBILE/app/src/main/res/layout/item_ranking.xml" value="0.33" />
         <entry key="..\:/Users/gabri/Howdy-TCC-MOBILE/app/src/main/res/menu/menu.xml" value="0.16197916666666667" />
         <entry key="..\:/Users/gabri/Howdy-TCC-MOBILE/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.17" />
-        <entry key="..\:/Users/gabri/Howdy-TCC-Mobile/app/src/main/res/layout/item_post_with_image.xml" value="0.5" />
+        <entry key="..\:/Users/gabri/Howdy-TCC-Mobile/app/src/main/res/layout/activity_perfil.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/gabri/Howdy-TCC-Mobile/app/src/main/res/layout/activity_ranking.xml" value="0.22447916666666667" />
+        <entry key="..\:/Users/gabri/Howdy-TCC-Mobile/app/src/main/res/layout/fragment_home.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/gabri/Howdy-TCC-Mobile/app/src/main/res/layout/fragment_ranking.xml" value="0.26871794871794874" />
+        <entry key="..\:/Users/gabri/Howdy-TCC-Mobile/app/src/main/res/layout/fragment_ranking_mensal.xml" value="0.22447916666666667" />
+        <entry key="..\:/Users/gabri/Howdy-TCC-Mobile/app/src/main/res/layout/fragment_ranking_semanal.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/gabri/Howdy-TCC-Mobile/app/src/main/res/layout/fragment_ranking_total.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/gabri/Howdy-TCC-Mobile/app/src/main/res/layout/item_post_with_image.xml" value="0.43159922928709055" />
         <entry key="..\:/Users/gabri/Howdy-TCC-Mobile/app/src/main/res/layout/item_post_without_image.xml" value="0.48300536672629696" />
         <entry key="..\:/Users/gabri/Howdy-TCC-Mobile/app/src/main/res/layout/item_postagens.xml" value="0.33" />
+        <entry key="..\:/Users/gabri/Howdy-TCC-Mobile/app/src/main/res/layout/item_ranking.xml" value="0.22447916666666667" />
+        <entry key="..\:/Users/gabri/Howdy-TCC-Mobile/app/src/main/res/layout/item_ranking_line.xml" value="0.22447916666666667" />
+        <entry key="..\:/Users/gabri/Howdy-TCC-Mobile/app/src/main/res/layout/item_ranking_tests.xml" value="0.22447916666666667" />
         <entry key="app/src/main/res/drawable/borda_avaliacoes.xml" value="0.3509259259259259" />
         <entry key="app/src/main/res/drawable/borda_buttom.xml" value="0.3614583333333333" />
         <entry key="app/src/main/res/drawable/borda_coin_howdy.xml" value="0.2365" />
