@@ -1,4 +1,4 @@
-package com.example.howdy.utils
+package com.example.howdy.utils.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity

@@ -13,7 +13,7 @@ import com.example.howdy.model.UserTypes.UserCollectedWithId
 import com.example.howdy.model.UserTypes.UserCreator
 import com.example.howdy.remote.APIUtil
 import com.example.howdy.remote.RouterInterface
-import com.example.howdy.utils.PostsAdapter
+import com.example.howdy.utils.adapter.PostsAdapter
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.fragment_home.*
 import org.json.JSONObject

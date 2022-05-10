@@ -12,6 +12,7 @@ import com.example.howdy.model.PostTypes.PostCommentaryTypes.Commentary
 import com.example.howdy.model.PostTypes.PostCommentaryTypes.DataToCreateCommentary
 import com.example.howdy.model.PostTypes.PostWithoutCreator
 import com.example.howdy.model.UserTypes.UserCollectedWithId
+import com.example.howdy.model.UserTypes.UserInRanking
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -51,6 +52,14 @@ interface RouterInterface {
         @Part("birthDate") birthDate: String?,
         @Part("description") description: String?
     ): Call<MySqlResult>
+
+    /** ROTA DE RANKING  */
+    @GET("/ranking/{rankingType}")
+    fun getXpRanking(
+        @Header("Authorization") idToken: String,
+        @Path("rankingType") rankingType: String,
+        @Query("nameFilter") nameFilter: String,
+    ): Call<List<UserInRanking>>
 
     /** ROTAS DE POSTAGENS  */
     //ROTA PARA COLETAR POSTAGENS PÚBLICAS, "categoryFilter" pode ser o id de cada categoria, "popular", ou "myFriends"

@@ -1,4 +1,4 @@
-package com.example.howdy.utils
+package com.example.howdy.utils.adapter
 
 import android.annotation.SuppressLint
 import android.content.Context

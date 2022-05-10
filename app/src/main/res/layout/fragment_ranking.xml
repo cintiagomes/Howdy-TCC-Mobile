@@ -28,6 +28,7 @@
             android:textSize="20dp" />
 
         <EditText
+            android:id="@+id/et_name_filter_ranking"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginStart="5dp"
@@ -51,26 +52,17 @@
             android:gravity="fill_horizontal"
             android:orientation="horizontal">
 
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:layout_weight="1" />
-
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_medium"
                 android:text="Posição"
                 android:textColor="#303135"
-                android:textSize="16sp" />
-
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:layout_weight="1" />
+                android:textSize="16sp"
+                android:paddingStart="25dp"/>
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_medium"
                 android:gravity="center"
@@ -78,34 +70,15 @@
                 android:textColor="#303135"
                 android:textSize="16sp" />
 
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:layout_weight="1" />
-
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:layout_weight="1" />
-
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="170dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_medium"
                 android:gravity="center"
                 android:text="Usuário"
                 android:textColor="#303135"
-                android:textSize="16sp" />
-
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:layout_weight="1" />
-
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:layout_weight="1" />
+                android:textSize="16sp"
+                android:paddingStart="20dp"/>
 
         </LinearLayout>
 

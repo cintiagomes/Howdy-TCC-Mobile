@@ -14,18 +14,13 @@
 
         <TextView
             android:id="@+id/tv_position_ranking"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:text="9º"
             android:fontFamily="@font/roboto_bold"
             android:textSize="30sp"
             android:textColor="@color/black"
-            android:paddingStart="45dp"/>
-
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_weight="1" />
+            android:paddingStart="35dp"/>
 
         <TextView
             android:id="@+id/tv_xp_collected"
@@ -42,13 +37,12 @@
             android:layout_marginEnd="20dp" />
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="35dp">
+            android:layout_width="200dp"
+            android:layout_height="wrap_content">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:layout_gravity="center"
-                android:id="@+id/image_user1"
+                android:id="@+id/civ_profile_photo"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:src="@drawable/ic_logo_app"/>
@@ -61,7 +55,7 @@
 
                 <TextView
                     android:id="@+id/user_name"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Henry da Silva"
                     android:fontFamily="@font/roboto_medium"
@@ -69,7 +63,7 @@
                     android:textSize="15dp"/>
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content">
 
                     <ImageView
@@ -79,7 +73,7 @@
                         android:src="@drawable/ic_gps_24"/>
                     <TextView
                         android:id="@+id/tv_target_language_name"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Ingles"
                         android:fontFamily="@font/roboto"

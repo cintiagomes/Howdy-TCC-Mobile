@@ -14,7 +14,7 @@ import com.example.howdy.R
 import com.example.howdy.model.UserTypes.UserCollectedWithId
 import com.example.howdy.remote.APIUtil
 import com.example.howdy.remote.RouterInterface
-import com.example.howdy.utils.PerfilFragmentTypeAdapter
+import com.example.howdy.utils.adapter.PerfilFragmentTypeAdapter
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.google.firebase.auth.FirebaseAuth

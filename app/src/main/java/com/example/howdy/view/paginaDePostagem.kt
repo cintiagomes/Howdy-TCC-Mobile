@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
 import com.example.howdy.ConfiguracaoActivity
 import com.example.howdy.R
-import com.example.howdy.utils.FragmentTypeAdapter
+import com.example.howdy.utils.adapter.FragmentTypeAdapter
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.google.firebase.auth.ktx.auth
