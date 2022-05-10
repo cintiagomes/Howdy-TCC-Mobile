@@ -186,7 +186,7 @@ class CadastroIncompletoActivity : AppCompatActivity() {
 
                     navigateToPostPage()
                 } else {
-                    Toast.makeText(applicationContext,"Ops... Houve um erro no cadastro",
+                    Toast.makeText(applicationContext,"Ops! Houve um erro no cadastro",
                         Toast.LENGTH_LONG).show()
 
                     //DELETANDO USUÁRIO CRIADO, JÁ QUE ELE NÃO CONSEGUIU SER CADASTRADO NO BANCO

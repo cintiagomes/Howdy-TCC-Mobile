@@ -98,7 +98,7 @@ class RankingFragment(rankingType: String, fragmentActivity:FragmentActivity) : 
                             val errorMessage = jObjError.get("error").toString()
                             if (errorMessage == "No users found in this ranking") {
                                 Toast.makeText(
-                                    activity, "Nenhum usuário está inserido neste ranking.",
+                                    activity, "Ops! Nenhum foi encontrado.",
                                     Toast.LENGTH_LONG
                                 ).show()
 
