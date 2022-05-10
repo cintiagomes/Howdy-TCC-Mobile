@@ -101,13 +101,14 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginTop="10dp"
             app:cardCornerRadius="20dp">
 
             <ImageView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="200dp"
+                android:scaleType="centerCrop"
                 android:src="@drawable/anime_dorohedoro"
                 android:contentDescription="imageContent"
                 android:id="@+id/iv_image_content"/>

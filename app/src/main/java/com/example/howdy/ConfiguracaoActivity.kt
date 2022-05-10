@@ -6,11 +6,21 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import com.example.howdy.model.MySqlResult
+import com.example.howdy.model.UserTypes.User
+import com.example.howdy.remote.APIUtil
+import com.example.howdy.remote.RouterInterface
 import kotlinx.android.synthetic.main.dialog_view.view.*
+import retrofit2.Call
+import retrofit2.Response
+import retrofit2.http.DELETE
+import retrofit2.http.Header
 
 class ConfiguracaoActivity : AppCompatActivity() {
+
+    private lateinit var routerInterface: RouterInterface
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val actionBar = supportActionBar
@@ -56,6 +66,10 @@ class ConfiguracaoActivity : AppCompatActivity() {
             }
 
             view.bnt_excluir.setOnClickListener {
+                routerInterface = APIUtil.`interface`
+//                val call: Call<MySqlResult> = routerInterface.deleteMyAccountOnBackend()
+
+
                 dialog.dismiss()
             }
 
