@@ -1,8 +1,6 @@
 package com.example.howdy.remote
 
-import com.example.howdy.model.UserTypes.DataToCreateUser
 import com.example.howdy.model.MySqlResult
-import com.example.howdy.model.UserTypes.User
 import okhttp3.MultipartBody
 import com.example.howdy.model.PostTypes.Post
 import okhttp3.RequestBody
@@ -11,8 +9,7 @@ import com.example.howdy.model.TraductionTypes.DataToTranslate
 import com.example.howdy.model.PostTypes.PostCommentaryTypes.Commentary
 import com.example.howdy.model.PostTypes.PostCommentaryTypes.DataToCreateCommentary
 import com.example.howdy.model.PostTypes.PostWithoutCreator
-import com.example.howdy.model.UserTypes.UserCollectedWithId
-import com.example.howdy.model.UserTypes.UserInRanking
+import com.example.howdy.model.UserTypes.*
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -52,6 +49,13 @@ interface RouterInterface {
         @Part("birthDate") birthDate: String?,
         @Part("description") description: String?
     ): Call<MySqlResult>
+
+    /** ROTAS DE AMIZADE  */
+    @GET("/friendships/getAllSomeoneFriends/{idUser}")
+    fun getAllSomeoneFriends(
+        @Header("Authorization") idToken: String,
+        @Path("idUser") idUser: Int
+    ): Call<List<Friend>>
 
     /** ROTA DE RANKING  */
     @GET("/ranking/{rankingType}")

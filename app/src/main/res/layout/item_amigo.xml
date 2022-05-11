@@ -14,19 +14,19 @@
         android:background="#F5F8FA">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/image_user"
+            android:id="@+id/civ_user_profile_photo"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:src="@drawable/ic_logo_app"/>
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/image_ranking"
+        <ImageView
+            android:id="@+id/iv_patent"
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_gravity="bottom"
             android:layout_marginStart="-20sp"
             android:layout_marginTop="30dp"
-            android:src="@drawable/classe_noob" />
+            android:src="@drawable/transparent" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -35,7 +35,7 @@
             android:layout_marginStart="5dp">
 
             <TextView
-                android:id="@+id/user_name"
+                android:id="@+id/tv_user_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Henry da Silva"
@@ -44,7 +44,7 @@
                 android:textSize="15dp"/>
 
             <TextView
-                android:id="@+id/xp_user"
+                android:id="@+id/tv_total_xp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="150 XP"
@@ -63,7 +63,7 @@
                     android:src="@drawable/ic_gps_24"/>
 
                 <TextView
-                    android:id="@+id/idioma_user"
+                    android:id="@+id/tv_target_language_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Ingles"

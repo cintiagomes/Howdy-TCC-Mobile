@@ -13,7 +13,7 @@ import com.example.howdy.model.UserTypes.UserCollectedWithId
 import com.example.howdy.model.UserTypes.UserCreator
 import com.example.howdy.remote.APIUtil
 import com.example.howdy.remote.RouterInterface
-import com.example.howdy.utils.adapter.PostsAdapter
+import com.example.howdy.adapter.PostsAdapter
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.fragment_home.*
 import org.json.JSONObject
@@ -28,7 +28,7 @@ class PostagensFragment(user: UserCollectedWithId) : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         //LISTANDO AS POSTAGENS PELA PRIMEIRA VEZ COM AS CONFIGURAÇÕES PADRÃO (POSTAGENS POPULARES)
-        findAndListUserPosts(user)
+        findAndListUserPosts()
 
         super.onCreate(savedInstanceState)
     }
@@ -41,7 +41,7 @@ class PostagensFragment(user: UserCollectedWithId) : Fragment() {
         return inflater.inflate(R.layout.fragment_postagens, container, false)
     }
 
-    private fun findAndListUserPosts(user: UserCollectedWithId) {
+    private fun findAndListUserPosts() {
         //RESGATANDO IDTOKEN ATUAL DO USUÁRIO
         auth = FirebaseAuth.getInstance()
         auth.currentUser?.getIdToken(true)

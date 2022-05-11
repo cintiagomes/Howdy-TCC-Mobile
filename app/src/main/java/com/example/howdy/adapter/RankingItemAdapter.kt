@@ -1,4 +1,4 @@
-package com.example.howdy.utils.adapter
+package com.example.howdy.adapter
 
 import android.content.Intent
 import android.graphics.Color

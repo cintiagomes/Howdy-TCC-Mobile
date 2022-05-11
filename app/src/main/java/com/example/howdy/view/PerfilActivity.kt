@@ -14,7 +14,7 @@ import com.example.howdy.R
 import com.example.howdy.model.UserTypes.UserCollectedWithId
 import com.example.howdy.remote.APIUtil
 import com.example.howdy.remote.RouterInterface
-import com.example.howdy.utils.adapter.PerfilFragmentTypeAdapter
+import com.example.howdy.adapter.PerfilFragmentTypeAdapter
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.google.firebase.auth.FirebaseAuth
@@ -255,15 +255,6 @@ class PerfilActivity : AppCompatActivity() {
             )
         )
 
-        println("DEBUGANDO")
-        println("DEBUGANDO " + user.xpCharts.weekly.toString())
-        println("DEBUGANDO 0" + user.xpCharts.weekly[0])
-        println("DEBUGANDO 1" + user.xpCharts.weekly[1])
-        println("DEBUGANDO 2" + user.xpCharts.weekly[2])
-        println("DEBUGANDO 3" + user.xpCharts.weekly[3])
-        println("DEBUGANDO 4" + user.xpCharts.weekly[4])
-        println("DEBUGANDO 5" + user.xpCharts.weekly[5])
-        println("DEBUGANDO 6" + user.xpCharts.weekly[6])
         weeklyGraphView.addSeries(weeklySeries)
         monthlyGraphView.addSeries(monthlySeries)
     }

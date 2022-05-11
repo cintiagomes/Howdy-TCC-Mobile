@@ -1,6 +1,6 @@
 package com.example.howdy.model.UserTypes
 
-class UserInRanking(
+class Friend(
     idUser: Int,
     profilePhoto: String,
     userName: String,
@@ -8,7 +8,7 @@ class UserInRanking(
     targetLanguageName: String,
     totalXp: Int,
     patent: String,
-    positionRanking: Int
+    isPro: Boolean,
 ) {
     var idUser = idUser
     var profilePhoto = profilePhoto
@@ -17,5 +17,5 @@ class UserInRanking(
     var targetLanguageName = targetLanguageName
     var totalXp = totalXp
     var patent = patent
-    var positionRanking = positionRanking
+    var isPro = isPro
 }

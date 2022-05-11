@@ -133,6 +133,7 @@
         <entry key="..\:/Users/gabri/Howdy-TCC-MOBILE/app/src/main/res/layout/item_ranking.xml" value="0.33" />
         <entry key="..\:/Users/gabri/Howdy-TCC-MOBILE/app/src/main/res/menu/menu.xml" value="0.16197916666666667" />
         <entry key="..\:/Users/gabri/Howdy-TCC-MOBILE/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.17" />
+        <entry key="..\:/Users/gabri/Howdy-TCC-Mobile/app/src/main/res/layout/activity_cadastro.xml" value="0.1375" />
         <entry key="..\:/Users/gabri/Howdy-TCC-Mobile/app/src/main/res/layout/activity_inicio_assinatura.xml" value="0.25" />
         <entry key="..\:/Users/gabri/Howdy-TCC-Mobile/app/src/main/res/layout/activity_login.xml" value="0.15625" />
         <entry key="..\:/Users/gabri/Howdy-TCC-Mobile/app/src/main/res/layout/activity_main.xml" value="0.15625" />
@@ -142,6 +143,8 @@
         <entry key="..\:/Users/gabri/Howdy-TCC-Mobile/app/src/main/res/layout/dialog_conclusao_atividade.xml" value="0.25" />
         <entry key="..\:/Users/gabri/Howdy-TCC-Mobile/app/src/main/res/layout/dialog_view.xml" value="0.15625" />
         <entry key="..\:/Users/gabri/Howdy-TCC-Mobile/app/src/main/res/layout/dropdown_item.xml" value="0.15625" />
+        <entry key="..\:/Users/gabri/Howdy-TCC-Mobile/app/src/main/res/layout/fragment_amigos.xml" value="0.33" />
+        <entry key="..\:/Users/gabri/Howdy-TCC-Mobile/app/src/main/res/layout/fragment_amigos_perfil.xml" value="0.22" />
         <entry key="..\:/Users/gabri/Howdy-TCC-Mobile/app/src/main/res/layout/fragment_atividades.xml" value="0.15625" />
         <entry key="..\:/Users/gabri/Howdy-TCC-Mobile/app/src/main/res/layout/fragment_ensinamentos.xml" value="0.11944444444444445" />
         <entry key="..\:/Users/gabri/Howdy-TCC-Mobile/app/src/main/res/layout/fragment_first.xml" value="0.33" />
@@ -153,7 +156,7 @@
         <entry key="..\:/Users/gabri/Howdy-TCC-Mobile/app/src/main/res/layout/fragment_ranking_semanal.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/gabri/Howdy-TCC-Mobile/app/src/main/res/layout/fragment_ranking_total.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/gabri/Howdy-TCC-Mobile/app/src/main/res/layout/fragment_second.xml" value="0.5" />
-        <entry key="..\:/Users/gabri/Howdy-TCC-Mobile/app/src/main/res/layout/item_amigo.xml" value="0.25" />
+        <entry key="..\:/Users/gabri/Howdy-TCC-Mobile/app/src/main/res/layout/item_amigo.xml" value="0.5" />
         <entry key="..\:/Users/gabri/Howdy-TCC-Mobile/app/src/main/res/layout/item_atividade.xml" value="0.33" />
         <entry key="..\:/Users/gabri/Howdy-TCC-Mobile/app/src/main/res/layout/item_contact.xml" value="0.16822916666666668" />
         <entry key="..\:/Users/gabri/Howdy-TCC-Mobile/app/src/main/res/layout/item_notificacao.xml" value="0.16822916666666668" />

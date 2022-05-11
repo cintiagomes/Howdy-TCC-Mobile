@@ -1,11 +1,9 @@
-package com.example.howdy.utils.adapter
+package com.example.howdy.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.howdy.RankingFragment
-import com.example.howdy.RankingSemanalFragment
-import com.example.howdy.RankingTotalFragment
 
 class RankingFragmentTypeAdapter (fragmentActivity: FragmentActivity): FragmentStateAdapter(fragmentActivity) {
     val fragmentActivity = fragmentActivity
@@ -16,13 +14,13 @@ class RankingFragmentTypeAdapter (fragmentActivity: FragmentActivity): FragmentS
     override fun createFragment(position: Int): Fragment {
         return when(position){
             0 -> {
-                RankingFragment("weekly", fragmentActivity)
+                RankingFragment("weekly")
             }
             1 -> {
-                RankingFragment("monthly", fragmentActivity)
+                RankingFragment("monthly")
             }
             2 -> {
-                RankingFragment("total", fragmentActivity)
+                RankingFragment("total")
             }
             else -> {
                 Fragment()

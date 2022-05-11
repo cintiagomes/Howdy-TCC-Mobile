@@ -1,13 +1,10 @@
-package com.example.howdy.utils.adapter
+package com.example.howdy.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.howdy.model.UserTypes.UserCollectedWithId
-import com.example.howdy.view.AmigosPerfilFragment
-import com.example.howdy.view.AprendizadoFragment
-import com.example.howdy.view.EnsinamentosFragment
-import com.example.howdy.view.PostagensFragment
+import com.example.howdy.view.*
 
 class PerfilFragmentTypeAdapter(fragmentActivity: FragmentActivity, user: UserCollectedWithId): FragmentStateAdapter(fragmentActivity) {
     val user = user
@@ -21,7 +18,7 @@ class PerfilFragmentTypeAdapter(fragmentActivity: FragmentActivity, user: UserCo
                 PostagensFragment(user)
             }
             1 -> {
-                AmigosPerfilFragment()
+                AmigosFragment(user.idUser)
             }
             2 -> {
                 AprendizadoFragment()

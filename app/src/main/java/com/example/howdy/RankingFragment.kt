@@ -10,22 +10,18 @@ import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import androidx.fragment.app.FragmentActivity
-import com.example.howdy.model.PostTypes.Post
 import com.example.howdy.model.UserTypes.UserInRanking
 import com.example.howdy.remote.APIUtil
 import com.example.howdy.remote.RouterInterface
-import com.example.howdy.utils.adapter.PostsAdapter
-import com.example.howdy.utils.adapter.RankingItemAdapter
+import com.example.howdy.adapter.RankingItemAdapter
 import com.google.firebase.auth.FirebaseAuth
-import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_ranking.*
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class RankingFragment(rankingType: String, fragmentActivity:FragmentActivity) : Fragment() {
+class RankingFragment(rankingType: String) : Fragment() {
     private val rankingType = rankingType
     private lateinit var routerInterface: RouterInterface
     private lateinit var auth: FirebaseAuth
@@ -79,7 +75,6 @@ class RankingFragment(rankingType: String, fragmentActivity:FragmentActivity) : 
         auth.currentUser?.getIdToken(true)
             ?.addOnSuccessListener { result ->
                 val idToken = result.token!!
-                println("DEBUGANDO IDTOKEN: $idToken")
 
                 //O USUÁRIO ESTÁ LOGADO, E FARÁ A LISTAGEM DE POSTAGENS
                 routerInterface = APIUtil.`interface`
@@ -98,7 +93,7 @@ class RankingFragment(rankingType: String, fragmentActivity:FragmentActivity) : 
                             val errorMessage = jObjError.get("error").toString()
                             if (errorMessage == "No users found in this ranking") {
                                 Toast.makeText(
-                                    activity, "Ops! Nenhum foi encontrado.",
+                                    activity, "Ops! Nenhum usuário foi encontrado.",
                                     Toast.LENGTH_LONG
                                 ).show()
 

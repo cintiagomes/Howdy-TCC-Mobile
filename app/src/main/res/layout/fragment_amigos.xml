@@ -3,11 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".view.AmigosFragment"
-    android:background="#F5F8FA">
-
-    <!-- TODO: Update blank fragment layout -->
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -19,24 +15,35 @@
         tools:ignore="SpeakableTextPresentCheck">
 
         <LinearLayout
+            android:paddingStart="15dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:padding="20dp"
-            android:orientation="vertical"
-            android:layout_marginBottom="50dp">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto_bold"
-                android:text="Amigos"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                android:textSize="18sp" />
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total: "
+                    android:textSize="18sp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:textColor="#303135"/>
+
+                <TextView
+                    android:id="@+id/tv_total_friends"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0 amigos"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:textColor="#303135"/>
+
+            </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_amigos"
@@ -45,9 +52,6 @@
                 tools:listitem="@layout/item_amigo"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
-
         </LinearLayout>
-
     </ScrollView>
-
 </FrameLayout>

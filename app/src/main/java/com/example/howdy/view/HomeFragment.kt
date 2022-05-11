@@ -15,7 +15,7 @@ import com.example.howdy.R
 import com.example.howdy.model.PostTypes.Post
 import com.example.howdy.remote.APIUtil
 import com.example.howdy.remote.RouterInterface
-import com.example.howdy.utils.adapter.PostsAdapter
+import com.example.howdy.adapter.PostsAdapter
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.fragment_home.*
 import org.json.JSONObject

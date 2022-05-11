@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageButton
 import androidx.viewpager2.widget.ViewPager2
-import com.example.howdy.utils.adapter.RankingFragmentTypeAdapter
+import com.example.howdy.adapter.RankingFragmentTypeAdapter
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 

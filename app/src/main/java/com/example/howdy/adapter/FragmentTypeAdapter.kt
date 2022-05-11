@@ -1,4 +1,4 @@
-package com.example.howdy.utils.adapter
+package com.example.howdy.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
@@ -20,7 +20,7 @@ class FragmentTypeAdapter(fragmentActivity: FragmentActivity): FragmentStateAdap
                 HomeFragment()
             }
             1 -> {
-                AmigosFragment()
+                AmigosFragment(null)
             }
             2 -> {
                 AtividadesFragment()
