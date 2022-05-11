@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">howdy</string>
+    <string name="app_name">Howdy</string>
     <string name="firebasse_default_web_client_id" translatable="false">111780684034-0k9folgo7t1oe54acgjqil4n0mskaopf.apps.googleusercontent.com</string>
     <string-array name="linguagens">
         <item>Português brasileiro</item>
