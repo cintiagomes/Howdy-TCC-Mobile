@@ -20,10 +20,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="110dp"
+            android:background="@drawable/bg_iv"
+            android:padding="15dp"
+            android:src="@drawable/vector"
+            app:layout_constraintBottom_toTopOf="@+id/ll"
+            app:layout_constraintEnd_toEndOf="@id/ll"
+            app:layout_constraintStart_toStartOf="@id/ll"
+            app:layout_constraintTop_toTopOf="@id/ll" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
             android:gravity="center_horizontal"
             android:text=" Avalie a atividade!"
             android:textAlignment="center"
@@ -35,15 +45,48 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="40dp"
-            android:layout_marginBottom="40dp"
+            android:layout_marginBottom="10dp"
             android:gravity="center_horizontal"
             android:textColor="#303135"
             android:text="Indique uma nota para este aprendizado!"
             android:textAlignment="center"
             android:textSize="18dp"
             android:fontFamily="@font/roboto" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_marginBottom="20dp">
+
+            <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_star_24"/>
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/ic_star_24"/>
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/ic_star_24"/>
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/ic_star_24"/>
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/ic_star_24"/>
+
+        </LinearLayout>
 
         <Button
             android:layout_width="match_parent"
@@ -55,16 +98,6 @@
             android:layout_marginEnd="75dp"/>
 
     </LinearLayout>
-
-    <ImageView
-        android:layout_width="110dp"
-        android:layout_height="110dp"
-        android:background="@drawable/bg_iv"
-        android:src="@drawable/ic_check_circle_24"
-        app:layout_constraintBottom_toTopOf="@+id/ll"
-        app:layout_constraintEnd_toEndOf="@id/ll"
-        app:layout_constraintStart_toStartOf="@id/ll"
-        app:layout_constraintTop_toTopOf="@id/ll" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

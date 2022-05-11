@@ -51,6 +51,7 @@
             android:orientation="vertical">
 
             <ImageView
+                android:id="@+id/userBackground"
                 android:layout_width="match_parent"
                 android:layout_height="160dp"
                 android:scaleType="centerCrop"
@@ -62,6 +63,7 @@
                 android:src="@drawable/background_profile" />
 
             <ImageButton
+                android:id="@+id/tvt_trocar_foto"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center"
@@ -74,16 +76,17 @@
 
 
             <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/userImage"
                 xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:layout_width="92dp"
                 android:layout_height="92dp"
-                android:id="@+id/userImage"
                 android:layout_gravity="center"
                 android:layout_marginTop="-20dp"
                 android:elevation="5dp"
                 android:src="@drawable/ic_logo_app"/>
 
             <ImageButton
+                android:id="@+id/tvt_trocar_foto_user"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_outline_photo_camera_24"

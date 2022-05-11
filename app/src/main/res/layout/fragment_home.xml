@@ -126,6 +126,7 @@
                     android:layout_height="wrap_content"/>
 
                 <Button
+                    android:id="@+id/postar"
                     android:layout_width="90dp"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/purple_200"

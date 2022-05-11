@@ -5,7 +5,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
 import com.example.howdy.ConfiguracaoActivity
@@ -16,6 +18,8 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.example.howdy.RankingActivity
+import com.example.howdy.remote.APIUtil
+import kotlinx.android.synthetic.main.dialog_view.view.*
 
 
 class paginaDePostagem : AppCompatActivity() {
