@@ -206,7 +206,7 @@ class PerfilActivity : AppCompatActivity() {
 
         //ACRESCENTANDO HISTÓRICOS DE XP NOS GRÁFICOS
 
-        val weeklyChartColumnSpacing = 8.0 / 7
+        val weeklyChartColumnSpacing = 9.0 / 7
         val weeklySeries: LineGraphSeries<DataPoint> = LineGraphSeries(
             arrayOf(
                 DataPoint(weeklyChartColumnSpacing * 0, user.xpCharts.weekly[0]),
@@ -219,7 +219,7 @@ class PerfilActivity : AppCompatActivity() {
             )
         )
 
-        val monthlySeriesChartColumnSpacing = 8.0 / 30
+        val monthlySeriesChartColumnSpacing = 9.0 / 30
         val monthlySeries: LineGraphSeries<DataPoint> = LineGraphSeries(
                 arrayOf(
                     DataPoint(monthlySeriesChartColumnSpacing * 0.0, user.xpCharts.monthly[0]),
