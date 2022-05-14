@@ -24,6 +24,7 @@ import convertDateToBackendFormat
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.text.SimpleDateFormat
 import java.util.*
 
 class CadastroIncompletoActivity : AppCompatActivity() {
@@ -34,6 +35,7 @@ class CadastroIncompletoActivity : AppCompatActivity() {
     private lateinit var routerInterface: RouterInterface
 
     private lateinit var birthDateFormatted: String
+    private lateinit var birthDateDate: Date
     var targetLanguage  = TargetLanguage(0, "", "")
     var nativeLanguage = NativeLanguage(0, "", "")
 
@@ -113,7 +115,7 @@ class CadastroIncompletoActivity : AppCompatActivity() {
         }
 
         //CONVERTENDO DATA DE NASCIMENTO
-        val birthDateDate = convertBrStringToDate(birthDate)
+        birthDateDate = convertBrStringToDate(birthDate)
         birthDateFormatted = convertDateToBackendFormat(birthDateDate)
 
         //RESGATANDO IDTOKEN DO USUÁRIO LOGADO NO FIREBASE
@@ -140,11 +142,12 @@ class CadastroIncompletoActivity : AppCompatActivity() {
         val call: Call<MySqlResult> = routerInterface.createUser(user, idToken)
         /** EXECUÇÃO CHAMADA DA ROTA  */
         call.enqueue(object : Callback<MySqlResult> {
+            @SuppressLint("SimpleDateFormat")
             override fun onResponse(call: Call<MySqlResult>, response: Response<MySqlResult>) {
                 if(response.isSuccessful) {
                     val userLogged = User(
                         response.body()!!.insertId,
-                        birthDateFormatted,
+                        birthDateDate,
                         null,
                         user.userName,
                         null,
@@ -167,7 +170,7 @@ class CadastroIncompletoActivity : AppCompatActivity() {
                     val editor = userLoggedFile.edit()
                     editor.putInt("idUser", userLogged.idUser)
                     editor.putString("userName", userLogged.userName)
-                    editor.putString("birthDate", userLogged.birthDate)
+                    editor.putString("birthDate", userLogged.birthDate.toString())
                     editor.putString("backgroundImage", userLogged.backgroundImage)
                     editor.putInt("howdyCoin", userLogged.howdyCoin)
                     editor.putInt("idNativeLanguage", userLogged.idNativeLanguage)
@@ -177,7 +180,9 @@ class CadastroIncompletoActivity : AppCompatActivity() {
                     editor.putString("targetLanguageName", userLogged.targetLanguageName)
                     editor.putString("targetLanguageTranslatorName", userLogged.targetLanguageTranslatorName)
                     editor.putString("profilePhoto", userLogged.profilePhoto)
-                    editor.putString("subscriptionEndDate", userLogged.subscriptionEndDate)
+                    editor.putString("subscriptionEndDate",
+                        userLogged.subscriptionEndDate?.toString()
+                    )
                     editor.putString("subscriptionEndDate", userLogged.description)
                     editor.apply()
 

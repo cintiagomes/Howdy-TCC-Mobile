@@ -119,7 +119,7 @@ class Login : AppCompatActivity() {
                     editor.putString("userName", userLogged.userName)
                     editor.putString("description", userLogged.description)
                     editor.putString("backgroundImage", userLogged.backgroundImage)
-                    editor.putString("subscriptionEndDate", userLogged.subscriptionEndDate)
+                    editor.putString("subscriptionEndDate", userLogged.subscriptionEndDate.toString())
                     editor.putInt("howdyCoin", userLogged.howdyCoin)
                     editor.putInt("idTargetLanguage", userLogged.idTargetLanguage)
                     editor.putString("targetLanguageName", userLogged.targetLanguageName)

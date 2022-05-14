@@ -34,7 +34,8 @@ class CadastroActivity : AppCompatActivity() {
 
     private lateinit var routerInterface: RouterInterface
 
-    private lateinit var birthDateFormatted: String
+    private lateinit var birthDateStringBackend: String
+    private lateinit var birthDateDate: Date
     var targetLanguage  = TargetLanguage(0, "", "")
     var nativeLanguage = NativeLanguage(0, "", "")
 
@@ -59,7 +60,7 @@ class CadastroActivity : AppCompatActivity() {
 
         etDataNascimento.setOnClickListener {
             val data = DatePickerDialog(
-                this, { view, _ano, _mes, _dia ->
+                this, { _, _ano, _mes, _dia ->
                     etDataNascimento.setText("$_dia/${_mes + 1}/$_ano")
                 }, ano, mes, dia)
             data.show()
@@ -124,8 +125,8 @@ class CadastroActivity : AppCompatActivity() {
         }
 
         //CONVERTENDO DATA DE NASCIMENTO
-        val birthDateDate = convertBrStringToDate(birthDate)
-        birthDateFormatted = convertDateToBackendFormat(birthDateDate)
+        birthDateDate = convertBrStringToDate(birthDate)
+        birthDateStringBackend = convertDateToBackendFormat(birthDateDate)
 
         auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener{
             if (it.isSuccessful){
@@ -137,7 +138,7 @@ class CadastroActivity : AppCompatActivity() {
                             //CADASTRANDO O USUÁRIO NO BANCO SQL
                             val user = DataToCreateUser(
                                 userName,
-                                birthDateFormatted,
+                                birthDateStringBackend,
                                 targetLanguage,
                                 nativeLanguage
                             )
@@ -161,7 +162,7 @@ class CadastroActivity : AppCompatActivity() {
                 if(response.isSuccessful) {
                     val userLogged = User(
                         response.body()!!.insertId,
-                        birthDateFormatted,
+                        birthDateDate,
                         null,
                         user.userName,
                         null,
@@ -184,7 +185,7 @@ class CadastroActivity : AppCompatActivity() {
                     val editor = userLoggedFile.edit()
                     editor.putInt("idUser", userLogged.idUser)
                     editor.putString("userName", userLogged.userName)
-                    editor.putString("birthDate", userLogged.birthDate)
+                    editor.putString("birthDate", userLogged.birthDate.toString())
                     editor.putString("backgroundImage", userLogged.backgroundImage)
                     editor.putInt("howdyCoin", userLogged.howdyCoin)
                     editor.putInt("idNativeLanguage", userLogged.idNativeLanguage)
@@ -194,7 +195,9 @@ class CadastroActivity : AppCompatActivity() {
                     editor.putString("targetLanguageName", userLogged.targetLanguageName)
                     editor.putString("targetLanguageTranslatorName", userLogged.targetLanguageTranslatorName)
                     editor.putString("profilePhoto", userLogged.profilePhoto)
-                    editor.putString("subscriptionEndDate", userLogged.subscriptionEndDate)
+                    editor.putString("subscriptionEndDate",
+                        userLogged.subscriptionEndDate?.toString()
+                    )
                     editor.putString("subscriptionEndDate", userLogged.description)
                     editor.apply()
 

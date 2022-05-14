@@ -1,13 +1,15 @@
 package com.example.howdy.model.UserTypes
 
+import java.util.*
+
 class User(
     idUser: Int,
-    birthDate: String,
+    birthDate: Date,
     profilePhoto: String?,
     userName: String,
     description: String?,
     backgroundImage: String?,
-    subscriptionEndDate: String?,
+    subscriptionEndDate: Date?,
     howdyCoin: Int,
     idTargetLanguage: Int,
     targetLanguageName: String,

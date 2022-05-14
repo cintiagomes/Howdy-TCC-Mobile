@@ -2,9 +2,15 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 fun convertBrStringToDate(brazilDate: String) : Date {
-    val formato = SimpleDateFormat("dd/MM/yyyy")
+    val formatter = SimpleDateFormat("dd/MM/yyyy")
 
-    return formato.parse(brazilDate)
+    return formatter.parse(brazilDate)
+}
+
+fun convertDateToBrString(date: Date): String{
+    val formatter = SimpleDateFormat("dd/MM/yyyy")
+
+    return formatter.format(date)
 }
 
 fun convertDateToBackendFormat(date: Date) : String {
