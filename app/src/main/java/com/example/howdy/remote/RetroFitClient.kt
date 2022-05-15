@@ -14,6 +14,7 @@ object RetroFitClient {
         val gson = GsonBuilder()
             .setLenient()
             .create()
+
         if (retrofit == null) {
             retrofit = Retrofit.Builder()
                 .baseUrl(url)

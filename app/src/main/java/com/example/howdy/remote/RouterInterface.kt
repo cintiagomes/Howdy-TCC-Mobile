@@ -38,16 +38,17 @@ interface RouterInterface {
 
     //ROTA PARA EDITAR CONTA DO USUÁRIO LOGADO
     @Multipart
+    //O RETROFIT COLOCA ASPAS EM TODOS OS CAMPOS, ENTÃO É NECESSÁRIO REMOVER AS ASPAS
     @PUT("/users")
     fun editMyAccount(
         @Header("Authorization") idToken: String,
         @Part profilePhotoFile: MultipartBody.Part?,
         @Part backgroundImageFile: MultipartBody.Part?,
-        @Path("idTargetLanguage") idTargetLanguage: Int?,
-        @Path("idNativeLanguage") idNativeLanguage: Int?,
-        @Part("userName") userName: String?,
-        @Part("birthDate") birthDate: String?,
-        @Part("description") description: String?
+        @Part("idTargetLanguage") idTargetLanguage: RequestBody?,
+        @Part("idNativeLanguage") idNativeLanguage: RequestBody?,
+        @Part("userName") userName: RequestBody?,
+        @Part("birthDate") birthDate: RequestBody?,
+        @Part("description") description: RequestBody?
     ): Call<MySqlResult>
 
     /** ROTAS DE AMIZADE  */

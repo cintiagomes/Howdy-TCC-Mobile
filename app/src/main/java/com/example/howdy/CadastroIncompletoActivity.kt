@@ -21,6 +21,7 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 import convertBrStringToDate
 import convertDateToBackendFormat
+import kotlinx.android.synthetic.main.item_amigo.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -49,7 +50,7 @@ class CadastroIncompletoActivity : AppCompatActivity() {
         val calendario = Calendar.getInstance()
 
         //Determinar o dia mes e ano do calendario
-        val ano =calendario.get(Calendar.YEAR)
+        val ano =calendario.get(Calendar.YEAR) - 18
         val mes =calendario.get(Calendar.MONTH)
         val dia =calendario.get(Calendar.DAY_OF_MONTH)
 
@@ -206,7 +207,28 @@ class CadastroIncompletoActivity : AppCompatActivity() {
     }
 
     private fun isFormValid(userName:String, birthDate:String, nativeLanguageName:String, targetLanguageName:String):String{
-        if (nativeLanguageName == targetLanguageName) return "O idioma nativo, e de interesse devem ser diferentes"
+
+        if (nativeLanguageName == targetLanguageName) {
+            val message = "A língua nativa e a língua alvo não podem ser iguais!"
+            binding.selectedIdiomaInteresse.error = message
+
+            return message
+        }
+
+        if (userName.isEmpty()) {
+            val message = "O campo nome não pode estar vazio!"
+            binding.textNome.error = message
+
+            return message
+        }
+
+        if (birthDate.isEmpty()) {
+            val message = "O campo data de nascimento não pode estar vazio!"
+            binding.textData.error = message
+
+            return message
+        }
+
         return ""
     }
 

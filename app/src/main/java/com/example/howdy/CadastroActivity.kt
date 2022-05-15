@@ -22,6 +22,7 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 import convertBrStringToDate
 import convertDateToBackendFormat
+import kotlinx.android.synthetic.main.item_amigo.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -51,7 +52,7 @@ class CadastroActivity : AppCompatActivity() {
         val calendario = Calendar.getInstance()
 
         //Determinar o dia mes e ano do calendario
-        val ano =calendario.get(Calendar.YEAR)
+        val ano =calendario.get(Calendar.YEAR) - 18
         val mes =calendario.get(Calendar.MONTH)
         val dia =calendario.get(Calendar.DAY_OF_MONTH)
 
@@ -198,7 +199,7 @@ class CadastroActivity : AppCompatActivity() {
                     editor.putString("subscriptionEndDate",
                         userLogged.subscriptionEndDate?.toString()
                     )
-                    editor.putString("subscriptionEndDate", userLogged.description)
+                    editor.putString("description", userLogged.description)
                     editor.apply()
 
                     Toast.makeText(applicationContext,"Cadastro realizado com sucesso!",
@@ -221,8 +222,67 @@ class CadastroActivity : AppCompatActivity() {
     }
 
     private fun isFormValid(userName:String, birthDate:String, email:String, nativeLanguageName:String, targetLanguageName:String, password:String, passwordConfirmation:String):String{
-        if (password != passwordConfirmation) return "As senhas precisam ser iguais"
-        if (nativeLanguageName == targetLanguageName) return "O idioma nativo, e de interesse devem ser diferentes"
+        if (password != passwordConfirmation) {
+            val message = "As senhas precisam ser iguais"
+            binding.textSenha.error = message
+            return message
+        }
+
+        if (nativeLanguageName == targetLanguageName) {
+            val message = "A língua nativa e a língua alvo não podem ser iguais!"
+            binding.selectedIdiomaInteresse.error = message
+
+            return message
+        }
+
+        if (userName.isEmpty()) {
+            val message = "O campo nome não pode estar vazio!"
+            binding.textNome.error = message
+
+            return message
+        }
+
+        if (birthDate.isEmpty()) {
+            val message = "O campo data de nascimento não pode estar vazio!"
+            binding.textData.error = message
+
+            return message
+        }
+
+        if (email.isEmpty()) {
+            val message = "O campo email não pode estar vazio!"
+            binding.textEmail.error = message
+
+            return message
+        }
+
+        if (nativeLanguageName.isEmpty()) {
+            val message = "O campo língua nativa não pode estar vazio!"
+            binding.selectedIdiomaNativo.error = message
+
+            return message
+        }
+
+        if (targetLanguageName.isEmpty()) {
+            val message = "O campo língua de interesse não pode estar vazio!"
+            binding.selectedIdiomaInteresse.error = message
+
+            return message
+        }
+
+        if (password.isEmpty()) {
+            val message = "O campo senha não pode estar vazio!"
+            binding.textSenha.error = message
+
+            return message
+        }
+
+        if (passwordConfirmation.isEmpty()) {
+            val message = "O campo confirmação de senha não pode estar vazio!"
+            binding.textConfirmacaoDeSenha.error = message
+
+            return message
+        }
 
         return ""
     }

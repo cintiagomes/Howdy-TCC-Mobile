@@ -73,6 +73,7 @@ class PostsAdapter(private val posts: List<Post>, private val activity: Fragment
 
         override fun bind(obj: Post) {
             userCreatorNameView.text = obj.userCreator.userName
+            userCreatorNameView.text = obj.userCreator.userName
             //BUSCANDO A IMAGEM DO USUÁRIO ATRAVÉS DA URL, E INSERINDO NA RESPECTIVA IMAGE VIEW
             if(obj.userCreator.profilePhoto != null) {
                 Glide

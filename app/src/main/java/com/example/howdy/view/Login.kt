@@ -96,7 +96,7 @@ class Login : AppCompatActivity() {
                         }
                     }
             }else{
-                Toast.makeText(applicationContext,"Houve um erro no login", Toast.LENGTH_LONG).show()
+                Toast.makeText(applicationContext,"Algo de errado ocorreu! Certifique-se de que preencheu os dados corretamente", Toast.LENGTH_LONG).show()
             }
         }
     }

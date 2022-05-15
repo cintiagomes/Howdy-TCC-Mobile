@@ -1,5 +1,6 @@
 package com.example.howdy.view
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -70,7 +71,30 @@ class MainActivity : AppCompatActivity() {
         call.enqueue(object : Callback<List<User>> {
             override fun onResponse(call: Call<List<User>>, response: Response<List<User>>) {
                 if (response.isSuccessful) {
-                    //AGORA QUE SABEMOS QUE O USUÁRIO DE FATO ESTÁ LOGADO, O MANDAREMOS PARA A PRÓXIMA TELA
+                    //PEGANDO DADOS MAIS ATUALIZADOS DO USUÁRIO EM QUESTÃO
+                    val userLogged = response.body()!![0]
+
+                    val userLoggedFile = getSharedPreferences(
+                        "userLogged", Context.MODE_PRIVATE)
+
+                    // EDIÇÃO DE DADOS DO ARQUIVO SHARED PREFERENCES
+                    val editor = userLoggedFile.edit()
+                    editor.putInt("idUser", userLogged.idUser)
+                    editor.putString("profilePhoto", userLogged.profilePhoto)
+                    editor.putString("userName", userLogged.userName)
+                    editor.putString("description", userLogged.description)
+                    editor.putString("backgroundImage", userLogged.backgroundImage)
+                    editor.putString("subscriptionEndDate", userLogged.subscriptionEndDate.toString())
+                    editor.putInt("howdyCoin", userLogged.howdyCoin)
+                    editor.putInt("idTargetLanguage", userLogged.idTargetLanguage)
+                    editor.putString("targetLanguageName", userLogged.targetLanguageName)
+                    editor.putString("targetLanguageTranslatorName", userLogged.targetLanguageTranslatorName)
+                    editor.putInt("idNativeLanguage", userLogged.idNativeLanguage)
+                    editor.putString("nativeLanguageName", userLogged.nativeLanguageName)
+                    editor.putString("nativeLanguageTranslatorName", userLogged.nativeLanguageTranslatorName)
+                    editor.apply()
+
+                    //AGORA QUE SABEMOS QUE O USUÁRIO DE FATO ESTÁ LOGADO, MANDAREMOS ELE PARA A PRÓXIMA TELA
                     val postPage = Intent(applicationContext, paginaDePostagem::class.java)
                     startActivity(postPage)
                 }
