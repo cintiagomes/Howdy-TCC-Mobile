@@ -47,7 +47,7 @@ class ConfiguracaoActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityConfiguracaoBinding
     private val context = this
-    var imageBitmap : Bitmap? = null
+    var imageBitmap: Bitmap? = null
 
     private lateinit var routerInterface: RouterInterface
     private val auth = FirebaseAuth.getInstance()
@@ -105,14 +105,14 @@ class ConfiguracaoActivity : AppCompatActivity() {
         setOptionsToChangePhoto()
 
         //BOTÃO CORRESPONDENTE A SETA DE VOLTAR
-        arrowButton.setOnClickListener{ finish() }
+        arrowButton.setOnClickListener { finish() }
 
-        buttonToEdit.setOnClickListener{ editUser()}
+        buttonToEdit.setOnClickListener { editUser() }
 
-        btnDelteAccountView.setOnClickListener{ openDeleteUserModal()}
+        btnDelteAccountView.setOnClickListener { openDeleteUserModal() }
     }
 
-    private fun editUser(){
+    private fun editUser() {
         val userName = userNameView.text.toString()
         val description = descriptionView.text.toString()
         val birthDate = birthDateView.text.toString()
@@ -125,7 +125,17 @@ class ConfiguracaoActivity : AppCompatActivity() {
         val targetLanguageName = targetLanguageNameView.text.toString()
 
         //FUNÇÃO QUE FARÁ A VALIDAÇÃO DE CAMPOS
-        if (validateFields(userName, description, birthDate, email, password, passwordConfirmation, nativeLanguageName, targetLanguageName)){
+        if (validateFields(
+                userName,
+                description,
+                birthDate,
+                email,
+                password,
+                passwordConfirmation,
+                nativeLanguageName,
+                targetLanguageName
+            )
+        ) {
             updateUser(
                 userName,
                 description,
@@ -145,12 +155,12 @@ class ConfiguracaoActivity : AppCompatActivity() {
         email: String,
         password: String,
         nativeLanguageName: String
-    ){
+    ) {
         //DEFININDO QUAIS SERÃO OS OBJETOS DE TARGET E NATIVE LANGUAGE
         val idTargetLanguage: Int?
         val idNativeLanguage: Int?
 
-        if (nativeLanguageName == "Português brasileiro"){
+        if (nativeLanguageName == "Português brasileiro") {
             idNativeLanguage = 1
             idTargetLanguage = 2
         } else {
@@ -159,32 +169,51 @@ class ConfiguracaoActivity : AppCompatActivity() {
         }
 
         //CONVERTENDO ARQUIVOS DE FOTO DE PERFIL, E FOTO DE FUNDO PARA MultipartBody.Part
-            if(changedBackgroundImage != null){
-                val requestFile: RequestBody = RequestBody.create(MediaType.parse("multipart/form-data"), changedBackgroundImage)
-                backgroundImageFormData = MultipartBody.Part.createFormData("backgroundImageFile", changedBackgroundImage!!.name, requestFile)
-            }
-            if (changedProfilePhoto != null){
-                val requestFile: RequestBody = RequestBody.create(MediaType.parse("multipart/form-data"), changedProfilePhoto)
-                profilePhotoFormData = MultipartBody.Part.createFormData("profilePhotoFile", changedProfilePhoto!!.name, requestFile)
-            }
+        if (changedBackgroundImage != null) {
+            val requestFile: RequestBody =
+                RequestBody.create(MediaType.parse("multipart/form-data"), changedBackgroundImage)
+            backgroundImageFormData = MultipartBody.Part.createFormData(
+                "backgroundImageFile",
+                changedBackgroundImage!!.name,
+                requestFile
+            )
+        }
+        if (changedProfilePhoto != null) {
+            val requestFile: RequestBody =
+                RequestBody.create(MediaType.parse("multipart/form-data"), changedProfilePhoto)
+            profilePhotoFormData = MultipartBody.Part.createFormData(
+                "profilePhotoFile",
+                changedProfilePhoto!!.name,
+                requestFile
+            )
+        }
 
         //LOGANDO O USUÁRIO COM SUA CONTA DO FIREBASE
-        if (auth?.currentUser?.email != null) {
+        if (auth?.currentUser?.email != null && auth.currentUser?.email != email && email.isNotEmpty() ||
+            auth?.currentUser?.email != null && password.isNotEmpty()
+        ) {
             auth.signInWithEmailAndPassword(
                 auth!!.currentUser!!.email!!,
-                textSenhaAtual.text.toString()).addOnCompleteListener {
-                if (it.isSuccessful){
+                textSenhaAtual.text.toString().ifEmpty { "..." }
+            ).addOnCompleteListener {
+                if (it.isSuccessful) {
                     //ALTERANDO E-MAIL DO USUÁRIO ATRAVÉS DO FIREBASE
-                    if (auth.currentUser?.email != email) {
+                    if (auth.currentUser?.email != email && email.isNotEmpty()) {
                         changeEmail(email)
                     }
 
                     //ALTERANDO SENHA DO USUÁRIO ATRAVÉS DO FIREBASE
-                    if (password != "") {
+                    if (password.isNotEmpty()) {
                         changePassword(password)
                     }
-                }else{
-                    Toast.makeText(applicationContext,"A senha que foi passada está incorreta", Toast.LENGTH_LONG).show()
+                } else {
+                    //DEIXANDO O INPUT DE SENHA COM O ERRO DE SENHA INCORRETA
+                    textSenhaAtual.error = "Senha incorreta"
+                    Toast.makeText(
+                        applicationContext,
+                        "Senha incorreta",
+                        Toast.LENGTH_LONG
+                    ).show()
                 }
             }
         }
@@ -195,13 +224,27 @@ class ConfiguracaoActivity : AppCompatActivity() {
                 val idToken = result.token!!
 
                 //CONVERTENDO TEXTOS DA REQUISIÇÃO EM REQUESTBODY
-                val idTargetLanguageRequestBody = RequestBody.create(MediaType.parse("text/plain"), idTargetLanguage.toString())
-                val idNativeLanguageRequestBody = RequestBody.create(MediaType.parse("text/plain"), idNativeLanguage.toString())
-                val userNameRequestBody = RequestBody.create(MediaType.parse("text/plain"), userName)
-                val birthDateRequestBody = RequestBody.create(MediaType.parse("text/plain"), birthDate)
-                val descriptionRequestBody = RequestBody.create(MediaType.parse("text/plain"), description)
+                val idTargetLanguageRequestBody =
+                    RequestBody.create(MediaType.parse("text/plain"), idTargetLanguage.toString())
+                val idNativeLanguageRequestBody =
+                    RequestBody.create(MediaType.parse("text/plain"), idNativeLanguage.toString())
+                val userNameRequestBody =
+                    RequestBody.create(MediaType.parse("text/plain"), userName)
+                val birthDateRequestBody =
+                    RequestBody.create(MediaType.parse("text/plain"), birthDate)
+                val descriptionRequestBody =
+                    RequestBody.create(MediaType.parse("text/plain"), description)
 
-                //REALIZANDO A QUERY PARA ATUALIZAR USUÁRIO
+                //REALIZANDO A QUERY PARA ATUALIZAR USUÁRIO, CASO O USUÁRIO TENHA ALTERADO ALGUM DADO
+                if (
+                    changedBackgroundImage != null ||
+                    changedProfilePhoto != null ||
+                    userName != userLogged.userName ||
+                    idTargetLanguage != userLogged.idTargetLanguage ||
+                    idNativeLanguage != userLogged.idNativeLanguage ||
+                    birthDateDate != userLogged.birthDate ||
+                    description != userLogged.description
+                ) {
                     val call: Call<MySqlResult> = routerInterface.editMyAccount(
                         idToken,
                         profilePhotoFormData,
@@ -213,38 +256,51 @@ class ConfiguracaoActivity : AppCompatActivity() {
                         descriptionRequestBody,
                     )
 
-                call.enqueue(object : Callback<MySqlResult> {
-                    override fun onResponse(call: Call<MySqlResult>, response: Response<MySqlResult>) {
-                        if (response.isSuccessful) {
-                            Toast.makeText(context, "Usuário atualizado com sucesso!", Toast.LENGTH_LONG).show()
+                    call.enqueue(object : Callback<MySqlResult> {
+                        override fun onResponse(
+                            call: Call<MySqlResult>,
+                            response: Response<MySqlResult>
+                        ) {
+                            if (response.isSuccessful) {
+                                Toast.makeText(
+                                    context,
+                                    "Usuário atualizado com sucesso!",
+                                    Toast.LENGTH_LONG
+                                ).show()
 
-                            //INDO PARA A TELA PRINCIPAL DA APLICAÇÃO, PARA TER OS DADOS DO USUÁRIO ATUALIZADOS
-                            restartApp()
-                        } else {
+                                //INDO PARA A TELA PRINCIPAL DA APLICAÇÃO, PARA TER OS DADOS DO USUÁRIO ATUALIZADOS
+                                restartApp()
+                            } else {
+                                Toast.makeText(
+                                    context,
+                                    "Ocorreu um erro na edição, certifique-se de que os campos foram preenchidos corretamente.",
+                                    Toast.LENGTH_LONG
+                                ).show()
+                            }
+                        }
+
+                        override fun onFailure(call: Call<MySqlResult>, t: Throwable) {
                             Toast.makeText(
-                                context, "Ocorreu um erro na edição, certifique-se de que os campos foram preenchidos corretamente.",
+                                context,
+                                "Houve um erro de conexão, verifique se está conectado na internet.",
                                 Toast.LENGTH_LONG
                             ).show()
+                            println("DEBUGANDO - ONFAILURE NA TRADUÇÃO: $t")
                         }
-                    }
-
-                    override fun onFailure(call: Call<MySqlResult>, t: Throwable) {
-                        Toast.makeText(context,"Houve um erro de conexão, verifique se está conectado na internet.",
-                            Toast.LENGTH_LONG).show()
-                        println("DEBUGANDO - ONFAILURE NA TRADUÇÃO: $t")
-                    }
-                })
+                    })
                 }
             }
+    }
 
-    private fun changeEmail(email: String){
+    private fun changeEmail(email: String) {
         auth.currentUser?.updateEmail(email)
             ?.addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     Toast.makeText(
                         this,
                         "E-mail alterado com sucesso!",
-                        Toast.LENGTH_SHORT).show()
+                        Toast.LENGTH_SHORT
+                    ).show()
                 } else {
                     //IMPRIMINDO A MENSAGEM DE ERRO DA REQUISIÇÃO
                     println("DEBUGANDO ERRO AO ALTERAR E-MAIL" + task.exception)
@@ -258,7 +314,7 @@ class ConfiguracaoActivity : AppCompatActivity() {
             }
     }
 
-    private fun changePassword(password: String){
+    private fun changePassword(password: String) {
         auth.currentUser?.updatePassword(password)
             ?.addOnCompleteListener { task ->
                 if (task.isSuccessful) {
@@ -288,41 +344,51 @@ class ConfiguracaoActivity : AppCompatActivity() {
     }
 
     //CRIANDO FUNÇÃO QUE VALIDA OS CAMPOS
-    private fun validateFields(userName: String, description: String, birthDate: String, email: String, password: String, passwordConfirmation: String, nativeLanguageName: String, targetLanguageName: String): Boolean{
+    private fun validateFields(
+        userName: String,
+        description: String,
+        birthDate: String,
+        email: String,
+        password: String,
+        passwordConfirmation: String,
+        nativeLanguageName: String,
+        targetLanguageName: String
+    ): Boolean {
         var isValid = true
-        if (userName.isEmpty()){
+        if (userName.isEmpty()) {
             userNameView.error = "Preencha o campo nome"
             isValid = false
         }
-        if (description.isEmpty()){
+        if (description.isEmpty()) {
             descriptionView.error = "Preencha o campo nome"
             isValid = false
         }
-        if (birthDate.isEmpty()){
+        if (birthDate.isEmpty()) {
             birthDateView.error = "Preencha o campo data de nascimento"
             isValid = false
         }
-        if (email.isEmpty()){
+        if (email.isEmpty()) {
             emailView.error = "Preencha o campo email"
             isValid = false
         }
-        if (!password.isEmpty() && password.length < 6){
+        if (!password.isEmpty() && password.length < 6) {
             passwordView.error = "A senha deve ter no mínimo 6 caracteres"
             isValid = false
         }
-        if (password != passwordConfirmation){
+        if (password != passwordConfirmation) {
             passwordConfirmationView.error = "As senhas não conferem"
             isValid = false
         }
-        if (nativeLanguageName == targetLanguageName){
-            targetLanguageNameView.error = "O idioma de interesse não pode ser o mesmo do idioma de origem"
+        if (nativeLanguageName == targetLanguageName) {
+            targetLanguageNameView.error =
+                "O idioma de interesse não pode ser o mesmo do idioma de origem"
             isValid = false
         }
 
         return isValid
     }
 
-    private fun openDeleteUserModal(){
+    private fun openDeleteUserModal() {
         val view = View.inflate(this, R.layout.dialog_view, null)
         val builder = AlertDialog.Builder(this)
         builder.setView(view)
@@ -343,15 +409,17 @@ class ConfiguracaoActivity : AppCompatActivity() {
         }
     }
 
-    private fun deleteUser(){
+    private fun deleteUser() {
         /** DELETANDO USUÁRIO **/
 
-        if(textSenhaAtual.text.toString() != ""){
+        //NÃO DEIXANDO PASSAR CASO O CAMPO DE SENHA ESTEJA VAZIO
+        if (!textSenhaAtual.text.toString().isEmpty()) {
             //RENOVANDO SESSÃO
             auth.signInWithEmailAndPassword(
                 auth!!.currentUser!!.email!!,
-                textSenhaAtual.text.toString()).addOnCompleteListener {
-                if (it.isSuccessful){
+                textSenhaAtual.text.toString()
+            ).addOnCompleteListener {
+                if (it.isSuccessful) {
                     //DELETANDO NO BANCO DE DADOS
 
                     //RESGATANDO IDTOKEN DO FIREBASE
@@ -360,39 +428,53 @@ class ConfiguracaoActivity : AppCompatActivity() {
                             val idToken = result.token!!
 
                             //REALIZANDO A QUERY PARA DELETAR USUÁRIO
-                            val call: Call<MySqlResult> = routerInterface.deleteMyAccountOnBackend(idToken)
+                            val call: Call<MySqlResult> =
+                                routerInterface.deleteMyAccountOnBackend(idToken)
 
                             call.enqueue(object : Callback<MySqlResult> {
-                                override fun onResponse(call: Call<MySqlResult>, response: Response<MySqlResult>) {
+                                override fun onResponse(
+                                    call: Call<MySqlResult>,
+                                    response: Response<MySqlResult>
+                                ) {
                                     if (response.isSuccessful) {
                                         deleteAccountOnFirebase()
                                     } else {
                                         Toast.makeText(
-                                            context, "Ocorreu um erro em deletar sua conta, tente novamente.",
+                                            context,
+                                            "Ocorreu um erro em deletar sua conta, tente novamente.",
                                             Toast.LENGTH_LONG
                                         ).show()
                                     }
                                 }
 
                                 override fun onFailure(call: Call<MySqlResult>, t: Throwable) {
-                                    Toast.makeText(context,"Houve um erro de conexão, verifique se está conectado na internet.",
-                                        Toast.LENGTH_LONG).show()
+                                    Toast.makeText(
+                                        context,
+                                        "Houve um erro de conexão, verifique se está conectado na internet.",
+                                        Toast.LENGTH_LONG
+                                    ).show()
                                     println("DEBUGANDO - ONFAILURE NA DELEÇÃO DE CONTA: $t")
                                 }
                             })
                         }
-                }else{
-                    Toast.makeText(applicationContext,"A senha que foi passada está incorreta", Toast.LENGTH_LONG).show()
+                } else {
+                    //DEIXANDO A O INPUT DE SENHA COM A MENSAGEM DE ERRO
+                    textSenhaAtual.error = "Senha incorreta"
+                    Toast.makeText(
+                        applicationContext,
+                        "A senha que foi passada está incorreta",
+                        Toast.LENGTH_LONG
+                    ).show()
                 }
             }
         } else {
             //DIZENDO AO USUÁRIO QUE A SENHA DEVE SER PREENCHIDA
-
-                Toast.makeText(this, "Escreva sua senha para deletar esta conta.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Escreva sua senha para deletar esta conta.", Toast.LENGTH_SHORT)
+                .show()
         }
     }
 
-    private fun deleteAccountOnFirebase(){
+    private fun deleteAccountOnFirebase() {
         //DELETANDO CONTA DO USUÁRIO UTILIZANDO O FIREBASE
         val user = auth.currentUser
         user?.delete()
@@ -417,7 +499,7 @@ class ConfiguracaoActivity : AppCompatActivity() {
     }
 
     @SuppressLint("UseCompatLoadingForDrawables")
-    private fun setOptionsToChangePhoto(){
+    private fun setOptionsToChangePhoto() {
         /** TRATANDO IMAGENS **/
         //Caso a imagem seja um vector asset
         imageBitmap =
@@ -430,11 +512,20 @@ class ConfiguracaoActivity : AppCompatActivity() {
         }
 
         ibChangeBackgroundImageView.setOnClickListener {
-            openGallery(CODE_BACKGROUND_IMAGE)
+            //PERMITINDO O USUÁRIO TROCAR DE IMAGEM SE TIVER UMA ASSINATURA
+            if (userLogged.isPro) {
+                openGallery(CODE_BACKGROUND_IMAGE)
+            } else {
+                Toast.makeText(
+                    this,
+                    "Você precisa de uma assinatura para trocar de imagem de fundo.",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
         }
     }
 
-    private fun findAndRenderUserData(){
+    private fun findAndRenderUserData() {
         //COLETANDO INFORMAÇÕES ATUAIS DO USUÁRIO LOGADO, PARA ENTÃO PREENCHER NO INPUT
         auth.currentUser?.getIdToken(true)
             ?.addOnSuccessListener { result ->
@@ -442,21 +533,28 @@ class ConfiguracaoActivity : AppCompatActivity() {
                 if (idToken != null) {
                     val call: Call<List<User>> = routerInterface.isMyUidExternalRegistered(idToken)
                     call.enqueue(object : Callback<List<User>> {
-                        override fun onResponse(call: Call<List<User>>, response: Response<List<User>>) {
+                        override fun onResponse(
+                            call: Call<List<User>>,
+                            response: Response<List<User>>
+                        ) {
                             if (response.isSuccessful) {
                                 userLogged = response.body()?.get(0)!!
                                 renderUserData()
                             } else {
                                 Toast.makeText(
-                                    context, "OPS... OCORREU UM ERRO AO RESGATAR OS DADOS DO USUÁRIO!",
+                                    context,
+                                    "OPS... OCORREU UM ERRO AO RESGATAR OS DADOS DO USUÁRIO!",
                                     Toast.LENGTH_LONG
                                 ).show()
                             }
                         }
 
                         override fun onFailure(call: Call<List<User>>, t: Throwable) {
-                            Toast.makeText(context,"Houve um erro de conexão, verifique se está conectado na internet.",
-                                Toast.LENGTH_LONG).show()
+                            Toast.makeText(
+                                context,
+                                "Houve um erro de conexão, verifique se está conectado na internet.",
+                                Toast.LENGTH_LONG
+                            ).show()
                             println("DEBUGANDO - ONFAILURE NA EDIÇÃO DO USUÁRIO $t")
                         }
                     })
@@ -465,9 +563,9 @@ class ConfiguracaoActivity : AppCompatActivity() {
     }
 
     @SuppressLint("SetTextI18n")
-    fun renderUserData(){
+    fun renderUserData() {
         //BUSCANDO A FOTO DE PERFIL DO USUÁRIO ATRAVÉS DA URL, E INSERINDO NA RESPECTIVA IMAGE VIEW
-        if(userLogged.profilePhoto != null) {
+        if (userLogged.profilePhoto != null) {
             Glide
                 .with(profilePhotoView)
                 .load(userLogged.profilePhoto)
@@ -475,7 +573,7 @@ class ConfiguracaoActivity : AppCompatActivity() {
         }
 
         //BUSCANDO FOTO DE CAPA DO USUÁRIO
-        if(userLogged.backgroundImage != null) {
+        if (userLogged.backgroundImage != null) {
             Glide
                 .with(backgroundImageView)
                 .load(userLogged.backgroundImage)
@@ -492,12 +590,13 @@ class ConfiguracaoActivity : AppCompatActivity() {
         //RESGATANDO MÊS DE NASCIMENTO DO USUÁRIO
         val birthMonth = userLogged.birthDate.month
         //RESGATANDO DIA DE NASCIMENTO DO USUÁRIO
-        val birthDay = userLogged.birthDate.toString().substring(8,10).toInt()
+        val birthDay = userLogged.birthDate.toString().substring(8, 10).toInt()
         birthDateView.setOnClickListener {
             val data = DatePickerDialog(
                 this, { _, _year, _month, _day ->
                     birthDateView.setText("$_day/${_month + 1}/$_year")
-                }, birthYear, birthMonth, birthDay)
+                }, birthYear, birthMonth, birthDay
+            )
             data.show()
         }
 
@@ -511,12 +610,12 @@ class ConfiguracaoActivity : AppCompatActivity() {
         )
 
         nativeLanguageNameView.text = convertStringtoEditable(userLogged.nativeLanguageName)
-        with(nativeLanguageNameView){
+        with(nativeLanguageNameView) {
             setAdapter(adapter)
         }
 
         targetLanguageNameView.text = convertStringtoEditable(userLogged.targetLanguageName)
-        with(targetLanguageNameView){
+        with(targetLanguageNameView) {
             setAdapter(adapter)
         }
     }
@@ -539,7 +638,7 @@ class ConfiguracaoActivity : AppCompatActivity() {
             }
 
             //CONVERTENDO A IMAGEM NO FORMATO BITMAP PARA FILE
-            val file = File(getExternalFilesDir(Environment.DIRECTORY_PICTURES), "image.jpg")
+            val file = File(getExternalFilesDir(Environment.DIRECTORY_PICTURES), "image$requestCode.jpg")
             file.createNewFile()
 
             val bos = ByteArrayOutputStream()
@@ -554,15 +653,16 @@ class ConfiguracaoActivity : AppCompatActivity() {
 
             //SALVANDO FILE NA VARIÁVEL PARA SER USADA NO UPDATE
             if (requestCode == CODE_BACKGROUND_IMAGE) {
+                println("DEBUGANDO BACKGROUNDIMAGE: $file")
                 changedBackgroundImage = file
             } else {
+                println("DEBUGANDO PROFILEPHOTO: $file")
                 changedProfilePhoto = file
             }
         }
     }
 
     private fun openGallery(CODE_RESULT: Int) {
-
         //Abrir a galeria de imagens do dispositivo
         val intent = Intent(Intent.ACTION_GET_CONTENT)
         intent.type = "image/*"
@@ -571,8 +671,10 @@ class ConfiguracaoActivity : AppCompatActivity() {
         //esta activity retornará o conteúdo selecionado
         //para o nosso app
         startActivityForResult(
-            Intent.createChooser(intent,
-                "Escolha uma foto"),
+            Intent.createChooser(
+                intent,
+                "Escolha uma foto"
+            ),
             CODE_RESULT
         )
     }

@@ -10,6 +10,7 @@ class User(
     description: String?,
     backgroundImage: String?,
     subscriptionEndDate: Date?,
+    isPro: Boolean,
     howdyCoin: Int,
     idTargetLanguage: Int,
     targetLanguageName: String,
@@ -25,6 +26,7 @@ class User(
     var description = description
     var backgroundImage = backgroundImage
     var subscriptionEndDate = subscriptionEndDate
+    var isPro = isPro
     var howdyCoin = howdyCoin
     var idTargetLanguage = idTargetLanguage
     var targetLanguageName = targetLanguageName
