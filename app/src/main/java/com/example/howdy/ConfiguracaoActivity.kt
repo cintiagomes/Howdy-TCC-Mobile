@@ -653,10 +653,8 @@ class ConfiguracaoActivity : AppCompatActivity() {
 
             //SALVANDO FILE NA VARIÁVEL PARA SER USADA NO UPDATE
             if (requestCode == CODE_BACKGROUND_IMAGE) {
-                println("DEBUGANDO BACKGROUNDIMAGE: $file")
                 changedBackgroundImage = file
             } else {
-                println("DEBUGANDO PROFILEPHOTO: $file")
                 changedProfilePhoto = file
             }
         }
