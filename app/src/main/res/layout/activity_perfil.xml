@@ -69,41 +69,90 @@
             android:scaleType="centerCrop"
             android:src="@drawable/background_profile" />
 
-        <ImageButton
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:layout_marginEnd="40dp"
-            android:layout_marginTop="10dp"
-            android:src="@drawable/ic_person_add_24"
-            android:background="@drawable/unselected_sports_background"/>
+            android:layout_marginTop="10dp">
+            <ImageView
+                android:padding="5dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="10dp"
+                android:src="@drawable/transparent"/>
 
-        <ImageButton
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_gravity="end"
-            android:layout_marginEnd="40dp"
-            android:layout_marginTop="10dp"
-            android:src="@drawable/ic_person_remove_24"
-            android:background="@drawable/unselected_friends_background"/>
+            <ImageView
+                android:padding="7dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_person_add_24"
+                android:background="@drawable/unselected_sports_background"/>
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
-        <ImageButton
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:layout_marginEnd="40dp"
-            android:layout_marginTop="10dp"
-            android:src="@drawable/ic_check_24"
-            android:background="@drawable/unselected_sports_background"/>
+            android:layout_marginTop="10dp">
+            <ImageView
+                android:padding="5dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="10dp"
+                android:src="@drawable/transparent"/>
 
-        <ImageButton
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            <ImageView
+                android:padding="7dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_person_remove_24"
+                android:background="@drawable/unselected_friends_background"/>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:layout_marginEnd="40dp"
-            android:layout_marginTop="10dp"
-            android:src="@drawable/ic_person_add_disabled_24"
-            android:background="@drawable/unselected_friends_background"/>
+            android:layout_marginTop="10dp">
+            <ImageView
+                android:padding="7dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="10dp"
+                android:src="@drawable/ic_close_24"
+                android:background="@drawable/unselected_friends_background"/>
+
+            <ImageView
+                android:padding="7dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_check_24"
+                android:background="@drawable/unselected_sports_background"/>
+        </androidx.appcompat.widget.LinearLayoutCompat>v
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginEnd="40dp"
+            android:layout_marginTop="10dp">
+            <ImageView
+                android:padding="5dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="10dp"
+                android:src="@drawable/transparent"/>
+
+            <ImageView
+                android:padding="7dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_person_add_disabled_24"
+                android:background="@drawable/unselected_friends_background"/>
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
         <de.hdodenhof.circleimageview.CircleImageView
             xmlns:app="http://schemas.android.com/apk/res-auto"
