@@ -207,6 +207,7 @@
         <entry key="app/src/main/res/layout/activity_cadastro_incompleto.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/layout/activity_chart_tests.xml" value="0.32461538461538464" />
         <entry key="app/src/main/res/layout/activity_codigo_de_recuperacao.xml" value="0.3109375" />
+        <entry key="app/src/main/res/layout/activity_comentarios.xml" value="0.3380208333333333" />
         <entry key="app/src/main/res/layout/activity_configuracao.xml" value="0.4" />
         <entry key="app/src/main/res/layout/activity_configuracoes.xml" value="0.33229166666666665" />
         <entry key="app/src/main/res/layout/activity_inicio_assinatura.xml" value="0.2087463556851312" />
@@ -220,6 +221,7 @@
         <entry key="app/src/main/res/layout/alert.xml" value="0.26145833333333335" />
         <entry key="app/src/main/res/layout/cadastro.xml" value="1.5" />
         <entry key="app/src/main/res/layout/content_cadastro_incompleto.xml" value="0.40208333333333335" />
+        <entry key="app/src/main/res/layout/dialog_bloqueio.xml" value="0.18703703703703703" />
         <entry key="app/src/main/res/layout/dropdown_item.xml" value="0.18840579710144928" />
         <entry key="app/src/main/res/layout/fragment_amigos.xml" value="0.2691358024691358" />
         <entry key="app/src/main/res/layout/fragment_amigos_perfil.xml" value="0.38958333333333334" />
