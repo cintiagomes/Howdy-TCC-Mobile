@@ -1,5 +1,6 @@
 package com.example.howdy.remote
 
+import com.example.howdy.model.Friendship
 import com.example.howdy.model.MySqlResult
 import okhttp3.MultipartBody
 import com.example.howdy.model.PostTypes.Post
@@ -57,6 +58,30 @@ interface RouterInterface {
         @Header("Authorization") idToken: String,
         @Path("idUser") idUser: Int
     ): Call<List<Friend>>
+
+    @GET("/friendships/isUserMyFriend/{idUser}")
+    fun isUserMyFriend(
+        @Header("Authorization") idToken: String,
+        @Path("idUser") idUser: Int
+    ): Call<Friendship>
+
+    @POST("/friendships/{idUserReceiver}")
+    fun createFriendshipRequest(
+        @Header("Authorization") idToken: String,
+        @Path("idUserReceiver") idUserReceiver: Int
+    ): Call<MySqlResult>
+
+    @PUT("/friendships/accept/{idUserReceiver}")
+    fun acceptFriendshipRequest(
+        @Header("Authorization") idToken: String,
+        @Path("idUserReceiver") idUserReceiver: Int
+    ): Call<MySqlResult>
+
+    @DELETE("/friendships/{idUser}")
+    fun deleteFriendship(
+        @Header("Authorization") idToken: String,
+        @Path("idUser") idUser: Int
+    ): Call<MySqlResult>
 
     /** ROTA DE RANKING  */
     @GET("/ranking/{rankingType}")
