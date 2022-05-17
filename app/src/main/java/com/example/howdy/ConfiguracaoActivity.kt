@@ -22,17 +22,14 @@ import com.example.howdy.remote.RouterInterface
 import com.example.howdy.utils.convertStringtoEditable
 import com.example.howdy.view.InicioAssinatura
 import com.example.howdy.view.MainActivity
-import com.example.howdy.view.paginaDePostagem
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 import convertBrStringToDate
 import convertDateToBackendFormat
 import convertDateToBrString
 import kotlinx.android.synthetic.main.activity_configuracao.*
-import kotlinx.android.synthetic.main.dialog_bloqueio.*
 import kotlinx.android.synthetic.main.dialog_bloqueio.view.*
-import kotlinx.android.synthetic.main.dialog_view.view.*
-import kotlinx.android.synthetic.main.dialog_view.view.bnt_cancelar
+import kotlinx.android.synthetic.main.dialog_purchase.view.*
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -394,7 +391,7 @@ class ConfiguracaoActivity : AppCompatActivity() {
     }
 
     private fun openDeleteUserModal() {
-        val view = View.inflate(this, R.layout.dialog_view, null)
+        val view = View.inflate(this, R.layout.dialog_delete_account, null)
         val builder = AlertDialog.Builder(this)
         builder.setView(view)
 
@@ -407,9 +404,8 @@ class ConfiguracaoActivity : AppCompatActivity() {
             dialog.dismiss()
         }
 
-        view.bnt_excluir.setOnClickListener {
+        view.btn_excluir.setOnClickListener {
             deleteUser()
-
             dialog.dismiss()
         }
     }
@@ -533,13 +529,16 @@ class ConfiguracaoActivity : AppCompatActivity() {
                     assinatura()
                     dialog.dismiss()
                 }
-                Toast.makeText(
-                    this,
-                    "Você precisa de uma assinatura para trocar de imagem de fundo.",
-                    Toast.LENGTH_LONG
-                ).show()
+
+                view.btn_cancelar.setOnClickListener{
+                    dialog.dismiss()
+                }
             }
         }
+    }
+
+    private fun openBlockModal(){
+
     }
 
     private fun assinatura() {

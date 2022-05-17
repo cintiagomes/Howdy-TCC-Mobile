@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="wrap_content">
+
+
 
     <LinearLayout
         android:id="@+id/ll"
@@ -25,35 +27,29 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
             android:gravity="center_horizontal"
-            android:text="Lição concluída!"
+            android:text="Compra de Howdy Coins"
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="30dp"
+            android:textSize="23dp"
             android:fontFamily="@font/roboto_bold" />
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:textColor="#29B995"
-            android:text="Ganhou 3 XP"
-            android:textAlignment="center"
-            android:textSize="20dp"
-            android:fontFamily="@font/roboto_light" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="20dp"
-            android:layout_marginEnd="40dp"
-            android:layout_marginBottom="40dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="60dp"
             android:gravity="center_horizontal"
-            android:textColor="#303135"
-            android:text="Você já está pronto para compartilhar sua experiência em sua rede social! Vamos lá?"
+            android:text="Digite os dados do cartão de crédito para continuar (não salvamos nenhum dado)."
             android:textAlignment="center"
             android:textSize="18dp"
             android:fontFamily="@font/roboto" />
+
+        <com.stripe.android.view.CardInputWidget
+            android:id="@+id/cardInputWidget"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 
@@ -61,7 +57,8 @@
         android:layout_width="110dp"
         android:layout_height="110dp"
         android:background="@drawable/bg_iv"
-        android:src="@drawable/ic_check_circle_24"
+        android:padding="1dp"
+        android:src="@drawable/howdy_coin"
         app:layout_constraintBottom_toTopOf="@+id/ll"
         app:layout_constraintEnd_toEndOf="@id/ll"
         app:layout_constraintStart_toStartOf="@id/ll"
@@ -71,9 +68,9 @@
         android:id="@+id/bnt_cancelar"
         android:layout_width="0dp"
         android:layout_height="50dp"
-        android:layout_marginStart="50dp"
+        android:layout_marginStart="40dp"
         android:backgroundTint="@color/purple_200"
-        android:text="COMPARTILHAR"
+        android:text="CANCELAR"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="16dp"
@@ -81,13 +78,13 @@
         app:layout_constraintStart_toStartOf="@id/ll"
         app:layout_constraintTop_toBottomOf="@id/ll" />
 
-    <ImageButton
+    <Button
         android:id="@+id/btn_excluir"
-        android:layout_width="50dp"
+        android:layout_width="0dp"
         android:layout_height="50dp"
-        android:layout_marginEnd="70dp"
-        android:backgroundTint="#FA383E"
-        android:src="@drawable/ic_close_24"
+        android:layout_marginEnd="40dp"
+        android:backgroundTint="#0CB300"
+        android:text="COMPRAR"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="16dp"

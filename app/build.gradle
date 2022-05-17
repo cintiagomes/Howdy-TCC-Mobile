@@ -71,6 +71,9 @@ dependencies {
 
     //BIBLIOTECA PARA A CRIAÇÃO DE GRÁFICOS
     implementation 'com.jjoe64:graphview:4.2.2'
+
+    // Stripe Android SDK
+    implementation 'com.stripe:stripe-android:20.2.2'
 }
 
 apply plugin: 'com.google.gms.google-services'

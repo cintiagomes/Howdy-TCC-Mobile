@@ -5,11 +5,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
@@ -19,7 +17,6 @@ import com.example.howdy.remote.APIUtil
 import com.example.howdy.remote.RouterInterface
 import com.example.howdy.adapter.PostsAdapter
 import com.google.firebase.auth.FirebaseAuth
-import kotlinx.android.synthetic.main.dialog_view.view.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import org.json.JSONObject
 import retrofit2.Call

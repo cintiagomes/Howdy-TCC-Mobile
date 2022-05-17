@@ -87,7 +87,7 @@ class PerfilActivity : AppCompatActivity() {
         getAndRenderUserData(idUser, tabLayout)
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu, menu)
         return true
     }
@@ -179,10 +179,6 @@ class PerfilActivity : AppCompatActivity() {
         val idUserLogged = userLoggedFile.getInt("idUser", 0)
 
         val buttonsState: String?
-
-        println("DEBUGANDO - ID DO USUÁRIO LOGADO: $idUserLogged")
-        println("DEBUGANDO - errorMessage: ${errorMessage}")
-        println("DEBUGANDO - friendship : ${friendship.toString()} - ${friendship?.message} - ${friendship?.idFriendship} - ${friendship?.idUserAcceptor} - ${friendship?.idFriendship} - ${friendship?.idUserSender}")
 
         //DECIDINDO QUAL BOTÃO DE AMIZADE DEVERÁ SER RENDERIZADO
         if(errorMessage == "This user is not your friend ;-;") {
