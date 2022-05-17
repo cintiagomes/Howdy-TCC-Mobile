@@ -106,6 +106,7 @@
             android:orientation="horizontal">
 
             <ImageButton
+                android:id="@+id/comentarios"
                 android:layout_width="23dp"
                 android:layout_height="23dp"
                 android:scaleType="fitCenter"

@@ -184,7 +184,6 @@
         <entry key="app/src/main/res/drawable/buttom_borda.xml" value="0.29444444444444445" />
         <entry key="app/src/main/res/drawable/ic_add_24.xml" value="0.30925925925925923" />
         <entry key="app/src/main/res/drawable/ic_arrow_24.xml" value="0.129" />
-        <entry key="app/src/main/res/drawable/ic_baseline_info_24.xml" value="0.143" />
         <entry key="app/src/main/res/drawable/ic_book_24.xml" value="0.3614583333333333" />
         <entry key="app/src/main/res/drawable/ic_chat_24.xml" value="0.3614583333333333" />
         <entry key="app/src/main/res/drawable/ic_check_24.xml" value="0.4015384615384615" />
@@ -201,15 +200,16 @@
         <entry key="app/src/main/res/drawable/ic_person_.xml" value="0.2375" />
         <entry key="app/src/main/res/drawable/ic_person_24.xml" value="0.2375" />
         <entry key="app/src/main/res/drawable/ic_person_add_disabled_24.xml" value="0.209" />
+        <entry key="app/src/main/res/drawable/ic_send_24.xml" value="0.255" />
         <entry key="app/src/main/res/drawable/ic_sport_24.xml" value="0.3509259259259259" />
         <entry key="app/src/main/res/drawable/ic_star_24.xml" value="0.30925925925925923" />
         <entry key="app/src/main/res/drawable/ic_time_24.xml" value="0.3509259259259259" />
-        <entry key="app/src/main/res/drawable/unselected_sports_background.xml" value="0.3785" />
         <entry key="app/src/main/res/layout/activity_cadastro.xml" value="0.3234567901234568" />
         <entry key="app/src/main/res/layout/activity_cadastro_incompleto.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/layout/activity_chart_tests.xml" value="0.32461538461538464" />
         <entry key="app/src/main/res/layout/activity_codigo_de_recuperacao.xml" value="0.3109375" />
-        <entry key="app/src/main/res/layout/activity_configuracao.xml" value="0.10972568578553615" />
+        <entry key="app/src/main/res/layout/activity_comentarios.xml" value="0.3380208333333333" />
+        <entry key="app/src/main/res/layout/activity_configuracao.xml" value="0.4" />
         <entry key="app/src/main/res/layout/activity_configuracoes.xml" value="0.33229166666666665" />
         <entry key="app/src/main/res/layout/activity_inicio_assinatura.xml" value="0.2087463556851312" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.3515625" />
@@ -222,13 +222,7 @@
         <entry key="app/src/main/res/layout/alert.xml" value="0.26145833333333335" />
         <entry key="app/src/main/res/layout/cadastro.xml" value="1.5" />
         <entry key="app/src/main/res/layout/content_cadastro_incompleto.xml" value="0.40208333333333335" />
-        <entry key="app/src/main/res/layout/dialog_avaliacao_atividade.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/dialog_bloqueio.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/dialog_compartilhamento.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/dialog_conclusao_atividade.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/dialog_delete_account.xml" value="0.335" />
-        <entry key="app/src/main/res/layout/dialog_purchase.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/dialog_view.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/dialog_bloqueio.xml" value="0.18703703703703703" />
         <entry key="app/src/main/res/layout/dropdown_item.xml" value="0.18840579710144928" />
         <entry key="app/src/main/res/layout/fragment_amigos.xml" value="0.2691358024691358" />
         <entry key="app/src/main/res/layout/fragment_amigos_perfil.xml" value="0.38958333333333334" />
@@ -247,6 +241,7 @@
         <entry key="app/src/main/res/layout/item.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/layout/item_amigo.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/layout/item_atividade.xml" value="0.4036458333333333" />
+        <entry key="app/src/main/res/layout/item_comentar.xml" value="0.3380208333333333" />
         <entry key="app/src/main/res/layout/item_contact.xml" value="0.3234375" />
         <entry key="app/src/main/res/layout/item_notificacao.xml" value="0.3092485549132948" />
         <entry key="app/src/main/res/layout/item_post_with_image.xml" value="0.375" />

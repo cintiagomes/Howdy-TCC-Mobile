@@ -1,6 +1,7 @@
 package com.example.howdy.view
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,8 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
+import com.example.howdy.CadastroActivity
+import com.example.howdy.ComentariosActivity
 import com.example.howdy.R
 import com.example.howdy.model.PostTypes.Post
 import com.example.howdy.remote.APIUtil
@@ -18,6 +21,8 @@ import com.example.howdy.remote.RouterInterface
 import com.example.howdy.adapter.PostsAdapter
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.item_post_without_image.*
+import kotlinx.android.synthetic.main.item_post_without_image.view.*
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
@@ -169,6 +174,7 @@ class HomeFragment : Fragment() {
                 findAndListPosts("5")
             }
         }
+
     }
 
     private fun unselectAllButtonsCategory(){
