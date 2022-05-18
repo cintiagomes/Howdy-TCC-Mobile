@@ -2,7 +2,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:padding="15dp">
+
+
 
     <LinearLayout
         android:id="@+id/ll"
@@ -21,11 +24,12 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
+            android:id="@+id/tv_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
             android:gravity="center_horizontal"
-            android:text="Excluir conta"
+            android:text="Comprar 1000 Howdy Coins"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="23dp"
@@ -37,12 +41,19 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="60dp"
+            android:layout_marginBottom="20dp"
             android:gravity="center_horizontal"
-            android:text="Você realmente deseja excluir sua conta permanentemente?"
+            android:text="Digite os dados do seu cartão de crédito para continuar (não salvamos nenhum dado)."
             android:textAlignment="center"
             android:textSize="18dp"
             android:fontFamily="@font/roboto" />
+
+        <com.stripe.android.view.CardInputWidget
+            android:id="@+id/cardInputWidget"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            />
 
     </LinearLayout>
 
@@ -51,18 +62,18 @@
         android:layout_height="110dp"
         android:background="@drawable/bg_iv"
         android:padding="1dp"
-        android:src="@drawable/ic_baseline_info_24"
+        android:src="@drawable/howdy_coin"
         app:layout_constraintBottom_toTopOf="@+id/ll"
         app:layout_constraintEnd_toEndOf="@id/ll"
         app:layout_constraintStart_toStartOf="@id/ll"
         app:layout_constraintTop_toTopOf="@id/ll" />
 
     <Button
-        android:id="@+id/bnt_cancelar"
+        android:id="@+id/btn_close_modal"
         android:layout_width="0dp"
         android:layout_height="50dp"
-        android:layout_marginStart="40dp"
-        android:backgroundTint="@color/purple_200"
+        android:layout_marginStart="30dp"
+        android:backgroundTint="#DC4343"
         android:text="CANCELAR"
         android:textAllCaps="false"
         android:textColor="@color/white"
@@ -72,12 +83,12 @@
         app:layout_constraintTop_toBottomOf="@id/ll" />
 
     <Button
-        android:id="@+id/btn_excluir"
+        android:id="@+id/btn_buy_howdy_coins"
         android:layout_width="0dp"
         android:layout_height="50dp"
-        android:layout_marginEnd="40dp"
-        android:backgroundTint="#FF2B2B"
-        android:text="EXCLUIR"
+        android:layout_marginEnd="30dp"
+        android:backgroundTint="#0CB300"
+        android:text="COMPRAR"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="16dp"

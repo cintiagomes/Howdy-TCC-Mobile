@@ -29,8 +29,11 @@ import convertDateToBackendFormat
 import convertDateToBrString
 import kotlinx.android.synthetic.main.activity_configuracao.*
 import kotlinx.android.synthetic.main.dialog_bloqueio.view.*
+import kotlinx.android.synthetic.main.dialog_delete_account.view.*
 import kotlinx.android.synthetic.main.dialog_purchase.view.*
+import kotlinx.android.synthetic.main.dialog_purchase.view.btn_close_modal
 import okhttp3.MediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
@@ -173,7 +176,9 @@ class ConfiguracaoActivity : AppCompatActivity() {
         //CONVERTENDO ARQUIVOS DE FOTO DE PERFIL, E FOTO DE FUNDO PARA MultipartBody.Part
         if (changedBackgroundImage != null) {
             val requestFile: RequestBody =
-                RequestBody.create(MediaType.parse("multipart/form-data"), changedBackgroundImage)
+                RequestBody.create("multipart/form-data".toMediaTypeOrNull(),
+                    changedBackgroundImage!!
+                )
             backgroundImageFormData = MultipartBody.Part.createFormData(
                 "backgroundImageFile",
                 changedBackgroundImage!!.name,
@@ -182,7 +187,7 @@ class ConfiguracaoActivity : AppCompatActivity() {
         }
         if (changedProfilePhoto != null) {
             val requestFile: RequestBody =
-                RequestBody.create(MediaType.parse("multipart/form-data"), changedProfilePhoto)
+                RequestBody.create("multipart/form-data".toMediaTypeOrNull(), changedProfilePhoto!!)
             profilePhotoFormData = MultipartBody.Part.createFormData(
                 "profilePhotoFile",
                 changedProfilePhoto!!.name,
@@ -227,15 +232,15 @@ class ConfiguracaoActivity : AppCompatActivity() {
 
                 //CONVERTENDO TEXTOS DA REQUISIÇÃO EM REQUESTBODY
                 val idTargetLanguageRequestBody =
-                    RequestBody.create(MediaType.parse("text/plain"), idTargetLanguage.toString())
+                    RequestBody.create("text/plain".toMediaTypeOrNull(), idTargetLanguage.toString())
                 val idNativeLanguageRequestBody =
-                    RequestBody.create(MediaType.parse("text/plain"), idNativeLanguage.toString())
+                    RequestBody.create("text/plain".toMediaTypeOrNull(), idNativeLanguage.toString())
                 val userNameRequestBody =
-                    RequestBody.create(MediaType.parse("text/plain"), userName)
+                    RequestBody.create("text/plain".toMediaTypeOrNull(), userName)
                 val birthDateRequestBody =
-                    RequestBody.create(MediaType.parse("text/plain"), birthDate)
+                    RequestBody.create("text/plain".toMediaTypeOrNull(), birthDate)
                 val descriptionRequestBody =
-                    RequestBody.create(MediaType.parse("text/plain"), description)
+                    RequestBody.create("text/plain".toMediaTypeOrNull(), description)
 
                 //REALIZANDO A QUERY PARA ATUALIZAR USUÁRIO, CASO O USUÁRIO TENHA ALTERADO ALGUM DADO
                 if (
@@ -400,7 +405,7 @@ class ConfiguracaoActivity : AppCompatActivity() {
         dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
         dialog.setCancelable(false)
 
-        view.bnt_cancelar.setOnClickListener {
+        view.btn_close_modal.setOnClickListener {
             dialog.dismiss()
         }
 
@@ -530,7 +535,7 @@ class ConfiguracaoActivity : AppCompatActivity() {
                     dialog.dismiss()
                 }
 
-                view.btn_cancelar.setOnClickListener{
+                view.btn_close_pro_modal.setOnClickListener{
                     dialog.dismiss()
                 }
             }
