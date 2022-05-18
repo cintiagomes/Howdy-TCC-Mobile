@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -14,12 +15,14 @@ import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.example.howdy.CadastroActivity
 import com.example.howdy.ComentariosActivity
+import com.example.howdy.PostagensActivity
 import com.example.howdy.R
 import com.example.howdy.model.PostTypes.Post
 import com.example.howdy.remote.APIUtil
 import com.example.howdy.remote.RouterInterface
 import com.example.howdy.adapter.PostsAdapter
 import com.google.firebase.auth.FirebaseAuth
+import kotlinx.android.synthetic.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.item_post_without_image.*
 import kotlinx.android.synthetic.main.item_post_without_image.view.*
@@ -44,6 +47,11 @@ class HomeFragment : Fragment() {
     private lateinit var modaButton: TextView
 
     private var currentCategory: String = ""
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -84,6 +92,7 @@ class HomeFragment : Fragment() {
 
         //COLOCANDO UM OUVINTE EM CADA BOTÃO, PARA QUE A CATEGORIA DAS POSTAGENS SEJA ALTERADA
         putEventListenerInCategoryButtons()
+
     }
 
     private fun putEventListenerInCategoryButtons(){

@@ -81,8 +81,6 @@ class ComentariosActivity : AppCompatActivity() {
                 userCreatorNameComment.text = obj.commenter.toString()
                 textComment.text = obj.textCommentary
 
-                //val formattedCreatedAt = convertBackEndDateTimeFormatToSocialMediaFormat(obj.postCommentaryCreatedAt)
-                //createdAtComment.text = formattedCreatedAt
 
             }
 
