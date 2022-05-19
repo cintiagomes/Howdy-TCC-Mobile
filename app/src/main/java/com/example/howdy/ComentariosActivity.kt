@@ -14,6 +14,7 @@ import com.example.howdy.model.PostTypes.PostCommentaryTypes.DataToCreateComment
 import com.example.howdy.model.UserTypes.Commenter
 import com.example.howdy.remote.APIUtil
 import com.example.howdy.remote.RouterInterface
+import com.example.howdy.utils.convertStringtoEditable
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_comentarios.*
 import org.json.JSONObject
@@ -74,6 +75,7 @@ class ComentariosActivity : AppCompatActivity() {
                 call.enqueue(object : Callback<MySqlResult> {
                     override fun onResponse(call: Call<MySqlResult>, response: Response<MySqlResult>) {
                         if (response.isSuccessful) {
+                            inputCommentaryView.text = convertStringtoEditable("")
                             commentsQuantityView.text = commentsQuantityView.text.toString().toInt().plus(1).toString()
 
                             findAndListComments(idPost)
