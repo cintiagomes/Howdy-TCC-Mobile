@@ -92,6 +92,7 @@ class HomeFragment : Fragment() {
 
         //COLOCANDO UM OUVINTE EM CADA BOTÃO, PARA QUE A CATEGORIA DAS POSTAGENS SEJA ALTERADA
         putEventListenerInCategoryButtons()
+        findAndListPosts("popular")
 
     }
 
@@ -102,8 +103,6 @@ class HomeFragment : Fragment() {
 
                 popularButton.background =
                     ContextCompat.getDrawable(requireActivity(), R.drawable.selected_popular_background)
-
-                findAndListPosts("popular")
             }
         }
 

@@ -125,6 +125,7 @@
             android:orientation="horizontal">
 
             <ImageButton
+                android:id="@+id/ib_commentary_button"
                 android:contentDescription="chatButton"
                 android:layout_width="23dp"
                 android:layout_height="23dp"

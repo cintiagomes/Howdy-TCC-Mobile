@@ -15,9 +15,9 @@
         android:theme="@style/Theme.Howdy"
         android:usesCleartextTraffic="true"
         tools:targetApi="n">
-<!--        <activity-->
-<!--            android:name=".PostagensActivity"-->
-<!--            android:exported="false" />-->
+        <activity
+            android:name=".PostagensActivity"
+            android:exported="false" />
          <activity
          android:name=".ComentariosActivity"
          android:exported="false" />
@@ -54,7 +54,7 @@
             android:name=".view.InicioAssinatura"
             android:exported="false" />
         <activity
-            android:name=".PostagensActivity"
+            android:name=".view.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

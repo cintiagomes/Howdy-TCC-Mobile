@@ -6,6 +6,7 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -13,6 +14,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.howdy.ComentariosActivity
 import com.example.howdy.R
 import com.example.howdy.model.MySqlResult
 import com.example.howdy.model.PostTypes.Post
@@ -56,7 +58,6 @@ class PostsAdapter(private val posts: List<Post>, private val activity: Fragment
     }
 
     class HomeViewHolder(itemView: View, private val activity: FragmentActivity) : Holder(itemView) {
-
         private val auth = FirebaseAuth.getInstance()
         private val routerInterface: RouterInterface = APIUtil.`interface`
 
@@ -65,9 +66,10 @@ class PostsAdapter(private val posts: List<Post>, private val activity: Fragment
         private val userCreatorProfilePhotoView: ImageView = itemView.findViewById(R.id.user_creator_profile_photo_view)
         private val textContentView: TextView = itemView.findViewById(R.id.text_content_view)
         private val createdAtView: TextView = itemView.findViewById(R.id.created_at_view)
-        private val totalCommentsView: TextView = itemView.findViewById(R.id.total_comments_view)
         private val totalLikesView: TextView = itemView.findViewById(R.id.total_likes_view)
         private val imageContentView: ImageView? = itemView.findViewById(R.id.iv_image_content)
+        private val commentaryButtonView: ImageButton = itemView.findViewById(R.id.ib_commentary_button)
+        private val totalCommentsView: TextView = itemView.findViewById(R.id.total_comments_view)
         private val likeButtonView: ImageView = itemView.findViewById(R.id.iv_like_button)
         private val traductionButtonView: ImageView = itemView.findViewById(R.id.btn_traduct)
 
@@ -96,7 +98,6 @@ class PostsAdapter(private val posts: List<Post>, private val activity: Fragment
             }
 
             //BUSCANDO A IMAGEM DA POSTAGEM ATRAVÉS DA URL, E INSERINDO NA RESPECTIVA IMAGE VIEW
-            println(imageContentView)
             if(imageContentView != null) {
                 Glide
                     .with(imageContentView)
@@ -121,6 +122,15 @@ class PostsAdapter(private val posts: List<Post>, private val activity: Fragment
 
             //QUANDO O USUÁRIO CLICAR NO BOTÃO DE LIKE, PODERÁ CURTIR, OU DESCUTIR UMA POSTAGEM
             likeButtonView.setOnClickListener { handleLikeOrUnlike(obj) }
+
+            commentaryButtonView.setOnClickListener { openComments(obj.idPost) }
+            totalCommentsView.setOnClickListener { openComments(obj.idPost) }
+        }
+
+        private fun openComments(idPost: Int){
+            val intent = Intent(activity, ComentariosActivity::class.java)
+            intent.putExtra("idPost", idPost)
+            activity.startActivity(intent)
         }
 
         private fun putPatentImage(patent: String){
