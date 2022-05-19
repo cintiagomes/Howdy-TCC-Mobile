@@ -5,6 +5,18 @@
         <item>Português brasileiro</item>
         <item>Inglês americano</item>
     </string-array>
+    <string-array name="visibilidades">
+        <item>Público</item>
+        <item>Amigos</item>
+    </string-array>
+    <string-array name="categorias_de_post">
+        <item>Esportes</item>
+        <item>Notícias</item>
+        <item>Jogos</item>
+        <item>Filmes</item>
+        <item>Moda</item>
+        <item>Dúvidas</item>
+    </string-array>
     <string-array name="Visibilidade">
         <item>Publico</item>
         <item>Privado</item>
