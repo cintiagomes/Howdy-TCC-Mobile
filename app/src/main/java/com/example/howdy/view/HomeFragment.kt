@@ -103,6 +103,8 @@ class HomeFragment : Fragment() {
 
                 popularButton.background =
                     ContextCompat.getDrawable(requireActivity(), R.drawable.selected_popular_background)
+
+                findAndListPosts("popular")
             }
         }
 
