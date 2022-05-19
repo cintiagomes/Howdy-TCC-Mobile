@@ -65,6 +65,14 @@
 
             <TextView
                 android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="10dp"
+                android:background="#CDCDCD" />
+
+            <TextView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:layout_marginStart="5dp"
@@ -210,9 +218,17 @@
 
             </HorizontalScrollView>
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="10dp"
+                android:background="#CDCDCD" />
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_user_posts"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:listitem="@layout/item_post_with_image"
                 android:layout_width="match_parent"

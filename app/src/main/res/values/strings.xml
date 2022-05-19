@@ -5,6 +5,10 @@
         <item>Português brasileiro</item>
         <item>Inglês americano</item>
     </string-array>
+    <string-array name="Visibilidade">
+        <item>Publico</item>
+        <item>Privado</item>
+    </string-array>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_cadastro_incompleto">CadastroIncompletoActivity</string>
