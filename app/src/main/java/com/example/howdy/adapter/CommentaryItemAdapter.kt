@@ -28,7 +28,6 @@ import retrofit2.Response
 class CommentaryItemAdapter(private val comments: List<Commentary>, private val activity: FragmentActivity) : RecyclerView.Adapter<CommentaryItemAdapter.Holder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_comentar, parent, false)
-
         return CommentaryViewHolder(itemView, activity)
     }
 

@@ -9,7 +9,7 @@ class Commentary(
     textCommentary: String,
     translatedtTextCommentary: String?,
     postCommentaryCreatedAt: Date,
-    postCommentaryEditedAt: Date
+    postCommentaryEditedAt: Date?
 ) {
     var commenter = commenter
     var idPostCommentary = idPostCommentary
