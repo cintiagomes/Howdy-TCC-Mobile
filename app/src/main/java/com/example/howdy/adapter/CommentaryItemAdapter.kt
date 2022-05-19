@@ -143,6 +143,9 @@ class CommentaryItemAdapter(private val comments: List<Commentary>, private val 
         }
 
         private fun putPatentImage(patent: String){
+            //DEIXANDO A VIEW DE PATENTE VISÍVEL
+            patentView.visibility = View.VISIBLE
+
             when (patent) {
                 "noob" -> {
                     patentView.setImageDrawable(
