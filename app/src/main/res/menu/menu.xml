@@ -1,22 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:id="@+id/menu_perfil"
-        android:title="Perfil"/>
+<!--    <item android:id="@+id/busca"-->
+<!--        android:icon="@drawable/ic_search_24"-->
+<!--        android:iconTint="@color/purple_200"-->
+<!--        app:showAsAction="ifRoom"-->
+<!--        android:title="Busca" />-->
 
-    <item android:id="@+id/menu_ajuda"
-        android:title="Ajuda"/>
+    <item android:id="@+id/menu"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_more_vert_24"
+        android:iconTint="@color/purple_200"
+        android:title="TODO">
 
-    <item android:id="@+id/menu_ranking"
-        android:title="Ranking"/>
+        <menu>
 
-    <item android:id="@+id/menu_assinatura"
-        android:title="Assinaturas"/>
+            <item android:id="@+id/menu_perfil"
+                android:title="Perfil"/>
 
-    <item android:id="@+id/menu_configuracoes"
-        android:title="Configurações de perfil"/>
+            <item android:id="@+id/menu_ajuda"
+                android:title="Ajuda"/>
 
-    <item android:id="@+id/menu_sair"
-        android:title="Sair"/>
+            <item android:id="@+id/menu_ranking"
+                android:title="Ranking"/>
+
+            <item android:id="@+id/menu_assinatura"
+                android:title="Assinaturas"/>
+
+            <item android:id="@+id/menu_configuracoes"
+                android:title="Configurações de perfil"/>
+
+            <item android:id="@+id/menu_sair"
+                android:title="Sair"/>
+
+        </menu>
+
+    </item>
 
 </menu>

@@ -7,6 +7,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.viewpager2.widget.ViewPager2
 import com.example.howdy.ConfiguracaoActivity
 import com.example.howdy.R
@@ -21,6 +22,8 @@ import com.example.howdy.RankingActivity
 class paginaDePostagem : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val actionBar = supportActionBar
+        actionBar!!.hide()
         setContentView(R.layout.activity_pagina_de_postagem)
 
         val tabLayout = findViewById<TabLayout>(R.id.tabs)
@@ -41,10 +44,10 @@ class paginaDePostagem : AppCompatActivity() {
 
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.menu, menu)
-        return true
-    }
+//    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+//        menuInflater.inflate(R.menu.menu, menu)
+//        return true
+//    }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId){
