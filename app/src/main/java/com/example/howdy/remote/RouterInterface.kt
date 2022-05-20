@@ -1,5 +1,6 @@
 package com.example.howdy.remote
 
+import com.example.howdy.model.ActivityTypes.OneActivityInPublicList
 import com.example.howdy.model.Friendship
 import com.example.howdy.model.MySqlResult
 import okhttp3.MultipartBody
@@ -189,5 +190,32 @@ interface RouterInterface {
         @Header("Authorization") idToken: String,
         @Path("idPostCommentary") idPostCommentary: Int
     ): Call<MySqlResult>
+
     /** ROTAS DE ATIVIDADES  */
+    //ROTA PARA LISTAR AS ATIVIDADES PÚBLICAS
+    @GET("/activities")
+    fun getPublicActivities(
+        @Header("Authorization") idToken: String,
+        @Query("maxPrice") maxPrice: Int,
+        @Query("idDifficulty") idDifficulty: Int,
+        @Query("orderBy") orderBy: String,
+    ): Call<List<OneActivityInPublicList>>
+
+    //ROTA PARA LISTAR AS ATIVIDADES CRIADAS POR UM USUÁRIO
+    @GET("/activities?maxPrice=150&idDifficulty=1&orderBy=rating")
+    fun getActivitiesCreatedbyUser(
+        @Header("Authorization") idToken: String,
+        @Query("maxPrice") maxPrice: Int,
+        @Query("idDifficulty") idDifficulty: Int,
+        @Query("orderBy") orderBy: String,
+    ): Call<List<OneActivityInPublicList>>
+
+    //ROTA PARA LISTAR AS ATIVIDADES DESBLOQUEADAS POR UM USUÁRIO
+    @GET("/activities?maxPrice=150&idDifficulty=1&orderBy=rating")
+    fun getActivitiesUnlockedByUser(
+        @Header("Authorization") idToken: String,
+        @Query("maxPrice") maxPrice: Int,
+        @Query("idDifficulty") idDifficulty: Int,
+        @Query("orderBy") orderBy: String,
+    ): Call<List<OneActivityInPublicList>>
 }

@@ -96,43 +96,44 @@
                         <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/inputLayoutVisibilidade"
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                            android:layout_width="wrap_content"
+                            android:layout_width="140dp"
                             android:layout_height="wrap_content"
-                            android:hint="Visibilidade"
-                            app:boxStrokeColor="@color/purple_200"
-                            app:hintTextColor="@color/purple_200">
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/inputLayoutEmail"
+                            android:layout_marginEnd="20dp">
 
                             <AutoCompleteTextView
                                 android:id="@+id/select_visibilidade"
-                                android:layout_width="130dp"
-                                android:layout_height="35dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
                                 android:layout_weight="1"
+                                android:hint="Visibilidade"
                                 android:inputType="none"
-                                android:textColor="@color/black"
-                                android:textSize="10.5dp" />
+                                android:textSize="12sp"/>
 
                         </com.google.android.material.textfield.TextInputLayout>
 
                         <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/inputLayoutCategoria"
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                            android:layout_width="wrap_content"
+                            android:layout_width="130dp"
                             android:layout_height="wrap_content"
-                            android:hint="Categoria"
-                            app:boxStrokeColor="@color/purple_200"
-                            app:hintTextColor="@color/purple_200">
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/inputLayoutEmail"
+                            android:layout_marginEnd="20dp">
 
                             <AutoCompleteTextView
                                 android:id="@+id/select_categoria"
-                                android:layout_width="130dp"
-                                android:layout_height="35dp"
-                                android:layout_marginStart="15dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
                                 android:layout_weight="1"
+                                android:hint="Categoria"
                                 android:inputType="none"
-                                android:textSize="10.5dp" />
+                                android:textSize="12sp"/>
 
                         </com.google.android.material.textfield.TextInputLayout>
-
                     </LinearLayout>
 
                 </LinearLayout>

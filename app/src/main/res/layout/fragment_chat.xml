@@ -32,32 +32,15 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Mensagens"
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                android:fontFamily="@font/roboto_bold"
-                android:background="#F5F8FA"/>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_marginTop="10dp"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/item_contact"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-            </androidx.recyclerview.widget.RecyclerView>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:text="Sugestões"
+                android:text="Converse com seus amigos"
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 android:fontFamily="@font/roboto_bold"
                 android:background="#F5F8FA"/>
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/chat_recycler_view"
                 android:layout_marginTop="10dp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:listitem="@layout/item_amigo"

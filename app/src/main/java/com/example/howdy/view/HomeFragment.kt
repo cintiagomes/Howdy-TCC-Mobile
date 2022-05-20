@@ -6,9 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
@@ -31,6 +29,7 @@ class HomeFragment : Fragment() {
     private lateinit var auth: FirebaseAuth
 
     private lateinit var userLoggedProfilePhotoView: ImageView
+    private lateinit var createPostBox: LinearLayout
     private lateinit var popularButton: TextView
     private lateinit var friendsButton: TextView
     private lateinit var doubtsButton: TextView
@@ -61,6 +60,9 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         userLoggedProfilePhotoView = iv_user_logged_profile_photo
+        createPostBox = create_post_box
+        println("DEBUGANDO")
+        println(createPostBox)
         popularButton = tv_popular_button
         friendsButton = tv_friends_button
         doubtsButton = tv_doubts_button
@@ -85,12 +87,20 @@ class HomeFragment : Fragment() {
         }
 
         //COLOCANDO UM OUVINTE EM CADA BOTÃO, PARA QUE A CATEGORIA DAS POSTAGENS SEJA ALTERADA
-        putEventListenerInCategoryButtons()
+        putEventListenerInButtons()
         findAndListPosts("popular")
 
     }
 
-    private fun putEventListenerInCategoryButtons(){
+    private fun putEventListenerInButtons(){
+        createPostBox.setOnClickListener { view ->
+            run {
+                println("DEBUGANDO CLICOU")
+                val intent = Intent(requireActivity(), CriarPostagensActivity::class.java)
+                startActivity(intent)
+            }
+        }
+
         popularButton.setOnClickListener { view ->
             run {
                 unselectAllButtonsCategory()
@@ -99,13 +109,6 @@ class HomeFragment : Fragment() {
                     ContextCompat.getDrawable(requireActivity(), R.drawable.selected_popular_background)
 
                 findAndListPosts("popular")
-            }
-        }
-
-        userLoggedProfilePhotoView.setOnClickListener { view ->
-            run {
-                val intent = Intent(requireActivity(), CriarPostagensActivity::class.java)
-                startActivity(intent)
             }
         }
 
