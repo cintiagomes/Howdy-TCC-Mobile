@@ -41,23 +41,6 @@ class HomeFragment : Fragment() {
 
     private var currentCategory: String = ""
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-
-    ): View? {
-        //LISTANDO AS POSTAGENS PELA PRIMEIRA VEZ COM AS CONFIGURAÇÕES PADRÃO (POSTAGENS POPULARES)
-        findAndListPosts("popular")
-
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         userLoggedProfilePhotoView = iv_user_logged_profile_photo
         createPostBox = create_post_box
@@ -86,16 +69,15 @@ class HomeFragment : Fragment() {
                 .into(userLoggedProfilePhotoView);
         }
 
-        //COLOCANDO UM OUVINTE EM CADA BOTÃO, PARA QUE A CATEGORIA DAS POSTAGENS SEJA ALTERADA
-        putEventListenerInButtons()
         findAndListPosts("popular")
 
+        //COLOCANDO UM OUVINTE EM CADA BOTÃO, PARA QUE A CATEGORIA DAS POSTAGENS SEJA ALTERADA
+        putEventListenerInButtons()
     }
 
     private fun putEventListenerInButtons(){
         createPostBox.setOnClickListener { view ->
             run {
-                println("DEBUGANDO CLICOU")
                 val intent = Intent(requireActivity(), CriarPostagensActivity::class.java)
                 startActivity(intent)
             }

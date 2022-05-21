@@ -62,3 +62,13 @@ fun convertBackEndDateTimeFormatToSocialMediaFormat(backendDateTime: Date) : Str
     val distanceInYears = (distanceTimeInMilliseconds / oneYear).toInt()
     return "Há $distanceInYears ano" + if(distanceInYears > 1) "s." else "."
 }
+
+//fun convertBackEndDateTimeFormatToBrazilianLongDate(backendDateTime: Date) : String {
+//    val f = SimpleDateFormat("dd de MMM de yyyy")
+//        val d = f.parse(string_date)
+//        val milliseconds = d.time
+//    } catch (e: ParseException) {
+//        e.printStackTrace()
+//    }
+//   return backendDateTime.
+//}

@@ -1,6 +1,8 @@
 package com.example.howdy.remote
 
+import com.example.howdy.model.ActivityTypes.OneActivityCreatedBySomeone
 import com.example.howdy.model.ActivityTypes.OneActivityInPublicList
+import com.example.howdy.model.ActivityTypes.UnlockedAndCompletedActivities
 import com.example.howdy.model.Friendship
 import com.example.howdy.model.MySqlResult
 import okhttp3.MultipartBody
@@ -202,20 +204,19 @@ interface RouterInterface {
     ): Call<List<OneActivityInPublicList>>
 
     //ROTA PARA LISTAR AS ATIVIDADES CRIADAS POR UM USUÁRIO
-    @GET("/activities?maxPrice=150&idDifficulty=1&orderBy=rating")
-    fun getActivitiesCreatedbyUser(
+    @GET("/activities/user")
+    fun getUserActivities(
         @Header("Authorization") idToken: String,
+        @Query("idUserCreator") idUserCreator: Int,
         @Query("maxPrice") maxPrice: Int,
         @Query("idDifficulty") idDifficulty: Int,
         @Query("orderBy") orderBy: String,
-    ): Call<List<OneActivityInPublicList>>
+    ): Call<List<OneActivityCreatedBySomeone>>
 
     //ROTA PARA LISTAR AS ATIVIDADES DESBLOQUEADAS POR UM USUÁRIO
-    @GET("/activities?maxPrice=150&idDifficulty=1&orderBy=rating")
-    fun getActivitiesUnlockedByUser(
+    @GET("/activities/unlocked/{idUser}")
+    fun getActivitiesUnlockedAndCompletedByUser(
         @Header("Authorization") idToken: String,
-        @Query("maxPrice") maxPrice: Int,
-        @Query("idDifficulty") idDifficulty: Int,
-        @Query("orderBy") orderBy: String,
-    ): Call<List<OneActivityInPublicList>>
+        @Path("idUser") idUser: Int,
+    ): Call<UnlockedAndCompletedActivities>
 }
