@@ -11,6 +11,7 @@
         android:src="@drawable/ic_logo_deitado"/>
 
     <ImageButton
+        android:id="@+id/search_button"
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:layout_gravity="end"
@@ -21,8 +22,9 @@
         tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
     <LinearLayout
+        android:id="@+id/coins_howdy"
         android:layout_width="80dp"
-        android:layout_height="27dp"
+        android:layout_height="30dp"
         android:layout_gravity="end"
         android:layout_marginEnd="20dp"
         android:background="@drawable/borda_coin_howdy"

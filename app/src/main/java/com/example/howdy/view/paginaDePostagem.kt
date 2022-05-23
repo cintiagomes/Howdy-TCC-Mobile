@@ -9,14 +9,13 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.viewpager2.widget.ViewPager2
-import com.example.howdy.ConfiguracaoActivity
-import com.example.howdy.R
+import com.example.howdy.*
 import com.example.howdy.adapter.FragmentTypeAdapter
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import com.example.howdy.RankingActivity
+import kotlinx.android.synthetic.main.toolbar.*
 
 
 class paginaDePostagem : AppCompatActivity() {
@@ -31,6 +30,16 @@ class paginaDePostagem : AppCompatActivity() {
 
         val adapter = FragmentTypeAdapter(this)
         viewpager.adapter = adapter
+
+        search_button.setOnClickListener {
+            val pesquisar = Intent(this, PesquisaActivity::class.java)
+            startActivity(pesquisar)
+        }
+
+        coins_howdy.setOnClickListener {
+            val assinaturas = Intent(this, InicioAssinatura::class.java)
+            startActivity(assinaturas)
+        }
 
         TabLayoutMediator(tabLayout, viewpager){ tab, pos ->
             when(pos){

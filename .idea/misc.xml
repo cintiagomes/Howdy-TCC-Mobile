@@ -182,6 +182,8 @@
         <entry key="app/src/main/res/drawable/borda_seguindo.xml" value="0.3509259259259259" />
         <entry key="app/src/main/res/drawable/bordinha.xml" value="0.2375" />
         <entry key="app/src/main/res/drawable/buttom_borda.xml" value="0.29444444444444445" />
+        <entry key="app/src/main/res/drawable/chat.xml" value="0.2895" />
+        <entry key="app/src/main/res/drawable/chat_resposta.xml" value="0.2895" />
         <entry key="app/src/main/res/drawable/ic_add_24.xml" value="0.30925925925925923" />
         <entry key="app/src/main/res/drawable/ic_arrow_24.xml" value="0.129" />
         <entry key="app/src/main/res/drawable/ic_book_24.xml" value="0.3614583333333333" />
@@ -199,45 +201,44 @@
         <entry key="app/src/main/res/drawable/ic_people_24.xml" value="0.3614583333333333" />
         <entry key="app/src/main/res/drawable/ic_person_.xml" value="0.2375" />
         <entry key="app/src/main/res/drawable/ic_person_24.xml" value="0.2375" />
-        <entry key="app/src/main/res/drawable/ic_pessoa.xml" value="0.1505" />
+        <entry key="app/src/main/res/drawable/ic_person_add_disabled_24.xml" value="0.209" />
+        <entry key="app/src/main/res/drawable/ic_send_24.xml" value="0.255" />
         <entry key="app/src/main/res/drawable/ic_sport_24.xml" value="0.3509259259259259" />
         <entry key="app/src/main/res/drawable/ic_star_24.xml" value="0.30925925925925923" />
         <entry key="app/src/main/res/drawable/ic_time_24.xml" value="0.3509259259259259" />
         <entry key="app/src/main/res/layout/activity_cadastro.xml" value="0.3234567901234568" />
         <entry key="app/src/main/res/layout/activity_cadastro_incompleto.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/layout/activity_chart_tests.xml" value="0.32461538461538464" />
+        <entry key="app/src/main/res/layout/activity_chat.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_codigo_de_recuperacao.xml" value="0.3109375" />
-        <entry key="app/src/main/res/layout/activity_comentarios.xml" value="0.40729166666666666" />
-        <entry key="app/src/main/res/layout/activity_configuracao.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/activity_comentarios.xml" value="0.125" />
+        <entry key="app/src/main/res/layout/activity_configuracao.xml" value="0.4" />
         <entry key="app/src/main/res/layout/activity_configuracoes.xml" value="0.33229166666666665" />
         <entry key="app/src/main/res/layout/activity_criar_postagens.xml" value="0.37083333333333335" />
         <entry key="app/src/main/res/layout/activity_inicio_assinatura.xml" value="0.2087463556851312" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.3515625" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3490740740740741" />
-        <entry key="app/src/main/res/layout/activity_pagina_de_postagem.xml" value="0.3109375" />
+        <entry key="app/src/main/res/layout/activity_pagina_de_postagem.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_perfil.xml" value="0.335" />
-        <entry key="app/src/main/res/layout/activity_postagens.xml" value="0.37083333333333335" />
+        <entry key="app/src/main/res/layout/activity_postagens.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_ranking.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_recuperar_senha.xml" value="0.3515625" />
         <entry key="app/src/main/res/layout/activity_teste.xml" value="0.23369565217391305" />
         <entry key="app/src/main/res/layout/alert.xml" value="0.26145833333333335" />
         <entry key="app/src/main/res/layout/cadastro.xml" value="1.5" />
         <entry key="app/src/main/res/layout/content_cadastro_incompleto.xml" value="0.40208333333333335" />
-        <entry key="app/src/main/res/layout/delete_item_ranking.xml" value="0.4010416666666667" />
-        <entry key="app/src/main/res/layout/dialog_avaliacao_atividade.xml" value="0.23796296296296296" />
-        <entry key="app/src/main/res/layout/dialog_bloqueio.xml" value="0.4010416666666667" />
-        <entry key="app/src/main/res/layout/dialog_compartilhamento.xml" value="0.23796296296296296" />
-        <entry key="app/src/main/res/layout/dialog_conclusao_atividade.xml" value="0.23796296296296296" />
-        <entry key="app/src/main/res/layout/dialog_view.xml" value="0.23796296296296296" />
+        <entry key="app/src/main/res/layout/dialog_bloqueio.xml" value="0.18703703703703703" />
+        <entry key="app/src/main/res/layout/dialog_delete_account.xml" value="0.3524027459954233" />
+        <entry key="app/src/main/res/layout/dialog_purchase.xml" value="0.3380208333333333" />
         <entry key="app/src/main/res/layout/dropdown_item.xml" value="0.18840579710144928" />
         <entry key="app/src/main/res/layout/fragment_amigos.xml" value="0.2691358024691358" />
         <entry key="app/src/main/res/layout/fragment_amigos_perfil.xml" value="0.38958333333333334" />
-        <entry key="app/src/main/res/layout/fragment_aprendizado.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_aprendizado.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/layout/fragment_atividades.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_chat.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_ensinamentos.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/layout/fragment_first.xml" value="0.40208333333333335" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.1889763779527559" />
         <entry key="app/src/main/res/layout/fragment_notificacao.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_postagens.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/layout/fragment_ranking_mensal.xml" value="0.2578125" />
@@ -247,9 +248,10 @@
         <entry key="app/src/main/res/layout/item.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/layout/item_amigo.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/layout/item_atividade.xml" value="0.4036458333333333" />
-        <entry key="app/src/main/res/layout/item_comentar.xml" value="0.3963541666666667" />
+        <entry key="app/src/main/res/layout/item_comentar.xml" value="0.3380208333333333" />
         <entry key="app/src/main/res/layout/item_contact.xml" value="0.3234375" />
         <entry key="app/src/main/res/layout/item_notificacao.xml" value="0.3092485549132948" />
+        <entry key="app/src/main/res/layout/item_notificacao_amizade.xml" value="0.25" />
         <entry key="app/src/main/res/layout/item_post_with_image.xml" value="0.375" />
         <entry key="app/src/main/res/layout/item_post_without_image.xml" value="0.335" />
         <entry key="app/src/main/res/layout/item_postagens.xml" value="0.4036458333333333" />
