@@ -170,7 +170,6 @@ class EnsinamentosFragment(user: UserCollectedWithId) : Fragment() {
         auth.currentUser?.getIdToken(true)
             ?.addOnSuccessListener { result ->
                 val idToken = result.token!!
-                println("DEBUGANDO IDTOKEN: $idToken")
 
                 //O USUÁRIO ESTÁ LOGADO, E FARÁ A LISTAGEM DE POSTAGENS
                 routerInterface = APIUtil.`interface`
@@ -185,7 +184,6 @@ class EnsinamentosFragment(user: UserCollectedWithId) : Fragment() {
                 call.enqueue(object : Callback<List<OneActivityCreatedBySomeone>> {
                     override fun onResponse(call: Call<List<OneActivityCreatedBySomeone>>, response: Response<List<OneActivityCreatedBySomeone>>) {
                         if (response.isSuccessful) {
-                            println("DEBUGANDO ON SUCESS")
                             /** RECEBER OS DADOS DA API  */
                             var activitiesWithoutCreatorData: List<OneActivityCreatedBySomeone> = response.body()!!
                             var activityWithCreatorList: MutableList<OneActivityInPublicList> = emptyList<OneActivityInPublicList>().toMutableList()
@@ -227,7 +225,6 @@ class EnsinamentosFragment(user: UserCollectedWithId) : Fragment() {
                             val recycler = recycler_atividades
                             recycler?.adapter = adapter
                         } else {
-                            println("DEBUGANDO ELSE")
                             val jObjError = JSONObject(response.errorBody()!!.string())
                             val errorMessage = jObjError.get("error").toString()
                             if (errorMessage == "This user has no activities.") {
