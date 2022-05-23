@@ -57,25 +57,17 @@
                         android:layout_marginEnd="10dp"
                         android:orientation="vertical">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/roboto_medium"
-                            android:text="Preço"
-                            android:textColor="#303135"
-                            android:textSize="14sp" />
-
                         <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/inputLayoutPreco"
                             android:hint="Preço"
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content">
 
                             <AutoCompleteTextView
                                 android:id="@+id/select_preco"
-                                android:layout_width="100dp"
-                                android:layout_height="35dp"
+                                android:layout_width="170dp"
+                                android:layout_height="48dp"
                                 android:layout_weight="1"
                                 android:textSize="10.5dp"
                                 android:inputType="none"/>
@@ -88,13 +80,6 @@
                         android:layout_marginEnd="10dp"
                         android:orientation="vertical">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/roboto_medium"
-                            android:text="Dificuldade"
-                            android:textColor="#303135"
-                            android:textSize="14sp" />
                         <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/inputLayoutDificuldade"
                             android:hint="Dificuldade"
@@ -104,8 +89,8 @@
 
                             <AutoCompleteTextView
                                 android:id="@+id/select_dificuldade"
-                                android:layout_width="130dp"
-                                android:layout_height="35dp"
+                                android:layout_width="170dp"
+                                android:layout_height="48dp"
                                 android:layout_weight="1"
                                 android:textSize="10.5dp"
                                 android:inputType="none"/>

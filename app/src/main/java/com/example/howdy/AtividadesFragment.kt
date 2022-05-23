@@ -1,8 +1,10 @@
 package com.example.howdy
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import androidx.fragment.app.Fragment
 import android.view.View
+import android.view.ViewGroup
 import android.widget.*
 import androidx.core.content.ContextCompat
 import com.example.howdy.adapter.ActivitiesAdapter
@@ -35,6 +37,14 @@ class AtividadesFragment : Fragment() {
     private var currentIdDifficulty: Int = 2
     private var currentOrderBy: String = ""
 
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_atividades, container, false)
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         titlePage = tv_title_page
         selectPriceView = select_preco
@@ -43,6 +53,10 @@ class AtividadesFragment : Fragment() {
         newsButton = ibtn_news
 
         titlePage.text = "Atividades públicas"
+
+        //DEFININDO VALORES PADRÕES
+        selectPriceView.text = convertStringtoEditable("150 Howdy Coins")
+        selectDifficulty.text = convertStringtoEditable("Intermediário")
 
         val prices = resources.getStringArray(R.array.howdy_coin_max_price_activity)
         val adapterPrices = ArrayAdapter(
@@ -65,10 +79,6 @@ class AtividadesFragment : Fragment() {
         with(selectDifficulty){
             setAdapter(adapterDifficulties)
         }
-
-        //DEFININDO VALORES PADRÕES
-        selectPriceView.text = convertStringtoEditable("150 Howdy Coins")
-        selectDifficulty.text = convertStringtoEditable("Intermediário")
 
         //LISTANDO AS POSTAGENS PELA PRIMEIRA VEZ COM AS CONFIGURAÇÕES PADRÃO (POSTAGENS POPULARES)
         findAndListActivities("rating")
@@ -183,7 +193,7 @@ class AtividadesFragment : Fragment() {
                                 ).show()
 
                                 val adapter = PostsAdapter(emptyList(), activity!!)
-                                val recycler = recycler_user_posts
+                                val recycler = recycler_atividades
                                 recycler?.adapter = adapter
                             }
                         }
@@ -192,6 +202,11 @@ class AtividadesFragment : Fragment() {
                     override fun onFailure(call: Call<List<OneActivityInPublicList>>, t: Throwable) {
                         Toast.makeText(activity,"Houve um erro de conexão, verifique se está conectado na internet.",
                             Toast.LENGTH_LONG).show()
+
+                        val adapter = PostsAdapter(emptyList(), activity!!)
+                        val recycler = recycler_atividades
+                        recycler?.adapter = adapter
+
                         println("DEBUGANDO - ONFAILURE NA LISTAGEM DE ATIVIDADES: $t")
                     }
                 })

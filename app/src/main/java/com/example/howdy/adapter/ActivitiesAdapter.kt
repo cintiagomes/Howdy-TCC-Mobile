@@ -67,7 +67,7 @@ class ActivitiesAdapter(private val activities: List<OneActivityInPublicList>, p
             }
 
             targetLanguageView.text = obj.targetLanguageName
-            titleView.text = obj.activityTitle
+            titleView.text = obj.activityTitle + " - " + obj.activitySubtitle
             descriptionView.text = obj.description
             priceHowdyCoinsView.text = if(obj.priceHowdyCoin == 0) "Grátis" else obj.priceHowdyCoin.toString()
 
