@@ -10,16 +10,19 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.howdy.ChatActivity
 import com.example.howdy.R
 import com.example.howdy.model.UserTypes.Friend
 import com.example.howdy.view.PerfilActivity
 import de.hdodenhof.circleimageview.CircleImageView
 
-class FriendItemAdapter(private val users: List<Friend>, private val activity: FragmentActivity) : RecyclerView.Adapter<FriendItemAdapter.Holder>() {
+class FriendItemAdapter(private val users: List<Friend>, private val activity: FragmentActivity, openChatOnClick: Boolean) : RecyclerView.Adapter<FriendItemAdapter.Holder>() {
+    val openChatOnClick = openChatOnClick
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_amigo, parent, false)
 
-        return FriendViewHolder(itemView, activity)
+        return FriendViewHolder(itemView, activity, openChatOnClick)
     }
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
@@ -34,7 +37,9 @@ class FriendItemAdapter(private val users: List<Friend>, private val activity: F
         abstract fun bind(obj: Friend)
     }
 
-    class FriendViewHolder(itemView: View, private val activity: FragmentActivity) : Holder(itemView) {
+    class FriendViewHolder(itemView: View, private val activity: FragmentActivity,
+                           var openChatOnClick: Boolean
+    ) : Holder(itemView) {
         private val totalXpView: TextView = itemView.findViewById(R.id.tv_total_xp)
         private val profilePhotoView: CircleImageView = itemView.findViewById(R.id.civ_user_profile_photo)
         private val userNameView: TextView = itemView.findViewById(R.id.tv_user_name)
@@ -60,9 +65,14 @@ class FriendItemAdapter(private val users: List<Friend>, private val activity: F
             }
 
 
-            //IR PARA A PÁGINA DO CRIADOR DA POSTAGEM, QUANDO CLICAMOS EM SUA IMAGEM, OU NOME
-            userNameView.setOnClickListener { goToUserActivity(obj.idUser) }
-            profilePhotoView.setOnClickListener { goToUserActivity(obj.idUser) }
+            //IR PARA A PÁGINA DO USUÁRIO, OU ABRIR O CHAT DEPENDENDO SE A VARIÁVEL openChatOnClick FOR TRUE OU FALSE
+            if (openChatOnClick){
+                userNameView.setOnClickListener { openChat(obj.idUser) }
+                profilePhotoView.setOnClickListener { openChat(obj.idUser) }
+            } else {
+                userNameView.setOnClickListener { goToUserActivity(obj.idUser) }
+                profilePhotoView.setOnClickListener { goToUserActivity(obj.idUser) }
+            }
         }
 
         private fun putPatentImage(patent: String){
@@ -120,6 +130,13 @@ class FriendItemAdapter(private val users: List<Friend>, private val activity: F
 
         private fun goToUserActivity(idUser:Int) {
             val targetPage = Intent(activity, PerfilActivity::class.java)
+
+            targetPage.putExtra("idUser", idUser);
+            activity.startActivity(targetPage)
+        }
+
+        private fun openChat(idUser:Int) {
+            val targetPage = Intent(activity, ChatActivity::class.java)
 
             targetPage.putExtra("idUser", idUser);
             activity.startActivity(targetPage)

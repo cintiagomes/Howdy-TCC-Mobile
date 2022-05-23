@@ -25,13 +25,6 @@ class ChatFragment() : Fragment() {
     private lateinit var routerInterface: RouterInterface
     private lateinit var auth: FirebaseAuth
 
-    private var idUser = 0
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -56,7 +49,7 @@ class ChatFragment() : Fragment() {
                 val userLoggedFile = requireActivity().getSharedPreferences(
                     "userLogged", Context.MODE_PRIVATE)
 
-                idUser = userLoggedFile.getInt("idUser", 0)
+                val idUser = userLoggedFile.getInt("idUser", 0)
 
                 //O USUÁRIO ESTÁ LOGADO, E FARÁ A LISTAGEM DE POSTAGENS
                 routerInterface = APIUtil.`interface`
@@ -69,7 +62,7 @@ class ChatFragment() : Fragment() {
                             /** RECEBER OS DADOS DA API  */
                             var friendsList: List<Friend> = response.body()!!
 
-                            val adapter = FriendItemAdapter(friendsList, activity!!)
+                            val adapter = FriendItemAdapter(friendsList, activity!!, true)
                             val recycler = chat_recycler_view
                             recycler?.adapter = adapter
                         } else {
@@ -82,7 +75,7 @@ class ChatFragment() : Fragment() {
                                     Toast.LENGTH_LONG
                                 ).show()
 
-                                val adapter = FriendItemAdapter(emptyList(), activity!!)
+                                val adapter = FriendItemAdapter(emptyList(), activity!!, true)
                                 val recycler = recycler_amigos
                                 recycler?.adapter = adapter
                             }

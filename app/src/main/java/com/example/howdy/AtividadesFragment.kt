@@ -180,9 +180,13 @@ class AtividadesFragment : Fragment() {
                         if (response.isSuccessful) {
                             /** RECEBER OS DADOS DA API  */
                             var activitiesList: List<OneActivityInPublicList> = response.body()!!
-                            val adapter = ActivitiesAdapter(activitiesList, activity!!)
-                            val recycler = recycler_atividades
-                            recycler?.adapter = adapter
+                            try {
+                                val adapter = ActivitiesAdapter(activitiesList, requireActivity())
+                                val recycler = recycler_atividades
+                                recycler?.adapter = adapter
+                            } catch (e: Exception) {
+                                println("DEBUGANDO: $e")
+                            }
                         } else {
                             val jObjError = JSONObject(response.errorBody()!!.string())
                             val errorMessage = jObjError.get("error").toString()

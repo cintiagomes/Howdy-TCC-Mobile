@@ -36,15 +36,15 @@ class AmigosFragment(idUser: Int?) : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        //LISTANDO OS AMIGOS DO USUÁRIO
-        findAndListFriends()
-
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_amigos, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         totalFriendsView = tv_total_friends
+
+        //LISTANDO OS AMIGOS DO USUÁRIO
+        findAndListFriends()
     }
 
     private fun findAndListFriends() {
@@ -79,20 +79,19 @@ class AmigosFragment(idUser: Int?) : Fragment() {
                                         " amigo" +
                                         if(friendsList.size > 1) "s" else ""
 
-                            val adapter = FriendItemAdapter(friendsList, activity!!)
+                            val adapter = FriendItemAdapter(friendsList, activity!!, false)
                             val recycler = recycler_amigos
                             recycler?.adapter = adapter
                         } else {
                             val jObjError = JSONObject(response.errorBody()!!.string())
                             val errorMessage = jObjError.get("error").toString()
-                            println("DEBUGANDO ERRO" + errorMessage)
                             if (errorMessage == "This user has no friends ;-;") {
                                 Toast.makeText(
                                     activity, "Ops! Nenhum amigo foi encontrado.",
                                     Toast.LENGTH_LONG
                                 ).show()
 
-                                val adapter = FriendItemAdapter(emptyList(), activity!!)
+                                val adapter = FriendItemAdapter(emptyList(), activity!!, false)
                                 val recycler = recycler_amigos
                                 recycler?.adapter = adapter
                             }
