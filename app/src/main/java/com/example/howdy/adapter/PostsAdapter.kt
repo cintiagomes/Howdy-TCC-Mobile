@@ -23,7 +23,7 @@ import com.example.howdy.remote.APIUtil
 import com.example.howdy.remote.RouterInterface
 import com.example.howdy.view.PerfilActivity
 import com.google.firebase.auth.FirebaseAuth
-import convertBackEndDateTimeFormatToSocialMediaFormat
+import com.example.howdy.utils.convertBackEndDateTimeFormatToSocialMediaFormat
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

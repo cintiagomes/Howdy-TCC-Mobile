@@ -19,13 +19,11 @@ import com.example.howdy.remote.RouterInterface
 import com.example.howdy.view.paginaDePostagem
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
-import convertBrStringToDate
-import convertDateToBackendFormat
-import kotlinx.android.synthetic.main.item_amigo.*
+import com.example.howdy.utils.convertBrStringToDate
+import com.example.howdy.utils.convertDateToBackendFormat
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.text.SimpleDateFormat
 import java.util.*
 
 class CadastroIncompletoActivity : AppCompatActivity() {

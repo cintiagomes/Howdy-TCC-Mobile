@@ -21,10 +21,10 @@ class PerfilFragmentTypeAdapter(fragmentActivity: FragmentActivity, user: UserCo
                 AmigosFragment(user.idUser)
             }
             2 -> {
-                AprendizadoFragment()
+                AprendizadoFragment(user.idUser)
             }
             3 -> {
-                EnsinamentosFragment()
+                EnsinamentosFragment(user)
             }
             else -> {
                 Fragment()

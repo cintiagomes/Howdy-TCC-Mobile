@@ -1,3 +1,5 @@
+package com.example.howdy.utils
+
 import java.text.SimpleDateFormat
 import java.util.*
 

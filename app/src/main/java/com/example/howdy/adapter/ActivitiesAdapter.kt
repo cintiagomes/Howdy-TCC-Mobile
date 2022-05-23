@@ -15,7 +15,7 @@ import com.example.howdy.remote.APIUtil
 import com.example.howdy.remote.RouterInterface
 import com.example.howdy.view.PerfilActivity
 import com.google.firebase.auth.FirebaseAuth
-import convertBackEndDateTimeFormatToSocialMediaFormat
+import com.example.howdy.utils.convertBackEndDateTimeFormatToSocialMediaFormat
 
 class ActivitiesAdapter(private val activities: List<OneActivityInPublicList>, private val activity: FragmentActivity) : RecyclerView.Adapter<ActivitiesAdapter.Holder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
