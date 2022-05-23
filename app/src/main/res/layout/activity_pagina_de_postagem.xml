@@ -31,4 +31,60 @@
         android:backgroundTint="@color/purple_200"/>
 
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-120dp"
+        android:layout_marginEnd="20dp"
+        android:visibility="gone"
+
+        app:srcCompat="@drawable/ic_person_24"
+        android:layout_gravity="end"
+        android:backgroundTint="@color/purple_200"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-120dp"
+        android:layout_marginEnd="20dp"
+        app:srcCompat="@drawable/ic_free"
+        android:visibility="gone"
+
+        android:layout_gravity="end"
+        android:backgroundTint="@color/purple_200"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-120dp"
+        android:layout_marginEnd="20dp"
+        android:visibility="gone"
+
+        app:srcCompat="@drawable/ic_money_24"
+        android:layout_gravity="end"
+        android:backgroundTint="@color/purple_200"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-120dp"
+        android:layout_marginEnd="20dp"
+        android:visibility="gone"
+
+        app:srcCompat="@drawable/ic_more_vert_24"
+        android:layout_gravity="end"
+        android:backgroundTint="@color/purple_200"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-120dp"
+        android:visibility="gone"
+
+        android:layout_marginEnd="20dp"
+        app:srcCompat="@drawable/ic_more_vert_24"
+        android:layout_gravity="end"
+        android:backgroundTint="@color/purple_200"/>
+
+
 </LinearLayout>
