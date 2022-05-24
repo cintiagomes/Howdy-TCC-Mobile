@@ -65,12 +65,10 @@ fun convertBackEndDateTimeFormatToSocialMediaFormat(backendDateTime: Date) : Str
     return "Há $distanceInYears ano" + if(distanceInYears > 1) "s." else "."
 }
 
-//fun convertBackEndDateTimeFormatToBrazilianLongDate(backendDateTime: Date) : String {
-//    val f = SimpleDateFormat("dd de MMM de yyyy")
-//        val d = f.parse(string_date)
-//        val milliseconds = d.time
-//    } catch (e: ParseException) {
-//        e.printStackTrace()
-//    }
-//   return backendDateTime.
-//}
+fun isUserPro(subscriptionEndDate: Date?): Boolean {
+    //RETORNAR A VARIÁVEL É UMA DATA NÃO NULA, E QUE AINDA NÃO CHEGOU
+    if (subscriptionEndDate != null && subscriptionEndDate.after(Date())) {
+        return true
+    }
+    return false
+}

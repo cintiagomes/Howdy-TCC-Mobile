@@ -13,6 +13,7 @@ import com.example.howdy.network.Socketio
 import io.socket.client.Socket
 import com.example.howdy.remote.APIUtil
 import com.example.howdy.remote.RouterInterface
+import com.example.howdy.utils.isUserPro
 import com.example.howdy.view.PerfilActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.gson.Gson
@@ -23,6 +24,7 @@ import kotlinx.android.synthetic.main.activity_chat.send_button
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.*
 
 class ChatActivity : AppCompatActivity() {
     private lateinit var routerInterface: RouterInterface
@@ -128,6 +130,12 @@ class ChatActivity : AppCompatActivity() {
         if (textContent.isEmpty()){
             return Toast.makeText(this, "Por favor, preencha o campo antes de enviar.", Toast.LENGTH_SHORT).show()
         }
+
+        //RESGATANDO DE SHAREDPREFERENCES
+        val sharedPreferences = getSharedPreferences("userLogged", 0)
+        val subscriptionEndDate = sharedPreferences.getString("subscriptionEndDate", null)
+
+        if (!isUserPro(Date(subscriptionEndDate))) return Toast.makeText(this, "Você precisa ser PRO para mandar mensagens", Toast.LENGTH_SHORT).show()
 
 //        //RESGATANDO IDTOKEN ATUAL DO USUÁRIO
         auth.currentUser?.getIdToken(true)
