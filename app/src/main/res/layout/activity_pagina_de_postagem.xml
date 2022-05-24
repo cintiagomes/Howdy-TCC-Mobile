@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end"
         android:layout_marginTop="-70dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginEnd="15dp"
         android:backgroundTint="@color/purple_200"
         android:clickable="true"
         android:focusable="true"
@@ -46,7 +46,7 @@
         android:visibility="invisible"
         android:tint="@color/white"
         android:layout_marginTop="-120dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginEnd="15dp"
         app:srcCompat="@drawable/ic_person_24"
         android:layout_gravity="end"
         android:backgroundTint="@color/purple_200"/>
@@ -60,7 +60,7 @@
         android:visibility="invisible"
         android:tint="@color/white"
         android:layout_marginTop="-110dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginEnd="15dp"
         app:srcCompat="@drawable/ic_military_24"
         android:layout_gravity="end"
         android:backgroundTint="@color/purple_200"/>
@@ -74,7 +74,7 @@
         android:visibility="invisible"
         android:tint="@color/white"
         android:layout_marginTop="-110dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginEnd="15dp"
         app:srcCompat="@drawable/ic_money_24"
         android:layout_gravity="end"
         android:backgroundTint="@color/purple_200"/>
@@ -87,7 +87,7 @@
         android:focusable="true"
         android:tint="@color/white"
         android:layout_marginTop="-110dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginEnd="15dp"
         app:srcCompat="@drawable/ic_settings_24"
         android:layout_gravity="end"
         android:visibility="invisible"
@@ -102,7 +102,7 @@
         android:tint="@color/white"
         android:layout_marginTop="-110dp"
         android:visibility="invisible"
-        android:layout_marginEnd="10dp"
+        android:layout_marginEnd="15dp"
         app:srcCompat="@drawable/ic_logout_24"
         android:layout_gravity="end"
         android:backgroundTint="@color/purple_200"/>
