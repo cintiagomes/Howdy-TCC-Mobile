@@ -5,9 +5,7 @@ apply plugin: 'kotlin-android-extensions'
 android {
     compileSdk 32
 
-    buildFeatures {
-        viewBinding = true
-    }
+    buildFeatures {viewBinding = true}
 
     defaultConfig {
         applicationId "com.example.howdy"
@@ -44,7 +42,7 @@ dependencies {
 
     implementation 'androidx.navigation:navigation-fragment-ktx:2.4.2'
     implementation 'androidx.navigation:navigation-ui-ktx:2.4.2'
-    implementation 'androidx.wear.tiles:tiles-material:1.1.0-alpha05'
+    implementation 'androidx.wear.tiles:tiles-material:1.1.0-alpha07'
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
