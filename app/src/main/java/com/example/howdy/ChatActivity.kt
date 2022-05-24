@@ -4,18 +4,18 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.howdy.adapter.ChatItemAdapter
-import com.example.howdy.adapter.CommentaryItemAdapter
+import com.example.howdy.model.MessagesTypes.DataToSendMessage
 import com.example.howdy.model.MessagesTypes.Message
-import com.example.howdy.model.PostTypes.PostCommentaryTypes.Commentary
-import com.example.howdy.network.SocketInstance
+import com.example.howdy.network.Socketio
+import io.socket.client.Socket
 import com.example.howdy.remote.APIUtil
 import com.example.howdy.remote.RouterInterface
 import com.example.howdy.view.PerfilActivity
-import com.github.nkzawa.socketio.client.IO
-import com.github.nkzawa.socketio.client.Socket
 import com.google.firebase.auth.FirebaseAuth
+import com.google.gson.Gson
 import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.activity_chat.*
 import kotlinx.android.synthetic.main.activity_chat.arrow_button
@@ -27,8 +27,10 @@ import retrofit2.Response
 class ChatActivity : AppCompatActivity() {
     private lateinit var routerInterface: RouterInterface
     private var auth = FirebaseAuth.getInstance()
-    private lateinit var messageList: MutableList<Message>
+    private var messageList: MutableList<Message> = emptyList<Message>().toMutableList()
     private lateinit var idToken: String
+    private lateinit var recycler: RecyclerView
+    private lateinit var adapter: ChatItemAdapter
 
     private var mSocket: Socket? = null
 
@@ -71,6 +73,13 @@ class ChatActivity : AppCompatActivity() {
 
         findAndListComments(idUserFriend)
 
+        //Socket instance
+        Socketio.setSocket()
+        mSocket = Socketio.getSocket()
+
+        //connecting socket
+        mSocket!!.connect()
+
         putMessageListeners(idUserFriend)
         buttonToSendMessage.setOnClickListener {
             sendMessage(idUserFriend)
@@ -82,33 +91,32 @@ class ChatActivity : AppCompatActivity() {
     }
 
     private fun putMessageListeners(idUserFriend: Int){
-        //Socket instance
-        val app: SocketInstance = application as SocketInstance
-        mSocket = app.getMSocket()
-        //connecting socket
-        mSocket?.connect()
-        val options = IO.Options()
-        options.reconnection = true //reconnection
-        options.forceNew = true //force new connection
-
         //RESGATANDO IDTOKEN ATUAL DO USUÁRIO
         auth.currentUser?.getIdToken(true)
             ?.addOnSuccessListener { result ->
                 idToken = result.token!!
-                println("DEBUGANDO ANTES DE SE AUTENTICAR" + mSocket)
                 try {
-                    mSocket!!.io()!!.emit("authenticate", idToken)
+                    mSocket!!.emit("authenticate", idToken)
                 } catch (e: Exception) {
-                    println("DEBUGANDO DEPOIS DE SE AUTENTICAR" + mSocket)
                 }
-                mSocket!!.io().on("receivedMessage") { args ->
-                    println("DEBUGANDO CHEGOU ALGO: $args")
-                    if (args[0] != null)
-                    {
-                        val data = args[0] as String
-                        println("DEBUGANDO DATA: $data")
+                mSocket!!.on("receivedMessage") { args ->
+                    val jsonMessage = args?.get(0)
+
+                    //CONVERTENDO JSON PARA UM OBJETO MESSAGE UTILIZANDO GSON
+                    val message = Gson().fromJson(jsonMessage.toString(), Message::class.java)
+
+                    //RENDERIZANDO A MENSAGEM, SE ELA CORRESPONDER AO USUÁRIO QUE ESTAMOS CONVERSANDO
+                    if (message.idUserSender == idUserFriend || message.idUserReceiver == idUserFriend) {
+                        //INVERTENDO A LISTA DE MENSAGENS, ACRESCENTANDO A NOVA MENSAGEM, E INVERTENDO NOVAMENTE
+                        val invertedList = messageList.reversed().toMutableList()
+                        invertedList.add(message)
+                        messageList = invertedList.reversed().toMutableList()
+
+                        //RETORNANDO AO THREAD MAIN
                         runOnUiThread {
-                            println("DEBUGANDO DATA DENTRO: $data")
+                            adapter = ChatItemAdapter(messageList.reversed(), context, idUserFriend)
+                            recycler = recycler_view_messages
+                            recycler?.adapter = adapter
                         }
                     }
                 }
@@ -122,37 +130,21 @@ class ChatActivity : AppCompatActivity() {
         }
 
 //        //RESGATANDO IDTOKEN ATUAL DO USUÁRIO
-//        auth.currentUser?.getIdToken(true)
-//            ?.addOnSuccessListener { result ->
-//                idToken = result.token!!
-//
-//                //O USUÁRIO ESTÁ LOGADO, E FARÁ A LISTAGEM DAS MENSAGENS ANTERIORES
-//                val call: Call<MySqlResult> = routerInterface.getPreviousMessages(idToken, idUserFriend, DataToCreateCommentary(textContent))
-//                call.enqueue(object : Callback<MySqlResult> {
-//                    override fun onResponse(call: Call<MySqlResult>, response: Response<MySqlResult>) {
-//                        if (response.isSuccessful) {
-//                            inputCommentaryView.text = convertStringtoEditable("")
-//                            commentsQuantityView.text = commentsQuantityView.text.toString().toInt().plus(1).toString()
-//
-//                            findAndListComments(idUserFriend)
-//                            Toast.makeText(this@ComentariosActivity, "Comentário enviado com sucesso!", Toast.LENGTH_SHORT).show()
-//                        } else {
-//                            val jObjError = JSONObject(response.errorBody()!!.string())
-//                            val errorMessage = jObjError.get("error").toString()
-//                            Toast.makeText(
-//                                context, "Um erro ocorreu, tente novamente mais tarde.",
-//                                Toast.LENGTH_LONG
-//                            ).show()
-//                        }
-//                    }
-//
-//                    override fun onFailure(call: Call<MySqlResult>, t: Throwable) {
-//                        Toast.makeText(context,"Houve um erro de conexão, verifique se está conectado na internet.",
-//                            Toast.LENGTH_LONG).show()
-//                        println("DEBUGANDO - ONFAILURE NA LISTAGEM DE COMENTÁRIOS: $t")
-//                    }
-//                })
-//            }
+        auth.currentUser?.getIdToken(true)
+            ?.addOnSuccessListener { result ->
+                idToken = result.token!!
+
+                //CRIANDO UM OBJETO MESSAGE
+                val dataToSendMessage = DataToSendMessage(
+                    idToken,
+                    idUserFriend,
+                    textContent
+                )
+
+                //ENVIANDO A MENSAGEM PELO SOCKET
+                mSocket!!.emit("sendMessage", Gson().toJson(dataToSendMessage))
+                findAndListComments(idUserFriend)
+            }
     }
 
     private fun findAndListComments(idUserFriend: Int){
@@ -169,8 +161,8 @@ class ChatActivity : AppCompatActivity() {
                             /** RECEBER OS DADOS DA API  */
                             messageList = (response.body() as MutableList<Message>?)!!
 
-                            val adapter = ChatItemAdapter(messageList.reversed(), context, idUserFriend)
-                            val recycler = recycler_view_messages
+                            adapter = ChatItemAdapter(messageList.reversed(), context, idUserFriend)
+                            recycler = recycler_view_messages
                             recycler?.adapter = adapter
                         } else {
                             Toast.makeText(

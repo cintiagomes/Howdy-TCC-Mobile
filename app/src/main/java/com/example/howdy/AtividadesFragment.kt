@@ -191,27 +191,35 @@ class AtividadesFragment : Fragment() {
                             val jObjError = JSONObject(response.errorBody()!!.string())
                             val errorMessage = jObjError.get("error").toString()
                             if (errorMessage == "No activities found") {
-                                Toast.makeText(
-                                    activity, "Nenhuma atividade foi encontrada",
-                                    Toast.LENGTH_LONG
-                                ).show()
+                                try {
+                                    Toast.makeText(
+                                        activity, "Nenhuma atividade foi encontrada",
+                                        Toast.LENGTH_LONG
+                                    ).show()
 
-                                val adapter = PostsAdapter(emptyList(), activity!!)
-                                val recycler = recycler_atividades
-                                recycler?.adapter = adapter
+                                    val adapter = PostsAdapter(emptyList(), activity!!)
+                                    val recycler = recycler_atividades
+                                    recycler?.adapter = adapter
+                                } catch (e: Exception) {
+                                    println("DEBUGANDO: $e")
+                                }
                             }
                         }
                     }
 
                     override fun onFailure(call: Call<List<OneActivityInPublicList>>, t: Throwable) {
-                        Toast.makeText(activity,"Houve um erro de conexão, verifique se está conectado na internet.",
-                            Toast.LENGTH_LONG).show()
+                        try {
+                            Toast.makeText(activity,"Houve um erro de conexão, verifique se está conectado na internet.",
+                                Toast.LENGTH_LONG).show()
 
-                        val adapter = PostsAdapter(emptyList(), activity!!)
-                        val recycler = recycler_atividades
-                        recycler?.adapter = adapter
+                            val adapter = PostsAdapter(emptyList(), activity!!)
+                            val recycler = recycler_atividades
+                            recycler?.adapter = adapter
 
-                        println("DEBUGANDO - ONFAILURE NA LISTAGEM DE ATIVIDADES: $t")
+                            println("DEBUGANDO - ONFAILURE NA LISTAGEM DE ATIVIDADES: $t")
+                        } catch(e: Exception){
+                            println("DEBUGANDO - ONFAILURE NA LISTAGEM DE ATIVIDADES: $e")
+                        }
                     }
                 })
 
