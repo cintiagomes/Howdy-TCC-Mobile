@@ -16,6 +16,7 @@ import com.example.howdy.model.PostTypes.PostCommentaryTypes.Commentary
 import com.example.howdy.model.TraductionTypes.DataToTranslate
 import com.example.howdy.remote.APIUtil
 import com.example.howdy.remote.RouterInterface
+import com.example.howdy.utils.convertBackEndDateTimeFormatToSocialMediaFormat
 import com.example.howdy.view.PerfilActivity
 import com.google.firebase.auth.FirebaseAuth
 import retrofit2.Call
@@ -58,10 +59,12 @@ class ChatItemAdapter(private val comments: List<Message>, private val activity:
         private val routerInterface: RouterInterface = APIUtil.`interface`
 
         private val textContentView: TextView = itemView.findViewById(R.id.text_content_view)
+        private val createdAtView: TextView = itemView.findViewById(R.id.created_at_view)
         private val traductionButtonView: ImageView = itemView.findViewById(R.id.btn_traduct)
 
         override fun bind(obj: Message) {
             textContentView.text = obj.textContent
+            createdAtView.text = convertBackEndDateTimeFormatToSocialMediaFormat(obj.createdAt)
 
             //TRADUZIR TEXTO QUANDO CLICADO
             traductionButtonView.setOnClickListener { handleTraduct(obj) }
