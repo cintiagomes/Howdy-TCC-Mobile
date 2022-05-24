@@ -74,6 +74,9 @@ dependencies {
 
     // Stripe Android SDK
     implementation 'com.stripe:stripe-android:20.2.2'
+
+    //SOCKETIO
+    implementation  'com.github.nkzawa:socket.io-client:0.6.0'
 }
 
 apply plugin: 'com.google.gms.google-services'

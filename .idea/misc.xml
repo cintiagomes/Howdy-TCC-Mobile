@@ -248,6 +248,8 @@
         <entry key="app/src/main/res/layout/item.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/layout/item_amigo.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/layout/item_atividade.xml" value="0.4036458333333333" />
+        <entry key="app/src/main/res/layout/item_chat_friend.xml" value="0.39791666666666664" />
+        <entry key="app/src/main/res/layout/item_chat_user_logged.xml" value="0.39791666666666664" />
         <entry key="app/src/main/res/layout/item_comentar.xml" value="0.3380208333333333" />
         <entry key="app/src/main/res/layout/item_contact.xml" value="0.3234375" />
         <entry key="app/src/main/res/layout/item_notificacao.xml" value="0.3092485549132948" />

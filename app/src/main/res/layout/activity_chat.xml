@@ -26,13 +26,15 @@
             tools:ignore="TouchTargetSizeCheck" />
 
         <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_image"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="40dp"
-            android:src="@drawable/dorohedoro" />
+            android:src="@drawable/ic_logo_app" />
 
 
             <TextView
+                android:id="@+id/name_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto"
@@ -61,16 +63,12 @@
             android:orientation="vertical">
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_messages"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/item_chat"/>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/item_chat_resposta"/>
+                tools:listitem="@layout/item_chat_user_logged"
+                android:paddingBottom="130dp"/>
 
         </LinearLayout>
 
@@ -92,12 +90,12 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <EditText
-            android:id="@+id/et_commentary"
+            android:id="@+id/et_message"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:background="@drawable/buttom_borda"
             android:fontFamily="@font/roboto"
-            android:hint="Faça um comentario"
+            android:hint="Escreva aqui!"
             android:padding="10dp"
             android:paddingStart="15dp"
             android:textColor="#424347"

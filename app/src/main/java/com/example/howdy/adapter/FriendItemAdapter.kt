@@ -67,8 +67,8 @@ class FriendItemAdapter(private val users: List<Friend>, private val activity: F
 
             //IR PARA A PÁGINA DO USUÁRIO, OU ABRIR O CHAT DEPENDENDO SE A VARIÁVEL openChatOnClick FOR TRUE OU FALSE
             if (openChatOnClick){
-                userNameView.setOnClickListener { openChat(obj.idUser) }
-                profilePhotoView.setOnClickListener { openChat(obj.idUser) }
+                userNameView.setOnClickListener { openChat(obj) }
+                profilePhotoView.setOnClickListener { openChat(obj) }
             } else {
                 userNameView.setOnClickListener { goToUserActivity(obj.idUser) }
                 profilePhotoView.setOnClickListener { goToUserActivity(obj.idUser) }
@@ -135,10 +135,12 @@ class FriendItemAdapter(private val users: List<Friend>, private val activity: F
             activity.startActivity(targetPage)
         }
 
-        private fun openChat(idUser:Int) {
+        private fun openChat(userFriend: Friend) {
             val targetPage = Intent(activity, ChatActivity::class.java)
 
-            targetPage.putExtra("idUser", idUser);
+            targetPage.putExtra("idUser", userFriend.idUser)
+            targetPage.putExtra("userName", userFriend.userName)
+            targetPage.putExtra("profilePhoto", userFriend.profilePhoto)
             activity.startActivity(targetPage)
         }
     }

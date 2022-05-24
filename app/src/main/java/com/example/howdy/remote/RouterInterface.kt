@@ -4,6 +4,7 @@ import com.example.howdy.model.ActivityTypes.OneActivityCreatedBySomeone
 import com.example.howdy.model.ActivityTypes.OneActivityInPublicList
 import com.example.howdy.model.ActivityTypes.UnlockedAndCompletedActivities
 import com.example.howdy.model.Friendship
+import com.example.howdy.model.MessagesTypes.Message
 import com.example.howdy.model.MySqlResult
 import okhttp3.MultipartBody
 import com.example.howdy.model.PostTypes.Post
@@ -219,4 +220,12 @@ interface RouterInterface {
         @Header("Authorization") idToken: String,
         @Path("idUser") idUser: Int,
     ): Call<UnlockedAndCompletedActivities>
+
+    /** ROTAS DE MENSAGENS  */
+    //ROTA PARA LISTAR AS MENSAGENS ENTRE DOIS USUÁRIOS
+    @GET("/messages/{idUserFriend}")
+    fun getPreviousMessages(
+        @Header("Authorization") idToken: String,
+        @Path("idUserFriend") idUserFriend: Int,
+    ): Call<List<Message>>
 }
