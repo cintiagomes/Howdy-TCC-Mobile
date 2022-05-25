@@ -54,56 +54,68 @@ class AmigosFragment(idUser: Int?) : Fragment() {
             ?.addOnSuccessListener { result ->
                 val idToken = result.token!!
 
-                //RESGATANDO O ID DO USUÁRIO LOGADO, CASO NÃO TENHA NENHUM IDUSER
-                if (idUser == null) {
-                    val userLoggedFile = requireActivity().getSharedPreferences(
-                        "userLogged", Context.MODE_PRIVATE)
+                try {
+                    //RESGATANDO O ID DO USUÁRIO LOGADO, CASO NÃO TENHA NENHUM IDUSER
+                    if (idUser == null) {
+                        val userLoggedFile = requireActivity().getSharedPreferences(
+                            "userLogged", Context.MODE_PRIVATE)
 
-                    idUser = userLoggedFile.getInt("idUser", 0)
-                }
+                        idUser = userLoggedFile.getInt("idUser", 0)
+                    }
 
-                //O USUÁRIO ESTÁ LOGADO, E FARÁ A LISTAGEM DE POSTAGENS
-                routerInterface = APIUtil.`interface`
+                    //O USUÁRIO ESTÁ LOGADO, E FARÁ A LISTAGEM DE POSTAGENS
+                    routerInterface = APIUtil.`interface`
 
-                val call: Call<List<Friend>> = routerInterface.getAllSomeoneFriends(idToken, idUser!!
-                )
-                call.enqueue(object : Callback<List<Friend>> {
-                    override fun onResponse(call: Call<List<Friend>>, response: Response<List<Friend>>) {
-                        if (response.isSuccessful) {
-                            /** RECEBER OS DADOS DA API  */
-                            var friendsList: List<Friend> = response.body()!!
+                    val call: Call<List<Friend>> = routerInterface.getAllSomeoneFriends(idToken, idUser!!
+                    )
+                    call.enqueue(object : Callback<List<Friend>> {
+                        override fun onResponse(call: Call<List<Friend>>, response: Response<List<Friend>>) {
+                            if (response.isSuccessful) {
+                                try {
+                                    /** RECEBER OS DADOS DA API  */
+                                    var friendsList: List<Friend> = response.body()!!
 
-                            //MARCANDO NA VIEW QUANTOS AMIGOS FORAM ENCONTRADOS
-                            totalFriendsView.text =
-                                friendsList.size.toString() +
-                                        " amigo" +
-                                        if(friendsList.size > 1) "s" else ""
+                                    //MARCANDO NA VIEW QUANTOS AMIGOS FORAM ENCONTRADOS
+                                    totalFriendsView.text =
+                                        friendsList.size.toString() +
+                                                " amigo" +
+                                                if(friendsList.size > 1) "s" else ""
 
-                            val adapter = FriendItemAdapter(friendsList, activity!!, false)
-                            val recycler = recycler_amigos
-                            recycler?.adapter = adapter
-                        } else {
-                            val jObjError = JSONObject(response.errorBody()!!.string())
-                            val errorMessage = jObjError.get("error").toString()
-                            if (errorMessage == "This user has no friends ;-;") {
-                                Toast.makeText(
-                                    activity, "Ops! Nenhum amigo foi encontrado.",
-                                    Toast.LENGTH_LONG
-                                ).show()
+                                    val adapter = FriendItemAdapter(friendsList, activity!!, false)
+                                    val recycler = recycler_amigos
+                                    recycler?.adapter = adapter
+                                } catch (e: Exception) {
+                                    e.printStackTrace()
+                                }
+                            } else {
+                                try {
+                                    val jObjError = JSONObject(response.errorBody()!!.string())
+                                    val errorMessage = jObjError.get("error").toString()
+                                    if (errorMessage == "This user has no friends ;-;") {
+                                        Toast.makeText(
+                                            activity, "Ops! Nenhum amigo foi encontrado.",
+                                            Toast.LENGTH_LONG
+                                        ).show()
 
-                                val adapter = FriendItemAdapter(emptyList(), activity!!, false)
-                                val recycler = recycler_amigos
-                                recycler?.adapter = adapter
+                                        val adapter = FriendItemAdapter(emptyList(), activity!!, false)
+                                        val recycler = recycler_amigos
+                                        recycler?.adapter = adapter
+                                    }
+                                } catch (e: Exception) {
+                                    e.printStackTrace()
+                                }
                             }
                         }
-                    }
 
-                    override fun onFailure(call: Call<List<Friend>>, t: Throwable) {
-                        Toast.makeText(activity,"Houve um erro de conexão, verifique se está conectado na internet.",
-                            Toast.LENGTH_LONG).show()
-                        println("DEBUGANDO - ONFAILURE NA LISTAGEM DE AMIGOS: $t")
-                    }
-                })
+                        override fun onFailure(call: Call<List<Friend>>, t: Throwable) {
+                            Toast.makeText(activity,"Houve um erro de conexão, verifique se está conectado na internet.",
+                                Toast.LENGTH_LONG).show()
+                            println("DEBUGANDO - ONFAILURE NA LISTAGEM DE AMIGOS: $t")
+                        }
+                    })
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
             }
     }
 

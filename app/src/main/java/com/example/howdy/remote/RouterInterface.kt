@@ -6,6 +6,7 @@ import com.example.howdy.model.ActivityTypes.UnlockedAndCompletedActivities
 import com.example.howdy.model.Friendship
 import com.example.howdy.model.MessagesTypes.Message
 import com.example.howdy.model.MySqlResult
+import com.example.howdy.model.NotificationTypes.Notification
 import okhttp3.MultipartBody
 import com.example.howdy.model.PostTypes.Post
 import okhttp3.RequestBody
@@ -203,6 +204,13 @@ interface RouterInterface {
     ): Call<MySqlResult>
 
     /** ROTAS DE ATIVIDADES  */
+    //ROTA PARA BUSCAR AS ATIVIDADES POR NOME
+    @GET("/activities/name/{name}")
+    fun getActivitiesByName(
+        @Header("Authorization") idToken: String,
+        @Path("name") name: String
+    ): Call<List<OneActivityInPublicList>>
+
     //ROTA PARA LISTAR AS ATIVIDADES PÚBLICAS
     @GET("/activities")
     fun getPublicActivities(
@@ -229,7 +237,7 @@ interface RouterInterface {
         @Path("idUser") idUser: Int,
     ): Call<UnlockedAndCompletedActivities>
 
-    /** ROTAS DE MENSAGENS  */
+    /** ROTAS DE MENSAGENS  **/
     //ROTA PARA LISTAR AS MENSAGENS ENTRE DOIS USUÁRIOS
     @GET("/messages/{idUserFriend}")
     fun getPreviousMessages(
@@ -237,10 +245,16 @@ interface RouterInterface {
         @Path("idUserFriend") idUserFriend: Int,
     ): Call<List<Message>>
 
-    //ROTA PARA BUSCAR AS ATIVIDADES POR NOME
-    @GET("/activities/name/{name}")
-    fun getActivitiesByName(
+    /** ROTAS DE NOTIFICAÇÕES  **/
+    //ROTA PARA LISTAR AS NOTIFICAÇÕES DO USUÁRIO
+    @GET("/notifications")
+    fun getNotifications(
         @Header("Authorization") idToken: String,
-        @Path("name") name: String
-    ): Call<List<OneActivityInPublicList>>
+    ): Call<List<Notification>>
+
+    //ROTA PARA LER AS NOTIFICAÇÕES
+    @PUT("/notifications/read")
+    fun readNotifications(
+        @Header("Authorization") idToken: String,
+    ): Call<MySqlResult>
 }

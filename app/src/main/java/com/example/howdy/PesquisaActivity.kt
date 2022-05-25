@@ -101,7 +101,7 @@ class PesquisaActivity : AppCompatActivity() {
                     override fun onFailure(call: Call<List<UserInCollectedByName>>, t: Throwable) {
                         Toast.makeText(context,"Houve um erro de conexão, verifique se está conectado na internet.",
                             Toast.LENGTH_LONG).show()
-                        println("DEBUGANDO - ONFAILURE NO RANKING: $t")
+                        println("DEBUGANDO - ONFAILURE NA LISTAGEM DE USUÁRIOS: $t")
                     }
                 })
             }
@@ -148,7 +148,7 @@ class PesquisaActivity : AppCompatActivity() {
                         println("DEBUGANDO - ONFAILURE: ${t.toString()}")
                         Toast.makeText(context,"Houve um erro de conexão, verifique se está conectado na internet.",
                             Toast.LENGTH_LONG).show()
-                        println("DEBUGANDO - ONFAILURE NO RANKING: $t")
+                        println("DEBUGANDO - ONFAILURE NA LISTAGEM DE ATIVIDADES: $t")
                     }
                 })
             }
