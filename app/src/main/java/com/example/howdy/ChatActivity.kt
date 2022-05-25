@@ -13,6 +13,7 @@ import com.example.howdy.network.Socketio
 import io.socket.client.Socket
 import com.example.howdy.remote.APIUtil
 import com.example.howdy.remote.RouterInterface
+import com.example.howdy.utils.convertStringtoEditable
 import com.example.howdy.utils.isUserPro
 import com.example.howdy.view.PerfilActivity
 import com.google.firebase.auth.FirebaseAuth
@@ -135,8 +136,9 @@ class ChatActivity : AppCompatActivity() {
         val sharedPreferences = getSharedPreferences("userLogged", 0)
         val subscriptionEndDate = sharedPreferences.getString("subscriptionEndDate", null)
 
-        if (!isUserPro(Date(subscriptionEndDate))) return Toast.makeText(this, "Você precisa ser PRO para mandar mensagens", Toast.LENGTH_SHORT).show()
+//        if (!isUserPro(Date(subscriptionEndDate))) return Toast.makeText(this, "Você precisa ser PRO para mandar mensagens", Toast.LENGTH_SHORT).show()
 
+        editTextMessageView.text = convertStringtoEditable("")
 //        //RESGATANDO IDTOKEN ATUAL DO USUÁRIO
         auth.currentUser?.getIdToken(true)
             ?.addOnSuccessListener { result ->

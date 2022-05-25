@@ -39,7 +39,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="5679 +"
+            android:text="0000 +"
             android:fontFamily="@font/roboto_medium"
             android:textColor="@color/white"
             android:layout_marginStart="3dp"

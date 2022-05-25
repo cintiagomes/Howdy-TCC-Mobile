@@ -25,6 +25,7 @@
             tools:ignore="TouchTargetSizeCheck" />
 
         <EditText
+            android:id="@+id/input_name"
             android:layout_width="330dp"
             android:layout_height="35dp"
             android:layout_marginStart="30dp"
@@ -58,6 +59,7 @@
                 android:textSize="20dp"/>
 
             <TextView
+                android:id="@+id/text_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="XXXXXX"
@@ -87,6 +89,7 @@
                     android:text="Pessoas"/>
 
                 <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_people"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:scrollbars="none"
@@ -117,6 +120,7 @@
                     android:text="Atividades"/>
 
                 <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_activities"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:scrollbars="none"

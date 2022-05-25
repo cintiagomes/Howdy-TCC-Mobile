@@ -19,7 +19,8 @@ import retrofit2.Call
 import retrofit2.http.*
 
 interface RouterInterface {
-    /** ROTAS DE USUÁRIO  */ //ROTA PARA CADASTRAR USUÁRIO
+    /** ROTAS DE USUÁRIO  */
+    //ROTA PARA CADASTRAR USUÁRIO
     @POST("/users")
     fun createUser(
         @Body user: DataToCreateUser,
@@ -36,6 +37,13 @@ interface RouterInterface {
         @Header("Authorization") idToken: String,
         @Path("idUser") idUser: Int
     ): Call<List<UserCollectedWithId>>
+
+    //ROTA PARA COLETAR USUÁRIOS POR NOME
+    @GET("/users/getByName/{name}")
+    fun getUsersByName(
+        @Header("Authorization") idToken: String,
+        @Path("name") name: String
+    ): Call<List<UserInCollectedByName>>
 
     //ROTA PARA DELETAR CONTA DO USUÁRIO LOGADO
     @DELETE("/users")
@@ -228,4 +236,11 @@ interface RouterInterface {
         @Header("Authorization") idToken: String,
         @Path("idUserFriend") idUserFriend: Int,
     ): Call<List<Message>>
+
+    //ROTA PARA BUSCAR AS ATIVIDADES POR NOME
+    @GET("/activities/name/{name}")
+    fun getActivitiesByName(
+        @Header("Authorization") idToken: String,
+        @Path("name") name: String
+    ): Call<List<OneActivityInPublicList>>
 }

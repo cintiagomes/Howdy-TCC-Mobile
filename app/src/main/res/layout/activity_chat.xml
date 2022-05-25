@@ -68,7 +68,7 @@
                 android:layout_height="wrap_content"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:listitem="@layout/item_chat_user_logged"
-                android:paddingBottom="130dp"/>
+                android:paddingBottom="60dp"/>
 
         </LinearLayout>
 
