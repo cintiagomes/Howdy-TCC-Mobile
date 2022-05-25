@@ -62,7 +62,7 @@
                 android:id="@+id/text_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="XXXXXX"
+                android:text="Pesquise por algo..."
                 android:layout_marginBottom="10dp"
                 android:gravity="center"
                 android:textColor="@color/black"
