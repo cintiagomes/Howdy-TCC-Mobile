@@ -92,6 +92,7 @@ class Login : AppCompatActivity() {
 
                         if (idToken != null) {
                             //O USUÁRIO SE LOGOU NO FIREBASE, E AGORA IRÁ VER SE REALMENTE ESTÁ CADASTRADO NO BANCO SQL
+                            println("DEBUGANDO IDTOKEN: $idToken")
                             isMyUidExternalRegistered(idToken)
                         }
                     }

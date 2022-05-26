@@ -7,12 +7,20 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import androidx.recyclerview.widget.RecyclerView
+import com.example.howdy.adapter.ChatItemAdapter
 import com.example.howdy.adapter.NotificationItemAdapter
 import com.example.howdy.adapter.PeopleSearchItemAdapter
+import com.example.howdy.model.MessagesTypes.Message
+import com.example.howdy.model.MySqlResult
 import com.example.howdy.model.NotificationTypes.Notification
+import com.example.howdy.network.Socketio
 import com.example.howdy.remote.APIUtil
 import com.example.howdy.remote.RouterInterface
 import com.google.firebase.auth.FirebaseAuth
+import com.google.gson.Gson
+import io.socket.client.Socket
+import kotlinx.android.synthetic.main.activity_chat.*
 import kotlinx.android.synthetic.main.fragment_amigos.*
 import kotlinx.android.synthetic.main.fragment_notificacao.*
 import org.json.JSONObject
@@ -24,7 +32,13 @@ class NotificacaoFragment : Fragment() {
     private lateinit var routerInterface: RouterInterface
     private lateinit var auth: FirebaseAuth
 
+    private var mSocket: Socket? = null
+    private lateinit var idToken: String
+
+    private var notificationList: MutableList<Notification> = emptyList<Notification>().toMutableList()
+
     private lateinit var titlePageView: TextView
+    private lateinit var recycler: RecyclerView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,8 +52,47 @@ class NotificacaoFragment : Fragment() {
         routerInterface = APIUtil.`interface`
         auth = FirebaseAuth.getInstance()
 
+        recycler = recycler_notificacao
         titlePageView = text_view_titulo
         findAndListNotifications()
+
+        //Socket instance
+        Socketio.setSocket()
+        mSocket = Socketio.getSocket()
+
+        //connecting socket
+        mSocket!!.connect()
+
+        putNotificationListeners()
+    }
+
+    private fun putNotificationListeners(){
+        //RESGATANDO IDTOKEN ATUAL DO USUÁRIO
+        auth.currentUser?.getIdToken(true)
+            ?.addOnSuccessListener { result ->
+                idToken = result.token!!
+                try {
+                    mSocket!!.emit("authenticate", idToken)
+                } catch (e: Exception) {
+                }
+                mSocket!!.on("receivedNotification") { args ->
+                    val jsonNotification = args?.get(0)
+
+                    //CONVERTENDO JSON PARA UM OBJETO MESSAGE UTILIZANDO GSON
+                    val notification = Gson().fromJson(jsonNotification.toString(), Notification::class.java)
+
+                    //INVERTENDO A LISTA DE NOTIFICAÇÕES, ACRESCENTANDO A NOVA NOTIFICAÇÃO, E INVERTENDO NOVAMENTE
+                    val invertedList = notificationList.reversed().toMutableList()
+                    invertedList.add(notification)
+                    notificationList = invertedList.reversed().toMutableList()
+
+                    //RETORNANDO AO THREAD MAIN
+                    activity?.runOnUiThread {
+                        //ATUALIZANDO A LISTA DE NOTIFICAÇÕES
+                        recycler.adapter = NotificationItemAdapter(notificationList, requireActivity())
+                    }
+                }
+            }
     }
 
     private fun findAndListNotifications() {
@@ -47,7 +100,7 @@ class NotificacaoFragment : Fragment() {
         auth = FirebaseAuth.getInstance()
         auth.currentUser?.getIdToken(true)
             ?.addOnSuccessListener { result ->
-                val idToken = result.token!!
+                idToken = result.token!!
 
                 //O USUÁRIO ESTÁ LOGADO, E FARÁ A LISTAGEM DE POSTAGENS
                 routerInterface = APIUtil.`interface`
@@ -65,6 +118,7 @@ class NotificacaoFragment : Fragment() {
                                 //DESCOBRINDO QUANTAS NOTIFICAÇÕES POSSUI O WAS READ COMO FALSE
                                 var numberOfNotReadNotifications = 0
                                 for (notification in response.body()!!) {
+                                    println("DEBUGANDO ${notification.wasRead}")
                                     if (notification.wasRead == 0) {
                                         numberOfNotReadNotifications++
                                     }
@@ -72,30 +126,27 @@ class NotificacaoFragment : Fragment() {
 
 
                                 titlePageView.text =
-                                    "Notificações - " + numberOfNotReadNotifications + " não lidas"
+                                    "Notificações - " + numberOfNotReadNotifications + " não lida" + if (numberOfNotReadNotifications != 1) "s" else ""
 
-                                var notificationList: List<Notification> = response.body()!!
+                                notificationList = response.body()!!.toMutableList()
                                 val adapter = NotificationItemAdapter(notificationList, activity!!)
-                                val recycler = recycler_notificacao
                                 recycler?.adapter = adapter
-
-                                routerInterface.readNotifications(idToken)
                             } else {
                                 val jObjError = JSONObject(response.errorBody()!!.string())
                                 val errorMessage = jObjError.get("error").toString()
 
-                                println("DEBUGANDO ELSE" + errorMessage)
-                                if (errorMessage == "User not found") {
+                                if (errorMessage == "No notifications found") {
                                     Toast.makeText(
-                                        activity, "Ops! Nenhum usuário foi encontrado.",
+                                        activity, "Você não possui nenhuma notificação para ler",
                                         Toast.LENGTH_LONG
                                     ).show()
 
                                     val adapter = PeopleSearchItemAdapter(emptyList(), activity!!)
-                                    val recycler = recycler_notificacao
                                     recycler?.adapter = adapter
                                 }
                             }
+
+                            readNotifications(idToken!!)
                         }
 
                         override fun onFailure(call: Call<List<Notification>>, t: Throwable) {
@@ -110,5 +161,22 @@ class NotificacaoFragment : Fragment() {
                     })
                 }
             }
+    }
+
+    private fun readNotifications(idToken: String){
+        val call: Call<MySqlResult> = routerInterface.readNotifications(idToken)
+        call.enqueue(
+            object : Callback<MySqlResult> {
+                override fun onResponse(
+                    call: Call<MySqlResult>,
+                    response: Response<MySqlResult>
+                ) {}
+
+                override fun onFailure(
+                    call: Call<MySqlResult>,
+                    t: Throwable
+                ) {}
+            }
+        );
     }
 }
