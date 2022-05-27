@@ -41,6 +41,7 @@ class NotificationItemAdapter(private val notifications: List<Notification>, pri
         private val userNameView: TextView = itemView.findViewById(R.id.tv_user_name)
         private val createdAtView: TextView = itemView.findViewById(R.id.tv_created_at)
         private val textContentView: TextView = itemView.findViewById(R.id.tv_notification_text)
+        private val iconView: ImageView = itemView.findViewById(R.id.iv_notification_icon)
 
         override fun bind(obj: Notification) {
             userNameView.text = obj.userSenderName
@@ -60,6 +61,19 @@ class NotificationItemAdapter(private val notifications: List<Notification>, pri
                     .load(obj.userSenderProfilePhoto)
                     .into(profilePhotoView)
             }
+
+            //A DEPENDER DO TIPO DE NOTIFICAÇÃO, O ÍCONE SERÁ UM DRAWBLE ALTERADO
+//            when(obj.type){
+//                "like" -> {
+//                    iconView.setImageDrawable(ContextCompat.getDrawable(activity, R.drawable.ic_like))
+//                }
+//                "comment" -> {
+//                    iconView.setImageDrawable(ContextCompat.getDrawable(activity, R.drawable.ic_comment))
+//                }
+//                "follow" -> {
+//                    iconView.setImageDrawable(ContextCompat.getDrawable(activity, R.drawable.ic_follow))
+//                }
+//            }
 
 
             //IR PARA A PÁGINA DO USUÁRIO, OU ABRIR O CHAT DEPENDENDO SE A VARIÁVEL openChatOnClick FOR TRUE OU FALSE

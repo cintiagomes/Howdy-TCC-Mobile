@@ -36,6 +36,7 @@ class NotificacaoFragment : Fragment() {
     private lateinit var idToken: String
 
     private var notificationList: MutableList<Notification> = emptyList<Notification>().toMutableList()
+    private var numberOfNotReadNotifications: Int = 0
 
     private lateinit var titlePageView: TextView
     private lateinit var recycler: RecyclerView
@@ -88,8 +89,16 @@ class NotificacaoFragment : Fragment() {
 
                     //RETORNANDO AO THREAD MAIN
                     activity?.runOnUiThread {
+                        //ATUALIZANDO NÚMERO DE NOTIFICAÇÕES NÃO LIDAS
+                        numberOfNotReadNotifications++
+
+                        titlePageView.text =
+                            "Notificações - " + numberOfNotReadNotifications + " não lida" + if (numberOfNotReadNotifications != 1) "s" else ""
+
                         //ATUALIZANDO A LISTA DE NOTIFICAÇÕES
                         recycler.adapter = NotificationItemAdapter(notificationList, requireActivity())
+
+                        readNotifications(idToken)
                     }
                 }
             }
@@ -113,12 +122,10 @@ class NotificacaoFragment : Fragment() {
                             response: Response<List<Notification>>
                         ) {
                             if (response.isSuccessful) {
-                                println("DEBUGANDO ONSUCESS")
                                 /** RECEBER OS DADOS DA API  */
                                 //DESCOBRINDO QUANTAS NOTIFICAÇÕES POSSUI O WAS READ COMO FALSE
-                                var numberOfNotReadNotifications = 0
+                                numberOfNotReadNotifications = 0
                                 for (notification in response.body()!!) {
-                                    println("DEBUGANDO ${notification.wasRead}")
                                     if (notification.wasRead == 0) {
                                         numberOfNotReadNotifications++
                                     }
