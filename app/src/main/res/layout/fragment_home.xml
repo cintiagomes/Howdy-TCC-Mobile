@@ -53,6 +53,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:background="@drawable/buttom_borda"
+                    android:backgroundTint="#F5F8FA"
                     android:fontFamily="@font/roboto"
                     android:hint="Speak in English about whatever you want!"
                     android:paddingStart="10dp"

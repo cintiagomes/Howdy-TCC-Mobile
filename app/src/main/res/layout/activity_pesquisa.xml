@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F2F2F2"
+    android:background="#ffff"
     tools:context=".PesquisaActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#F2F2F2"
+        android:background="#ffff"
         android:elevation="5dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -20,16 +20,18 @@
             android:id="@+id/arrow_button"
             android:layout_width="30dp"
             android:layout_height="wrap_content"
-            android:backgroundTint="#f2f2f2"
+            android:backgroundTint="#ffff"
             android:src="@drawable/ic_arrow_24"
             tools:ignore="TouchTargetSizeCheck" />
 
         <EditText
             android:id="@+id/input_name"
-            android:layout_width="330dp"
+            android:layout_width="match_parent"
             android:layout_height="35dp"
-            android:layout_marginStart="30dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="10dp"
             android:background="@drawable/buttom_borda"
+            android:backgroundTint="@color/white"
             android:elevation="5dp"
             android:hint="Pesquisar"
             android:paddingStart="15dp"
@@ -74,6 +76,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="30dp"
+                android:elevation="5dp"
                 android:layout_marginStart="30dp"
                 android:padding="15dp"
                 android:backgroundTint="@color/white"
@@ -96,7 +99,7 @@
                     android:overScrollMode="never"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     tools:listitem="@layout/item_pesquisa_pessoas"
-                    android:layout_marginTop="20dp"/>
+                    android:layout_marginTop="10dp"/>
 
             </LinearLayout>
 
@@ -104,8 +107,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
                 android:layout_marginEnd="30dp"
                 android:layout_marginStart="30dp"
+                android:elevation="5dp"
                 android:padding="15dp"
                 android:backgroundTint="@color/white"
                 android:background="@drawable/buttom_borda"

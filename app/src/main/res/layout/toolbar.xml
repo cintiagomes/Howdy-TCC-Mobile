@@ -23,7 +23,7 @@
 
     <LinearLayout
         android:id="@+id/coins_howdy"
-        android:layout_width="80dp"
+        android:layout_width="85dp"
         android:layout_height="30dp"
         android:layout_gravity="end"
         android:layout_marginEnd="20dp"
@@ -42,7 +42,7 @@
             android:text="0000 +"
             android:fontFamily="@font/roboto_medium"
             android:textColor="@color/white"
-            android:layout_marginStart="3dp"
+            android:layout_marginStart="5dp"
             android:layout_gravity="center"
             android:textSize="15dp"/>
 
