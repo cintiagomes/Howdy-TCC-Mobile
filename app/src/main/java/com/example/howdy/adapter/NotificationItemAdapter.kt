@@ -62,18 +62,27 @@ class NotificationItemAdapter(private val notifications: List<Notification>, pri
                     .into(profilePhotoView)
             }
 
-            //A DEPENDER DO TIPO DE NOTIFICAÇÃO, O ÍCONE SERÁ UM DRAWBLE ALTERADO
-//            when(obj.type){
-//                "like" -> {
-//                    iconView.setImageDrawable(ContextCompat.getDrawable(activity, R.drawable.ic_like))
-//                }
-//                "comment" -> {
-//                    iconView.setImageDrawable(ContextCompat.getDrawable(activity, R.drawable.ic_comment))
-//                }
-//                "follow" -> {
-//                    iconView.setImageDrawable(ContextCompat.getDrawable(activity, R.drawable.ic_follow))
-//                }
-//            }
+//            A DEPENDER DO TIPO DE NOTIFICAÇÃO, O ÍCONE SERÁ UM DRAWBLE ALTERADO
+            when(obj.type){
+                "Commentary" -> {
+                    iconView.setImageDrawable(ContextCompat.getDrawable(activity, R.drawable.ic_comentario_24))
+                }
+                "Friend request pending" ->{
+                    iconView.setImageDrawable(ContextCompat.getDrawable(activity, R.drawable.ic_amizade_48))
+                }
+                "Friend Request Accepted" ->{
+                    iconView.setImageDrawable(ContextCompat.getDrawable(activity, R.drawable.icon_amizade_aceita_48))
+                }
+                "Someone texted you" -> {
+                    iconView.setImageDrawable(ContextCompat.getDrawable(activity, R.drawable.ic_mensagens_48))
+                }
+                "Someone bought your activity" -> {
+                    iconView.setImageDrawable(ContextCompat.getDrawable(activity, R.drawable.icon_compra_atividade_48))
+                }
+                "Someone did your activity" -> {
+                    iconView.setImageDrawable(ContextCompat.getDrawable(activity, R.drawable.icons_atividade_feita_48))
+                }
+            }
 
 
             //IR PARA A PÁGINA DO USUÁRIO, OU ABRIR O CHAT DEPENDENDO SE A VARIÁVEL openChatOnClick FOR TRUE OU FALSE
