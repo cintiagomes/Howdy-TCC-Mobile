@@ -61,7 +61,6 @@ class Login : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         binding.buttonEntrar.setOnClickListener { login() }
 
-        binding.btnLoginWithGoogle.setOnClickListener { loginWithGoogle() }
 
 
         esqueciSenha.setOnClickListener {
