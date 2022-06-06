@@ -99,7 +99,8 @@
             android:padding="10dp"
             android:paddingStart="15dp"
             android:textColor="#424347"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            android:text="Eu ainda não cheguei a ver, mas estou muito animado para isso!"/>
 
         <ImageButton
             android:id="@+id/send_button"
