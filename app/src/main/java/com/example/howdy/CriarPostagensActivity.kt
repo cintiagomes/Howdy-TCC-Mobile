@@ -190,6 +190,7 @@ class CriarPostagensActivity : AppCompatActivity() {
                         } else {
                             val jObjError = JSONObject(response.errorBody()!!.string())
                             val errorMessage = jObjError.get("error").toString()
+
                             if (errorMessage == "The text is not written according to the language you want to learn") {
                                 return Toast.makeText(
                                     context, "A postagem deve estar escrita conforme o idioma de seu interesse",

@@ -150,7 +150,8 @@
                 android:gravity="top"
                 android:hint="Speak in English about whatever you want!"
                 android:padding="10dp"
-                android:textSize="17dp" />
+                android:textSize="17dp"
+                android:text="Hi everyone, I just discovered this site and I want to start venturing out, what's the first step?"/>
 
             <TextView
                 android:layout_width="match_parent"
